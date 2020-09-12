@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="FormManager_Edit_Control" Name="FormManager_Edit_Control" Desc="控件编辑" DAImp="DynamicForm.DA.FormManager_Edit_ControlDA,DynamicForm">
+  <Panel Id="Panel201507241452280001" Name="Panel201507241452280001" Type="SingleRecord" Desc="基本" Additional="{class:'ddz-maindiv'}" TabContainer="tab-container1">
+    <Row>
+      <Control Name="Name" Text="名称" Width="span8" Type="text" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+      <Control Name="Width" Text="宽度" Width="span8" Type="select" Options="{&#xA;    'span1': 'span1',&#xA;    'span2': 'span2',&#xA;    'span3': 'span3',&#xA;    'span4': 'span4',&#xA;    'span5': 'span5',&#xA;    'span6': 'span6',&#xA;    'span7': 'span7',&#xA;    'span8': 'span8',&#xA;    'span9': 'span9',&#xA;    'span10': 'span10',&#xA;    'span11': 'span11',&#xA;    'span12': 'span12',&#xA;    'span13': 'span13',&#xA;    'span14': 'span14',&#xA;    'span15': 'span15',&#xA;    'span16': 'span16',&#xA;    'span17': 'span17',&#xA;    'span18': 'span18',&#xA;    'span19': 'span19',&#xA;    'span20': 'span20',&#xA;    'span21': 'span21',&#xA;    'span22': 'span22',&#xA;    'span23': 'span23',&#xA;    'span24': 'span24'&#xA;}" OptionType="JSON" AddEmptyOption="True" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="OuterAttributes" Text="外层div属性" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:800px;&quot;}" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="MustInput" Text="必须输入" Width="span8" Type="checkbox" Options="{'True':'是'}" OptionType="JSON" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+      <Control Name="Text" Text="标签" Width="span8" Type="text" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+      <Control Name="Value" Text="默认值" Width="span8" Type="text" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManager_EditDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: '',
+            FormName: $('#FormName').val()
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+tree.on('itemdblclick', function(e){
+alert(e.item.text);
+});
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="TextAfterControl" Text="控件后面的文本" Width="span8" Type="text" />
+      <Control Name="AutoPostBack" Text="自动回发" Width="span8" Type="checkbox" Options="{'True':'是'}" OptionType="JSON" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:60px;&quot;}">
+      <Control Name="ControlAttributes" Text="控件属性" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:800px;height:50px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:60px;&quot;}">
+      <Control Name="LabelAttributes" Text="标签属性" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:800px;height:50px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Type" Text="控件类型" Width="span8" Type="select" Options="{&#xA;    'text': 'text',&#xA;    'password': 'password',&#xA;    'textarea': 'textarea',&#xA;    'hidden': 'hidden',&#xA;    'display': 'display',&#xA;    'select': 'select',&#xA;    'multiselect': 'multiselect',&#xA;    'checkbox': 'checkbox',&#xA;    'calendar': 'calendar',&#xA;    'custom': 'custom',&#xA;    'button': 'button',&#xA;    'upload': 'upload',&#xA;    'upload_to_db': 'upload_to_db',&#xA;    'keditor': 'keditor',&#xA;    'list': 'list'&#xA;}" OptionType="JSON" AddEmptyOption="True" />
+      <Control Name="Action" Text="动作" Width="span8" Type="select" Options="{&#xA;    'link': 'link',&#xA;    'add': 'add',&#xA;    'update': 'update',&#xA;    'delete': 'delete',&#xA;    'query': 'query',&#xA;    'reset': 'reset'&#xA;}" OptionType="JSON" AddEmptyOption="True" />
+      <Control Name="OptionType" Text="选项类型" Width="span8" Type="select" Options="{'SQL':'SQL','JSON':'JSON'}" OptionType="JSON" AddEmptyOption="True" />
+      <Control Name="AddEmptyOption" Text="添加空选项" Width="span8" Type="checkbox" Options="{'True':'是'}" OptionType="JSON" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:110px;&quot;}">
+      <Control Name="Options" Text="选项" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:800px;height:100px;&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20170715234230479" Name="Panel20170715234230479" Type="SingleRecord" Desc="控件后脚本和自定义HTML" Additional="{class:'ddz-maindiv'}" TabContainer="tab-container1">
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:310px;&quot;}">
+      <Control Name="AfterScript" Text="控件后脚本" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:800px;height:300px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:110px;&quot;}">
+      <Control Name="CustomHtml" Text="自定义HTML" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:800px;height:100px;&quot;}" />
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Panel_RequestorInfo" Name="WFCore_Panel_RequestorInfo" Desc="申请人信息" DAImp="DynamicForm.DA.WFCore_Panel_RequestorInfoDA,DynamicForm">
+  <Panel Id="Panel201512280208170004" Name="Panel201512280208170004" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="dfPanel_201408041600460008" Name="dfPanel_201408041600460008" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="Requestor" Type="hidden" />
+      <Control Name="RequestorProxy" Type="hidden" />
+      <Control Name="RequestorName" Text="申请人姓名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+      <Control Name="RequestorProxyName" Text="代理申请人姓名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+</Form>

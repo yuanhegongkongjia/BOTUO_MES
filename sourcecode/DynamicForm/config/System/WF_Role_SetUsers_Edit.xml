@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Role_SetUsers_Edit" Name="WF_Role_SetUsers_Edit" Desc="设置角色的用户" DAImp="DynamicForm.DA.WF_Role_SetUsers_EditDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="RoleId" Type="hidden" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+      <Control Name="UserName" Text="用户名" Width="span8" Type="text" />
+      <Control Name="DeptId" Text="部门" Width="span16" Type="multiselect" Options="SELECT DeptId AS value, DeptName AS text FROM dbo.WF_M_DEPT WHERE Status=1 ORDER BY DeptLabel&#xA;" OptionType="SQL" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="UserId" Visible="false" />
+    <Column Name="UserName" Text="用户名" Width="150" />
+    <Column Name="ChineseName" Text="姓名" Width="100" />
+    <Column Name="DeptName" Text="部门名称" Width="100" />
+  </Panel>
+  <Panel Id="buttonPanel" Name="buttonPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    var p = "&RoleId=" + $('#RoleId').val();
+    window.location.href = 'DFIndex.aspx?DF_FORMNAME=WF_Role_SetUsers' + p;
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_AQ_LOG" Name="Form_SM_T_PROCESS_AQ_LOG" Desc="" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_AQ_LOGDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="LogId" Text="LogId" Width="span8" Type="text" />
+      <Control Name="InstanceId" Text="InstanceId" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ1" Text="AQ1" Width="span8" Type="text" />
+      <Control Name="AQ2" Text="AQ2" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ3" Text="AQ3" Width="span8" Type="text" />
+      <Control Name="AQ4" Text="AQ4" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ5" Text="AQ5" Width="span8" Type="text" />
+      <Control Name="AQ6" Text="AQ6" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ7" Text="AQ7" Width="span8" Type="text" />
+      <Control Name="AQ8" Text="AQ8" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AWT1" Text="AWT1" Width="span8" Type="text" />
+      <Control Name="BWT1" Text="BWT1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AKK" Text="AKK" Width="span8" Type="text" />
+      <Control Name="BKK" Text="BKK" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AWT2" Text="AWT2" Width="span8" Type="text" />
+      <Control Name="BWT2" Text="BWT2" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LogDate" Text="LogDate" Width="span8" Type="text" />
+      <Control Name="LogUser" Text="LogUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="VerifyUser" Text="VerifyUser" Width="span8" Type="text" />
+      <Control Name="Remark1" Text="Remark1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark2" Text="Remark2" Width="span8" Type="text" />
+      <Control Name="Remark3" Text="Remark3" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark4" Text="Remark4" Width="span8" Type="text" />
+      <Control Name="Remark5" Text="Remark5" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Text="CreateTime" Width="span8" Type="text" />
+      <Control Name="CreateUser" Text="CreateUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Text="LastModifyTime" Width="span8" Type="text" />
+      <Control Name="LastModifyUser" Text="LastModifyUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="LogId" Text="LogId" Width="100" Sortable="true" />
+    <Column Name="InstanceId" Text="InstanceId" Width="100" Sortable="true" />
+    <Column Name="AQ1" Text="AQ1" Width="100" Sortable="true" />
+    <Column Name="AQ2" Text="AQ2" Width="100" Sortable="true" />
+    <Column Name="AQ3" Text="AQ3" Width="100" Sortable="true" />
+    <Column Name="AQ4" Text="AQ4" Width="100" Sortable="true" />
+    <Column Name="AQ5" Text="AQ5" Width="100" Sortable="true" />
+    <Column Name="AQ6" Text="AQ6" Width="100" Sortable="true" />
+    <Column Name="AQ7" Text="AQ7" Width="100" Sortable="true" />
+    <Column Name="AQ8" Text="AQ8" Width="100" Sortable="true" />
+    <Column Name="AWT1" Text="AWT1" Width="100" Sortable="true" />
+    <Column Name="BWT1" Text="BWT1" Width="100" Sortable="true" />
+    <Column Name="AKK" Text="AKK" Width="100" Sortable="true" />
+    <Column Name="BKK" Text="BKK" Width="100" Sortable="true" />
+    <Column Name="AWT2" Text="AWT2" Width="100" Sortable="true" />
+    <Column Name="BWT2" Text="BWT2" Width="100" Sortable="true" />
+    <Column Name="LogDate" Text="LogDate" Width="100" Sortable="true" />
+    <Column Name="LogUser" Text="LogUser" Width="100" Sortable="true" />
+    <Column Name="VerifyUser" Text="VerifyUser" Width="100" Sortable="true" />
+    <Column Name="Remark1" Text="Remark1" Width="100" Sortable="true" />
+    <Column Name="Remark2" Text="Remark2" Width="100" Sortable="true" />
+    <Column Name="Remark3" Text="Remark3" Width="100" Sortable="true" />
+    <Column Name="Remark4" Text="Remark4" Width="100" Sortable="true" />
+    <Column Name="Remark5" Text="Remark5" Width="100" Sortable="true" />
+    <Column Name="CreateTime" Text="CreateTime" Width="100" Sortable="true" />
+    <Column Name="CreateUser" Text="CreateUser" Width="100" Sortable="true" />
+    <Column Name="LastModifyTime" Text="LastModifyTime" Width="100" Sortable="true" />
+    <Column Name="LastModifyUser" Text="LastModifyUser" Width="100" Sortable="true" />
+  </Panel>
+
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'LogId': a.LogId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_AQ_LOG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_AQ_LOG_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&LogId=' + selections[0].LogId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_AQ_LOG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_WF_M_MSG_TEMPLATE_Edit" Name="Form_WF_M_MSG_TEMPLATE_Edit" Desc="消息模板管理-详细" DAImp="DynamicForm.DA.Form_WF_M_MSG_TEMPLATE_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PK_GUID" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TemplateName" Text="模板名称" Width="span8" Type="text" />
+      <Control Name="TemplateDesc" Text="模板描述" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Language" Text="语言" Width="span8" Type="select" Options="{'ChineseSimplified':'简体中文','ChineseTraditional':'繁体中文','English':'英语'}" OptionType="JSON" AddEmptyOption="True" />
+      <Control Name="TemplateType" Text="模板类型" Width="span8" Type="select" Options="{'WebMsgTemplate':'界面消息模板','EmailTemplate':'邮件模板','MobileTemplate':'移动消息模板'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="IsActive" Text="是否启用" Width="span8" Type="select" Options="{'1':'启用','0':'禁用'}" OptionType="JSON" />
+      <Control Name="IsSystem" Text="系统内置" Value="0" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:60px;&quot;}">
+      <Control Name="Subject" Text="主题" Width="span18" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:550px;height:50px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:160px;&quot;}">
+      <Control Name="Body" Text="正文" Width="span18" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:550px;height:150px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:80px;&quot;}">
+      <Control Name="Link" Text="链接" Width="span18" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:550px;height:70px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

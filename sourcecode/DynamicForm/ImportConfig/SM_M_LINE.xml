@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_M_LINE" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_M_LINE WHERE LineId=@LineId" Insert="INSERT INTO SM_M_LINE(LineId,LineName,CellId,CellName,Remark1,Remark2,Remark3,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@LineId,@LineName,@CellId,@CellName,@Remark1,@Remark2,@Remark3,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_M_LINE SET LineName=@LineName,CellId=@CellId,CellName=@CellName,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE LineId=@LineId">
+    <column Name="LineId" Text="LineId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="LineName" Text="LineName" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CellId" Text="CellId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CellName" Text="CellName" DataType="nvarchar(50)" IsNullable="Y" GetValue="select CellName as CellName from sm_m_cell where CellId=@CellId" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

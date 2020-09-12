@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_MachineAnalyse_Edit" Name="Form_BT_MachineAnalyse_Edit" Desc="" DAImp="DynamicForm.DA.Form_BT_MachineAnalyse_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Text="PKId" Width="span8" Type="text" />
+      <Control Name="MachineName" Text="MachineName" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="MachineNum" Text="MachineNum" Width="span8" Type="text" />
+      <Control Name="MachineOEE" Text="MachineOEE" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="MachineAverageTime" Text="MachineAverageTime" Width="span8" Type="text" />
+      <Control Name="Remark1" Text="Remark1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark2" Text="Remark2" Width="span8" Type="text" />
+      <Control Name="Remark3" Text="Remark3" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark4" Text="Remark4" Width="span8" Type="text" />
+      <Control Name="Remark5" Text="Remark5" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Text="CreateTime" Width="span8" Type="text" />
+      <Control Name="CreateUser" Text="CreateUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Text="LastModifyTime" Width="span8" Type="text" />
+      <Control Name="LastModifyUser" Text="LastModifyUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

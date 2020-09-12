@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_MFPower" Name="Form_MFPower" Desc="MF电量消耗" DAImp="DynamicForm.DA.Form_MFPowerDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="CollectTimeFrom" Text="采集时间从" Width="span8" Type="calendar-time" />
+      <Control Name="CollectTimeTo" Text="到" Width="span8" Type="calendar-time" />
+    </Row>
+    <Row>
+      <Control Name="Line" Text="线号" Width="span8" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04'}" OptionType="JSON" AddEmptyOption="True" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;5&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="Line" Text="线号" Width="100" Sortable="true" />
+    <Column Name="pert" Text="吨耗" Width="200" Sortable="true" />
+    <!--DF_SCRIPT
+function(value, obj) {
+if(value!="NA"){
+return formatMoney(value,2)+"度/吨";
+}
+else{
+return value;
+}		
+	
+}
+-->
+  </Panel>
+</Form>

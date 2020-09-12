@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_QUALITY" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS_QUALITY WHERE PKId=@PKId" Insert="INSERT INTO SM_T_PROCESS_QUALITY(PKId,InstanceId,XJStandard,GG,GGXH,GH,TDStandard,TDPreControlRange,TDQualifiedRange,MaxTD,MinTD,MaxTYD,QDRange,MSStandard,CuStandard,GKgStandard,MSRange,CuRange,GKgRange,MinBCu,ZJStandard,QDPreControlRange,QDQualifiedRange,ZJQualifiedRange,MSPreControlRange,MSQualifiedRange,CuPreControlRange,CuQualifiedRange,GKgPreControlRange,GKgQualifiedRange,BCuPreControlRange,BCuQualifiedRange,BCuStandard,CustomerCode,Spec,QDLevel,AverQD,MaxQD,MinQD,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser,QDStandard) VALUES(@PKId,@InstanceId,@XJStandard,@GG,@GGXH,@GH,@TDStandard,@TDPreControlRange,@TDQualifiedRange,@MaxTD,@MinTD,@MaxTYD,@QDRange,@MSStandard,@CuStandard,@GKgStandard,@MSRange,@CuRange,@GKgRange,@MinBCu,@ZJStandard,@QDPreControlRange,@QDQualifiedRange,@ZJQualifiedRange,@MSPreControlRange,@MSQualifiedRange,@CuPreControlRange,@CuQualifiedRange,@GKgPreControlRange,@GKgQualifiedRange,@BCuPreControlRange,@BCuQualifiedRange,@BCuStandard,@CustomerCode,@Spec,@QDLevel,@AverQD,@MaxQD,@MinQD,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser,@QDStandard)" Update="UPDATE SM_T_PROCESS_QUALITY SET InstanceId=@InstanceId,XJStandard=@XJStandard,GG=@GG,GGXH=@GGXH,GH=@GH,TDStandard=@TDStandard,TDPreControlRange=@TDPreControlRange,TDQualifiedRange=@TDQualifiedRange,MaxTD=@MaxTD,MinTD=@MinTD,MaxTYD=@MaxTYD,QDRange=@QDRange,MSStandard=@MSStandard,CuStandard=@CuStandard,GKgStandard=@GKgStandard,MSRange=@MSRange,CuRange=@CuRange,GKgRange=@GKgRange,MinBCu=@MinBCu,ZJStandard=@ZJStandard,QDPreControlRange=@QDPreControlRange,QDQualifiedRange=@QDQualifiedRange,ZJQualifiedRange=@ZJQualifiedRange,MSPreControlRange=@MSPreControlRange,MSQualifiedRange=@MSQualifiedRange,CuPreControlRange=@CuPreControlRange,CuQualifiedRange=@CuQualifiedRange,GKgPreControlRange=@GKgPreControlRange,GKgQualifiedRange=@GKgQualifiedRange,BCuPreControlRange=@BCuPreControlRange,BCuQualifiedRange=@BCuQualifiedRange,BCuStandard=@BCuStandard,CustomerCode=@CustomerCode,Spec=@Spec,QDLevel=@QDLevel,AverQD=@AverQD,MaxQD=@MaxQD,MinQD=@MinQD,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser,QDStandard=@QDStandard WHERE PKId=@PKId">
+    <column Name="PKId" Text="PKId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="XJStandard" Text="XJStandard" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="GG" Text="GG" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="GGXH" Text="GGXH" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="GH" Text="GH" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="TDStandard" Text="TDStandard" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="TDPreControlRange" Text="TDPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="TDQualifiedRange" Text="TDQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MaxTD" Text="MaxTD" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MinTD" Text="MinTD" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MaxTYD" Text="MaxTYD" DataType="decimal(10,4)" IsNullable="Y" />
+    <column Name="QDRange" Text="QDRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MSStandard" Text="MSStandard" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="CuStandard" Text="CuStandard" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="GKgStandard" Text="GKgStandard" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MSRange" Text="MSRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="CuRange" Text="CuRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="GKgRange" Text="GKgRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MinBCu" Text="MinBCu" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="ZJStandard" Text="ZJStandard" DataType="decimal(10,4)" IsNullable="Y" />
+    <column Name="QDPreControlRange" Text="QDPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="QDQualifiedRange" Text="QDQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="ZJQualifiedRange" Text="ZJQualifiedRange" DataType="decimal(10,4)" IsNullable="Y" />
+    <column Name="MSPreControlRange" Text="MSPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="MSQualifiedRange" Text="MSQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="CuPreControlRange" Text="CuPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="CuQualifiedRange" Text="CuQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="GKgPreControlRange" Text="GKgPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="GKgQualifiedRange" Text="GKgQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="BCuPreControlRange" Text="BCuPreControlRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="BCuQualifiedRange" Text="BCuQualifiedRange" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="BCuStandard" Text="BCuStandard" DataType="decimal(10,1)" IsNullable="Y" />
+    <column Name="CustomerCode" Text="CustomerCode" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Spec" Text="Spec" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="QDLevel" Text="QDLevel" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="AverQD" Text="AverQD" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="MaxQD" Text="MaxQD" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="MinQD" Text="MinQD" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="QDStandard" Text="QDStandard" DataType="decimal(10,1)" IsNullable="Y" />
+  </table>
+</tables>

@@ -1,0 +1,238 @@
+﻿
+.dfTab-iframe {
+    border: #c3c3d6 solid 1px;
+}
+
+.dynamic-form-core-page-div {
+    padding: 0px 10px;
+}
+
+.dynamic-form-core-panel-title {
+    /*margin-top: 15px;*/
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+    color: #2c9ed5;
+    border-left: #eee solid 1px;
+    border-right: #eee solid 1px;
+    border-bottom: #2c9ed5 solid 1px;
+}
+
+/*当面板不是grid的时候的样式，也就是单记录面板的样式*/
+.dynamic-form-core-panel {
+}
+
+.dynamic-form-core-upload-input {
+}
+
+.dynamic-form-core-upload-button {
+}
+
+.dynamic-form-core-upload-link {
+    display: inline-block;
+    background: #feffff;
+    border: #e6e6e6 solid 1px;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dynamic-form-core-upload-reset {
+    display: inline-block;
+    background: #feffff;
+    border: #e6e6e6 solid 1px;
+    text-align: center;
+    line-height: 20px;
+    width: 50px;
+    vertical-align: middle;
+}
+
+.dynamic-form-core-checkbox {
+    vertical-align: middle;
+    width: 20px;
+    display: inline-block;
+}
+
+.dynamic-form-core-checkbox-label {
+    margin-right: 20px;
+}
+
+.dynamic-form-core-grid-edit-column-head {
+    color: red;
+}
+
+.form-horizontal .controls {
+    height: 30px;
+}
+
+.form-horizontal .control-label {
+    width: 100px;
+}
+
+.bui-select-list .bui-list-item {
+    padding: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 1px;
+    padding-left: 8px;
+    *zoom: 1;
+}
+
+html input[readonly] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: #0000FF;
+}
+
+html textarea[readonly] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: #0000FF;
+}
+
+html select[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: #0000FF;
+}
+
+html input[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: #0000FF;
+}
+
+html input.ddz-button1[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: gray;
+}
+
+html input.ddz-button2[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: gray;
+}
+
+html input.ddz-button3[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: gray;
+}
+
+html a[disabled] {
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color: gray;
+}
+
+.bui-tree-list {
+    border: none;
+}
+
+.text-align-center {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.etabs {
+    margin: 0;
+    padding: 0;
+    border-bottom: solid 1px #ddd;
+}
+
+.tab {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    /*background: #eee;*/
+    /*border: solid 1px #999;*/
+    /*border-bottom: solid 1px #999;*/
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+}
+
+    .tab a {
+        font-size: 14px;
+        line-height: 2em;
+        display: block;
+        padding: 0 10px;
+        outline: none;
+    }
+
+        .tab a:hover {
+            text-decoration: underline;
+        }
+
+    .tab.active {
+        background: #fff;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+        position: relative;
+        top: 1px;
+        /*border-color: #666;*/
+    }
+
+    .tab a.active {
+        font-weight: bold;
+    }
+
+.tab-container .panel-container {
+    background: #fff;
+    border: solid #666 1px;
+    padding: 10px;
+    -moz-border-radius: 0 4px 4px 4px;
+    -webkit-border-radius: 0 4px 4px 4px;
+}
+
+.dynamic-form-core-msg-message {
+    margin-top: 10px;
+    height: 30px;
+    font-size: 30px;
+    display: block;
+    color: green;
+}
+
+.dynamic-form-core-msg-warning {
+    margin-top: 10px;
+    height: 30px;
+    font-size: 30px;
+    display: block;
+    color: #ff9900;
+}
+
+.dynamic-form-core-msg-error {
+    margin-top: 10px;
+    height: 30px;
+    font-size: 30px;
+    display: block;
+    color: red;
+}
+
+.dynamic-form-core-msg-message-common {
+    display: block;
+    color: green;
+}
+
+.dynamic-form-core-msg-warning-common {
+    display: block;
+    color: #ff9900;
+}
+
+.dynamic-form-core-msg-error-common {
+    display: block;
+    color: red;
+}

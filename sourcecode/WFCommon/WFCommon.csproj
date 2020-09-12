@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{371E4943-6BBD-4601-B20C-D938FB91124D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFCommon</RootNamespace>
+    <AssemblyName>WFCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicForm.Core">
+      <HintPath>..\dependence\output\DynamicForm.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WFCommon.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\output\WFCommon.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="WFCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\output\WFCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Entities\BT_MachineAnalyse.cs" />
+    <Compile Include="Entities\BT_MachineManage.cs" />
+    <Compile Include="Entities\BT_PaiGongDan.cs" />
+    <Compile Include="Entities\DEVICE_TAIZHANG.cs" />
+    <Compile Include="Entities\SM_M_BASICVALUE.cs" />
+    <Compile Include="Entities\SM_M_CELL.cs" />
+    <Compile Include="Entities\SM_M_DEFECT.cs" />
+    <Compile Include="Entities\SM_M_LINE.cs" />
+    <Compile Include="Entities\SM_M_MASTERDEVICE.cs" />
+    <Compile Include="Entities\SM_M_PLC.cs" />
+    <Compile Include="Entities\SM_M_QD.cs" />
+    <Compile Include="Entities\SM_M_SLAVEDEVICE.cs" />
+    <Compile Include="Entities\SM_M_UPH.cs" />
+    <Compile Include="Entities\SM_T_DAYENERGY.cs" />
+    <Compile Include="Entities\SM_T_ENERGY_COLLECT.cs" />
+    <Compile Include="Entities\SM_T_ENVIRONMENT.cs" />
+    <Compile Include="Entities\SM_T_POWER.cs" />
+    <Compile Include="Entities\SM_T_PROCESS.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_AQ.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_AQ_LOG.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_COLLECT.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_CY.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_CY_LOG.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_LQF.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_LW.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_LY.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_LY_LOG.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_PRODUCT.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_QUALITY.cs" />
+    <Compile Include="Entities\SM_T_PROCESS_YC.cs" />
+    <Compile Include="Entities\SM_T_PRODUCTQTY.cs" />
+    <Compile Include="Entities\SM_T_SOP.cs" />
+    <Compile Include="Entities\v_sm_t_process_cy.cs" />
+    <Compile Include="Entities\v_sm_t_process_cy_log.cs" />
+    <Compile Include="Entities\v_sm_t_process_ly.cs" />
+    <Compile Include="Entities\v_sm_t_process_ly_log.cs" />
+    <Compile Include="Entities\v_sm_t_process_quality.cs" />
+    <Compile Include="Entities\v_sm_t_process_yc.cs" />
+    <Compile Include="Entities\WF_M_AUTH_DATA.cs" />
+    <Compile Include="Entities\WF_M_AUTH_MODULE.cs" />
+    <Compile Include="Entities\WF_M_COMPANY.cs" />
+    <Compile Include="Entities\WF_M_CUSTOM.cs" />
+    <Compile Include="Entities\WF_M_DEPT.cs" />
+    <Compile Include="Entities\WF_M_MENU.cs" />
+    <Compile Include="Entities\WF_M_METADATA.cs" />
+    <Compile Include="Entities\WF_M_MODULE.cs" />
+    <Compile Include="Entities\WF_M_MSG_TEMPLATE.cs" />
+    <Compile Include="Entities\WF_M_ROLE.cs" />
+    <Compile Include="Entities\WF_M_ROLE_MODEL.cs" />
+    <Compile Include="Entities\WF_M_USER.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\WF_M_USERDEPT.cs" />
+    <Compile Include="Entities\WF_M_USERROLE.cs" />
+    <Compile Include="Entities\XDSW_T_FILE.cs" />
+    <Compile Include="Menu1VM.cs" />
+    <Compile Include="Menu2VM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VM\VM_BT_MachineAnalyse.cs" />
+    <Compile Include="VM\VM_BT_MachineManage.cs" />
+    <Compile Include="VM\VM_BT_PaiGongDan.cs" />
+    <Compile Include="VM\VM_DEVICE_TAIZHANG.cs" />
+    <Compile Include="VM\VM_ENERGY.cs" />
+    <Compile Include="VM\VM_GPS.cs" />
+    <Compile Include="VM\VM_PROCESS.cs" />
+    <Compile Include="VM\VM_Select.cs" />
+    <Compile Include="VM\VM_SM_M_BASICVALUE.cs" />
+    <Compile Include="VM\VM_SM_M_CELL.cs" />
+    <Compile Include="VM\VM_SM_M_DEFECT.cs" />
+    <Compile Include="VM\VM_SM_M_LINE.cs" />
+    <Compile Include="VM\VM_SM_M_MASTERDEVICE.cs" />
+    <Compile Include="VM\VM_SM_M_PLC.cs" />
+    <Compile Include="VM\VM_SM_M_QD.cs" />
+    <Compile Include="VM\VM_SM_M_SLAVEDEVICE.cs" />
+    <Compile Include="VM\VM_SM_M_UPH.cs" />
+    <Compile Include="VM\VM_SM_T_DAYENERGY.cs" />
+    <Compile Include="VM\VM_SM_T_ENERGY_COLLECT.cs" />
+    <Compile Include="VM\VM_SM_T_POWER.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_AQ.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_AQ_LOG.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_COLLECT.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_CY.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_CY_LOG.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_LQF.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_LW.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_LY.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_LY_LOG.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_PRODUCT.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_YC.cs" />
+    <Compile Include="VM\VM_SM_T_PRODUCTQTY.cs" />
+    <Compile Include="VM\VM_SM_T_SOP.cs" />
+    <Compile Include="VM\VM_UPLOAD_IMG.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_cy.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_cy_log.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_ly.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_ly_log.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_quality.cs" />
+    <Compile Include="VM\VM_v_sm_t_process_yc.cs" />
+    <Compile Include="VM\VM_WF_M_COMPANY.cs" />
+    <Compile Include="VM\VM_WF_M_CONNECTOR.cs" />
+    <Compile Include="VM\VM_WF_M_CUSTOM.cs" />
+    <Compile Include="VM\VM_WF_M_DEPT.cs" />
+    <Compile Include="VM\VM_WF_M_MENU.cs" />
+    <Compile Include="VM\VM_WF_M_METADATA.cs" />
+    <Compile Include="VM\VM_WF_M_MODEL.cs" />
+    <Compile Include="VM\VM_WF_M_MODULE.cs" />
+    <Compile Include="VM\VM_WF_M_MSG_TEMPLATE.cs" />
+    <Compile Include="VM\VM_WF_M_PUBLICCODE.cs" />
+    <Compile Include="VM\VM_WF_M_RES.cs" />
+    <Compile Include="VM\VM_WF_M_ROLE.cs" />
+    <Compile Include="VM\VM_WF_M_ROLE_MODEL.cs" />
+    <Compile Include="VM\VM_WF_M_STEP.cs" />
+    <Compile Include="VM\VM_WF_M_STEPEXECUTOR.cs" />
+    <Compile Include="VM\VM_WF_M_USER.cs" />
+    <Compile Include="VM\VM_WF_M_USERDEPT.cs" />
+    <Compile Include="VM\VM_WF_M_USERROLE.cs" />
+    <Compile Include="VM\VM_WF_T_INSTANCE.cs" />
+    <Compile Include="VM\VM_WF_T_INSTANCESTEP.cs" />
+    <Compile Include="VM\VM_WF_T_INSTANCESTEPEXECUTOR.cs" />
+    <Compile Include="VM\VM_WF_T_MSG.cs" />
+    <Compile Include="VM\VM_WF_T_PROXY.cs" />
+    <Compile Include="VM\VM_XDSW_T_FILE.cs" />
+    <Compile Include="VM\VM_SM_T_PROCESS_QUALITY.cs" />
+    <Compile Include="VM\VM_XIAPAN.cs" />
+    <Compile Include="WFItem.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

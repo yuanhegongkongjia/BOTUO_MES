@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_CY_LOG" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS_CY_LOG WHERE LogId=@LogId" Insert="INSERT INTO SM_T_PROCESS_CY_LOG(LogId,InstanceId,ADCStandard,ADCMax,ADCMin,ATJCStandard,ATJCMax,ATJCMin,AIznStandard,AIznMax,AIznMin,AMF1Standard,AMF1Max,AMF1Min,AMF2Standard,AMF2Max,AMF2Min,BDCStandard,BDCMax,BDCMin,BTJCStandard,BTJCMax,BTJCMin,BIznStandard,BIznMax,BIznMin,BMF1Standard,BMF1Max,BMF1Min,BMF2Standard,BMF2Max,BMF2Min,LogDate,LogUser,VerifyUser,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@LogId,@InstanceId,@ADCStandard,@ADCMax,@ADCMin,@ATJCStandard,@ATJCMax,@ATJCMin,@AIznStandard,@AIznMax,@AIznMin,@AMF1Standard,@AMF1Max,@AMF1Min,@AMF2Standard,@AMF2Max,@AMF2Min,@BDCStandard,@BDCMax,@BDCMin,@BTJCStandard,@BTJCMax,@BTJCMin,@BIznStandard,@BIznMax,@BIznMin,@BMF1Standard,@BMF1Max,@BMF1Min,@BMF2Standard,@BMF2Max,@BMF2Min,@LogDate,@LogUser,@VerifyUser,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_T_PROCESS_CY_LOG SET InstanceId=@InstanceId,ADCStandard=@ADCStandard,ADCMax=@ADCMax,ADCMin=@ADCMin,ATJCStandard=@ATJCStandard,ATJCMax=@ATJCMax,ATJCMin=@ATJCMin,AIznStandard=@AIznStandard,AIznMax=@AIznMax,AIznMin=@AIznMin,AMF1Standard=@AMF1Standard,AMF1Max=@AMF1Max,AMF1Min=@AMF1Min,AMF2Standard=@AMF2Standard,AMF2Max=@AMF2Max,AMF2Min=@AMF2Min,BDCStandard=@BDCStandard,BDCMax=@BDCMax,BDCMin=@BDCMin,BTJCStandard=@BTJCStandard,BTJCMax=@BTJCMax,BTJCMin=@BTJCMin,BIznStandard=@BIznStandard,BIznMax=@BIznMax,BIznMin=@BIznMin,BMF1Standard=@BMF1Standard,BMF1Max=@BMF1Max,BMF1Min=@BMF1Min,BMF2Standard=@BMF2Standard,BMF2Max=@BMF2Max,BMF2Min=@BMF2Min,LogDate=@LogDate,LogUser=@LogUser,VerifyUser=@VerifyUser,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE LogId=@LogId">
+    <column Name="LogId" Text="LogId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ADCStandard" Text="ADCStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="ADCMax" Text="ADCMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="ADCMin" Text="ADCMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="ATJCStandard" Text="ATJCStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="ATJCMax" Text="ATJCMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="ATJCMin" Text="ATJCMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AIznStandard" Text="AIznStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AIznMax" Text="AIznMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AIznMin" Text="AIznMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF1Standard" Text="AMF1Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF1Max" Text="AMF1Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF1Min" Text="AMF1Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF2Standard" Text="AMF2Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF2Max" Text="AMF2Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AMF2Min" Text="AMF2Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BDCStandard" Text="BDCStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BDCMax" Text="BDCMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BDCMin" Text="BDCMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BTJCStandard" Text="BTJCStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BTJCMax" Text="BTJCMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BTJCMin" Text="BTJCMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BIznStandard" Text="BIznStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BIznMax" Text="BIznMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BIznMin" Text="BIznMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF1Standard" Text="BMF1Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF1Max" Text="BMF1Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF1Min" Text="BMF1Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF2Standard" Text="BMF2Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF2Max" Text="BMF2Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BMF2Min" Text="BMF2Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="LogDate" Text="LogDate" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_DATE" />
+    <column Name="LogUser" Text="LogUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="VerifyUser" Text="VerifyUser" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

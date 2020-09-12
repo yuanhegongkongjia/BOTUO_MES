@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_LOG_Edit" Name="Form_SM_T_PROCESS_LOG_Edit" Desc="工艺卡调整编辑" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_LOG_EditDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711150947833" Name="Panel20190711150947833" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">A面槽液信息</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="ADC" Text="镀槽" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="ATJC" Text="调节槽" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AIzn" Text="Izn" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AMF1" Text="MF1" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AMF2" Text="MF2" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711151139431" Name="Panel20190711151139431" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">B面槽液信息</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="BDC" Text="镀槽" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="BTJC" Text="调节槽" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="BIzn" Text="Izn" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="BMF1" Text="MF1" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="BMF2" Text="MF2" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid_cy" Name="grid_cy" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">槽液调整记录</h3>
+      </div>
+-->
+    <Column Name="LogId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="ADC" Text="A面镀槽" Width="100" Sortable="true" />
+    <Column Name="ATJC" Text="A面调节槽" Width="100" Sortable="true" />
+    <Column Name="AIzn" Text="A面Izn" Width="100" Sortable="true" />
+    <Column Name="AMF1" Text="A面MF1" Width="100" Sortable="true" />
+    <Column Name="AMF2" Text="A面MF2" Width="100" Sortable="true" />
+    <Column Name="BDC" Text="B面镀槽" Width="100" Sortable="true" />
+    <Column Name="BTJC" Text="B面调节槽" Width="100" Sortable="true" />
+    <Column Name="BIzn" Text="B面Izn" Width="100" Sortable="true" />
+    <Column Name="BMF1" Text="B面MF1" Width="100" Sortable="true" />
+    <Column Name="BMF2" Text="B面MF2" Width="100" Sortable="true" />
+    <Column Name="LogDate" Text="调整日期" Width="100" Sortable="true" />
+    <Column Name="LogUser" Text="调整人" Width="100" Sortable="true" />
+    <Column Name="VerifyUser" Text="确认人" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="Panel20190711155848742" Name="Panel20190711155848742" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete_cy" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_cy_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_cy_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'LogId': a.LogId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_CY_LOG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd_cy" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_cy_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_cy_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_CY_LOG_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_cy').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit_cy" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_cy_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_cy_click() {
+    var grid = BUI.getControl('grid_cy');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&LogId=' + selections[0].LogId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_CY_LOG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_cy').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711155949628" Name="Panel20190711155949628" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">炉温信息</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="Z1" Text="Z1" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Z2" Text="Z2" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Z3" Text="Z3" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Z4" Text="Z4" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Z5" Text="Z5" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="Z6" Text="Z6" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;,&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid_ly" Name="grid_ly" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">炉压调整记录</h3>
+      </div>
+-->
+    <Column Name="LogId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="Z1" Text="Z1" Width="100" Sortable="true" />
+    <Column Name="Z2" Text="Z2" Width="100" Sortable="true" />
+    <Column Name="Z3" Text="Z3" Width="100" Sortable="true" />
+    <Column Name="Z4" Text="Z4" Width="100" Sortable="true" />
+    <Column Name="Z5" Text="Z5" Width="100" Sortable="true" />
+    <Column Name="Z6" Text="Z6" Width="100" Sortable="true" />
+    <Column Name="LogUser" Text="调整人" Width="100" Sortable="true" />
+    <Column Name="LogDate" Text="调整日期" Width="100" Sortable="true" />
+    <Column Name="VerifyUser" Text="确认人" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="Panel20190711160108563" Name="Panel20190711160108563" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete_ly" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_ly_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_ly_click() {
+    var grid = BUI.getControl('grid_ly');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'LogId': a.LogId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_LY_LOG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid_ly').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd_ly" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_ly_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_ly_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LY_LOG_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_ly').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_ly_click() {
+    var grid = BUI.getControl('grid_ly');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&LogId=' + selections[0].LogId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LY_LOG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_ly').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711160142947" Name="Panel20190711160142947" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">AQ信息</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="AQ1" Text="AQ1" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="AQ2" Text="AQ2" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AQ3" Text="AQ3" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="AQ4" Text="AQ4" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AQ5" Text="AQ5" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="AQ6" Text="AQ6" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AQ7" Text="AQ7" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="AQ8" Text="AQ8" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AWT1" Text="WT1A保温块" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="BWT1" Text="WT1B保温块" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AKK" Text="空开距离A" TextAfterControl="CM" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="BKK" Text="空开距离B" TextAfterControl="CM" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="AWT2" Text="WT2A" TextAfterControl="CM" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="BWT2" Text="WT2B" TextAfterControl="CM" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid_aq" Name="grid_aq" Type="MultiRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">AQ调整记录</h3>
+      </div>
+-->
+    <Column Name="LogId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="AQ1" Text="AQ1" Width="100" Sortable="true" />
+    <Column Name="AQ2" Text="AQ2" Width="100" Sortable="true" />
+    <Column Name="AQ3" Text="AQ3" Width="100" Sortable="true" />
+    <Column Name="AQ4" Text="AQ4" Width="100" Sortable="true" />
+    <Column Name="AQ5" Text="AQ5" Width="100" Sortable="true" />
+    <Column Name="AQ6" Text="AQ6" Width="100" Sortable="true" />
+    <Column Name="AQ7" Text="AQ7" Width="100" Sortable="true" />
+    <Column Name="AQ8" Text="AQ8" Width="100" Sortable="true" />
+    <Column Name="AWT1" Text="WT1A保温块" Width="100" Sortable="true" />
+    <Column Name="BWT1" Text="WT1B保温块" Width="100" Sortable="true" />
+    <Column Name="AKK" Text="空开距离A" Width="100" Sortable="true" />
+    <Column Name="BKK" Text="空开距离B" Width="100" Sortable="true" />
+    <Column Name="AWT2" Text="WT2A" Width="100" Sortable="true" />
+    <Column Name="BWT2" Text="WT2B" Width="100" Sortable="true" />
+    <Column Name="LogDate" Text="调整日期" Width="100" Sortable="true" />
+    <Column Name="LogUser" Text="调整人" Width="100" Sortable="true" />
+    <Column Name="VerifyUser" Text="确认人" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="Panel20190711160303811" Name="Panel20190711160303811" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete_aq" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_aq_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_aq_click() {
+    var grid = BUI.getControl('grid_aq');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'LogId': a.LogId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_AQ_LOG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid_aq').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd_aq" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_aq_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_aq_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_AQ_LOG_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_aq').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit_aq" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_aq_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_aq_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&LogId=' + selections[0].LogId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_AQ_LOG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

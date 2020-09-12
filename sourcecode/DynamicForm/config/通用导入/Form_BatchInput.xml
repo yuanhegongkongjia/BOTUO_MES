@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BatchInput" Name="Form_BatchInput" Desc="数据导入" DAImp="DynamicForm.DA.Form_BatchInputDA,DynamicForm">
+  <Panel Id="Panel20161111001321781" Name="Panel20161111001321781" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ConfigFile" Text="配置文件" Width="span8" Type="select" OptionType="JSON" MustInput="True" AddEmptyOption="True" />
+      <Control Name="SqlFilePath" Text="上传文件" Width="span16" Type="upload" MustInput="True" />
+      <Control Name="btnUpload" Text="上传" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer'}" Action="add" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20170722105051977" Name="Panel20170722105051977" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:105px;&quot;}">
+      <Control Name="SQL" Text="SQL语句" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:100px;&quot;}" MustInput="True" />
+      <Control Name="btnDownload" Text="下载数据" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20170801100439441" Name="Panel20170801100439441" Type="SingleRecord">
+    <Row>
+      <Control Name="btnImportConfig" Text="转到导入配置" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:100px;&quot;,&quot;href&quot;:&quot;DFIndex.aspx?DF_FORMNAME=FormImportConfig&quot;,&quot;target&quot;:&quot;_balnk&quot;}" Action="link" />
+    </Row>
+  </Panel>
+</Form>

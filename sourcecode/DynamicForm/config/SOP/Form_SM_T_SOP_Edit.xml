@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_SOP_Edit" Name="Form_SM_T_SOP_Edit" Desc="SOP管理编辑" DAImp="DynamicForm.DA.Form_SM_T_SOP_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="SOPName" Text="SOP名称" Width="span8" Type="text" MustInput="True" />
+      <Control Name="SOPCode" Text="SOP编号" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="FileId" Text="SOP文件" Width="span16" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;,&quot;style&quot;:&quot;width:300px;&quot;}" MustInput="True" />
+      <Control Name="Control20190723150203904" Text="Control20190723150203904" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<input type="button" id="SOPUpload" value="SOP上传" />
+-->
+      <!--DF_SCRIPT
+var uploadbutton=KindEditor.uploadbutton( {
+button : KindEditor('#SOPUpload'),
+fieldName : 'ImgFile',
+url : '/kindeditor/upload_json_pdf1.ashx', //文件上传的action，设置dir为image
+afterUpload : function(data) {
+if (data.error === '0') {
+    //正确的时候执行
+    $('#FileId').val(data.data);
+    $('#Remark1').val(data.url)
+} else {
+  //上传错误后，提示
+    alert(data.error);
+}
+},
+afterError : function(str) {//没正确执行时异常
+alert('自定义错误信息: ' + str);
+}
+});
+uploadbutton.fileBox.change(function(e) {
+uploadbutton.submit();
+});
+-->
+    </Row>
+    <Row>
+      <Control Name="Remark1" Width="span8" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="SOPUser" Text="SOP创建人" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

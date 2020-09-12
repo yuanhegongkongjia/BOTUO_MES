@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Menu_Edit" Name="WF_Menu_Edit" Desc="菜单管理详细" DAImp="DynamicForm.DA.WF_Menu_EditDA,DynamicForm">
+  <Panel Id="Panel201507241511340005" Name="Panel201507241511340005" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="MenuId" Type="hidden" />
+      <Control Name="MenuLabel" Type="hidden" />
+      <Control Name="ModuleId" Text="模块" Width="span8" Type="select" Options="select ModuleId as value,ModuleName as text from WF_M_MODULE order by ModuleName" OptionType="SQL" />
+      <Control Name="PMenuId" Text="父菜单" Width="span8" Type="select" Options="select menu.MenuId as value,module.ModuleName as text from WF_M_MENU menu&#xA;join WF_M_MODULE module on menu.ModuleId=module.ModuleId" OptionType="SQL" />
+    </Row>
+    <Row>
+      <Control Name="MenuOrder" Text="菜单顺序" Width="span8" Type="text" />
+      <Control Name="Icon" Text="图标" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Expanded" Text="是否展开" Width="span8" Type="checkbox" Options="{'1':'展开'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{ class:&quot;ddz-button2&quot;,style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

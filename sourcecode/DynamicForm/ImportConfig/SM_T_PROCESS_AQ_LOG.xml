@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_AQ_LOG" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS_AQ_LOG WHERE LogId=@LogId" Insert="INSERT INTO SM_T_PROCESS_AQ_LOG(LogId,InstanceId,AQ1,AQ2,AQ3,AQ4,AQ5,AQ6,AQ7,AQ8,AWT1,BWT1,AKK,BKK,AWT2,BWT2,LogDate,LogUser,VerifyUser,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@LogId,@InstanceId,@AQ1,@AQ2,@AQ3,@AQ4,@AQ5,@AQ6,@AQ7,@AQ8,@AWT1,@BWT1,@AKK,@BKK,@AWT2,@BWT2,@LogDate,@LogUser,@VerifyUser,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_T_PROCESS_AQ_LOG SET InstanceId=@InstanceId,AQ1=@AQ1,AQ2=@AQ2,AQ3=@AQ3,AQ4=@AQ4,AQ5=@AQ5,AQ6=@AQ6,AQ7=@AQ7,AQ8=@AQ8,AWT1=@AWT1,BWT1=@BWT1,AKK=@AKK,BKK=@BKK,AWT2=@AWT2,BWT2=@BWT2,LogDate=@LogDate,LogUser=@LogUser,VerifyUser=@VerifyUser,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE LogId=@LogId">
+    <column Name="LogId" Text="LogId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="AQ1" Text="AQ1" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ2" Text="AQ2" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ3" Text="AQ3" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ4" Text="AQ4" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ5" Text="AQ5" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ6" Text="AQ6" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ7" Text="AQ7" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AQ8" Text="AQ8" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AWT1" Text="AWT1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="BWT1" Text="BWT1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="AKK" Text="AKK" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BKK" Text="BKK" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="AWT2" Text="AWT2" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="BWT2" Text="BWT2" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="LogDate" Text="LogDate" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_DATE" />
+    <column Name="LogUser" Text="LogUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="VerifyUser" Text="VerifyUser" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

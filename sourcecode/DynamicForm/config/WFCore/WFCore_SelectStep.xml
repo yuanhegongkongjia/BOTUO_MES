@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_SelectStep" Name="WFCore_SelectStep" DAImp="DynamicForm.DA.WFCore_SelectStepDA,DynamicForm">
+  <Panel Id="Panel201512280208170004" Name="Panel201512280208170004" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="InstanceStepExecutorId" Type="hidden" MustInput="True" />
+      <Control Name="NextStep" Text="下一步" Width="span8" Type="select" Options="{'':''}" OptionType="JSON" MustInput="True" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:90px;&quot;}">
+      <Control Name="ExecuteComment" Text="意见" Width="span10" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:250px;height:80px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Value="1" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

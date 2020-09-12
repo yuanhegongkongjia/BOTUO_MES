@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Role_SetAccess" Name="WF_Role_SetAccess" Desc="设置角色的权限" DAImp="DynamicForm.DA.WF_Role_SetAccessDA, DynamicForm">
+  <Panel Id="Panel201507271026440005" Name="Panel201507271026440005" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="RoleId" Text="角色编号" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+      <Control Name="RoleName" Text="角色名称" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel201507271210080028" Name="Panel201507271210080028" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="Tree1" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class="span8 panel">
+    <div id="panelHead" class="panel-header clearfix">
+        <h3 style="margin-bottom:0px;" class="pull-left">
+        getRes("模块列表")</h3>
+        <div id="tbar" class="pull-right">
+        </div>
+    </div>
+    <div class="panel-body" id="Tree1">
+    </div>
+</div>
+-->
+      <!--DF_SCRIPT
+$(function() {
+    BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+        var store = new Data.TreeStore({
+            url: 'DFHandler.ashx?action=querylist&DF_FORMNAME=WF_Role_SetAccess&subAction=QueryMenu',
+            proxy: {
+                method: 'post'
+            },
+            dataProperty: 'rows',
+            params: {
+                DF_TREE_VIEWSTATE1: $('#DF_TREE_VIEWSTATE1').val()
+            },
+            autoLoad: true
+        });
+
+        var tree = new Tree.TreeList({
+            render: '#Tree1',
+            showLine: true,
+            itemStatusFields: {
+                disabled: 'disabled',
+                selected: 'selected',
+                expanded: 'expanded',
+                checked: 'checked',
+            },
+            height: 200,
+            checkType: 'all',
+            cascadeCheckd: false,
+            store: store
+        });
+        tree.render();
+    });
+});
+-->
+      <Control Name="DF_TREE_VIEWSTATE1" Type="hidden" />
+      <!--DF_SCRIPT
+$('form').submit(function() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+    
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'checked': a.checked,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE1').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+});
+-->
+      <Control Name="Tree2" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class="span8 panel">
+    <div id="panelHead" class="panel-header clearfix">
+        <h3 style="margin-bottom:0px;" class="pull-left">
+        getRes("部门列表")</h3>
+        <div id="tbar" class="pull-right">
+        </div>
+    </div>
+    <div class="panel-body" id="Tree2">
+    </div>
+</div>
+-->
+      <!--DF_SCRIPT
+$(function() {
+    BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+        var store = new Data.TreeStore({
+            url: 'DFHandler.ashx?action=querylist&DF_FORMNAME=WF_Role_SetAccess&subAction=QueryDept',
+            proxy: {
+                method: 'post'
+            },
+            dataProperty: 'rows',
+            params: {
+                DF_TREE_VIEWSTATE2: $('#DF_TREE_VIEWSTATE2').val()
+            },
+            autoLoad: true
+        });
+
+        var tree = new Tree.TreeList({
+            render: '#Tree2',
+            showLine: true,
+            itemStatusFields: {
+                disabled: 'disabled',
+                selected: 'selected',
+                expanded: 'expanded',
+                checked: 'checked',
+            },
+            checkType: 'all',
+            cascadeCheckd: false,
+            height: 200,
+            store: store
+        });
+        tree.render();
+    });
+});
+-->
+      <Control Name="DF_TREE_VIEWSTATE2" Type="hidden" />
+      <!--DF_SCRIPT
+$('form').submit(function() {
+    var grid = BUI.getControl('tree-list2');
+    var items = grid.getItems();
+    
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'checked': a.checked,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE2').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+});
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel201507251157480033" Name="Panel201507251157480033" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

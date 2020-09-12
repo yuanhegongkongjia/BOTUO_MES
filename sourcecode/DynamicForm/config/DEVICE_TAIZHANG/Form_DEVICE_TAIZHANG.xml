@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_DEVICE_TAIZHANG" Name="Form_DEVICE_TAIZHANG" DAImp="DynamicForm.DA.Form_DEVICE_TAIZHANGDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="DEVICE_ID" Text="设备编号" Width="span8" Type="text" />
+      <Control Name="DEVICE_NAME" Text="设备名称" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="DEVICE_COMPANY" Text="设备供应商" Width="span8" Type="text" />
+      <Control Name="BUY_TIME" Text="购买时间" Width="span8" Type="calendar" />
+    </Row>
+    <Row>
+      <Control Name="DEVICE_TYPE" Type="hidden" />
+      <Control Name="FOR_DEPARTMENT" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="PICTURE" Type="hidden" />
+      <Control Name="Create_TIME" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CREAT_UESER" Type="hidden" />
+      <Control Name="MODIFY_TIME" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="MODIFY_USER" Type="hidden" />
+      <Control Name="REMARK1" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="REMARK2" Type="hidden" />
+      <Control Name="REMARK3" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="REMARK4" Type="hidden" />
+      <Control Name="REMARK5" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="DEVICE_ID" Text="设备编号" Width="100" Sortable="true" />
+    <Column Name="DEVICE_NAME" Text="设备名称" Width="100" Sortable="true" />
+    <Column Name="DEVICE_COMPANY" Text="设备供应商" Width="100" Sortable="true" />
+    <Column Name="BUY_TIME" Text="购买时间" Width="100" Sortable="true" />
+    <Column Name="DEVICE_TYPE" Text="设备类型" Width="100" Sortable="true" />
+    <Column Name="FOR_DEPARTMENT" Visible="false" Sortable="true" />
+    <Column Name="PICTURE" Visible="false" Sortable="true" />
+    <Column Name="Create_TIME" Text="创建时间" Width="100" Sortable="true" />
+    <Column Name="CREAT_UESER" Text="创建人" Width="100" Sortable="true" />
+    <Column Name="MODIFY_TIME" Visible="false" Sortable="true" />
+    <Column Name="MODIFY_USER" Visible="false" Sortable="true" />
+    <Column Name="REMARK1" Visible="false" Sortable="true" />
+    <Column Name="REMARK2" Visible="false" Sortable="true" />
+    <Column Name="REMARK3" Visible="false" Sortable="true" />
+    <Column Name="REMARK4" Visible="false" Sortable="true" />
+    <Column Name="REMARK5" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'DEVICE_ID': a.DEVICE_ID
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_DEVICE_TAIZHANG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_DEVICE_TAIZHANG_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&DEVICE_ID=' + selections[0].DEVICE_ID;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_DEVICE_TAIZHANG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

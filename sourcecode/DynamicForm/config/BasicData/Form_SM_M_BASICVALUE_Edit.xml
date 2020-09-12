@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_BASICVALUE_Edit" Name="Form_SM_M_BASICVALUE_Edit" Desc="标准数据维护详细" DAImp="DynamicForm.DA.Form_SM_M_BASICVALUE_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="LineId" Text="线别" Width="span8" Type="select" Options="select LineId as value,LineName as text from sm_m_line" OptionType="SQL" />
+    </Row>
+    <Row>
+      <Control Name="LineName" Type="hidden" />
+      <Control Name="Station" Text="工序" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="SubStation" Text="子工序" Width="span8" Type="text" />
+      <Control Name="Category" Text="类型" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="MaxValue" Text="上限" Width="span8" Type="text" />
+      <Control Name="MinValue" Text="下限" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Unit" Text="单位" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_WF_M_USERDEPT_Edit" Name="Form_WF_M_USERDEPT_Edit" Desc="用户部门编辑" DAImp="DynamicForm.DA.Form_WF_M_USERDEPT_EditDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="UserId" Type="hidden" />
+      <Control Name="UserName" Text="用户" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="DeptId" Visible="false" />
+    <Column Name="Extend01" Text="U9部门" Width="100" />
+    <Column Name="DeptName" Text="部门" Width="300" />
+  </Panel>
+  <Panel Id="Panel20170606143159071" Name="Panel20170606143159071" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

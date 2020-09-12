@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_StepExecutor_Edit" Name="WFCore_StepExecutor_Edit" Desc=" 步骤签核人设定信息" DAImp="DynamicForm.DA.WFCore_StepExecutor_EditDA,DynamicForm">
+  <Panel Id="dfPanel_201408041617520030" Type="SingleRecord" Additional="{class:'ddz-maindiv', style:'margin-bottom:10px;'}">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="StepId" Type="hidden" />
+      <Control Name="StepName" Text="步骤名称" Width="span8" Type="display" />
+      <Control Name="btnReturn" Text="返回" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnReturn_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnReturn_click() {
+    var p = '&ModelId={0}&StepId={1}'.format($('#ModelId').val(), $('#StepId').val());
+    window.location.href = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor' + p;
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="CustomHtml" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div id="tab" style="margin-left:10px;"></div>
+-->
+      <!--DF_SCRIPT
+$(function() {
+	var url1 = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor_Edit_User&StepId=' + $('#StepId').val() + '&ModelId=' + $('#ModelId').val();
+	var url2 = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor_Edit_Role&StepId=' + $('#StepId').val() + '&ModelId=' + $('#ModelId').val();
+	var url3 = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor_Edit_Custom&StepId=' + $('#StepId').val() + '&ModelId=' + $('#ModelId').val();
+	var s1 = getRes("用户");
+	var s2 = getRes("角色");
+	var s3 = getRes("自定义");
+
+	/*	dfTab('tab', [{
+			title: '百度',
+			selected: true,
+			src: 'http://www.baidu.com'
+		}, {
+			title: '163',
+			selected: false,
+			src: 'http://www.163.com'
+		}, {
+			title: '搜狐',
+			selected: false,
+			src: 'http://www.sohu.com'
+		}]);*/
+	dfTab('tab', $(window).height() - 150, [{
+		title: s1,
+		selected: true,
+		src: url1
+	}, {
+		title: s2,
+		selected: false,
+		src: url2
+	}, {
+		title: s3,
+		selected: false,
+		src: url3
+	}]);
+});
+
+-->
+    </Row>
+  </Panel>
+</Form>

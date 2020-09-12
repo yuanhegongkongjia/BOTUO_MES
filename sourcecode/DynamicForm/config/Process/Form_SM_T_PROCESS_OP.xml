@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_OP" Name="Form_SM_T_PROCESS_OP" Desc="工艺卡" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_OPDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ProcessName" Text="工艺单名称" Width="span8" Type="text" />
+      <Control Name="InstanceId" Text="工艺单编号" Width="span8" Type="text" />
+      <Control Name="ProcessStatus" Text="状态" Type="select" Options="{'INFLOW':'使用中','RECOVER':'回收'}" OptionType="JSON" AddEmptyOption="True" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Text="编号" Width="150" Sortable="true" />
+    <Column Name="ProcessName" Text="名称" Width="150" Sortable="true" />
+    <Column Name="ProcessStatusText" Text="状态" Width="100" Sortable="true" />
+    <Column Name="Line" Text="线号" Width="100" Sortable="true" />
+    <Column Name="ProduceDate" Text="生产日期" Width="100" Sortable="true" />
+    <Column Name="ProcessStatus" Visible="false" Sortable="true" />
+    <Column Name="RecoverTime" Text="回收时间" Width="150" Sortable="true" />
+  </Panel>
+  <Panel Id="Panel20190715113627310" Name="Panel20190715113627310" Type="SingleRecord">
+    <Row>
+      <Control Name="btnPrint" Text="收线打印" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnPrint_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnPrint_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+
+    var p= '&InstanceId=' + selections[0].InstanceId;
+    var url = 'DFIndexReport.aspx?DF_FORMNAME=Form_SM_T_PROCESS_Print' + p;
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        //BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnHuiShou" Text="回收" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnHuiShou_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnHuiShou_click(){
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+var flag=true;
+    selections.forEach(function( val, index ) {
+		if( val.ProcessStatus=="RECOVER" ) {
+			
+        	       flag=false;  
+return;
+		}
+	});
+
+   if(flag==false){
+dfAlert(getRes('只有使用中状态的订单可以回收'));
+return;
+}
+
+    var p = $.map(selections, function(a) {
+        return {
+            'InstanceId': a.InstanceId
+        }
+    });
+    if (confirm(getRes('确定要回收选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_OP',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnPrint1" Text="放线打印" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnPrint1_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnPrint1_click(){
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+
+    var p= '&InstanceId=' + selections[0].InstanceId;
+    var url = 'DFIndexReport.aspx?DF_FORMNAME=Form_SM_T_PROCESS_FX_Print' + p;
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        //BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

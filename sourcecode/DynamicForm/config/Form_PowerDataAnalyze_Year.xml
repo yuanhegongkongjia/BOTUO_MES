@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_PowerDataAnalyze_Year" Name="Form_PowerDataAnalyze_Year" Desc="按年电能分析" DAImp="DynamicForm.DA.Form_PowerDataAnalyze_YearDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="Line" Text="线别" Width="span10" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04','ALL':'其他'}" OptionType="JSON" />
+      <Control Name="Position" Text="电表" Width="span10" Type="select" Options="select ParamName as text,ParamName  as value from sm_m_plc where PlcAddress like N'%电量%'" OptionType="SQL" />
+      <Control Name="CollectYearFrom" Text="采集日期从" TextAfterControl="(YYYY)" Width="span10" Type="text" />
+      <Control Name="CollectYearTo" Text="到" TextAfterControl="(YYYY)" Width="span10" Type="text" />
+      <Control Name="QueryType" Text="查询类型" Width="span8" Type="select" Options="{'Line':'按照线别查询','Signle':'按照电表查询'}" OptionType="JSON" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer',onclick:&quot;initChartYear()&quot;}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190929144456186" Name="Panel20190929144456186" Type="SingleRecord">
+    <Row>
+      <Control Name="Control20190929144459940" Text="Control20190929144459940" Width="span24" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class='span24'><div id='container1' style='height:400px;'></div></div>
+-->
+      <!--DF_SCRIPT
+var myChart = echarts.init(document.getElementById('container1'));
+initChart();
+function initChart(){
+ var option = {
+color: ['#333366', '#669999', '#996600'],
+            title: {
+                text: ''
+            },
+            tooltip: {},
+            legend: {
+              
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+if($('#QueryType').val()=="Signle"){
+initChartYear();
+}
+else{
+initChartYearLine();
+}     
+
+        
+
+}
+function initChartYear(){
+
+var labelOption = {
+    normal: {
+        show: true,
+        align: 'left',
+        verticalAlign: 'middle',
+        fontSize: 16,
+        formater:function(a,b,c){return c;}
+    }
+};
+
+var Position=$('#Position').val()
+var legend=['高峰','平谷','低谷'];
+var yName="度";
+
+$.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzeyear',
+      {Position:Position,
+      CollectYearFrom:$('#CollectYearFrom').val(),
+      CollectYearTo:$('#CollectYearTo').val()
+        }, function (data) {
+                if (data.hasError == true) {
+                    alert(data.error);
+                    return;
+                }
+                else {
+                   var d1=JSON.parse(data.data1);
+                    var d=JSON.parse(data.data);
+                    var categories=[];
+                    var s=[];
+                for(m in d1){
+                  categories[m]=d1[m];
+                }
+                    for(m in d){
+                          dm=[];
+                          for(n in d[m].data_vm){
+                                                dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
+                                             }
+
+                          s.push({name:d[m].name,data:dm,type: 'line', label: labelOption});
+                    }
+                     myChart.setOption({
+                      legend: {
+                        data:legend,
+right:'20'
+                      },
+title:[{
+text:Position+"年用电量分析",
+left:'center'
+}],
+                      xAxis: {
+                                  type: 'category',
+            axisTick: {show: false},
+                        data: categories
+                      },
+                          yAxis: [
+        {
+            type: 'value',
+name:yName
+        }
+    ],
+                    series: s
+                  });
+                }
+
+     });
+}
+
+function initChartYearLine(){
+
+var labelOption = {
+    normal: {
+        show: true,
+        align: 'left',
+        verticalAlign: 'middle',
+        fontSize: 16,
+              formater:function(a,b,c){return c}
+    }
+};
+
+var Line=$('#Line').val()
+var legend=['高峰','平谷','低谷'];
+var yName="度";
+$.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzeyearline',
+      {Line:Line,
+      CollectYearFrom:$('#CollectYearFrom').val(),
+      CollectYearTo:$('#CollectYearTo').val()
+        }, function (data) {
+                if (data.hasError == true) {
+                    alert(data.error);
+                    return;
+                }
+                else {
+                   var d1=JSON.parse(data.data1);
+                    var d=JSON.parse(data.data);
+                    var categories=[];
+                    var s=[];
+                for(m in d1){
+                  categories[m]=d1[m];
+                }
+                    for(m in d){
+                          dm=[];
+                          for(n in d[m].data_vm){
+                                                dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
+                                             }
+
+                          s.push({name:d[m].name,data:dm,type: 'line', label: labelOption});
+                    }
+                     myChart.setOption({
+                      legend: {
+                        data:legend,
+right:'20'
+                      },
+title:[{
+text:Line+"年用电量分析",
+left:'center'
+}],
+                      xAxis: {
+                                  type: 'category',
+            axisTick: {show: false},
+                        data: categories
+                      },
+                          yAxis: [
+        {
+            type: 'value',
+name:yName
+        }
+    ],
+                    series: s
+                  });
+                }
+
+     });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;5&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="CollectDate" Text="采集日期" Width="100" Sortable="true" />
+    <Column Name="Position" Text="电表" Width="100" Sortable="true" />
+    <Column Name="CollectValue" Text="采集值" Width="100" Sortable="true" />
+    <!--DF_SCRIPT
+function(value, obj) {
+return  formatMoney(value,2)+"度";
+}
+-->
+    <Column Name="PeriodName" Text="锋平谷" Width="100" Sortable="true" />
+  </Panel>
+</Form>

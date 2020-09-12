@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Panel_ApproveHistory" Name="WFCore_Panel_ApproveHistory" Desc="签核历史" DAImp="DynamicForm.DA.WFCore_Panel_ApproveHistoryDA,DynamicForm">
+  <Panel Id="Panel201512280208170004" Name="Panel201512280208170004" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="gridApproveHistory" Name="gridApproveHistory" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;Panel201512280208170004&quot;}" Plugins="BUI.Grid.Plugins.RowNumber">
+    <Column Name="InstanceStepId" Visible="false" />
+    <Column Name="StepName" Text="步骤" Width="150" />
+    <Column Name="InstanceStepStatus" Text="步骤状态" Width="100" />
+    <Column Name="ExecutorId" Visible="false" />
+    <Column Name="ExecutorName" Text="签核人" Width="100" />
+    <Column Name="ChineseName" Visible="false" />
+    <Column Name="ExecuteStatus" Text="签核状态" Width="100" />
+    <Column Name="ExecuteResult" Text="签核结果" Width="100" />
+    <Column Name="ExecuteComment" Text="签核意见" Width="200" />
+    <Column Name="Memo" Visible="false" />
+    <Column Name="LastModifyTime" Text="最后更新时间" Width="130" />
+    <Column Name="LastModifyUser" Text="最后修改人" Width="100" />
+  </Panel>
+</Form>

@@ -1,0 +1,344 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: '微软雅黑';
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #2c9ed5;
+    }
+
+body {
+    font-size: 12px;
+}
+
+
+/*标题*/
+.ddz-titleZhu {
+    margin-top: 15px;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+    color: #2c9ed5;
+    border-left: #eee solid 1px;
+    border-right: #eee solid 1px;
+    border-bottom: #2c9ed5 solid 1px;
+}
+/*主标题*/
+.ddz-titleZi {
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+    color: #333;
+    border-left: #eee solid 1px;
+    border-right: #eee solid 1px;
+    border-bottom: #ddd solid 1px;
+}
+/*子标题*/
+
+/*内容*/
+.ddz-maindiv {
+    padding: 10px 10px 5px 10px;
+    border-left: #eee solid 1px;
+    border-right: #eee solid 1px;
+    border-bottom: #ddd solid 1px;
+}
+
+
+/*按钮*/
+.ddz-button1 {
+    width: 75px;
+    /*height: 24px;*/
+    background: #d56161;
+    border: #b05757 solid 1px;
+    text-align: center;
+    color: #fff;
+    line-height: 24px;
+    font-size: 12px;
+    float: right;
+}
+
+.ddz-button2 {
+    width: 75px;
+    /*height: 24px;*/
+    background: #feffff;
+    border: #e6e6e6 solid 1px;
+    text-align: center;
+    color: #333;
+    line-height: 24px;
+    font-size: 12px;
+    float: right;
+}
+
+.ddz-button-float-left {
+    width: 75px;
+    /*height: 24px;*/
+    background: #feffff;
+    border: #e6e6e6 solid 1px;
+    text-align: center;
+    color: #333;
+    line-height: 24px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.ddz-button3 {
+    width: 75px;
+    /*height: 24px;*/
+    background: #77c165;
+    border: #65a156 solid 1px;
+    text-align: center;
+    color: #fff;
+    line-height: 24px;
+    font-size: 12px;
+    float: right;
+}
+
+.ddz-button4 {
+    width: 75px;
+    /*height: 24px;*/
+    background: #77c165;
+    border: #65a156 solid 1px;
+    text-align: center;
+    color: #fff;
+    line-height: 24px;
+    font-size: 12px;
+}
+
+
+
+/*----------表搜索条件------------*/
+.ddz-searchTab td {
+    padding: 10px;
+}
+
+.ddz-text1 {
+    border: #ebebeb solid 1px;
+    width: 128px;
+    height: 23px;
+    text-indent: 12px;
+    line-height: 23px;
+}
+/*输入框样式*/
+
+.ddz-selectdiv {
+    border: #ebebeb solid 1px;
+    width: 128px;
+    height: 23px;
+    text-indent: 12px;
+    position: relative;
+    line-height: 23px;
+}
+/*下拉框样式*/
+.ddz-xiala {
+    width: 10px;
+    height: 7px;
+    position: absolute;
+    left: 110px;
+    top: 10px;
+    padding: 0px;
+}
+
+.ddz-selectul {
+    border: #ebebeb solid 1px;
+    width: 128px;
+    text-indent: 12px;
+    position: absolute;
+    left: -1px;
+    top: 23px;
+    z-index: 100;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #fff;
+}
+/*下拉选项*/
+
+a.ddz-selectaa {
+    display: block;
+    background: #2c9ed5;
+    color: #fff;
+}
+    /*下拉选项选中效果*/
+    a.ddz-selectaa:hover {
+        display: block;
+        background: #2c9ed5;
+        color: #fff;
+        text-decoration: none;
+    }
+/*下拉选项选中效果*/
+a.ddz-selecta {
+    display: block;
+    color: #333;
+}
+    /*下拉选项选中效果*/
+    a.ddz-selecta:hover {
+        display: block;
+        background: #c7e5f4;
+        color: #333;
+        text-decoration: none;
+    }
+/*下拉选项选中效果*/
+/*----------表搜索条件------------*/
+
+
+/*-------------表数据-----------*/
+.ddz-tablemain {
+    margin-top: 20px;
+}
+
+.ddz-tablemTab {
+    background: #eaeaea;
+}
+    /*表数据的表样式*/
+    .ddz-tablemTab td {
+        padding: 8px 10px;
+        text-align: center;
+        color: #666;
+    }
+    /*表数据的表样式*/
+    .ddz-tablemTab thead td {
+        background: #2c9ed5;
+        color: #fff;
+        padding: 5px 10px;
+    }
+/*表数据的表头*/
+.ddz-tableHang1 td {
+    background: #fff;
+}
+/*第一行数据的表格样式*/
+.ddz-tableHang2 td {
+    background: #f5f5f5;
+}
+/*第二行数据的表格样式*/
+.ddz-tablemTab tfoot td {
+    background: #2c9ed5;
+    padding: 15px 10px;
+    text-align: right;
+    height: 13px;
+    line-height: 13px;
+    color: #fff;
+}
+    /*表数据的尾部*/
+    .ddz-tablemTab tfoot td img {
+        padding: 0px 10px;
+    }
+/*分页的图标*/
+/*-------------表数据-----------*/
+
+
+
+
+/*------------部门页面css------------*/
+.ddz-maindiv-two {
+    border-top: #ddd solid 1px;
+}
+
+.ddz-mainTree {
+    float: left;
+    width: 10%;
+    background: #fff;
+    border: #eaeaea solid 1px;
+}
+/*.ddz-mainTree ul li{ height:30px; line-height:30px; background:#f5f5f5; margin-bottom:1px}/*树的第一级栏目*/
+/*.ddz-mainTree ul li div{ float:left; padding-top:7px; padding-right:5px; padding-left:20px}*/
+/*.ddz-mainTree ul li ul{ background:#fff; padding-top:15px; padding-bottom:10px}*/ /*树的第二级栏目*/
+/*.ddz-mainTree ul li ul li{  height:26px; line-height:26px; margin-bottom:5px; background:url(../images/icon9.png) no-repeat left center; margin-left:40px; padding-left:20px; border-bottom:#c7e5f4 solid 1px}*/ /*树的第二级栏目*/
+/*.ddz-mainTree ul li ul li a:hover{ text-decoration:none}*/
+/*.ddz-mainTree ul li ul li ul{ background:#fff; padding-top:15px; padding-bottom:10px}*/ /*树的第三级栏目*/
+/*.ddz-mainTree ul li ul li ul li{  height:26px; line-height:26px; margin-bottom:5px; background:url(../images/icon7.png) no-repeat left center; margin-left:3px; padding-left:20px; border-bottom:#c7e5f4 solid 1px}*/ /*树的第三级栏目*/
+/*.ddz-mainTree ul li ul li ul li a:hover{ text-decoration:none}*/
+.ddz-mainTree-table {
+    float: right;
+    width: 88%;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+/*伪类清除*/
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearit {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+/*设置class名清除*/
+
+
+
+
+
+
+
+.nav-tabs .bui-tab-item {
+    border: 1px solid #c3c3d6;
+    border-bottom-color: transparent;
+    margin-bottom: -1px;
+    margin-right: 3px;
+}
+
+
+.nav-tabs .bui-tab-item-text, .nav-tabs a {
+    padding: 5px 15px;
+    background-color: #2c9ed5;
+    position: relative;
+    display: inline-block;
+}
+
+
+.custom-dialog {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: fixed;
+}
+
+    .custom-dialog .bui-stdmod-footer {
+        display: none;
+    }
+
+
+.form-horizontal s {
+    color: red;
+    padding-left: 5px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+
+
+.bui-select-list {
+    overflow: auto;
+    overflow-x: hidden;
+    
+    max-height: 600px;
+    _height: 600px;
+}

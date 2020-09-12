@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="XDSW_LabData_DataInput" Name="XDSW_LabData_DataInput" Desc="数据录入" DAImp="DynamicForm.DA.XDSW_LabData_DataInputDA,DynamicForm">
+  <Panel Id="dfPanel_201408041614420022" Name="dfPanel_201408041614420022" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Group" Text="组" Width="span8" Type="select" OptionType="JSON" />
+      <!--DF_SCRIPT
+$(function() {
+    $('#Group').on('change', function() {
+        $('form').submit();
+    });
+});
+-->
+      <Control Name="ExecutorId" Text="用户" Width="span12" Type="select" ControlAttributes="{&quot;class&quot;:&quot;input-large&quot;}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="Memo" Text="备注" Width="span12" Type="textarea" ControlAttributes="{&quot;class&quot;:&quot;input-large&quot;}" />
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+    </Row>
+  </Panel>
+</Form>

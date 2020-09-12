@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_YC" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS_YC WHERE PKId=@PKId" Insert="INSERT INTO SM_T_PROCESS_YC(PKId,InstanceId,TZCStandard,AQStandard,JXStandard,ZSXStandard,JTStandard,LSXStandard,RSXStandard,MFLQSStandard,LQCStandard,LSStandard,ZJStandard,TZCMax,AQMax,JXMax,ZSXMax,JTMax,LSXMax,RSXMax,MFLQSMax,LQCMax,LSMax,ZJMax,TZCMin,AQMin,JXMin,ZSXMin,JTMin,LSXMin,RSXMin,MFLQSMin,LQCMin,LSMin,ZJMin,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@PKId,@InstanceId,@TZCStandard,@AQStandard,@JXStandard,@ZSXStandard,@JTStandard,@LSXStandard,@RSXStandard,@MFLQSStandard,@LQCStandard,@LSStandard,@ZJStandard,@TZCMax,@AQMax,@JXMax,@ZSXMax,@JTMax,@LSXMax,@RSXMax,@MFLQSMax,@LQCMax,@LSMax,@ZJMax,@TZCMin,@AQMin,@JXMin,@ZSXMin,@JTMin,@LSXMin,@RSXMin,@MFLQSMin,@LQCMin,@LSMin,@ZJMin,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_T_PROCESS_YC SET InstanceId=@InstanceId,TZCStandard=@TZCStandard,AQStandard=@AQStandard,JXStandard=@JXStandard,ZSXStandard=@ZSXStandard,JTStandard=@JTStandard,LSXStandard=@LSXStandard,RSXStandard=@RSXStandard,MFLQSStandard=@MFLQSStandard,LQCStandard=@LQCStandard,LSStandard=@LSStandard,ZJStandard=@ZJStandard,TZCMax=@TZCMax,AQMax=@AQMax,JXMax=@JXMax,ZSXMax=@ZSXMax,JTMax=@JTMax,LSXMax=@LSXMax,RSXMax=@RSXMax,MFLQSMax=@MFLQSMax,LQCMax=@LQCMax,LSMax=@LSMax,ZJMax=@ZJMax,TZCMin=@TZCMin,AQMin=@AQMin,JXMin=@JXMin,ZSXMin=@ZSXMin,JTMin=@JTMin,LSXMin=@LSXMin,RSXMin=@RSXMin,MFLQSMin=@MFLQSMin,LQCMin=@LQCMin,LSMin=@LSMin,ZJMin=@ZJMin,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE PKId=@PKId">
+    <column Name="PKId" Text="PKId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="TZCStandard" Text="TZCStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="AQStandard" Text="AQStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="JXStandard" Text="JXStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="ZSXStandard" Text="ZSXStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="JTStandard" Text="JTStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="LSXStandard" Text="LSXStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="RSXStandard" Text="RSXStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="MFLQSStandard" Text="MFLQSStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="LQCStandard" Text="LQCStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="LSStandard" Text="LSStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="ZJStandard" Text="ZJStandard" DataType="numeric" IsNullable="Y" />
+    <column Name="TZCMax" Text="TZCMax" DataType="numeric" IsNullable="Y" />
+    <column Name="AQMax" Text="AQMax" DataType="numeric" IsNullable="Y" />
+    <column Name="JXMax" Text="JXMax" DataType="numeric" IsNullable="Y" />
+    <column Name="ZSXMax" Text="ZSXMax" DataType="numeric" IsNullable="Y" />
+    <column Name="JTMax" Text="JTMax" DataType="numeric" IsNullable="Y" />
+    <column Name="LSXMax" Text="LSXMax" DataType="numeric" IsNullable="Y" />
+    <column Name="RSXMax" Text="RSXMax" DataType="numeric" IsNullable="Y" />
+    <column Name="MFLQSMax" Text="MFLQSMax" DataType="numeric" IsNullable="Y" />
+    <column Name="LQCMax" Text="LQCMax" DataType="numeric" IsNullable="Y" />
+    <column Name="LSMax" Text="LSMax" DataType="numeric" IsNullable="Y" />
+    <column Name="ZJMax" Text="ZJMax" DataType="numeric" IsNullable="Y" />
+    <column Name="TZCMin" Text="TZCMin" DataType="numeric" IsNullable="Y" />
+    <column Name="AQMin" Text="AQMin" DataType="numeric" IsNullable="Y" />
+    <column Name="JXMin" Text="JXMin" DataType="numeric" IsNullable="Y" />
+    <column Name="ZSXMin" Text="ZSXMin" DataType="numeric" IsNullable="Y" />
+    <column Name="JTMin" Text="JTMin" DataType="numeric" IsNullable="Y" />
+    <column Name="LSXMin" Text="LSXMin" DataType="numeric" IsNullable="Y" />
+    <column Name="RSXMin" Text="RSXMin" DataType="numeric" IsNullable="Y" />
+    <column Name="MFLQSMin" Text="MFLQSMin" DataType="numeric" IsNullable="Y" />
+    <column Name="LQCMin" Text="LQCMin" DataType="numeric" IsNullable="Y" />
+    <column Name="LSMin" Text="LSMin" DataType="numeric" IsNullable="Y" />
+    <column Name="ZJMin" Text="ZJMin" DataType="numeric" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

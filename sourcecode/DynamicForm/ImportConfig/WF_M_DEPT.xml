@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="WF_M_DEPT" CheckExist="SELECT * FROM WF_M_DEPT WHERE DeptId=@DeptId" Insert="INSERT INTO WF_M_DEPT(DeptId,PDeptId,DeptName,DeptDisplayText,DeptLabel,DeptOrder,Status,Remark,Extend01,Extend02,Extend03,Extend04,Extend05,CreateUser,CreateTime,LastModifyUser,LastModifyTime,ActiveNumber,ManagerId,ManagerName) VALUES(@DeptId,@PDeptId,@DeptName,@DeptDisplayText,@DeptLabel,@DeptOrder,@Status,@Remark,@Extend01,@Extend02,@Extend03,@Extend04,@Extend05,@CreateUser,@CreateTime,@LastModifyUser,@LastModifyTime,@ActiveNumber,@ManagerId,@ManagerName)" Update="UPDATE WF_M_DEPT SET PDeptId=@PDeptId,DeptName=@DeptName,DeptDisplayText=@DeptDisplayText,DeptLabel=@DeptLabel,DeptOrder=@DeptOrder,Status=@Status,Remark=@Remark,Extend01=@Extend01,Extend02=@Extend02,Extend03=@Extend03,Extend04=@Extend04,Extend05=@Extend05,LastModifyUser=@LastModifyUser,LastModifyTime=@LastModifyTime,ActiveNumber=@ActiveNumber,ManagerId=@ManagerId,ManagerName=@ManagerName WHERE DeptId=@DeptId">
+    <column Name="DeptId" Text="DeptId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="PDeptId" Text="PDeptId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="DeptName" Text="DeptName" DataType="nvarchar(150)" IsNullable="Y" />
+    <column Name="DeptDisplayText" Text="DeptDisplayText" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="DeptLabel" Text="DeptLabel" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="DeptOrder" Text="DeptOrder" DataType="int" IsNullable="Y" />
+    <column Name="Status" Text="Status" DataType="int" IsNullable="Y" />
+    <column Name="Remark" Text="Remark" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Extend01" Text="Extend01" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="Extend02" Text="Extend02" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="Extend03" Text="Extend03" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="Extend04" Text="Extend04" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="Extend05" Text="Extend05" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="ActiveNumber" Text="ActiveNumber" DataType="int" IsNullable="Y" />
+    <column Name="ManagerId" Text="ManagerId" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="ManagerName" Text="ManagerName" DataType="nvarchar(100)" IsNullable="Y" />
+  </table>
+</tables>

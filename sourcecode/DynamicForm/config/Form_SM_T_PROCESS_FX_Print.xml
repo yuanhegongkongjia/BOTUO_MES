@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_FX_Print" Name="Form_SM_T_PROCESS_FX_Print" Desc="放线工艺卡打印" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_FX_PrintDA,DynamicForm">
+  <Panel Id="Panel20190723140930386" Name="Panel20190723140930386" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+  </Panel>
+</Form>

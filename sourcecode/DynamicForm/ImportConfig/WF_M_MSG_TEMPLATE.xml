@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="WF_M_MSG_TEMPLATE" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM WF_M_MSG_TEMPLATE WHERE PK_GUID=@PK_GUID" Insert="INSERT INTO WF_M_MSG_TEMPLATE(PK_GUID,TemplateName,Language,TemplateType,TemplateDesc,IsActive,Subject,Body,Link,CreateUser,CreateTime,LastModifyUser,LastModifyTime,IsSystem) VALUES(@PK_GUID,@TemplateName,@Language,@TemplateType,@TemplateDesc,@IsActive,@Subject,@Body,@Link,@CreateUser,@CreateTime,@LastModifyUser,@LastModifyTime,@IsSystem)" Update="UPDATE WF_M_MSG_TEMPLATE SET TemplateName=@TemplateName,Language=@Language,TemplateType=@TemplateType,TemplateDesc=@TemplateDesc,IsActive=@IsActive,Subject=@Subject,Body=@Body,Link=@Link,LastModifyUser=@LastModifyUser,LastModifyTime=@LastModifyTime WHERE PK_GUID=@PK_GUID">
+    <column Name="PK_GUID" Text="PK_GUID" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="TemplateName" Text="TemplateName" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Language" Text="Language" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="TemplateType" Text="TemplateType" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="TemplateDesc" Text="TemplateDesc" DataType="nvarchar(200)" IsNullable="Y" />
+    <column Name="IsActive" Text="IsActive" DataType="int" IsNullable="Y" />
+    <column Name="Subject" Text="Subject" DataType="nvarchar(1000)" IsNullable="Y" />
+    <column Name="Body" Text="Body" DataType="nvarchar(max)" IsNullable="Y" />
+    <column Name="Link" Text="Link" DataType="nvarchar(1000)" IsNullable="Y" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="IsSystem" Text="IsSystem" DataType="int" IsNullable="Y" />
+  </table>
+</tables>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_SOP_View" Name="Form_SM_T_SOP_View" Desc="查看SOP" DAImp="DynamicForm.DA.Form_SM_T_SOP_ViewDA,DynamicForm">
+  <Panel Id="Panel20190723161001331" Name="Panel20190723161001331" Type="SingleRecord">
+    <Row>
+      <Control Name="FileId" Type="hidden" />
+      <Control Name="DownloadFileName" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190723161016974" Name="Panel20190723161016974" Type="SingleRecord">
+    <Row>
+      <Control Name="Control20190723161019562" Text="Control20190723161019562" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class='span24'>
+<div id='sop' style='height:600px;'></div>
+</div>
+-->
+      <!--DF_SCRIPT
+var options = {
+
+    height: '100%',
+
+    pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0'}              //禁用工具栏
+
+};
+//"kindeditor/attached/pdf/20190723/20190723160429_1845.pdf
+PDFObject.embed($('#DownloadFileName').val(), "#sop",options );
+
+-->
+    </Row>
+  </Panel>
+</Form>

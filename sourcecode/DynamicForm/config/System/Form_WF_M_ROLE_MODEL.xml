@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_WF_M_ROLE_MODEL" Name="Form_WF_M_ROLE_MODEL" Desc="工作流权限" DAImp="DynamicForm.DA.Form_WF_M_ROLE_MODELDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ModelId" Text="工作流" Width="span8" Type="select" Options="select '' as value,'' as text union all select modelid as value,modelname as text from wf_m_model" OptionType="SQL" />
+      <Control Name="RoleId" Text="权限组" Width="span8" Type="select" Options="select '' as value,'' as text union all select roleid as value,rolename as text from wf_m_role" OptionType="SQL" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="ModelId" Visible="false" Sortable="true" />
+    <Column Name="RoleId" Visible="false" Sortable="true" />
+    <Column Name="ModelName" Text="工作流名称" Width="200" />
+    <Column Name="RoleName" Text="权限组" Width="100" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'ModelId': a.ModelId,
+            'RoleId': a.RoleId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=Form_WF_M_ROLE_MODEL', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == 'string')
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_WF_M_ROLE_MODEL_Edit';
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_TaskProcessing" Name="WFCore_TaskProcessing" Desc="工作流任务处理" DAImp="DynamicForm.DA.WFCore_TaskProcessingDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+      <Control Name="DFFormName" Type="hidden" />
+    </Row>
+  </Panel>
+  <!--DF_SCRIPT
+$(function() {
+    var url = 'DFIndexWF.aspx?DF_FORMNAME=' + escape($('#DFFormName').val()) + '&InstanceId=' + $('#InstanceId').val();
+    if ($('#DFFormName').val() == 'XDSW_LabData') {
+        url = 'DFIndex.aspx?DF_FORMNAME=' + escape($('#DFFormName').val()) + '&InstanceId=' + $('#InstanceId').val();
+    }
+    url += '&InstanceStepExecutorId=' + $('#InstanceStepExecutorId').val();
+    dfOpenLink(url);
+});
+-->
+</Form>

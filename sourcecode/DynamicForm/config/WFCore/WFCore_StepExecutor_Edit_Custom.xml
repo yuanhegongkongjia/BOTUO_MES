@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_StepExecutor_Edit_Custom" Name="WFCore_StepExecutor_Edit_Custom" DAImp="DynamicForm.DA.WFCore_StepExecutor_Edit_CustomDA,DynamicForm">
+  <Panel Id="dfPanel_201408041615290024" Type="SingleRecord" Additional="{style:'padding:10px'}">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="StepId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="ExecutorType" Value="Custom" Type="hidden" />
+      <Control Name="ExecutorPriority" Text="签核顺序" Width="span8" DataRules="{&quot;number&quot;:true}" Type="text" />
+      <Control Name="ExecutorText" Text="描述" Width="span8" Type="text" />
+    </Row>
+    <Row RowAttributes="{style:'height:160px;'}">
+      <Control Name="CustomHtml" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class="row">
+        <div id="__dfList1" style="margin-left:130px;">
+        </div>
+    </div>
+-->
+      <!--DF_SCRIPT
+$(function() {
+    BUI.use(['bui/list', 'bui/data'], function(List, Data) {
+        var store = new Data.Store({
+            url: 'DFHandler.ashx?DF_FORMNAME=WF_PublicCode&action=querylist&CodeType=CustomExecutor',
+            autoLoad: true
+        });
+        var list1 = new List.SimpleList({
+            elCls: 'bui-select-list',
+            render: '#__dfList1',
+            store: store,
+            height: 150,
+            width: 450
+        });
+        list1.render();
+        list1.on('itemclick', function(ev) {
+            $('#ExecutorValue').val(ev.item.value);
+        });
+    });
+});
+-->
+    </Row>
+    <Row RowAttributes="{style:'height:110px;'}">
+      <Control Name="ExecutorValue" Text="SQL语句" Width="span16" Type="textarea" ControlAttributes="{style:'width:450px;height:100px;'}" />
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="add" />
+    </Row>
+  </Panel>
+</Form>

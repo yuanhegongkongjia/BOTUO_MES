@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Connector" Name="WFCore_Connector" Desc="流程连线管理" DAImp="DynamicForm.DA.WFCore_ConnectorDA,DynamicForm">
+  <Panel Id="Panel201512270142010004" Name="Panel201512270142010004" Type="SingleRecord" Additional="{class:'ddz-maindiv', style:'margin-bottom:10px;'}">
+    <Row>
+      <Control Name="ModelName" Text="流程名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;1000&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="ConnectorId" Visible="false" />
+    <Column Name="FromStepName" Text="从" Width="200" />
+    <Column Name="ToStepName" Text="到" Width="200" />
+    <Column Name="ConnectorName" Text="连线名称" Width="150" />
+    <Column Name="ScriptType" Text="自定义类型" Width="100" />
+    <Column Name="Script" Text="详细" Width="500" />
+  </Panel>
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+	return closeSelfDialog();
+}
+-->
+      <Control Name="btnEdit" Text="连线策略设置" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer;width:100px;', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&ConnectorId=" + selections[0].ConnectorId;
+    p += "&EditMode=Edit";
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Connector_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

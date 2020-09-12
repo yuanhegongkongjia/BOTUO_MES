@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_MyTask" Name="WFCore_MyTask" Desc="我的任务" DAImp="DynamicForm.DA.WFCore_MyTaskDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ExecuteStatus" Text="任务状态" Width="span16" Type="multiselect" Options="{'Finished':'已完成','Unfinished':'未完成'}" OptionType="JSON" />
+      <Control Name="RequestorName" Text="申请人" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="InstanceId" Text="流程编号" Width="span8" Type="text" />
+      <Control Name="ModelName" Text="流程名称" Width="span8" Type="text" />
+      <Control Name="btnEdit" Text="处理" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnEdit_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnEdit_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert('请选择一条记录');
+        return;
+    }
+    var p = "&InstanceStepExecutorId=" + selections[0].InstanceStepExecutorId;
+    dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+}
+-->
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_SCRIPT
+var beforeRender = function(grid, store) {
+    grid.on('itemdblclick', function(ex) {
+        var p = "&InstanceStepExecutorId=" + ex.item.InstanceStepExecutorId;
+        dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+    });
+};
+-->
+    <Column Name="InstanceStepExecutorId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Text="流程编号" Width="150" Sortable="true" />
+    <Column Name="InstanceStatus" Text="流程状态" Width="100" Sortable="true" />
+    <Column Name="ModelName" Text="流程名" Width="200" Sortable="true" />
+    <Column Name="RequestorName" Text="申请人" Width="120" Sortable="true" />
+    <Column Name="RequestorProxyName" Visible="false" Sortable="true" />
+    <Column Name="RequestTime" Text="申请时间" Width="150" Sortable="true" />
+    <Column Name="ExecutorName" Text="签核人" Width="100" Sortable="true" />
+    <Column Name="ExecuteResult" Text="签核结果" Width="100" Sortable="true" />
+    <Column Name="StepName" Text="步骤名称" Width="200" Sortable="true" />
+    <Column Name="ExecuteStatus" Visible="false" Sortable="true" />
+    <Column Name="Memo" Visible="false" Sortable="true" />
+  </Panel>
+</Form>

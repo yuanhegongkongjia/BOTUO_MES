@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS WHERE InstanceId=@InstanceId" Insert="INSERT INTO SM_T_PROCESS(InstanceId,Line,ProduceDate,ProcessManager,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser,ZDB,JXDLStandard,TotalLYStandard,JXDLMax,JXDLMin,TotalLYMax,TotalLYMin,SXGY,PXSpeedStandard,PXSpeedMax,PXSpeedMin,SXZLStandard,SXZLMax,SXZLMin,FXHD,IsSXSaved,IsFXSaved,ProcessStatus,ProcessName,RecoverTime) VALUES(@InstanceId,@Line,@ProduceDate,@ProcessManager,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser,@ZDB,@JXDLStandard,@TotalLYStandard,@JXDLMax,@JXDLMin,@TotalLYMax,@TotalLYMin,@SXGY,@PXSpeedStandard,@PXSpeedMax,@PXSpeedMin,@SXZLStandard,@SXZLMax,@SXZLMin,@FXHD,@IsSXSaved,@IsFXSaved,@ProcessStatus,@ProcessName,@RecoverTime)" Update="UPDATE SM_T_PROCESS SET Line=@Line,ProduceDate=@ProduceDate,ProcessManager=@ProcessManager,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser,ZDB=@ZDB,JXDLStandard=@JXDLStandard,TotalLYStandard=@TotalLYStandard,JXDLMax=@JXDLMax,JXDLMin=@JXDLMin,TotalLYMax=@TotalLYMax,TotalLYMin=@TotalLYMin,SXGY=@SXGY,PXSpeedStandard=@PXSpeedStandard,PXSpeedMax=@PXSpeedMax,PXSpeedMin=@PXSpeedMin,SXZLStandard=@SXZLStandard,SXZLMax=@SXZLMax,SXZLMin=@SXZLMin,FXHD=@FXHD,IsSXSaved=@IsSXSaved,IsFXSaved=@IsFXSaved,ProcessStatus=@ProcessStatus,ProcessName=@ProcessName,RecoverTime=@RecoverTime WHERE InstanceId=@InstanceId">
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsPrimaryKey="Y" />
+    <column Name="Line" Text="Line" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ProduceDate" Text="ProduceDate" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ProcessManager" Text="ProcessManager" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="ZDB" Text="ZDB" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="JXDLStandard" Text="JXDLStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="TotalLYStandard" Text="TotalLYStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="JXDLMax" Text="JXDLMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="JXDLMin" Text="JXDLMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="TotalLYMax" Text="TotalLYMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="TotalLYMin" Text="TotalLYMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="SXGY" Text="SXGY" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="PXSpeedStandard" Text="PXSpeedStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="PXSpeedMax" Text="PXSpeedMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="PXSpeedMin" Text="PXSpeedMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="SXZLStandard" Text="SXZLStandard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="SXZLMax" Text="SXZLMax" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="SXZLMin" Text="SXZLMin" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="FXHD" Text="FXHD" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="IsSXSaved" Text="IsSXSaved" DataType="nvarchar(1)" IsNullable="Y" />
+    <column Name="IsFXSaved" Text="IsFXSaved" DataType="nvarchar(1)" IsNullable="Y" />
+    <column Name="ProcessStatus" Text="ProcessStatus" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ProcessName" Text="ProcessName" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="RecoverTime" Text="RecoverTime" DataType="datetime" IsNullable="Y" />
+  </table>
+</tables>

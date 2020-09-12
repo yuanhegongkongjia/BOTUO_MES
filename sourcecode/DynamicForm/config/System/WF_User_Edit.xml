@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_User_Edit" Name="WF_User_Edit" Desc="用户详细" DAImp="DynamicForm.DA.WF_User_EditDA, DynamicForm">
+  <Panel Id="Panel201507251204570036" Name="Panel201507251204570036" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="UserId" Width="span8" Type="hidden" />
+      <Control Name="UserName" Text="用户名称" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Status" Text="是否启用" Width="span8" Type="checkbox" Options="{'1':'启用'}" OptionType="JSON" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Email" Text="邮箱" Width="span8" Type="text" />
+      <Control Name="ChineseName" Text="中文姓名" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="DeptId" Text="部门" Width="span8" Type="select" Options="select DeptId as value,DeptName as text from wf_m_dept" OptionType="SQL" MustInput="True" AddEmptyOption="True" />
+    </Row>
+    <Row>
+      <Control Name="Duty" Text="职位" Width="span8" Type="text" />
+      <Control Name="MobilePhone" Text="手机号码" Width="span8" Type="text" />
+      <Control Name="Tel" Text="电话" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark" Text="备注" Width="span16" Type="textarea" ControlAttributes="{style:'width:400px'}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

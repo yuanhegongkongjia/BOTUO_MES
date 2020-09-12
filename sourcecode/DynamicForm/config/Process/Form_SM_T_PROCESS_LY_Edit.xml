@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_LY_Edit" Name="Form_SM_T_PROCESS_LY_Edit" Desc="炉压信息设定" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_LY_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="Line" Type="hidden" />
+      <Control Name="EditMode" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Z1Standard" Text="Z1标准值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z1Max" Text="Z1最大值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z1Min" Text="Z1最小值" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Z2Standard" Text="Z2标准值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z2Max" Text="Z2最大值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z2Min" Text="Z2最小值" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Z3Standard" Text="Z3标准值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z3Max" Text="Z3最大值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z3Min" Text="Z3最小值" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Z4Standard" Text="Z4标准值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z4Max" Text="Z4最大值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z4Min" Text="Z4最小值" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Z5Standard" Text="Z5标准值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z5Max" Text="Z5最大值" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Z5Min" Text="Z5最小值" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Z6Standard" Text="Z6标准值" Width="span8" Type="text" />
+      <Control Name="Z6Max" Text="Z6最大值" Width="span8" Type="text" />
+      <Control Name="Z6Min" Text="Z6最小值" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="KanbanSite2.master.cs" Inherits="Kanban.KanbanSite2" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+            <script type="text/javascript" src="Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="bui/bui.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="bui/css/dpl.css" rel="stylesheet" type="text/css" />
+    <link href="bui/css/bui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="chart/highcharts.js?time=1"></script>
+    <script type="text/javascript" src="chart/themes/grid-light.js?time=1"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color:white;">
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

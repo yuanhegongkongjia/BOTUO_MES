@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Role" Name="WF_Role" Desc="角色设置" DAImp="DynamicForm.DA.WF_RoleDA, DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="RoleName" Text="角色名称" Width="span8" Type="text" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="Op1" Text="设置用户" Width="80" />
+    <!--DF_SCRIPT
+function(value, obj) {
+    return "<a href='#' onclick=\"Op1('" + obj.RoleId + "');return false;\">" + getRes("设置用户") + "</a>";
+}
+-->
+    <Column Name="Op2" Text="设置权限" Width="80" />
+    <!--DF_SCRIPT
+function(value, obj) {
+    return "<a href='#' onclick=\"Op2('" + obj.RoleId + "');return false;\">" + getRes("设置权限") + "</a>";
+}
+-->
+    <Column Name="RoleId" Text="角色编号" Width="200" />
+    <Column Name="RoleName" Text="角色名称" Width="100" />
+    <Column Name="Remark" Text="备注" Width="500" />
+  </Panel>
+  <!--DF_SCRIPT
+function Op1(RoleId) {
+    var p = "&RoleId=" + RoleId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_Role_SetUsers' + p;
+    var dialog = dfOverlayFullDialog(850, 550, '', url);
+}
+function Op2(RoleId) {
+    var p = "&RoleId=" + RoleId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_Role_SetAccess' + p;
+    var dialog = dfOverlayFullDialog(850, 550, '', url);
+}
+-->
+  <Panel Id="Panel201507251157480033" Name="Panel201507251157480033" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'RoleId': a.RoleId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_Role', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_Role_Edit';
+    var dialog = dfOverlayDialog(800, 400, '', url);
+        // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&RoleId=" + selections[0].RoleId;
+    p += "&EditMode=Edit";
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_Role_Edit' + p;
+    var dialog = dfOverlayDialog(800, 400, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

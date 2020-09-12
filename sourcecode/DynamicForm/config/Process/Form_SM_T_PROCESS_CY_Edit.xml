@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_CY_Edit" Name="Form_SM_T_PROCESS_CY_Edit" Desc="槽液工艺设定" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_CY_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">A面槽液工艺设定</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="EditMode" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="ADCStandard" Text="镀铜电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMax" Text="镀铜电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMin" Text="镀铜电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ATJCStandard" Text="调节电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMax" Text="调节电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMin" Text="调节电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AIznStandard" Text="镀锌电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMax" Text="镀锌电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMin" Text="镀锌电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF1Standard" Text="MF1电压标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Max" Text="MF1电压最大值" TextAfterControl="V&#xA;" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Min" Text="MF1电压最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF2Standard" Text="MF2电压标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Min" Text="MF2电压最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Max" Text="MF2电压最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row />
+  </Panel>
+  <Panel Id="Panel20190708101031258" Name="Panel20190708101031258" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">B面槽液工艺设定</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="BDCStandard" Text="镀铜电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BDCMax" Text="镀铜电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BDCMin" Text="镀铜电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BTJCStandard" Text="调节电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BTJCMax" Text="调节电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BTJCMin" Text="调节电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BIznStandard" Text="镀锌电流标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BIznMax" Text="镀锌电流最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BIznMin" Text="镀锌电流最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BMF1Standard" Text="MF1电压标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF1Max" Text="MF1电压最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF1Min" Text="MF1电压最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BMF2Standard" Text="MF2电压标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF2Max" Text="MF2电压最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF2Min" Text="MF2电压最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190709143106955" Name="Panel20190709143106955" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

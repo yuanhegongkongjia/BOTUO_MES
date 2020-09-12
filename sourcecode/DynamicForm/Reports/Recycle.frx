@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="11/01/2018 13:17:28" ReportInfo.Modified="11/16/2018 09:59:45" ReportInfo.CreatorVersion="2017.1.16.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table4_ManualBuild(object sender, EventArgs e)
+    {
+      DataSourceBase rowData = Report.GetDataSource(&quot;dtDTL&quot;);
+      // init the data source. Pass parentData to allow master-detail relation
+      rowData.Init();
+      
+      Table4.PrintRow(0);
+      Table4.PrintColumns();
+      
+      rowData.First();
+      
+      // now enumerate the data source and print the table body
+      while (rowData.HasMoreRows)
+      {
+        // print table body
+        Table4.PrintRow(1);
+        Table4.PrintColumns();
+        
+        // go next data row
+        rowData.Next();
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="56.7">
+      <TextObject Name="Text1" Left="264.6" Top="9.45" Width="245.7" Height="37.8" Text=" 返厂交付承运单" HorzAlign="Center" VertAlign="Center" Font="SimSun, 16pt, style=Bold"/>
+      <TextObject Name="Text2" Left="66.15" Top="37.8" Width="585.9" Height="18.9" Text="此单一式三份，仓库、客户、回单，回单在签收栏签收确认后交给物流公司带回，谢谢配合！" HorzAlign="Center" VertAlign="Center" Font="SimSun, 9pt" TextFill.Color="Red"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="59.93" Width="718.2" Height="340.2">
+      <TableObject Name="Table1" Left="9.45" Top="9.45" Width="689.85" Height="217.35" Border.Lines="All">
+        <TableColumn Name="Column1" Width="85.05"/>
+        <TableColumn Name="Column2" Width="122.85"/>
+        <TableColumn Name="Column3" Width="85.05"/>
+        <TableColumn Name="Column4" Width="132.3"/>
+        <TableColumn Name="Column5" Width="113.4"/>
+        <TableColumn Name="Column6" Width="151.2"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Border.Lines="All" Text="订单号" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="[dtHeader.RecycleNo]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="跟踪设备号" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="[dtHeader.DeviceNo]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="物流商运编号" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="[dtHeader.TrackingNo]" VertAlign="Center" Font="SimSun, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Border.Lines="All" Text="托运日期" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[dtHeader.TuoYunDate]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="发货地" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="[dtHeader.FAHUOCity]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell10" Border.Lines="All" Text="目的地" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[dtHeader.SHOUHUOCity]" VertAlign="Center" Font="SimSun, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="28.35">
+          <TableCell Name="Cell11" Border.Lines="All" Text="承运商" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" Text="[dtHeader.Forwarder]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+          <TableCell Name="Cell13" VertAlign="Center"/>
+          <TableCell Name="Cell14" VertAlign="Center"/>
+          <TableCell Name="Cell15" VertAlign="Center"/>
+          <TableCell Name="Cell28" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell16" Border.Lines="All" Text="收货人" VertAlign="Center" Font="SimSun, 10pt" RowSpan="4"/>
+          <TableCell Name="Cell17" Border.Lines="All" Text="单位：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell18" Border.Lines="All" Text="[dtHeader.ToCompanyName]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell19" Border.Lines="All"/>
+          <TableCell Name="Cell20" Border.Lines="All"/>
+          <TableCell Name="Cell29" Border.Lines="All"/>
+        </TableRow>
+        <TableRow Name="Row5">
+          <TableCell Name="Cell21" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="姓名：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="[dtHeader.ReceiverName]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell24" Border.Lines="All"/>
+          <TableCell Name="Cell25" Border.Lines="All"/>
+          <TableCell Name="Cell30" Border.Lines="All"/>
+        </TableRow>
+        <TableRow Name="Row6">
+          <TableCell Name="Cell31" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell32" Border.Lines="All" Text="地址：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" Text="[dtHeader.ReceiverAddress]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell34" Border.Lines="All" VertAlign="Center"/>
+          <TableCell Name="Cell35" Border.Lines="All" VertAlign="Center"/>
+          <TableCell Name="Cell36" Border.Lines="All" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row7">
+          <TableCell Name="Cell37" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell38" Border.Lines="All" Text="电话：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell39" Border.Lines="All" Text="[dtHeader.ReceiverPhone]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell40" Border.Lines="All"/>
+          <TableCell Name="Cell41" Border.Lines="All"/>
+          <TableCell Name="Cell42" Border.Lines="All"/>
+        </TableRow>
+        <TableRow Name="Row8">
+          <TableCell Name="Cell43" Border.Lines="All" Text="发货人" VertAlign="Center" Font="SimSun, 10pt" RowSpan="4"/>
+          <TableCell Name="Cell44" Border.Lines="All" Text="单位：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell45" Border.Lines="All" Text="[dtHeader.FromCompanyName]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell46"/>
+          <TableCell Name="Cell47"/>
+          <TableCell Name="Cell48"/>
+        </TableRow>
+        <TableRow Name="Row9">
+          <TableCell Name="Cell49" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell50" Border.Lines="All" Text="姓名：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell51" Border.Lines="All" Text="[dtHeader.SenderName]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell52"/>
+          <TableCell Name="Cell53"/>
+          <TableCell Name="Cell54"/>
+        </TableRow>
+        <TableRow Name="Row10">
+          <TableCell Name="Cell55" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell56" Border.Lines="All" Text="地址：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell57" Border.Lines="All" Text="[dtHeader.SenderAddress]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell58"/>
+          <TableCell Name="Cell59"/>
+          <TableCell Name="Cell60"/>
+        </TableRow>
+        <TableRow Name="Row11">
+          <TableCell Name="Cell61" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell62" Border.Lines="All" Text="电话：" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell63" Border.Lines="All" Text="[dtHeader.SenderPhone]" VertAlign="Center" Font="SimSun, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell64" VertAlign="Center"/>
+          <TableCell Name="Cell65" VertAlign="Center"/>
+          <TableCell Name="Cell66" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+      <TableObject Name="Table2" Left="9.45" Top="236.25" Width="690.12" Height="37.8">
+        <TableColumn Name="Column7" Width="115.02"/>
+        <TableColumn Name="Column8" Width="115.02"/>
+        <TableColumn Name="Column9" Width="115.02"/>
+        <TableColumn Name="Column10" Width="115.02"/>
+        <TableColumn Name="Column11" Width="115.02"/>
+        <TableColumn Name="Column12" Width="115.02"/>
+        <TableRow Name="Row12">
+          <TableCell Name="Cell67" Border.Lines="All" Text="运输信息" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" ColSpan="6"/>
+          <TableCell Name="Cell68"/>
+          <TableCell Name="Cell69"/>
+          <TableCell Name="Cell70"/>
+          <TableCell Name="Cell71"/>
+          <TableCell Name="Cell92"/>
+        </TableRow>
+        <TableRow Name="Row13">
+          <TableCell Name="Cell72" Border.Lines="All" Text="件数" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell73" Border.Lines="All"/>
+          <TableCell Name="Cell74" Border.Lines="All" Text="毛重" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell75" Border.Lines="All"/>
+          <TableCell Name="Cell76" Border.Lines="All" Text="体积" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell93" Border.Lines="All"/>
+        </TableRow>
+      </TableObject>
+      <TableObject Name="Table3" Left="9.45" Top="283.5" Width="689.83" Height="56.7">
+        <TableColumn Name="Column13" Width="68.51"/>
+        <TableColumn Name="Column14" Width="96.86"/>
+        <TableColumn Name="Column15" Width="96.86"/>
+        <TableColumn Name="Column16" Width="49.61"/>
+        <TableColumn Name="Column17" Width="163.01"/>
+        <TableColumn Name="Column18" Width="68.51"/>
+        <TableColumn Name="Column19" Width="77.96"/>
+        <TableColumn Name="Column20" Width="68.51"/>
+        <TableRow Name="Row14" Height="28.35">
+          <TableCell Name="Cell94" Border.Lines="All" Text="承运商签名" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+          <TableCell Name="Cell95" Border.Lines="All" HorzAlign="Center"/>
+          <TableCell Name="Cell96" Border.Lines="All" Text="提货日期" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+          <TableCell Name="Cell97" Border.Lines="All"/>
+          <TableCell Name="Cell98" Border.Lines="All" Text="发货方签名" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+          <TableCell Name="Cell119" Border.Lines="All"/>
+          <TableCell Name="Cell121" Border.Lines="All" Text="发运日期" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+          <TableCell Name="Cell122" Border.Lines="All"/>
+        </TableRow>
+        <TableRow Name="Row15" Height="28.35">
+          <TableCell Name="Cell99" Border.Lines="All" HorzAlign="Center" ColSpan="2"/>
+          <TableCell Name="Cell100" Border.Lines="All"/>
+          <TableCell Name="Cell101" Border.Lines="All" ColSpan="2"/>
+          <TableCell Name="Cell102" Border.Lines="All"/>
+          <TableCell Name="Cell103" Border.Lines="All" HorzAlign="Center" ColSpan="2"/>
+          <TableCell Name="Cell120" Border.Lines="All"/>
+          <TableCell Name="Cell123" Border.Lines="All" HorzAlign="Center" ColSpan="2"/>
+          <TableCell Name="Cell124" HorzAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="403.35" Width="718.2" Height="56.7">
+      <TableObject Name="Table4" Left="9.45" Top="9.45" Width="689.85" Height="37.8" ManualBuildEvent="Table4_ManualBuild">
+        <TableColumn Name="Column21" Width="94.5"/>
+        <TableColumn Name="Column22" Width="170.1"/>
+        <TableColumn Name="Column23" Width="179.55"/>
+        <TableColumn Name="Column24" Width="160.65"/>
+        <TableColumn Name="Column25" Width="85.05"/>
+        <TableRow Name="Row16">
+          <TableCell Name="Cell125" Border.Lines="All" Text="返厂明细" VertAlign="Center" Font="SimSun, 10pt" RowSpan="2"/>
+          <TableCell Name="Cell126" Border.Lines="All" Text="包材类型/退返料号" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell127" Border.Lines="All" Text="包材数量/退返数量" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell128" Border.Lines="All" Text="是否回收" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell129" Border.Lines="All" Text="备注" VertAlign="Center" Font="SimSun, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row17">
+          <TableCell Name="Cell130"/>
+          <TableCell Name="Cell131" Border.Lines="All" Text="[dtDTL.Item]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell132" Border.Lines="All" Text="[dtDTL.PalletQty]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell133" Border.Lines="All" Text="[dtDTL.IsRecycle]" VertAlign="Center" Font="SimSun, 10pt"/>
+          <TableCell Name="Cell134" Border.Lines="All"/>
+        </TableRow>
+      </TableObject>
+      <ChildBand Name="Child1" Top="463.28" Width="718.2" Height="113.4">
+        <TableObject Name="Table5" Left="9.45" Top="9.45" Width="689.86" Height="94.5">
+          <TableColumn Name="Column26" Width="64.97"/>
+          <TableColumn Name="Column27" Width="159.47"/>
+          <TableColumn Name="Column28" Width="64.97"/>
+          <TableColumn Name="Column29" Width="131.12"/>
+          <TableColumn Name="Column30" Width="74.42"/>
+          <TableColumn Name="Column36" Width="64.97"/>
+          <TableColumn Name="Column37" Width="64.97"/>
+          <TableColumn Name="Column38" Width="64.97"/>
+          <TableRow Name="Row21" Height="37.8">
+            <TableCell Name="Cell150" Border.Lines="All" Text="签收栏" HorzAlign="Center" VertAlign="Center" Font="SimSun, 10pt" RowSpan="4"/>
+            <TableCell Name="Cell151" Border.Lines="All" Text="收货正常" VertAlign="Center" Font="SimSun, 10pt"/>
+            <TableCell Name="Cell152" Border.Lines="All" Text="货物外包装完好件数正确" Font="SimSun, 10pt" ColSpan="2"/>
+            <TableCell Name="Cell153"/>
+            <TableCell Name="Cell154" Border.Lines="All" Text="客户签名" VertAlign="Center" Font="SimSun, 10pt"/>
+            <TableCell Name="Cell225" Border.Lines="All"/>
+            <TableCell Name="Cell226" Border.Lines="All" Text="日期" VertAlign="Center" Font="SimSun, 10pt"/>
+            <TableCell Name="Cell227" Border.Lines="All"/>
+          </TableRow>
+          <TableRow Name="Row22">
+            <TableCell Name="Cell155" HorzAlign="Center" VertAlign="Center"/>
+            <TableCell Name="Cell156" Border.Lines="All" Text="异常收货（烦请选择）" VertAlign="Center" Font="SimSun, 10pt" RowSpan="3"/>
+            <TableCell Name="Cell157" Border.Lines="Left, Right, Top" Text="包装：□拆改□破损□变形" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+            <TableCell Name="Cell158" Border.Lines="All"/>
+            <TableCell Name="Cell159" Border.Lines="All" Text="客户签名" VertAlign="Center" Font="SimSun, 10pt" RowSpan="3"/>
+            <TableCell Name="Cell228" Border.Lines="All" RowSpan="3"/>
+            <TableCell Name="Cell229" Border.Lines="All" Text="日期" VertAlign="Center" Font="SimSun, 10pt" RowSpan="3"/>
+            <TableCell Name="Cell230" Border.Lines="All" RowSpan="3"/>
+          </TableRow>
+          <TableRow Name="Row23">
+            <TableCell Name="Cell160" HorzAlign="Center" VertAlign="Center"/>
+            <TableCell Name="Cell161" Border.Lines="All"/>
+            <TableCell Name="Cell162" Border.Lines="Left, Right" Text="货物件数：□短缺" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+            <TableCell Name="Cell163" Border.Lines="All"/>
+            <TableCell Name="Cell164" Border.Lines="All"/>
+            <TableCell Name="Cell231" Border.Lines="All"/>
+            <TableCell Name="Cell232" Border.Lines="All"/>
+            <TableCell Name="Cell233" Border.Lines="All"/>
+          </TableRow>
+          <TableRow Name="Row24">
+            <TableCell Name="Cell165" HorzAlign="Center" VertAlign="Center"/>
+            <TableCell Name="Cell166" Border.Lines="All"/>
+            <TableCell Name="Cell167" Border.Lines="Left, Right, Bottom" Text="其他" VertAlign="Center" Font="SimSun, 10pt" ColSpan="2"/>
+            <TableCell Name="Cell168" Border.Lines="All"/>
+            <TableCell Name="Cell169" Border.Lines="All"/>
+            <TableCell Name="Cell234" Border.Lines="All"/>
+            <TableCell Name="Cell235" Border.Lines="All"/>
+            <TableCell Name="Cell236" Border.Lines="All"/>
+          </TableRow>
+        </TableObject>
+        <ChildBand Name="Child2" Top="579.9" Width="718.2" Height="198.45">
+          <TableObject Name="Table6" Left="9.45" Top="9.45" Width="689.85" Height="189" Border.Lines="All">
+            <TableColumn Name="Column31" Width="137.97"/>
+            <TableColumn Name="Column32" Width="137.97"/>
+            <TableColumn Name="Column33" Width="137.97"/>
+            <TableColumn Name="Column34" Width="137.97"/>
+            <TableColumn Name="Column35" Width="137.97"/>
+            <TableRow Name="Row26">
+              <TableCell Name="Cell175" Border.Lines="All" Text="填写说明" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell176" VertAlign="Center"/>
+              <TableCell Name="Cell177" VertAlign="Center"/>
+              <TableCell Name="Cell178" VertAlign="Center"/>
+              <TableCell Name="Cell179" VertAlign="Center"/>
+            </TableRow>
+            <TableRow Name="Row27">
+              <TableCell Name="Cell180" Border.Lines="All" Text="烦请收发货人收发货物时务必填写清楚，谢谢配合！" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell181"/>
+              <TableCell Name="Cell182"/>
+              <TableCell Name="Cell183"/>
+              <TableCell Name="Cell184"/>
+            </TableRow>
+            <TableRow Name="Row28">
+              <TableCell Name="Cell185" Border.Lines="All" Text="发货方" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell186"/>
+              <TableCell Name="Cell187"/>
+              <TableCell Name="Cell188"/>
+              <TableCell Name="Cell189"/>
+            </TableRow>
+            <TableRow Name="Row29">
+              <TableCell Name="Cell190" Border.Lines="All" Text="1、准确填写收货人信息、运输信息、包材明细" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell191"/>
+              <TableCell Name="Cell192"/>
+              <TableCell Name="Cell193"/>
+              <TableCell Name="Cell194"/>
+            </TableRow>
+            <TableRow Name="Row30">
+              <TableCell Name="Cell195" Border.Lines="All" Text="收货方" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell196"/>
+              <TableCell Name="Cell197"/>
+              <TableCell Name="Cell198"/>
+              <TableCell Name="Cell199"/>
+            </TableRow>
+            <TableRow Name="Row31">
+              <TableCell Name="Cell200" Border.Lines="All" Text="1、客户签（收货客户）：客户签字或盖章" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell201"/>
+              <TableCell Name="Cell202"/>
+              <TableCell Name="Cell203"/>
+              <TableCell Name="Cell204"/>
+            </TableRow>
+            <TableRow Name="Row32">
+              <TableCell Name="Cell205" Border.Lines="All" Text="2、货物签收：请根据实际收货情况在相应栏位签字确认" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell206"/>
+              <TableCell Name="Cell207"/>
+              <TableCell Name="Cell208"/>
+              <TableCell Name="Cell209"/>
+            </TableRow>
+            <TableRow Name="Row33">
+              <TableCell Name="Cell210" Border.Lines="All" Text="3、周转包材发货人需要回收使用，烦请收货人收货时仔细清点并确认签收" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell211"/>
+              <TableCell Name="Cell212"/>
+              <TableCell Name="Cell213"/>
+              <TableCell Name="Cell214"/>
+            </TableRow>
+            <TableRow Name="Row34">
+              <TableCell Name="Cell215" Border.Lines="All" Text="特殊说明" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell216"/>
+              <TableCell Name="Cell217"/>
+              <TableCell Name="Cell218"/>
+              <TableCell Name="Cell219"/>
+            </TableRow>
+            <TableRow Name="Row35">
+              <TableCell Name="Cell220" Border.Lines="All" Text="收货方收到货物务必当场核实相关信息无误后，在确认签收，否则货物出现异常承运方概不负责！" VertAlign="Center" Font="SimSun, 10pt" ColSpan="5"/>
+              <TableCell Name="Cell221"/>
+              <TableCell Name="Cell222"/>
+              <TableCell Name="Cell223"/>
+              <TableCell Name="Cell224"/>
+            </TableRow>
+          </TableObject>
+        </ChildBand>
+      </ChildBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="781.58" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

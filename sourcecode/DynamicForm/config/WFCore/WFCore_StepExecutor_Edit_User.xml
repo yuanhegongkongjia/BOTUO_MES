@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_StepExecutor_Edit_User" Name="WFCore_StepExecutor_Edit_User" DAImp="DynamicForm.DA.WFCore_StepExecutor_Edit_UserDA,DynamicForm">
+  <Panel Id="dfPanel_201408041616060026" Type="SingleRecord" Additional="{style:'padding:10px'}">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="StepId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="ExecutorText" Type="hidden" />
+      <Control Name="ExecutorType" Value="User" Type="hidden" />
+      <Control Name="ExecutorPriority" Text="签核顺序" Width="span8" DataRules="{&quot;number&quot;:true}" Type="text" />
+      <!--DF_SCRIPT
+$(function() {
+	$('#ExecutorValue').on('change', function() {
+		$('#ExecutorText').val($(this).find('option:selected').text());
+	});
+});
+-->
+    </Row>
+    <Row>
+      <Control Name="ExecutorValue" Text="用户" TextAfterControl="&lt;input id='selectUser' name='selectUser' type='button' value=' ... ' onclick='selectUser_click();return false;' /&gt;" Width="span12" Type="select" ControlAttributes="{&quot;class&quot;:&quot;input-large&quot;}" Options="select '' as text,'' as value&#xA;union&#xA;select UserName as text, UserId as value from WF_M_USER order by text" OptionType="SQL" />
+      <!--DF_SCRIPT
+function selectUser_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectUser';
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length == 1) {
+                $('#ExecutorValue').val(selections[0].UserId);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(800, 550, '', url, btns);
+}
+-->
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="add" />
+    </Row>
+  </Panel>
+</Form>

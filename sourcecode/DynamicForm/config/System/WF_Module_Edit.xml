@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Module_Edit" Name="WF_Module_Edit" Desc="模块管理详细" DAImp="DynamicForm.DA.WF_Module_EditDA,DynamicForm">
+  <Panel Id="Panel201507241511340005" Name="Panel201507241511340005" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ModuleId" Type="hidden" />
+      <Control Name="ModuleLabel" Type="hidden" />
+      <Control Name="PModuleId" Text="父模块" Width="span8" Type="select" Options="select ModuleId as value,ModuleName as text from WF_M_MODULE order by ModuleLabel" OptionType="SQL" />
+      <Control Name="ModuleName" Text="模块名称" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ModuleDisplayText" Text="模块显示文本" Width="span8" Type="text" />
+      <Control Name="ModuleDesc" Text="模块描述" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ModuleOrder" Text="模块顺序" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ModuleLink" Text="模块链接" Width="span14" Type="text" ControlAttributes="{style:'width:400px;'}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{ class:&quot;ddz-button2&quot;,style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

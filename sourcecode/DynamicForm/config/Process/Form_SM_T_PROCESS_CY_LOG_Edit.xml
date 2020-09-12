@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_CY_LOG_Edit" Name="Form_SM_T_PROCESS_CY_LOG_Edit" Desc="槽液调整" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_CY_LOG_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">A面调节槽</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="LogId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="ADCStandard" Text="镀槽标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMax" Text="镀槽最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMin" Text="镀槽最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ATJCStandard" Text="调节槽标准值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMax" Text="调节槽最大值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMin" Text="调节槽最小值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AIznStandard" Text="镀锌标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMax" Text="镀锌最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMin" Text="镀锌最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF1Standard" Text="MF1标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Max" Text="MF1最大值" TextAfterControl="V&#xA;" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Min" Text="MF1最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF2Standard" Text="MF2标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Min" Text="MF2最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Max" Text="MF2最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711214821442" Name="Panel20190711214821442" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">B面调节槽</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="BDCStandard" Text="镀槽标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BDCMax" Text="镀槽最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BDCMin" Text="镀槽最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BTJCStandard" Text="调节槽标准值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BTJCMax" Text="调节槽最大值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BTJCMin" Text="调节槽最小值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BIznStandard" Text="镀锌标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BIznMax" Text="镀锌最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BIznMin" Text="镀锌最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BMF1Standard" Text="MF1标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF1Max" Text="MF1最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF1Min" Text="MF1最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="BMF2Standard" Text="MF2标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF2Max" Text="MF2最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BMF2Min" Text="MF2最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190711215037437" Name="Panel20190711215037437" Type="SingleRecord">
+    <Row>
+      <Control Name="VerifyUser" Text="确认人" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Remark1" Text="备注" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

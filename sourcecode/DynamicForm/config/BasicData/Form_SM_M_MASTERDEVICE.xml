@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_MASTERDEVICE" Name="Form_SM_M_MASTERDEVICE" Desc="主站管理" DAImp="DynamicForm.DA.Form_SM_M_MASTERDEVICEDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="MasterDeviceName" Text="主站名称" Width="span8" Type="text" />
+      <Control Name="LineName" Text="线别" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="MasterDeviceId" Visible="false" Sortable="true" />
+    <Column Name="MasterDeviceName" Text="主站名称" Width="100" Sortable="true" />
+    <Column Name="Address" Text="主站地址" Width="100" Sortable="true" />
+    <Column Name="LineId" Visible="false" Sortable="true" />
+    <Column Name="LineName" Text="线别" Width="100" Sortable="true" />
+    <Column Name="Remark1" Text="备注" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'MasterDeviceId': a.MasterDeviceId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_M_MASTERDEVICE',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_M_MASTERDEVICE_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&MasterDeviceId=' + selections[0].MasterDeviceId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_M_MASTERDEVICE_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

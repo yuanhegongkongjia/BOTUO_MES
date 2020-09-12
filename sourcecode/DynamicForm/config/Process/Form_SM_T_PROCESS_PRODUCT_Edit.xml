@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_PRODUCT_Edit" Name="Form_SM_T_PROCESS_PRODUCT_Edit" Desc="生产信息编辑" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_PRODUCT_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="LinePosition" Text="线位" Width="span8" Type="select" Options="select codename as text,codevalue as value from wf_m_publiccode where codetype='XianWei' order by codeorder" OptionType="SQL" MustInput="True" />
+      <Control Name="GangHao" Text="钢号" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="XianJing" Text="线径" TextAfterControl="mm" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Spec" Text="强度等级" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="GenShu" Text="根数" Width="span8" Type="text" MustInput="True" />
+      <Control Name="Speed" Text="速度" TextAfterControl="m/min" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_FX" Name="Form_SM_T_PROCESS_FX" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_FXDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Z1Standard" Text="Z1Standard" Width="span8" Type="text" />
+      <Control Name="Z1Max" Text="Z1Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z1Min" Text="Z1Min" Width="span8" Type="text" />
+      <Control Name="Z2Standard" Text="Z2Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z2Max" Text="Z2Max" Width="span8" Type="text" />
+      <Control Name="Z2Min" Text="Z2Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z3Standard" Text="Z3Standard" Width="span8" Type="text" />
+      <Control Name="Z3Max" Text="Z3Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z3Min" Text="Z3Min" Width="span8" Type="text" />
+      <Control Name="Z4Standard" Text="Z4Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z4Max" Text="Z4Max" Width="span8" Type="text" />
+      <Control Name="Z4Min" Text="Z4Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z5Standard" Text="Z5Standard" Width="span8" Type="text" />
+      <Control Name="Z5Max" Text="Z5Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z5Min" Text="Z5Min" Width="span8" Type="text" />
+      <Control Name="Z6Standard" Text="Z6Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z6Max" Text="Z6Max" Width="span8" Type="text" />
+      <Control Name="Z6Min" Text="Z6Min" Width="span8" Type="text" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190708105847352" Name="Panel20190708105847352" Type="SingleRecord" >
+    <Row>
+      <Control Name="AQ1" Text="AQ1" Width="span8" Type="text" />
+      <Control Name="AQ2" Text="AQ2" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ3" Text="AQ3" Width="span8" Type="text" />
+      <Control Name="AQ4" Text="AQ4" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ5" Text="AQ5" Width="span8" Type="text" />
+      <Control Name="AQ6" Text="AQ6" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ7" Text="AQ7" Width="span8" Type="text" />
+      <Control Name="AQ8" Text="AQ8" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AQ18" Text="AQ18" Width="span8" Type="text" />
+      <Control Name="AQ19" Text="AQ19" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AWT1" Text="AWT1" Width="span8" Type="text" />
+      <Control Name="BWT1" Text="BWT1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AKK" Text="AKK" Width="span8" Type="text" />
+      <Control Name="BKK" Text="BKK" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AWT2" Text="AWT2" Width="span8" Type="text" />
+      <Control Name="BWT2" Text="BWT2" Width="span8" Type="text" />
+    </Row>
+  </Panel>
+</Form>

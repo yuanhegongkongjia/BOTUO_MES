@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6728579E-3AA8-4AB2-8B0D-3E78074FC872}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFDataAccess</RootNamespace>
+    <AssemblyName>WFDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicForm.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\编译出来的DLL\DynamicForm.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WFCommon.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\编译出来的DLL\WFCommon.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="WFCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\编译出来的DLL\WFCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthLoader.cs" />
+    <Compile Include="DataAnalyLoader.cs" />
+    <Compile Include="DeptLoader.cs" />
+    <Compile Include="KanbanEnergyLoader.cs" />
+    <Compile Include="KanbanProcessLoader.cs" />
+    <Compile Include="MenuLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleLoader.cs" />
+    <Compile Include="SM_T_ENVIRONMENTLoader.cs" />
+    <Compile Include="StepExecutorLoader.cs" />
+    <Compile Include="UserLoader.cs" />
+    <Compile Include="UserRoleLoader.cs" />
+    <Compile Include="WF_M_COMPANYLoader.cs" />
+    <Compile Include="WF_M_DEPTLoader.cs" />
+    <Compile Include="WF_M_MENULoader.cs" />
+    <Compile Include="WF_M_METADATALoader.cs" />
+    <Compile Include="WF_M_MODULELoader.cs" />
+    <Compile Include="WF_M_PUBLICCODELoader.cs" />
+    <Compile Include="WF_M_ROLELoader.cs" />
+    <Compile Include="WF_M_ROLE_MODELLoader.cs" />
+    <Compile Include="WF_M_USERDEPTLoader.cs" />
+    <Compile Include="WF_M_USERLoader.cs" />
+    <Compile Include="WF_M_USERROLELoader.cs" />
+    <Compile Include="WF_T_MSGLoader.cs" />
+    <Compile Include="XDSW_T_FILELoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WFCommon\WFCommon.csproj">
+      <Project>{371e4943-6bbd-4601-b20c-d938fb91124d}</Project>
+      <Name>WFCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

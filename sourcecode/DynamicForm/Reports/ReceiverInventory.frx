@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/17/2018 16:42:21" ReportInfo.Modified="10/06/2018 16:00:37" ReportInfo.CreatorVersion="2017.1.16.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqTIAT0BD0QLO+9etJEo5rOC23wmCPf73sOhYI/QtTJMQUcN1GQoP1TNnWhJ3E9jH+n78nKVb1yu5gZrQl5MHZZ7bCNHqVlRAXhH+kKO1ssqLdW9uGjaXnTRNwOX1pvlizKCCAaYoqJ4CIhrbvFKD/Y4gsPLdFUNtJOCU5smW3l9kWZdtn7ooKyQzX3/ZgcHIvw2lYat+cD9G8EdTb4z/dDZ3Fs89qgKYGs4NUoqx0Avs=">
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="select CompanyName,PalletType,PalletQty from YZ_T_RECEIVER_INVENTORY where 1=1 ">
+        <Column Name="CompanyName" DataType="System.String"/>
+        <Column Name="PalletType" DataType="System.String"/>
+        <Column Name="PalletQty" DataType="System.Int32"/>
+        <CommandParameter Name="CompanyName" DataType="12"/>
+        <CommandParameter Name="PalletType" DataType="12"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="9.45"/>
+    <PageHeaderBand Name="PageHeader1" Top="12.68" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="217.35" Width="340.2" Height="37.8" Text="收货方库存报表" HorzAlign="Center" VertAlign="Center" Font="Arial, 20pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="53.7" Width="718.2" Height="75.6">
+      <MatrixObject Name="Matrix1" Left="18.9" Top="9.45" Width="252.18" Height="59.56" Border.Lines="All" FixedRows="1" FixedColumns="1" DataSource="Table">
+        <MatrixColumns>
+          <Header Expression="[Table.CompanyName]"/>
+        </MatrixColumns>
+        <MatrixRows>
+          <Header Expression="[Table.PalletType]"/>
+        </MatrixRows>
+        <MatrixCells>
+          <Cell Expression="[Table.PalletQty]"/>
+        </MatrixCells>
+        <TableColumn Name="Column6" Width="84.96" AutoSize="true"/>
+        <TableColumn Name="Column7" Width="112.47" AutoSize="true"/>
+        <TableColumn Name="Column8" Width="54.75" AutoSize="true"/>
+        <TableRow Name="Row6" Height="20" AutoSize="true">
+          <TableCell Name="Cell26" Border.Lines="All" Text="周装箱类型" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[CompanyName]" HorzAlign="Center" VertAlign="Center" TabWidth="100"/>
+          <TableCell Name="Cell30" Border.Lines="All" Text="总数量" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row7" Height="19.56" AutoSize="true">
+          <TableCell Name="Cell28" Border.Lines="All" Text="[PalletType]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="[PalletQty]" HorzAlign="Center" VertAlign="Center" TabWidth="80"/>
+          <TableCell Name="Cell31" Border.Lines="All" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row8" Height="20" AutoSize="true">
+          <TableCell Name="Cell32" Border.Lines="All" Text="总数量" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell33" Border.Lines="All" HorzAlign="Center" VertAlign="Center" TabWidth="80"/>
+          <TableCell Name="Cell34" Border.Lines="All" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </MatrixObject>
+      <ChildBand Name="Child1" Top="132.53" Width="718.2" Height="245.7">
+        <MSChartObject Name="MSChart1" Left="9.45" Top="9.45" Width="680.4" Height="236.25" DataSource="Table" AlignXValues="true" AutoSeriesColumn="[Table.CompanyName]" AutoSeriesColor="" ChartData="PENoYXJ0IEJhY2tDb2xvcj0iMjExLCAyMjMsIDI0MCIgQmFja0dyYWRpZW50U3R5bGU9IlRvcEJvdHRvbSIgQm9yZGVybGluZUNvbG9yPSIyNiwgNTksIDEwNSIgQm9yZGVybGluZVdpZHRoPSIyIiBCb3JkZXJsaW5lRGFzaFN0eWxlPSJTb2xpZCI+DQogIDxTZXJpZXM+DQogICAgPFNlcmllcyBOYW1lPSLlkajovaznrrHmlbDph48iIExlZ2VuZD0iRGVmYXVsdCIgWFZhbHVlVHlwZT0iU3RyaW5nIiBZVmFsdWVUeXBlPSJJbnQzMiIgQ2hhcnRBcmVhPSJEZWZhdWx0IiBMYWJlbEZvcmVDb2xvcj0iVHJhbnNwYXJlbnQiIE1hcmtlckNvbG9yPSJCbGFjayIgTWFya2VyQm9yZGVyQ29sb3I9IkJsYWNrIj4NCiAgICAgIDxQb2ludHM+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iMSIgQXhpc0xhYmVsPSJBIiAvPg0KICAgICAgICA8RGF0YVBvaW50IFlWYWx1ZXM9IjMiIEF4aXNMYWJlbD0iQiIgLz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSIyIiBBeGlzTGFiZWw9IkMiIC8+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iNCIgQXhpc0xhYmVsPSJEIiAvPg0KICAgICAgPC9Qb2ludHM+DQogICAgPC9TZXJpZXM+DQogIDwvU2VyaWVzPg0KICA8TGVnZW5kcz4NCiAgICA8TGVnZW5kIE5hbWU9IkRlZmF1bHQiIEJhY2tDb2xvcj0iVHJhbnNwYXJlbnQiPg0KICAgIDwvTGVnZW5kPg0KICA8L0xlZ2VuZHM+DQogIDxUaXRsZXM+DQogICAgPFRpdGxlIE5hbWU9IlRpdGxlMSIgVmlzaWJsZT0iRmFsc2UiPg0KICAgIDwvVGl0bGU+DQogIDwvVGl0bGVzPg0KICA8Q2hhcnRBcmVhcz4NCiAgICA8Q2hhcnRBcmVhIE5hbWU9IkRlZmF1bHQiIEJhY2tDb2xvcj0iNjQsIDE2NSwgMTkxLCAyMjgiIEJhY2tHcmFkaWVudFN0eWxlPSJUb3BCb3R0b20iIEJhY2tTZWNvbmRhcnlDb2xvcj0iVHJhbnNwYXJlbnQiIFNoYWRvd0NvbG9yPSJUcmFuc3BhcmVudCIgQm9yZGVyQ29sb3I9IjY0LCA2NCwgNjQsIDY0IiBCb3JkZXJEYXNoU3R5bGU9IlNvbGlkIj4NCiAgICAgIDxBeGlzWSBJc0xhYmVsQXV0b0ZpdD0iRmFsc2UiIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiPg0KICAgICAgICA8TWFqb3JHcmlkIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiIC8+DQogICAgICAgIDxMYWJlbFN0eWxlIEZvbnQ9IlRhaG9tYSwgOHB0IiAvPg0KICAgICAgPC9BeGlzWT4NCiAgICAgIDxBeGlzWCBJc0xhYmVsQXV0b0ZpdD0iRmFsc2UiIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiPg0KICAgICAgICA8TWFqb3JHcmlkIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiIC8+DQogICAgICAgIDxMYWJlbFN0eWxlIEZvbnQ9IlRhaG9tYSwgOHB0IiAvPg0KICAgICAgPC9BeGlzWD4NCiAgICAgIDxBeGlzWDIgSXNMYWJlbEF1dG9GaXQ9IkZhbHNlIj4NCiAgICAgIDwvQXhpc1gyPg0KICAgICAgPEF4aXNZMiBJc0xhYmVsQXV0b0ZpdD0iRmFsc2UiPg0KICAgICAgPC9BeGlzWTI+DQogICAgPC9DaGFydEFyZWE+DQogIDwvQ2hhcnRBcmVhcz4NCiAgPEJvcmRlclNraW4gU2tpblN0eWxlPSJFbWJvc3MiIC8+DQo8L0NoYXJ0Pg==">
+          <MSChartSeries Name="Series1" XValue="[Table.PalletType]" YValue1="[Table.PalletQty]"/>
+        </MSChartObject>
+      </ChildBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="381.45" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

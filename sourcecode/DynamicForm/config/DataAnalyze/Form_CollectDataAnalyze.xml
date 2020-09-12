@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_CollectDataAnalyze" Name="Form_CollectDataAnalyze" Desc="采集数据分析" DAImp="DynamicForm.DA.Form_CollectDataAnalyzeDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="MasterDeviceName" Text="主站名称" Width="span8" Type="text" />
+      <Control Name="SlaveDeviceName" Text="从站名称" Width="span8" Type="text" />
+      <Control Name="LineName" Text="线别" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ProductDateFrom" Text="生产日期从" Width="span8" Type="text" />
+      <Control Name="ProductDateTo" Text="到" Width="span8" Type="text" />
+      <Control Name="Category" Text="采集类型" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="LineName" Text="线别" Width="100" Sortable="true" />
+    <Column Name="MasterDeviceName" Text="主站" Width="100" Sortable="true" />
+    <Column Name="SlaveDeviceName" Text="从站" Width="100" Sortable="true" />
+    <Column Name="Category" Text="采集类型" Width="100" Sortable="true" />
+    <Column Name="ProductDate" Text="生产日期" Width="100" Sortable="true" />
+    <Column Name="MoreMax10" Text="超过上限10%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax30" Text="超过上限30%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax50" Text="超过上限50%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax100" Text="超过上限100%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin10" Text="低于下限10%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin30" Text="低于下限30%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin50" Text="低于下限50%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin100" Text="低于下限100%时间" Width="150" Sortable="true" />
+  </Panel>
+  <!--DF_SCRIPT
+function itemdblclick(ev)
+{
+var LineName=ev.item.LineName;
+var Category=ev.item.Category;
+var ProductDate=ev.item.ProductDate;
+var MasterDeviceName=ev.item.MasterDeviceName;
+var SlaveDeviceName=ev.item.SlaveDeviceName;
+var url='DFIndex.aspx?DF_FORMNAME=Form_CollectDataAnalyzeView&LineName='+LineName+'&Category='+Category+'&ProductDate='+ProductDate+'&MasterDeviceName='+MasterDeviceName+'&SlaveDeviceName='+SlaveDeviceName;     
+var dialog = dfOverlayDialog(800, 700, '', url);
+}
+-->
+</Form>

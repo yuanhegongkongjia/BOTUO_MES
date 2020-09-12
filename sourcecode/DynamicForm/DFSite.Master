@@ -1,0 +1,131 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DFSite.Master.cs" Inherits="DynamicForm.DFSite" %>
+
+<%@ Import Namespace="WFCommon.Utility" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base target="_self" />
+    <title></title>
+    <script type="text/javascript">
+        function getRes(value) {
+            return value;
+        }
+    </script>
+
+      
+    <link href="<%= AttachVersionInfo("bui/css/dpl.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= AttachVersionInfo("bui/css/bui.css") %>" rel="stylesheet" type="text/css" />
+    <script src="<%= AttachVersionInfo("scripts/jquery-1.8.1.min.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("bui/seed.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("bui/config.js") %>" type="text/javascript"></script>
+    <link href="<%= AttachVersionInfo("kindeditor/themes/default/default.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= AttachVersionInfo("kindeditor/plugins/code/prettify.css") %>" rel="stylesheet" type="text/css" />
+    <script src="<%= AttachVersionInfo("kindeditor/kindeditor.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("kindeditor/lang/zh_CN.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("kindeditor/lang/zh_TW.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("kindeditor/lang/en.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("kindeditor/plugins/code/prettify.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("scripts/dfDialog.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("scripts/base64.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("scripts/geo.js") %>" type="text/javascript"></script>
+    <link href="<%= AttachVersionInfo("css/css.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= AttachVersionInfo("css/dfcss.css") %>" rel="stylesheet" type="text/css" />
+   
+    <script src="<%= AttachVersionInfo("scripts/jquery.layout-latest.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("scripts/jquery.hashchange.min.js") %>" type="text/javascript"></script>
+    <script src="<%= AttachVersionInfo("scripts/jquery.easytabs.min.js") %>" type="text/javascript"></script>
+    
+    
+    <% if (System.Configuration.ConfigurationManager.AppSettings["signalr"] == "true")
+        {
+    %>
+    <script src="<%= AttachVersionInfo("scripts/jquery.signalR-2.2.1.min.js") %>" type="text/javascript"></script>
+    <script src="<%: ResolveClientUrl("~/signalr/hubs") %>" type="text/javascript"></script>
+    <%
+        }
+    %>
+    <link href="<%= AttachVersionInfo("jquery-ui-1.12.1/jquery-ui.min.css") %>" rel="stylesheet" />
+    <script src="<%= AttachVersionInfo("jquery-ui-1.12.1/jquery-ui.min.js") %>"></script>
+    <script src="<%= AttachVersionInfo("jquery-ui-1.12.1/jquery.ui.iframedialog.js") %>"></script>
+    <script src="<%= AttachVersionInfo("jquery-ui-1.12.1/jquery.dialogextend.js") %>"></script>
+    
+    <script src="<%= AttachVersionInfo("jquery-file-upload/js/jquery.iframe-transport.js") %>"></script>
+    <script src="<%= AttachVersionInfo("jquery-file-upload/js/jquery.fileupload.js") %>"></script>
+
+    <link href="<%= AttachVersionInfo("grid-2.1.0/pqgrid.min.css") %>" rel="stylesheet" />
+    <script src="<%= AttachVersionInfo("grid-2.1.0/pqgrid.min.js") %>"></script>
+    <link href="<%= AttachVersionInfo("grid-2.1.0/themes/Office/pqgrid.css") %>" rel="stylesheet" />
+    <script src="<%= AttachVersionInfo("distpicker/distpicker.data.js") %>"></script>
+    <script src="<%= AttachVersionInfo("distpicker/distpicker.js") %>"></script>
+     <!--图表插件引入-->
+    <script src="<%= AttachVersionInfo("echarts/echarts.js") %>" type="text/javascript"></script>
+    <%--<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=D2b4558ebed15e52558c6a766c35ee73&t=20170517145936"></script>--%>
+    <%--//8kXN4fHtkmfClFsPCzHOaapPkS3kv1Ru--%>
+    <%--<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=8kXN4fHtkmfClFsPCzHOaapPkS3kv1Ru"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" clientidmode="Static" runat="server" class="form-horizontal">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <script type="text/javascript">
+            window.onload = new function () {
+                resizeIframeHeight();
+            };
+            $(function () {
+                BUI.use('bui/calendar', function (Calendar) {
+                    var datepicker = new Calendar.DatePicker({
+                        trigger: '.calendar',
+                        autoRender: true
+                    });
+                });
+
+                BUI.use(['bui/form', 'bui/tooltip'], function (Form, Tooltip) {
+                    new Form.Form({
+                        srcNode: '#form1',
+                        errorTpl: '<span class="x-icon x-icon-small x-icon-error" data-title="{error}">!</span>'
+                    }).render();
+                    var tips = new Tooltip.Tips({
+                        tip: {
+                            trigger: '.x-icon-error',
+                            alignType: 'top',
+                            elCls: 'tips tips-warning tips-no-icon tip1',
+                            offset: 10
+                        }
+                    });
+                    tips.render();
+                });
+
+                var checkSubmitFlg = false;
+                $("form").submit(function () {
+                    if (window.autoPostBack) {
+                        return;
+                    }
+                    $(":disabled").attr('disabled', false);
+                    BUI.use('bui/overlay', function (Overlay) {
+                        BUI.Message.Show({
+                            closeable: false,
+                            buttons: [],
+                            width: 400,
+                            height: 85,
+                            msg: '<%= "正在提交......请耐心等待......".GetRes() %>',
+                            icon: 'info'
+                        });
+                    });
+
+                    if (!checkSubmitFlg) {
+                        checkSubmitFlg = true;
+                        return true;
+                    } else {
+                        alert('<%= "不能重复提交，请耐心等待......".GetRes() %>');
+                        return false;
+                    }
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

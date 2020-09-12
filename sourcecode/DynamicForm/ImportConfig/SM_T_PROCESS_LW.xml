@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_LW" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_T_PROCESS_LW WHERE PKId=@PKId" Insert="INSERT INTO SM_T_PROCESS_LW(PKId,InstanceId,Z1Standard,Z1Max,Z1Min,Z2Standard,Z2Max,Z2Min,Z3Standard,Z3Max,Z3Min,Z4Standard,Z4Max,Z4Min,Z5Standard,Z5Max,Z5Min,Z6Standard,Z6Max,Z6Min,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@PKId,@InstanceId,@Z1Standard,@Z1Max,@Z1Min,@Z2Standard,@Z2Max,@Z2Min,@Z3Standard,@Z3Max,@Z3Min,@Z4Standard,@Z4Max,@Z4Min,@Z5Standard,@Z5Max,@Z5Min,@Z6Standard,@Z6Max,@Z6Min,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_T_PROCESS_LW SET InstanceId=@InstanceId,Z1Standard=@Z1Standard,Z1Max=@Z1Max,Z1Min=@Z1Min,Z2Standard=@Z2Standard,Z2Max=@Z2Max,Z2Min=@Z2Min,Z3Standard=@Z3Standard,Z3Max=@Z3Max,Z3Min=@Z3Min,Z4Standard=@Z4Standard,Z4Max=@Z4Max,Z4Min=@Z4Min,Z5Standard=@Z5Standard,Z5Max=@Z5Max,Z5Min=@Z5Min,Z6Standard=@Z6Standard,Z6Max=@Z6Max,Z6Min=@Z6Min,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE PKId=@PKId">
+    <column Name="PKId" Text="PKId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Z1Standard" Text="Z1Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z1Max" Text="Z1Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z1Min" Text="Z1Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z2Standard" Text="Z2Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z2Max" Text="Z2Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z2Min" Text="Z2Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z3Standard" Text="Z3Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z3Max" Text="Z3Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z3Min" Text="Z3Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z4Standard" Text="Z4Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z4Max" Text="Z4Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z4Min" Text="Z4Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z5Standard" Text="Z5Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z5Max" Text="Z5Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z5Min" Text="Z5Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z6Standard" Text="Z6Standard" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z6Max" Text="Z6Max" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Z6Min" Text="Z6Min" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

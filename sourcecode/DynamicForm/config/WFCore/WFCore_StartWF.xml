@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_StartWF" Name="WFCore_StartWF" Desc="开始工作流" DAImp="DynamicForm.DA.WFCore_StartWFDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+    </Row>
+  </Panel>
+  <!--DF_SCRIPT
+$(function() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_MyTask&ExecuteStatus=Unfinished';
+    var InstanceStepExecutorId = $('#InstanceStepExecutorId').val()
+    if (InstanceStepExecutorId) {
+        url = 'DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing&InstanceStepExecutorId=' + InstanceStepExecutorId;
+    }
+    dfOpenLink(url);
+});
+-->
+</Form>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_M_SLAVEDEVICE" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_M_SLAVEDEVICE WHERE" Insert="INSERT INTO SM_M_SLAVEDEVICE(SlaveDeviceId,SlaveDeviceAddress,SlaveDeviceName,MasterDeviceId,MasterDeviceName,MasterDeviceAddress,Remark1,Remark2,Remark3,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@SlaveDeviceId,@SlaveDeviceAddress,@SlaveDeviceName,@MasterDeviceId,@MasterDeviceName,@MasterDeviceAddress,@Remark1,@Remark2,@Remark3,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_M_SLAVEDEVICE SET SlaveDeviceId=@SlaveDeviceId,SlaveDeviceAddress=@SlaveDeviceAddress,SlaveDeviceName=@SlaveDeviceName,MasterDeviceId=@MasterDeviceId,MasterDeviceName=@MasterDeviceName,MasterDeviceAddress=@MasterDeviceAddress,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE">
+    <column Name="SlaveDeviceId" Text="SlaveDeviceId" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="SlaveDeviceAddress" Text="SlaveDeviceAddress" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="SlaveDeviceName" Text="SlaveDeviceName" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="MasterDeviceId" Text="MasterDeviceId" DataType="nvarchar(50)" />
+    <column Name="MasterDeviceName" Text="MasterDeviceName" DataType="nvarchar(50)" IsNullable="Y" GetValue="select MasterDeviceName as MasterDeviceName from sm_m_masterdevice where MasterDeviceId=@MasterDeviceId" />
+    <column Name="MasterDeviceAddress" Text="MasterDeviceAddress" DataType="nvarchar(50)" IsNullable="Y" GetValue="select Address as MasterDeviceAddress from sm_m_masterdevice where MasterDeviceId=@MasterDeviceId" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

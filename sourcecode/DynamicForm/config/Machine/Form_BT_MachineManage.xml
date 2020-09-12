@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_MachineManage" Name="Form_BT_MachineManage" Desc="设备管理" DAImp="DynamicForm.DA.Form_BT_MachineManageDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="KPId" Type="hidden" />
+      <Control Name="MachineName" Text="设备名称" Width="span8" Type="text" />
+      <Control Name="MachineNum" Text="设备编号" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="MachineStatus" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="MachineParam1" Type="hidden" />
+      <Control Name="MachineParam2" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="MachineParam3" Type="hidden" />
+      <Control Name="Remark1" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark2" Type="hidden" />
+      <Control Name="Remark3" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark4" Type="hidden" />
+      <Control Name="Remark5" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Type="hidden" />
+      <Control Name="CreateUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Type="hidden" />
+      <Control Name="LastModifyUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20200908105702225" Name="Panel20200908105702225" Type="SingleRecord">
+    <Row>
+      <Control Name="Control20200908105725270" Text="Control20200908105725270" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class='span24'><div id='container1' style='height:400px;align:center;'></div></div>
+-->
+      <!--DF_SCRIPT
+var myChart = echarts.init(document.getElementById('container1'));
+initChart();
+function initChart(){
+//  var option = {
+// color: ['#333366', '#669999', '#996600'],
+//             title: {
+//                 text: ''
+//             },
+//             tooltip: {},
+//             legend: {
+              
+//             },
+//             xAxis: {
+//                 data: ["设备1","设备1","设备1","设备1","设备1","设备1"]
+//             },
+//             yAxis: {},
+//             series: [{
+//                 name: '设备状态',
+//                 type: 'bar',
+//                 data: [1,1,0,2,1,2]
+//             }]
+//         };
+
+//         // 使用刚指定的配置项和数据显示图表。
+//         myChart.setOption(option);
+// if($('#QueryType').val()=="Signle"){
+// initChartYear();
+// }
+// else{
+// initChartYearLine();
+// }     
+        
+// }
+ option = {
+    tooltip: {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series : [
+        {
+            name: '速度',
+            type: 'gauge',
+            z: 3,
+            min: 0,
+            max: 220,
+            splitNumber: 11,
+            radius: '50%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {
+                backgroundColor: 'auto',
+                borderRadius: 2,
+                color: '#eee',
+                padding: 3,
+                textShadowBlur: 2,
+                textShadowOffsetX: 1,
+                textShadowOffsetY: 1,
+                textShadowColor: '#222'
+            },
+            title: {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder',
+                fontSize: 20,
+                fontStyle: 'italic'
+            },
+            detail: {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                formatter: function (value) {
+                    value = (value + '').split('.');
+                    value.length < 2 && (value.push('00'));
+                    return ('00' + value[0]).slice(-2)
+                        + '.' + (value[1] + '00').slice(0, 2);
+                },
+                fontWeight: 'bolder',
+                borderRadius: 3,
+                backgroundColor: '#444',
+                borderColor: '#aaa',
+                shadowBlur: 5,
+                shadowColor: '#333',
+                shadowOffsetX: 0,
+                shadowOffsetY: 3,
+                borderWidth: 2,
+                textBorderColor: '#000',
+                textBorderWidth: 2,
+                textShadowBlur: 2,
+                textShadowColor: '#fff',
+                textShadowOffsetX: 0,
+                textShadowOffsetY: 0,
+                fontFamily: 'Arial',
+                width: 100,
+                color: '#eee',
+                rich: {}
+            },
+            data: [{value: 40, name: 'km/h'}]
+        },
+        {
+            name: '转速',
+            type: 'gauge',
+            center: ['20%', '55%'],    // 默认全局居中
+            radius: '35%',
+            min: 0,
+            max: 7,
+            endAngle: 45,
+            splitNumber: 7,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width: 5
+            },
+            title: {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail: {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                fontWeight: 'bolder'
+            },
+            data: [{value: 1.5, name: 'x1000 r/min'}]
+        },
+        {
+            name: '油表',
+            type: 'gauge',
+            center: ['77%', '50%'],    // 默认全局居中
+            radius: '25%',
+            min: 0,
+            max: 2,
+            startAngle: 135,
+            endAngle: 45,
+            splitNumber: 2,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 5,
+                length: 10,        // 属性length控制线长
+                lineStyle: {        // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {
+                formatter: function (v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width: 2
+            },
+            title: {
+                show: false
+            },
+            detail: {
+                show: false
+            },
+            data: [{value: 0.5, name: 'gas'}]
+        },
+        {
+            name: '水表',
+            type: 'gauge',
+            center: ['77%', '50%'],    // 默认全局居中
+            radius: '25%',
+            min: 0,
+            max: 2,
+            startAngle: 315,
+            endAngle: 225,
+            splitNumber: 2,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                show: false
+            },
+            axisLabel: {
+                formatter: function(v){
+                    switch (v + '') {
+                        case '0' : return 'H';
+                        case '1' : return 'Water';
+                        case '2' : return 'C';
+                    }
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title: {
+                show: false
+            },
+            detail: {
+                show: false
+            },
+            data: [{value: 0.5, name: 'gas'}]
+        }
+    ]
+};
+}
+setInterval(function (){
+    option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+    option.series[1].data[0].value = (Math.random()*7).toFixed(2) - 0;
+    option.series[2].data[0].value = (Math.random()*2).toFixed(2) - 0;
+    option.series[3].data[0].value = (Math.random()*2).toFixed(2) - 0;
+    myChart.setOption(option,true);
+},200);
+
+
+
+
+
+
+
+// function initChartYear(){
+
+// var labelOption = {
+//     normal: {
+//         show: true,
+//         align: 'left',
+//         verticalAlign: 'middle',
+//         fontSize: 16,
+//         formater:function(a,b,c){return c;}
+//     }
+// };
+
+// var Position=$('#Position').val()
+
+
+// $.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzeyearsummary',
+//       {Position:Position,
+//       CollectYearFrom:$('#CollectYearFrom').val(),
+//       CollectYearTo:$('#CollectYearTo').val()
+//         }, function (data) {
+//                 if (data.hasError == true) {
+//                     alert(data.error);
+//                     return;
+//                 }
+//                 else {
+//                    var d1=JSON.parse(data.data1);
+// var d2=JSON.parse(data.data2);
+//                     var d=JSON.parse(data.data);
+//                     var categories=[];
+//                     var s=[];
+//                 for(m in d2){
+//                   categories[m]=d2[m];
+//                 }
+//                     for(m in d){
+//                           dm=[];
+//                           for(n in d[m].data_vm){
+//                                                 dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
+//                                              }
+
+//                           s.push({name:d[m].name,data:dm,type: 'line', label: labelOption});
+//                     }
+//                      myChart.setOption({
+//                       legend: {
+//                         data:d1,
+// right:'10%',
+// x:'50%',
+// y:'25'
+//                       },
+// title:[{
+// text:Position+"年总用电量分析",
+// left:'center'
+// }],
+//                       xAxis: {
+//                                   type: 'category',
+//             axisTick: {show: false},
+//                         data: categories
+//                       },
+//                           yAxis: [
+//         {
+//             type: 'value',
+// name:'度'
+//         }
+//     ],
+//                     series: s
+//                   });
+//                 }
+
+//      });
+// }
+
+// function initChartYearLine(){
+
+// var labelOption = {
+//     normal: {
+//         show: true,
+//         align: 'left',
+//         verticalAlign: 'middle',
+//         fontSize: 16,
+//         formater:function(a,b,c){return c;}
+//     }
+// };
+
+// var Line=$('#Line').val()
+
+
+// $.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzeyearlinesummary',
+//       {Line:Line,
+//       CollectYearFrom:$('#CollectYearFrom').val(),
+//       CollectYearTo:$('#CollectYearTo').val()
+//         }, function (data) {
+//                 if (data.hasError == true) {
+//                     alert(data.error);
+//                     return;
+//                 }
+//                 else {
+//                    var d1=JSON.parse(data.data1);
+// var d2=JSON.parse(data.data2);
+
+//                     var d=JSON.parse(data.data);
+//                     var categories=[];
+//                     var s=[];
+//                 for(m in d2){
+//                   categories[m]=d2[m];
+//                 }
+//                     for(m in d){
+//                           dm=[];
+//                           for(n in d[m].data_vm){
+//                                                 dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
+//                                              }
+
+//                           s.push({name:d[m].name,data:dm,type: 'line',label: labelOption});
+//                     }
+//                      myChart.setOption({
+//                       legend: {
+//                         data:d1,
+// right:'10%',
+// x:'50%',
+// y:'25'
+//                       },
+// title:[{
+// text:Line+"年总用电量分析",
+// left:'center'
+// }],
+//                       xAxis: {
+//                                   type: 'category',
+//             axisTick: {show: false},
+//                         data: categories
+//                       },
+//                           yAxis: [
+//         {
+//             type: 'value',
+//             name:'度'
+//         }
+//     ],
+//                     series: s
+//                   });
+//                 }
+
+//      });
+// }
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="KPId" Visible="false" Sortable="true" />
+    <Column Name="MachineName" Text="设备名称" Width="100" Sortable="true" />
+    <Column Name="MachineNum" Text="设备编号" Width="100" Sortable="true" />
+    <Column Name="MachineStatus" Text="设备状态" Width="100" Sortable="true" />
+    <Column Name="MachineParam1" Text="设备参数一" Width="100" Sortable="true" />
+    <Column Name="MachineParam2" Text="设备参数二" Width="100" Sortable="true" />
+    <Column Name="MachineParam3" Text="设备参数三" Width="100" Sortable="true" />
+    <Column Name="Remark1" Visible="false" Sortable="true" />
+    <Column Name="Remark2" Visible="false" Sortable="true" />
+    <Column Name="Remark3" Visible="false" Sortable="true" />
+    <Column Name="Remark4" Visible="false" Sortable="true" />
+    <Column Name="Remark5" Visible="false" Sortable="true" />
+    <Column Name="CreateTime" Visible="false" Sortable="true" />
+    <Column Name="CreateUser" Visible="false" Sortable="true" />
+    <Column Name="LastModifyTime" Visible="false" Sortable="true" />
+    <Column Name="LastModifyUser" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'KPId': a.KPId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_BT_MachineManage',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_MachineManage_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&KPId=' + selections[0].KPId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_MachineManage_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

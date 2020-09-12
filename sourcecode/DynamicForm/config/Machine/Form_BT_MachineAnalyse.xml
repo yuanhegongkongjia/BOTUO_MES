@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_MachineAnalyse" Name="Form_BT_MachineAnalyse" Desc="设备数据分析" DAImp="DynamicForm.DA.Form_BT_MachineAnalyseDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="MachineName" Text="设备名称" Width="span8" Type="text" />
+      <Control Name="MachineNum" Text="设备编号" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="MachineOEE" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="MachineAverageTime" Type="hidden" />
+      <Control Name="Remark1" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark2" Type="hidden" />
+      <Control Name="Remark3" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark4" Type="hidden" />
+      <Control Name="Remark5" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Type="hidden" />
+      <Control Name="CreateUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Type="hidden" />
+      <Control Name="LastModifyUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20200910163146127" Name="Panel20200910163146127" Type="SingleRecord">
+    <Row>
+      <Control Name="Control20200910163322276" Text="Control20200910163322276" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class='span24'><div id='container1' style='height:400px;align:center;'></div></div>
+-->
+      <!--DF_SCRIPT
+var myChart = echarts.init(document.getElementById('container1'));
+initChart();
+function initChart(){
+
+	var colorList = [{
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 1,
+        y2: 1,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(51,192,205,0.01)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: 'rgba(51,192,205,0.57)' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    },
+    {
+        type: 'linear',
+        x: 1,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(115,172,255,0.02)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: 'rgba(115,172,255,0.67)' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    },
+    {
+        type: 'linear',
+        x: 1,
+        y: 0,
+        x2: 0,
+        y2: 0,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(158,135,255,0.02)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: 'rgba(158,135,255,0.57)' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    },
+    {
+        type: 'linear',
+        x: 0,
+        y: 1,
+        x2: 0,
+        y2: 0,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(252,75,75,0.01)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: 'rgba(252,75,75,0.57)' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    },
+    {
+        type: 'linear',
+        x: 1,
+        y: 1,
+        x2: 1,
+        y2: 0,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(253,138,106,0.01)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: '#FDB36ac2' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    },
+    {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 1,
+        y2: 0,
+        colorStops: [{
+                offset: 0,
+                color: 'rgba(254,206,67,0.12)' // 0% 处的颜色
+            },
+            {
+                offset: 1,
+                color: '#FECE4391' // 100% 处的颜色
+            }
+        ],
+        globalCoord: false // 缺省为 false
+    }
+]
+var colorLine = ['#33C0CD', '#73ACFF', '#9E87FF', '#FE6969', '#FDB36A', '#FECE43']
+
+function getRich() {
+    let result = {}
+    colorLine.forEach((v, i) => {
+        result[`hr${i}`] = {
+            backgroundColor: colorLine[i],
+            borderRadius: 3,
+            width: 3,
+            height: 3,
+            padding: [3, 3, 0, -12]
+        }
+        result[`a${i}`] = {
+            padding: [8, -60, -20, -20],
+            color: colorLine[i],
+            fontSize: 12
+        }
+    })
+    return result
+}
+let data = [{
+    'name': '北京',
+    'value': 25
+}, {
+    'name': '上海',
+    'value': 20
+}, {
+    'name': '广州',
+    'value': 18
+}, {
+    'name': '深圳',
+    'value': 15
+}, {
+    'name': '未知',
+    'value': 13
+}, {
+    'name': '海外',
+    'value': 9
+}].sort((a, b) => {
+    return b.value - a.value
+})
+data.forEach((v, i) => {
+    v.labelLine = {
+        lineStyle: {
+            width: 1,
+            color: colorLine[i]
+        }
+    }
+})
+option = {
+    series: [{
+        type: 'pie',
+        radius: '60%',
+        center: ['50%', '50%'],
+        clockwise: true,
+        avoidLabelOverlap: true,
+        label: {
+            show: true,
+            position: 'outside',
+            formatter: function(params) {
+                const name = params.name
+                const percent = params.percent + '%'
+                const index = params.dataIndex
+                return [`{a${index}|${name}：${percent}}`, `{hr${index}|}`].join('\n')
+            },
+            rich: getRich()
+        },
+        itemStyle: {
+            normal: {
+                color: function(params) {
+                    return colorList[params.dataIndex]
+                }
+            }
+        },
+        data,
+        roseType: 'radius'
+    }]
+}
+ myChart.setOption(option);
+
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="MachineName" Text="设备名称" Width="100" Sortable="true" />
+    <Column Name="MachineNum" Text="设备编号" Width="100" Sortable="true" />
+    <Column Name="MachineOEE" Text="设备OEE" Width="100" Sortable="true" />
+    <Column Name="MachineAverageTime" Text="设备平均故障时间" Width="100" Sortable="true" />
+    <Column Name="Remark1" Visible="false" Sortable="true" />
+    <Column Name="Remark2" Visible="false" Sortable="true" />
+    <Column Name="Remark3" Visible="false" Sortable="true" />
+    <Column Name="Remark4" Visible="false" Sortable="true" />
+    <Column Name="Remark5" Visible="false" Sortable="true" />
+    <Column Name="CreateTime" Visible="false" Sortable="true" />
+    <Column Name="CreateUser" Visible="false" Sortable="true" />
+    <Column Name="LastModifyTime" Visible="false" Sortable="true" />
+    <Column Name="LastModifyUser" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'PKId': a.PKId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_BT_MachineAnalyse',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_MachineAnalyse_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&PKId=' + selections[0].PKId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_MachineAnalyse_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

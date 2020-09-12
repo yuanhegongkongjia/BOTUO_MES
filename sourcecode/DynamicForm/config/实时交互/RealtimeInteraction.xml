@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="RealtimeInteraction" Name="RealtimeInteraction" Desc="实时交互" DAImp="DynamicForm.DA.RealtimeInteractionDA,DynamicForm">
+  <Panel Id="Panel20170209234920292" Name="Panel20170209234920292" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:310px;&quot;}">
+      <Control Name="dfTaskId" Type="hidden" />
+      <Control Name="Msg" Text="服务端消息" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:300px;&quot;}" />
+      <!--DF_SCRIPT
+var dfDispalyMsg = true;
+$(function() {
+    $.connection.hub.qs = {
+        'dfTaskId': $('#dfTaskId').val()
+    };
+    var chat = $.connection.chatHub;
+    chat.client.addChatMessage = function(message) {
+if(dfDispalyMsg ) {
+        $('#Msg').val($('#Msg').val() + '\n' + message);
+}
+    };
+    $.connection.hub.start();
+});
+-->
+    </Row>
+    <Row>
+      <Control Name="btnPause" Text="暂停显示" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnPause_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnPause_click() {
+    dfDispalyMsg = false;
+}
+-->
+      <Control Name="btnRun" Text="继续显示" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnRun_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnRun_click() {
+    dfDispalyMsg = true;
+}
+-->
+      <Control Name="btnClear" Text="清空" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnClear_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnClear_click() {
+    $('#Msg').val('');
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="btnUpdate" Text="停止任务" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+      <!--DF_SCRIPT
+$(function() {
+    $('#btnUpdate').on('click', function() {
+        return confirm('确认要停止任务么？');
+    });
+});
+-->
+    </Row>
+  </Panel>
+</Form>

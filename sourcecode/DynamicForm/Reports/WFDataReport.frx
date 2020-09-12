@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/14/2017 13:36:56" ReportInfo.Modified="08/14/2017 14:17:46" ReportInfo.CreatorVersion="2016.4.23.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {
+      // get the "Customers" datasource
+      DataSourceBase customers = Report.GetDataSource("T1");
+      // init it
+      customers.Init();
+      
+      // number of columns in the datasource
+      int colCount = customers.Columns.Count;
+      
+      // print the table header which contains column titles. It's a row with index = 0.
+      Table1.PrintRow(0);
+      for (int i = 0; i < colCount; i++)
+      {
+        // fill the cell with column title
+        Cell1.Text = customers.Columns[i].Alias;
+        // print it
+        Table1.PrintColumn(0);
+      }
+      
+      // now print a datasource content
+      while (customers.HasMoreRows)
+      {
+        // print the table body. It's a row with index = 1.
+        Table1.PrintRow(1);
+        for (int i = 0; i < colCount; i++)
+        {
+          // fill the cell with datasource column's data
+          Cell2.Text = customers[customers.Columns[i]].ToString().Replace("[","Chr(91)").Replace("[","[Chr(93)]").Replace("Chr(91)","[Chr(91)]");
+          // print it
+          Table1.PrintColumn(0);
+        }
+        
+        // move to the next row
+        customers.Next();
+      }
+      
+      // AfterCalcBounds event is fired after calculating table bounds, just before
+      // printing the table. We will use it to correct the column's width.
+      Table1.ResultTable.AfterCalcBounds += new EventHandler(ResultTable_AfterCalcBounds);
+    }
+    
+    private void ResultTable_AfterCalcBounds(object sender, EventArgs e)
+    {
+      TableResult resultTable = sender as TableResult;
+      float tableWidth = resultTable.Width;
+      float pageWidth = Engine.PageWidth;
+      
+      if (tableWidth > pageWidth)
+      {
+        // table is wider than page, correct the columns width
+        float ratio = pageWidth / tableWidth;
+        foreach (TableColumn column in resultTable.Columns)
+        {
+          column.AutoSize = false;
+          column.Width *= ratio;
+        }
+        
+        // this will recalculate table rows height
+        resultTable.CalcHeight();
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1" PaperWidth="1200">
+    <DataBand Name="Data1" Width="4460.4" Height="132.3">
+      <TableObject Name="Table1" Top="9.45" Width="66.15" Height="37.8" FixedRows="1" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column1"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Border.Lines="All" Fill.Color="IndianRed" Text="Fax" HorzAlign="Center" VertAlign="Center" Font="SimSun, 9.75pt, style=Bold"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell2" Border.Lines="All" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+  </ReportPage>
+</Report>

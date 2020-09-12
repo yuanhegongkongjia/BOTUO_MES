@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="WF_M_RES" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM WF_M_RES WHERE ResId=@ResId" Insert="INSERT INTO WF_M_RES(ResId,English,ChineseSimplified,ChineseTraditional,CreateUser,CreateTime,LastModifyUser,LastModifyTime) VALUES(@ResId,@English,@ChineseSimplified,@ChineseTraditional,@CreateUser,@CreateTime,@LastModifyUser,@LastModifyTime)" Update="UPDATE WF_M_RES SET English=@English,ChineseSimplified=@ChineseSimplified,ChineseTraditional=@ChineseTraditional,LastModifyUser=@LastModifyUser,LastModifyTime=@LastModifyTime WHERE ResId=@ResId">
+    <column Name="ResId" Text="ResId" DataType="nvarchar(100)" IsPrimaryKey="Y" CheckMustInput="true" />
+    <column Name="English" Text="English" DataType="nvarchar(1000)" IsNullable="Y" />
+    <column Name="ChineseSimplified" Text="ChineseSimplified" DataType="nvarchar(1000)" IsNullable="Y" />
+    <column Name="ChineseTraditional" Text="ChineseTraditional" DataType="nvarchar(1000)" IsNullable="Y" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+  </table>
+</tables>

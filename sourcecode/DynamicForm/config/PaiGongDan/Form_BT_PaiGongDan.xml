@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_PaiGongDan" Name="Form_BT_PaiGongDan" Desc="派工单录入" DAImp="DynamicForm.DA.Form_BT_PaiGongDanDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ID" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" />
+      <Control Name="PRODUCT_NAME" Text="产品名称" Width="span8" Type="text" />
+      <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="HE_MO" Type="hidden" />
+      <Control Name="JINFUHAO" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CHANG" Type="hidden" />
+      <Control Name="KUAN" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="GAO" Type="hidden" />
+      <Control Name="UNIT" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="ORDER_AMUONT" Type="hidden" />
+      <Control Name="FANG_LIANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="BAD_NUMBER" Type="hidden" />
+      <Control Name="ZHUAN_NUMBER" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TABLE_MAKER" Type="hidden" />
+      <Control Name="WANG_PIAN_MAKE" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="WANG_PIAN_ZUZHUANG" Type="hidden" />
+      <Control Name="FU_QIAN_QIE_GE" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CHENG_PIN_BAO_ZHUANG" Type="hidden" />
+      <Control Name="TIME_ZHIBIAO" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_WANGPIANZHIZAUO" Type="hidden" />
+      <Control Name="TIME_WANGPIANZUZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_FUQIANQIEGE" Type="hidden" />
+      <Control Name="TIME_CHENGPINBAOZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="ID" Visible="false" Sortable="true" />
+    <Column Name="PROJECT_NAME" Text="工程项目名称" Width="100" Sortable="true" />
+    <Column Name="PRODUCT_NAME" Text="产品名称" Width="100" Sortable="true" />
+    <Column Name="ORDER_NUMBER" Text="订单号" Width="100" Sortable="true" />
+    <Column Name="HE_MO" Text="是否和模" Width="60" Sortable="true" />
+    <Column Name="JINFUHAO" Text="进釜号" Width="60" Sortable="true" />
+    <Column Name="CHANG" Text="长" Width="60" Sortable="true" />
+    <Column Name="KUAN" Text="宽" Width="60" Sortable="true" />
+    <Column Name="GAO" Text="高" Width="60" Sortable="true" />
+    <Column Name="UNIT" Text="单位" Width="60" Sortable="true" />
+    <Column Name="ORDER_AMUONT" Text="下单数量" Width="80" Sortable="true" />
+    <Column Name="FANG_LIANG" Text="方量" Width="80" Sortable="true" />
+    <Column Name="BAD_NUMBER" Visible="false" Sortable="true" />
+    <Column Name="ZHUAN_NUMBER" Visible="false" Sortable="true" />
+    <Column Name="TABLE_MAKER" Visible="false" Sortable="true" />
+    <Column Name="WANG_PIAN_MAKE" Visible="false" Sortable="true" />
+    <Column Name="WANG_PIAN_ZUZHUANG" Visible="false" Sortable="true" />
+    <Column Name="FU_QIAN_QIE_GE" Visible="false" Sortable="true" />
+    <Column Name="CHENG_PIN_BAO_ZHUANG" Visible="false" Sortable="true" />
+    <Column Name="TIME_ZHIBIAO" Visible="false" Sortable="true" />
+    <Column Name="TIME_WANGPIANZHIZAUO" Visible="false" Sortable="true" />
+    <Column Name="TIME_WANGPIANZUZHUANG" Visible="false" Sortable="true" />
+    <Column Name="TIME_FUQIANQIEGE" Visible="false" Sortable="true" />
+    <Column Name="TIME_CHENGPINBAOZHUANG" Visible="false" Sortable="true" />
+    <Column Name="REMARK1" Visible="false" Sortable="true" />
+    <Column Name="REMARK2" Visible="false" Sortable="true" />
+    <Column Name="REMARK3" Visible="false" Sortable="true" />
+    <Column Name="REMARK4" Visible="false" Sortable="true" />
+    <Column Name="REMARK5" Visible="false" Sortable="true" />
+    <Column Name="REMARK6" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'ID': a.ID
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_BT_PaiGongDan',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&ID=' + selections[0].ID;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel20200907152604651" Name="Panel20200907152604651" Type="SingleRecord">
+    <Row>
+      <Control Name="ProcessManager" TextAfterControl="&lt;input id='selectUser' name='selectUser' type='button' value=' ... ' onclick='selectUser_click();return false;' /&gt;" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;input-normal&quot;}" />
+      <!--DF_SCRIPT
+function selectUser_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectUser';
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length == 1) {
+                $('#ProcessManager').val(selections[0].UserId);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(800, 550, '', url, btns);
+}
+-->
+    </Row>
+  </Panel>
+</Form>

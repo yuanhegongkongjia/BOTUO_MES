@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_LOG" Name="Form_SM_T_PROCESS_LOG" Desc="工艺卡调整" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_LOGDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="InstanceId" Text="工艺卡编号" Width="span8" Type="text" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="InstanceId" Text="编号" Width="150" Sortable="true" />
+    <Column Name="ProcessName" Text="名称" Width="300" Sortable="true" />
+    <Column Name="ProduceDate" Text="生产日期" Width="100" Sortable="true" />
+    <Column Name="Line" Text="线号" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="Panel20190711150746076" Name="Panel20190711150746076" Type="SingleRecord">
+    <Row>
+      <Control Name="btnEdit" Text="调整" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "";
+    p += '&InstanceId=' + selections[0].InstanceId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LOG_Edit' + p;
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

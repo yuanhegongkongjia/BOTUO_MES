@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_M_UPH" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM SM_M_UPH WHERE PKId=@PKId" Insert="INSERT INTO SM_M_UPH(PKId,ProductName,Station,SubStation,UPH,Remark1,Remark2,Remark3,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@PKId,@ProductName,@Station,@SubStation,@UPH,@Remark1,@Remark2,@Remark3,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_M_UPH SET ProductName=@ProductName,Station=@Station,SubStation=@SubStation,UPH=@UPH,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE PKId=@PKId">
+    <column Name="PKId" Text="PKId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="ProductName" Text="ProductName" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Station" Text="Station" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="SubStation" Text="SubStation" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="UPH" Text="UPH" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

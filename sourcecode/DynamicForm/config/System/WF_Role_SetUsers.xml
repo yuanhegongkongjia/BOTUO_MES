@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Role_SetUsers" Name="WF_Role_SetUsers" Desc="设置角色的用户" DAImp="DynamicForm.DA.WF_Role_SetUsersDA,DynamicForm">
+  <Panel Id="Panel201507271026440005" Name="Panel201507271026440005" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="RoleId" Text="角色编号" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+      <Control Name="RoleName" Text="角色名称" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;Panel201507271026440005&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="RoleId" Visible="false" />
+    <Column Name="UserId" Visible="false" />
+    <Column Name="UserName" Text="用户名" Width="200" />
+    <Column Name="ChineseName" Text="姓名" Width="100" />
+    <Column Name="DeptName" Text="部门名称" Width="100" />
+  </Panel>
+  <Panel Id="Panel201507251157480033" Name="Panel201507251157480033" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'RoleId': a.RoleId,
+            'UserId': a.UserId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_Role_SetUsers', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var p = "&RoleId=" + $('#RoleId').val();
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_Role_SetUsers_Edit' + p;
+    window.location.href = url;
+}
+-->
+    </Row>
+  </Panel>
+</Form>

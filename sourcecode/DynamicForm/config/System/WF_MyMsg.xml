@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_MyMsg" Name="WF_MyMsg" Desc="我的消息" DAImp="DynamicForm.DA.WF_MyMsgDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv', style:'margin-bottom:20px;'}">
+    <Row>
+      <Control Name="IsRead" Text="消息状态" Width="span8" Type="select" ControlAttributes="{style:'width:150px'}" Options="{'':'所有消息','0':'未读','1':'已读'}" OptionType="JSON" />
+      <Control Name="CreateTimeFrom" Text="消息日期从" Width="span7" DataRules="{&quot;date&quot;:true}" Type="calendar" ControlAttributes="{style:'width:150px'}" />
+      <Control Name="CreateTimeTo" Text="到" Width="span7" DataRules="{&quot;date&quot;:true}" Type="calendar" ControlAttributes="{style:'width:150px'}" />
+    </Row>
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'MsgId': a.MsgId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_MyMsg', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var d = data;
+                if (typeof(data) == "string") {
+                    d = BUI.JSON.parse(data);
+                }
+                dfAlert(d.error);
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnMarkAllRead" Text="全部标记已读" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer;width:100px;',&quot;onclick&quot;:&quot;btnMarkAllRead_click();return false;&quot; }&#xA;" Action="update" />
+      <!--DF_SCRIPT
+function btnMarkAllRead_click() {
+    if (confirm('确定要将所有的记录都标记成已读么？')) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_MyMsg&subAction=MarkAllRead', {
+            })
+            .done(function(data) {
+                var d = data;
+                if (typeof(data) == "string") {
+                    d = BUI.JSON.parse(data);
+                }
+                dfAlert(d.error);
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnMarkRead" Text="标记已读" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnMarkRead_click();return false;&quot; }&#xA;" Action="update" />
+      <!--DF_SCRIPT
+function btnMarkRead_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'MsgId': a.MsgId
+        }
+    });
+    if (confirm('确定要标记选定的记录为已读么？')) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_MyMsg&subAction=MarkRead', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var d = data;
+                if (typeof(data) == "string") {
+                    d = BUI.JSON.parse(data);
+                }
+                dfAlert(d.error);
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="MsgId" Visible="false" />
+    <Column Name="IsRead" Text="已读" Width="100" />
+    <Column Name="IsSendEmail" Text="已发送邮件" Width="100" />
+    <Column Name="IsSendFeiQ" Text="已发送短信" Width="100" />
+    <Column Name="CreateTime" Text="接收时间" Width="150" />
+    <Column Name="OP" Text="消息" Width="500" />
+    <!--DF_SCRIPT
+function(value, obj) {
+    var url = obj.MsgLink;
+    var msg = obj.Msg;
+    if (obj.IsRead == 0 || obj.IsRead == getRes("否")) {
+        msg = "<strong>{0}</strong>".format(msg);
+    }
+    var str = "<a href='javascript:void(0);' onclick=\"openMsgLink('{0}','{1}')\">{2}</a>";
+    return str.format(obj.MsgId, url, msg);
+}
+-->
+  </Panel>
+  <!--DF_SCRIPT
+function openMsgLink(MsgId, MsgLink) {
+    var jqxhr = $.post('DFHandler.ashx?action=queryform&DF_FORMNAME=WF_MyMsg', {
+            'MsgId': MsgId
+        })
+        .done(function(data) {
+            if (MsgLink) {
+                BUI.getControl('grid1').get('store').load();
+                dfDialogFullScreen(MsgLink);
+            }
+        })
+        .fail(function() {
+            alert(getRes('网络错误或者远程处理发生错误'));
+        });
+    return false;
+}
+-->
+</Form>

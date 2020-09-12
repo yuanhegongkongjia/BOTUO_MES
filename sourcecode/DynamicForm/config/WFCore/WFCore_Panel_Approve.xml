@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Panel_Approve" Name="WFCore_Panel_Approve" Desc="签核动作" DAImp="DynamicForm.DA.WFCore_Panel_ApproveDA,DynamicForm">
+  <Panel Id="Panel201512280208170004" Name="Panel201512280208170004" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+      <Control Name="InstanceStepExecutorId" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="dfPanel_201408041559380005" Name="dfPanel_201408041559380005" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="btnAdditionalApprove" Text="加签" Value="7" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdditionalApprove_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdditionalApprove_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_SelectUser&action=btnAdditionalApprove&InstanceId={0}&InstanceStepExecutorId={1}&actionName={2}';
+    var s1 = getRes("加签");
+    url = url.format($('#InstanceId').val(), $('#InstanceStepExecutorId').val(), encodeURIComponent(s1));
+    dfOverlayDialog(800, 600, s1, url);
+}
+-->
+      <Control Name="btnTransferApprove" Text="转签" Value="6" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnTransferApprove_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnTransferApprove_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_SelectUser&action=btnTransferApprove&InstanceId={0}&InstanceStepExecutorId={1}&actionName={2}';
+    var s1 = getRes("转签");
+    url = url.format($('#InstanceId').val(), $('#InstanceStepExecutorId').val(), encodeURIComponent(s1));
+    dfOverlayDialog(800, 600, s1, url);
+}
+-->
+      <Control Name="btnRollback" Text="回退" Value="5" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnRollback_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnRollback_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_SelectStep&action=btnRollback&InstanceId={0}&InstanceStepExecutorId={1}&actionName={2}';
+    var s1 = getRes("回退");
+    url = url.format($('#InstanceId').val(), $('#InstanceStepExecutorId').val(), encodeURIComponent(s1));
+    dfOverlayDialog(450, 250, s1, url);
+}
+-->
+      <Control Name="btnReject" Text="不同意" Value="5" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnReject_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnReject_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_SelectStep&action=btnReject&InstanceId={0}&InstanceStepExecutorId={1}&actionName={2}';
+    var s1 = getRes("不同意");
+    url = url.format($('#InstanceId').val(), $('#InstanceStepExecutorId').val(), encodeURIComponent(s1));
+    dfOverlayDialog(450, 250, s1, url);
+}
+-->
+      <Control Name="btnApprove" Text="同意" Value="5" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnApprove_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnApprove_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_SelectStep&action=btnApprove&InstanceId={0}&InstanceStepExecutorId={1}&actionName={2}';
+    var s1 = getRes("同意");
+    url = url.format($('#InstanceId').val(), $('#InstanceStepExecutorId').val(), encodeURIComponent(s1));
+    dfOverlayDialog(450, 250, s1, url);
+}
+-->
+      <Control Name="btnSubmit" Text="提交" Value="5" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnSave" Text="暂存" Value="1" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnRemind" Text="催签" Value="7" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnRemind_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnRemind_click() {
+    if (confirm('确定要催签么？')) {
+        dfGetData('DynamicForm.DA.WFCore_Panel_ApproveDA.Remind', {
+            'InstanceId': $('#InstanceId').val()
+        }, function(data) {
+            if (data.hasError) {
+                dfAlert(data.error);
+            } else {
+                dfAlert(data.data);
+            }
+        });
+    }
+}
+-->
+    </Row>
+  </Panel>
+</Form>

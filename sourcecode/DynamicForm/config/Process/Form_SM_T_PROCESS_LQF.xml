@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_LQF" Name="Form_SM_T_PROCESS_LQF" Desc="" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_LQFDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Text="PKId" Width="span8" Type="text" />
+      <Control Name="InstanceId" Text="InstanceId" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z1Standard" Text="Z1Standard" Width="span8" Type="text" />
+      <Control Name="Z1Max" Text="Z1Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z1Min" Text="Z1Min" Width="span8" Type="text" />
+      <Control Name="Z2Standard" Text="Z2Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z2Max" Text="Z2Max" Width="span8" Type="text" />
+      <Control Name="Z2Min" Text="Z2Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z3Standard" Text="Z3Standard" Width="span8" Type="text" />
+      <Control Name="Z3Max" Text="Z3Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z3Min" Text="Z3Min" Width="span8" Type="text" />
+      <Control Name="Z4Standard" Text="Z4Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z4Max" Text="Z4Max" Width="span8" Type="text" />
+      <Control Name="Z4Min" Text="Z4Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z5Standard" Text="Z5Standard" Width="span8" Type="text" />
+      <Control Name="Z5Max" Text="Z5Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z5Min" Text="Z5Min" Width="span8" Type="text" />
+      <Control Name="Z6Standard" Text="Z6Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Z6Max" Text="Z6Max" Width="span8" Type="text" />
+      <Control Name="Z6Min" Text="Z6Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark1" Text="Remark1" Width="span8" Type="text" />
+      <Control Name="Remark2" Text="Remark2" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark3" Text="Remark3" Width="span8" Type="text" />
+      <Control Name="Remark4" Text="Remark4" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark5" Text="Remark5" Width="span8" Type="text" />
+      <Control Name="CreateTime" Text="CreateTime" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateUser" Text="CreateUser" Width="span8" Type="text" />
+      <Control Name="LastModifyTime" Text="LastModifyTime" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyUser" Text="LastModifyUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Text="PKId" Width="100" Sortable="true" />
+    <Column Name="InstanceId" Text="InstanceId" Width="100" Sortable="true" />
+    <Column Name="Z1Standard" Text="Z1Standard" Width="100" Sortable="true" />
+    <Column Name="Z1Max" Text="Z1Max" Width="100" Sortable="true" />
+    <Column Name="Z1Min" Text="Z1Min" Width="100" Sortable="true" />
+    <Column Name="Z2Standard" Text="Z2Standard" Width="100" Sortable="true" />
+    <Column Name="Z2Max" Text="Z2Max" Width="100" Sortable="true" />
+    <Column Name="Z2Min" Text="Z2Min" Width="100" Sortable="true" />
+    <Column Name="Z3Standard" Text="Z3Standard" Width="100" Sortable="true" />
+    <Column Name="Z3Max" Text="Z3Max" Width="100" Sortable="true" />
+    <Column Name="Z3Min" Text="Z3Min" Width="100" Sortable="true" />
+    <Column Name="Z4Standard" Text="Z4Standard" Width="100" Sortable="true" />
+    <Column Name="Z4Max" Text="Z4Max" Width="100" Sortable="true" />
+    <Column Name="Z4Min" Text="Z4Min" Width="100" Sortable="true" />
+    <Column Name="Z5Standard" Text="Z5Standard" Width="100" Sortable="true" />
+    <Column Name="Z5Max" Text="Z5Max" Width="100" Sortable="true" />
+    <Column Name="Z5Min" Text="Z5Min" Width="100" Sortable="true" />
+    <Column Name="Z6Standard" Text="Z6Standard" Width="100" Sortable="true" />
+    <Column Name="Z6Max" Text="Z6Max" Width="100" Sortable="true" />
+    <Column Name="Z6Min" Text="Z6Min" Width="100" Sortable="true" />
+    <Column Name="Remark1" Text="Remark1" Width="100" Sortable="true" />
+    <Column Name="Remark2" Text="Remark2" Width="100" Sortable="true" />
+    <Column Name="Remark3" Text="Remark3" Width="100" Sortable="true" />
+    <Column Name="Remark4" Text="Remark4" Width="100" Sortable="true" />
+    <Column Name="Remark5" Text="Remark5" Width="100" Sortable="true" />
+    <Column Name="CreateTime" Text="CreateTime" Width="100" Sortable="true" />
+    <Column Name="CreateUser" Text="CreateUser" Width="100" Sortable="true" />
+    <Column Name="LastModifyTime" Text="LastModifyTime" Width="100" Sortable="true" />
+    <Column Name="LastModifyUser" Text="LastModifyUser" Width="100" Sortable="true" />
+  </Panel>
+
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'PKId': a.PKId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_LQF',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LQF_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&PKId=' + selections[0].PKId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LQF_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

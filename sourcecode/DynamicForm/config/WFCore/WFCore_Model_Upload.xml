@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Model_Upload" Name="WFCore_Model_Upload" Desc="流程模型详细" DAImp="DynamicForm.DA.WFCore_Model_UploadDA,DynamicForm">
+  <Panel Id="dfPanel_201408041633350049" Name="dfPanel_201408041633350049" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Upload" Text="上传" Width="span16" Type="upload" />
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

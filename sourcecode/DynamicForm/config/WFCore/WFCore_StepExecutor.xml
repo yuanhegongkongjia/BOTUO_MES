@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_StepExecutor" Name="WFCore_StepExecutor" Desc=" 步骤签核人设定" DAImp="DynamicForm.DA.WFCore_StepExecutorDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv', style:'margin-bottom:10px;'}">
+    <Row>
+      <Control Name="StepId" Text="StepId" Type="hidden" />
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'ExecutorId': a.ExecutorId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WFCore_StepExecutor', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var p = '&ModelId={0}&StepId={1}'.format($('#ModelId').val(), $('#StepId').val());
+    window.location.href = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor_Edit' + p;
+}
+-->
+      <Control Name="StepName" Text="步骤名称" Width="span8" Type="display" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="ExecutorId" Visible="false" />
+    <Column Name="ModelId" Text="ModelId" Visible="false" />
+    <Column Name="StepId" Text="StepId" Visible="false" />
+    <Column Name="ExecutorType" Text="签核人类型" Width="80" />
+    <Column Name="ExecutorText" Text="签核人" Width="150" />
+    <Column Name="DeptRelated" Text="部门相关" Width="80" />
+    <Column Name="ExecutorPriority" Text="优先级" Width="80" />
+    <Column Name="ExecutorValue" Text="值" Width="550" />
+  </Panel>
+</Form>

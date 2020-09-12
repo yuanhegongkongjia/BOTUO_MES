@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_StationTemp" Name="Form_StationTemp" Desc="实时温度看板" DAImp="DynamicForm.DA.Form_StationTempDA,DynamicForm">
+  <Panel Id="Panel20190508103435876" Name="Panel20190508103435876" Type="SingleRecord" >
+    <Row>
+      <Control Name="btnLink" Text="打开看板" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer','onclick':'btnLink_click()'}" Action="link" />
+      <!--DF_SCRIPT
+function btnLink_click(){
+window.open("Kanban/StationTempKanban.aspx");
+}
+-->
+    </Row>
+  </Panel>
+</Form>

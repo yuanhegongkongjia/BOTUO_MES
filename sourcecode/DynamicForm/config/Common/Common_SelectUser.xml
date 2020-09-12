@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Common_SelectUser" Name="Common_SelectUser" Desc="用户查询" DAImp="DynamicForm.DA.Common_SelectUserDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="UserName" Text="用户名" Width="span7" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="DeptId" Text="部门" TextAfterControl="&lt;input id='selectDept' name='selectDept' type='button' value=' ... ' onclick='selectDept_click();return false;' /&gt;" Width="span8" Type="select" Options="SELECT DeptId AS value, REPLICATE('-', LEN(DeptLabel) -3) + DeptName AS text FROM dbo.WF_M_DEPT WHERE Status=1 ORDER BY DeptLabel" OptionType="SQL" AddEmptyOption="True" />
+      <!--DF_SCRIPT
+function selectDept_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectDept';
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length == 1) {
+                $('#DeptId').val(selections[0].DeptId);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(700, 400, '', url, btns);
+}
+-->
+      <Control Name="IncludeSubDept" Width="span8" Type="checkbox" Options="{'1':'包含子部门'}" OptionType="JSON" />
+      <Control Name="btnSearch" Text="查询" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{ DF_QUERY_CONDITION_PANEL: 'queryConditionPanel',style:'margin-bottom:20px;'  }" Plugins="BUI.Grid.Plugins.CheckSelection">
+    <Column Name="UserId" Visible="false" />
+    <Column Name="DeptName" Text="部门名称" Width="150" />
+    <Column Name="UserName" Text="用户名" Width="100" />
+    <Column Name="ChineseName" Text="中文名" Width="100" />
+    <Column Name="EmployeeId" Text="工号" Width="100" />
+    <Column Name="CostCenter" Text="成本中心" Width="100" Sortable="true" />
+  </Panel>
+</Form>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_PLC_Edit" Name="Form_SM_M_PLC_Edit" Desc="PLC信息管理编辑" DAImp="DynamicForm.DA.Form_SM_M_PLC_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="PLCAddress" Text="PLC地址" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Line" Text="线号" Width="span8" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04'}" OptionType="JSON" MustInput="True" />
+      <Control Name="Station" Text="采集点" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ParamName" Text="参数名称" Width="span8" Type="text" MustInput="True" />
+      <Control Name="CollectFreq" Text="采集频率" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ParamType" Text="参数类型" Width="span8" Type="select" Options="{'实际值':'实际值','测定值':'测定值'}" OptionType="JSON" MustInput="True" />
+      <Control Name="Unit" Text="单位" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

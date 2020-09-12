@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_DeviceOEE" Name="Form_DeviceOEE" Desc="设备OEE根据日期" DAImp="DynamicForm.DA.Form_DeviceOEEDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="MasterDeviceName" Text="主设备" Width="span8" Type="text" />
+      <Control Name="ProductDate" Text="日期" Width="span8" Type="calendar" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="MasterDeviceName" Text="主设备" Width="100" Sortable="true" />
+    <Column Name="LineName" Text="线别" Width="100" Sortable="true" />
+    <Column Name="ProductDate" Text="日期" Width="100" Sortable="true" />
+    <Column Name="Shift" Text="班别" Width="100" Sortable="true" />
+    <Column Name="OEE" Text="设备利用率" Width="100" Sortable="true" />
+    <!--DF_SCRIPT
+function(value, obj) {
+	if (obj.OEE<=50) {
+return "<span style='background-color:red'>"+obj.OEE+"%</span>";
+	} else {
+		return obj.OEE+"%";
+	}
+}
+-->
+  </Panel>
+</Form>

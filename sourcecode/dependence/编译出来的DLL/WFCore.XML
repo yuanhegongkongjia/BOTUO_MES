@@ -1,0 +1,1415 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WFCore</name>
+    </assembly>
+    <members>
+        <member name="T:WFCore.BatchInserter">
+            <summary>
+            批量插入
+            </summary>
+        </member>
+        <member name="M:WFCore.BatchInserter.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            批量插入数据
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable"></param>
+            <param name="batchSize"></param>
+        </member>
+        <member name="T:WFCore.MsSqlBatcher">
+            <summary>
+            为 System.Data.SqlClient 提供的用于批量操作的方法。
+            </summary>
+        </member>
+        <member name="T:WFCore.IBatcherProvider">
+            <summary>
+            提供数据批量处理的方法。
+            </summary>
+        </member>
+        <member name="M:WFCore.IBatcherProvider.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Data.DataTable"/> 的数据批量插入到数据库中。
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable">要批量插入的 <see cref="T:System.Data.DataTable"/>。</param>
+            <param name="batchSize">每批次写入的数据量。</param>
+        </member>
+        <member name="M:WFCore.MsSqlBatcher.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Data.DataTable"/> 的数据批量插入到数据库中。
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable">要批量插入的 <see cref="T:System.Data.DataTable"/>。</param>
+            <param name="batchSize">每批次写入的数据量。</param>
+        </member>
+        <member name="T:WFCore.MySqlBatcher">
+            <summary>
+            为 MySql.Data 组件提供的用于批量操作的方法。
+            </summary>
+        </member>
+        <member name="M:WFCore.MySqlBatcher.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Data.DataTable"/> 的数据批量插入到数据库中。
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable">要批量插入的 <see cref="T:System.Data.DataTable"/>。</param>
+            <param name="batchSize">每批次写入的数据量。</param>
+        </member>
+        <member name="M:WFCore.MySqlBatcher.IsStringType(System.Data.DbType)">
+            <summary>
+            判断是否为字符串类别。
+            </summary>
+            <param name="dbType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WFCore.OracleAccessBatcher">
+            <summary>
+            Oracle.Data.Access 组件提供的用于批量操作的方法。
+            </summary>
+        </member>
+        <member name="M:WFCore.OracleAccessBatcher.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Data.DataTable"/> 的数据批量插入到数据库中。
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable">要批量插入的 <see cref="T:System.Data.DataTable"/>。</param>
+            <param name="batchSize">每批次写入的数据量。</param>
+        </member>
+        <member name="M:WFCore.SQLiteBatcher.Insert(System.Data.IDbConnection,System.Data.DataTable,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Data.DataTable"/> 的数据批量插入到数据库中。
+            </summary>
+            <param name="db"></param>
+            <param name="dataTable">要批量插入的 <see cref="T:System.Data.DataTable"/>。</param>
+            <param name="batchSize">每批次写入的数据量。</param>
+        </member>
+        <member name="T:WFCore.WFProxy">
+            <summary>
+            代理人实体
+            </summary>
+        </member>
+        <member name="P:WFCore.WFProxy.ProxyUserId">
+            <summary>
+            代理用户编号
+            </summary>
+        </member>
+        <member name="P:WFCore.WFProxy.ProxyUserName">
+            <summary>
+            代理用户名
+            </summary>
+        </member>
+        <member name="T:WFCore.DatabaseHelper">
+            <summary>
+            数据库帮助类
+            </summary>
+        </member>
+        <member name="M:WFCore.DatabaseHelper.GetDatabaseType(System.Data.IDbConnection)">
+            <summary>
+            根据连接得到数据库类型
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WFCore.Engine">
+            <summary>
+            工作流引擎
+            </summary>
+        </member>
+        <member name="M:WFCore.IEngine.AbortWF(System.String,System.String,System.String)">
+            <summary>
+            放弃流程
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.IEngine.ContinueDBWF(System.String,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            继续流程
+            </summary>
+            <param name="modelId"></param>
+            <param name="instanceId"></param>
+            <param name="instanceStepId"></param>
+            <param name="isSync"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.IEngine.RollbackDBWF(System.String,System.String,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            回退流程
+            </summary>
+            <param name="modelId"></param>
+            <param name="instanceId"></param>
+            <param name="fromInstanceStepId"></param>
+            <param name="stepId"></param>
+            <param name="isSync"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.IEngine.GotoDBWF(System.String,System.String,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            跳转流程
+            </summary>
+            <param name="modelId"></param>
+            <param name="instanceId"></param>
+            <param name="fromInstanceStepId"></param>
+            <param name="stepId"></param>
+            <param name="isSync"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.IEngine.StartDBWF(System.String,System.String,System.String,System.String,System.String,System.String,System.DateTime,System.Boolean,System.String,System.String)">
+            <summary>
+            开始流程
+            </summary>
+            <param name="modelId"></param>
+            <param name="instanceId"></param>
+            <param name="requestor"></param>
+            <param name="requestorProxy"></param>
+            <param name="requestorName"></param>
+            <param name="requestorProxyName"></param>
+            <param name="requestTime"></param>
+            <param name="isSync"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.Engine.AbortWF(System.String,System.String,System.String)">
+            <summary>
+            取消一个正在运行的工作流
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUserId"></param>
+            <param name="currentUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Engine.GetModel(System.String)">
+            <summary>
+            根据 ModelId 得到模型定义数据
+            </summary>
+            <param name="modelId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WFCore.ExecutionContext">
+            <summary>
+            流程执行上下文环境
+            </summary>
+        </member>
+        <member name="T:WFCore.IExecutionContext">
+            <summary>
+            执行上下文
+            </summary>
+        </member>
+        <member name="M:WFCore.IExecutionContext.GetInstanceConnectors">
+            <summary>
+            根据当前的 InstanceStep 去新建接下去的所有 WFInstanceConnector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:WFCore.IExecutionContext.CurrentUserName">
+            <summary>
+            当前用户名
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.CurrentUserId">
+            <summary>
+            当前用户编号
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.DefaultExecutorId">
+            <summary>
+            默认签核人编号
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.DefaultExecutorName">
+            <summary>
+            默认签核人名称
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.Model">
+            <summary>
+            工作流模型定义，包含节点和连线的定义信息
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.Instance">
+            <summary>
+            工作流运行的实例，包含运行时的节点和连线
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.InstanceStep">
+            <summary>
+            当节点得到信号的时候，这个就会有值
+            </summary>
+        </member>
+        <member name="P:WFCore.IExecutionContext.InstanceConnector">
+            <summary>
+            当连线得到信号的时候，这个就会有值
+            </summary>
+        </member>
+        <member name="M:WFCore.ExecutionContext.GetInstanceConnectors">
+            <summary>
+            得到运行时节点后面的连线（构造成运行时连线实体）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutionContext.Clone">
+            <summary>
+            为了保持运行时数据不冲突，尽量采用 clone 后的数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutionContext.SetDefaultExecutor">
+            <summary>
+            设置默认签核人
+            </summary>
+        </member>
+        <member name="T:WFCore.IExecutor">
+            <summary>
+            签核人
+            </summary>
+        </member>
+        <member name="M:WFCore.IExecutor.SetExecutor(WFCore.IExecutionContext)">
+            <summary>
+            设置签核人
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.IExecutor.QueryExecutor(WFCore.IExecutionContext)">
+            <summary>
+            查询签核人
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.IExecutor.ExecuteAutoFinish(WFCore.IExecutionContext)">
+            <summary>
+            自动结束该运行时节点的所有未完成的任务
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.IExecutor.ExecuteAutoFinish(System.String,System.String)">
+            <summary>
+            自动结束工作流实例所有未完成的任务
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.SetExecutor(WFCore.IExecutionContext)">
+            <summary>
+            设置签核人
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.QueryExecutor(WFCore.IExecutionContext)">
+            <summary>
+            查询步骤签核人
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutorImp.InsertInternal(WFCore.IExecutionContext,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            插入签核任务
+            </summary>
+            <param name="context"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="memo"></param>
+            <param name="IsSendMessage"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.InsertOneAndProxy(WFCore.WFInstanceStep,WFCore.WFInstance,System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            插入签核人信息，并且考虑代理
+            </summary>
+            <param name="InstanceStep"></param>
+            <param name="Instance"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="memo"></param>
+            <param name="IsSendMessage"></param>
+            <param name="CurrentUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutorImp.InsertOne(WFCore.WFInstanceStep,WFCore.WFInstance,System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            插入一条签核消息，并且传入参数是否发送消息
+            </summary>
+            <param name="InstanceStep"></param>
+            <param name="Instance"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="memo"></param>
+            <param name="IsSendMessage"></param>
+            <param name="CurrentUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutorImp.InsertOneAndProxy(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入签核任务，至于发送不发送消息要看步骤设定
+            </summary>
+            <param name="InstanceStepId"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="memo"></param>
+            <param name="CurrentUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.ExecutorImp.SendMessage(System.String,System.String)">
+            <summary>
+            发送新任务消息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="CurrentUserName"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.SendMessage(WFCore.WFInstanceStep,WFCore.WFInstance,System.String,System.String,System.String)">
+            <summary>
+            发送新任务消息
+            </summary>
+            <param name="InstanceStep"></param>
+            <param name="Instance"></param>
+            <param name="executorId"></param>
+            <param name="CurrentUserName"></param>
+            <param name="InstanceStepExecutorId"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.ExecuteAutoFinish(WFCore.IExecutionContext)">
+            <summary>
+            自动结束节点任务
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.ExecutorImp.ExecuteAutoFinish(System.String,System.String)">
+            <summary>
+            自动结束流程
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.GetProxyList(System.String,System.String,System.String)">
+            <summary>
+            得到代理签核人列表
+            </summary>
+            <param name="ModelId"></param>
+            <param name="UserId"></param>
+            <param name="CurrentTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Insert(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入步骤签核人，返回 InstanceStepExecutorId
+            </summary>
+            <param name="instanceId"></param>
+            <param name="modelName"></param>
+            <param name="stepId"></param>
+            <param name="stepName"></param>
+            <param name="instanceStepId"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="executeStatus"></param>
+            <param name="user"></param>
+            <param name="executeComment"></param>
+            <param name="memo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Insert(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入步骤签核人，返回 InstanceStepExecutorId
+            </summary>
+            <param name="instanceId"></param>
+            <param name="modelName"></param>
+            <param name="stepId"></param>
+            <param name="stepName"></param>
+            <param name="instanceStepId"></param>
+            <param name="executorId"></param>
+            <param name="executorName"></param>
+            <param name="executeStatus"></param>
+            <param name="user"></param>
+            <param name="executeComment"></param>
+            <param name="memo"></param>
+            <param name="extend01"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Update(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            更新步骤的签核人信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="executeResult"></param>
+            <param name="executeComment"></param>
+            <param name="executeStatus"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateInstanceStepExecutorExt(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新步骤签核人的扩展信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="ExtendName"></param>
+            <param name="ExtendValue"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateInstanceStepExecutor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            更新步骤签核人信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="ExecuteResult"></param>
+            <param name="ExecuteComment"></param>
+            <param name="Memo"></param>
+            <param name="ExecuteStatus"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateInstanceStepExecutor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            更新步骤签核人信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="ExecuteResult"></param>
+            <param name="ExecuteComment"></param>
+            <param name="ExecuteStatus"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateInstanceStepExecutor(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新步骤签核人信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="ExecuteComment"></param>
+            <param name="Memo"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateUnfinishedByInstanceStepId(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新未完成的运行时节点任务，变成已完成
+            </summary>
+            <param name="instanceStepId"></param>
+            <param name="executeResult"></param>
+            <param name="executeStatus"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.UpdateUnfinishedByInstanceId(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新未完成的工作流所有任务
+            </summary>
+            <param name="instanceId"></param>
+            <param name="executeResult"></param>
+            <param name="executeStatus"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.QueryUnfinishedByInstanceId(System.String)">
+            <summary>
+            得到未完成的任务
+            </summary>
+            <param name="instanceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Get(System.String,System.String)">
+            <summary>
+            根据工作流实例编号和用户编号得到步骤签核人信息
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUserId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.GetByInstanceStepId(System.String,System.String)">
+            <summary>
+            根据工作流步骤实例编号和用户编号得到步骤签核人信息
+            </summary>
+            <param name="InstanceStepId"></param>
+            <param name="ExecutorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Get(System.String,System.String,System.String)">
+            <summary>
+            根据工作流实例编号、用户编号、签核步骤状态得到步骤签核人信息
+            </summary>
+            <param name="instanceId"></param>
+            <param name="currentUserId"></param>
+            <param name="ExecuteStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.QueryByStepId(System.String,System.String)">
+            <summary>
+            根据步骤编号得到所有的步骤执行人信息
+            </summary>
+            <param name="InstanceId"></param>
+            <param name="StepId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.Get(System.String)">
+            <summary>
+            根据步骤签核人编号得到步骤签核人信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.QueryByInstanceStepId(System.String)">
+            <summary>
+            得到某个运行时节点的所有签核人信息
+            </summary>
+            <param name="InstanceStepId"></param>
+        </member>
+        <member name="M:WFCore.InstanceStepExecutorDAO.GetAllInfo(System.String,WFCore.WF_T_INSTANCESTEPEXECUTOR@,WFCore.WFInstanceStep@,WFCore.WFInstance@,WFCore.WF_M_STEP@)">
+            <summary>
+            根据步骤签核编号得到所有信息
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="Instance"></param>
+            <param name="InstanceStep"></param>
+            <param name="Step"></param>
+            <param name="InstanceStepExecutor"></param>
+        </member>
+        <member name="M:WFCore.IWFBusiness.CanEnter(WFCore.IExecutionContext)">
+            <summary>
+            节点是否能够进入
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.IWFBusiness.CanLeave(WFCore.IExecutionContext)">
+            <summary>
+            节点是否能够离开
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.IWFBusiness.CanFlow(WFCore.IExecutionContext)">
+            <summary>
+            连线是否能够流转
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WFCore.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.NEWTASK">
+            <summary>
+            新任务
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.WORKFLOW_ABORT">
+            <summary>
+            流程被取消
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.WORKFLOW_FINISH">
+            <summary>
+            流程已完成
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.EMAIL_NEWTASK">
+            <summary>
+            邮件新任务
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.EMAIL_WORKFLOW_ABORT">
+            <summary>
+            邮件流程被取消
+            </summary>
+        </member>
+        <member name="F:WFCore.MessageType.EMAIL_WORKFLOW_FINISH">
+            <summary>
+            邮件流程已完成
+            </summary>
+        </member>
+        <member name="M:WFCore.MsgCenter.UpdateIsSendEmail(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            更新是否已经发过邮件
+            </summary>
+            <param name="list"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.UpdateIsSendFeiQ(System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            更新是否发送 FeiQ
+            </summary>
+            <param name="MsgId"></param>
+            <param name="IsSendFeiQ"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.GetMessageTemplate(WFCore.MessageType,System.String)">
+            <summary>
+            得到消息模板
+            </summary>
+            <param name="messageType"></param>
+            <param name="defaultMessageTemplate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.MsgCenter.ReplaceWithRuntimeValue(System.Collections.Generic.List{System.Text.StringBuilder},System.String,System.String)">
+            <summary>
+            变量替换，用运行值去替换
+            工作流实例信息表 WF_T_INSTANCE_
+            执行人任务信息表 WF_T_INSTANCESTEPEXECUTOR_
+            步骤实例信息表 WF_T_INSTANCESTEP_
+            来源于哪个签核任务表 FROM_WF_T_INSTANCESTEPEXECUTOR_
+            </summary>
+            <param name="sbList"></param>
+            <param name="InstanceId"></param>
+            <param name="InstanceStepExecutorId"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.ReplaceWithRuntimeValue(System.Text.StringBuilder,System.String,System.String)">
+            <summary>
+            变量替换，用运行值去替换
+            工作流实例信息表 WF_T_INSTANCE_
+            执行人任务信息表 WF_T_INSTANCESTEPEXECUTOR_
+            步骤实例信息表 WF_T_INSTANCESTEP_
+            来源于哪个签核任务表 FROM_WF_T_INSTANCESTEPEXECUTOR_
+            </summary>
+            <param name="sb"></param>
+            <param name="InstanceId"></param>
+            <param name="InstanceStepExecutorId"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.ReplaceWithRuntimeValue(System.String,System.String,System.String)">
+            <summary>
+            变量替换，用运行值去替换
+            工作流实例信息表 WF_T_INSTANCE_
+            执行人任务信息表 WF_T_INSTANCESTEPEXECUTOR_
+            步骤实例信息表 WF_T_INSTANCESTEP_
+            来源于哪个签核任务表 FROM_WF_T_INSTANCESTEPEXECUTOR_
+            </summary>
+            <param name="value"></param>
+            <param name="InstanceId"></param>
+            <param name="InstanceStepExecutorId"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.SendNewTaskMessage(WFCore.WF_T_INSTANCE,WFCore.WF_T_INSTANCESTEP,System.String,System.String,System.String)">
+            <summary>
+            发送新任务消息
+            </summary>
+            <param name="instance"></param>
+            <param name="instanceStep"></param>
+            <param name="executorId"></param>
+            <param name="InstanceStepExecutorId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.GetUrlNewTask">
+            <summary>
+            新任务链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.MsgCenter.SendWorkflowAbortMessage(System.String,System.String,System.String)">
+            <summary>
+            发送工作流取消消息
+            </summary>
+            <param name="InstanceId"></param>
+            <param name="executorId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.GetUrlWorkflowAbort">
+            <summary>
+            工作流取消链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.MsgCenter.SendWorkflowFinishMessage(System.String,System.String,System.String)">
+            <summary>
+            发送工作流完成消息
+            </summary>
+            <param name="InstanceId"></param>
+            <param name="executorId"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.MsgCenter.GetUrlWorkflowFinish">
+            <summary>
+            工作流完成链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:WFCore.Pub.NotEnter">
+            <summary>
+            节点或者连线状态：未进入
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Entered">
+            <summary>
+            节点或者连线状态：已经进入
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Left">
+            <summary>
+            节点或者连线状态：已经离开
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Finished">
+            <summary>
+            工作流已经结束
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Unfinished">
+            <summary>
+            正在处理
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Aborted">
+            <summary>
+            工作流被放弃
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Start">
+            <summary>
+            工作流节点类型：开始节点
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Stop">
+            <summary>
+            工作流节点类型：结束节点
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Initialized">
+            <summary>
+            工作流已经初始化
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.Running">
+            <summary>
+            工作流正在运行中
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.WF_ISTEST">
+            <summary>
+            是否是测试工作流，如果这个键值是 1，表示是测试工作流
+            </summary>
+        </member>
+        <member name="F:WFCore.Pub.WF_PARENT_WORKFLOWID">
+            <summary>
+            父流程ID，如果这个有值，会自动附加到当前流程ID前面
+            </summary>
+        </member>
+        <member name="M:WFCore.Pub.GetId(System.String)">
+            <summary>
+            如果 prefix 为空的话，默认返回 Guid，如果 prefix 不是空，比如 D，那么返回 D20160704212533000 类似
+            </summary>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Pub.GetNextIdFromDB(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            从数据库中得到流水号，前提是数据库中需要有 WF_T_SEQNO
+            </summary>
+            <param name="prefix1"></param>
+            <param name="prefix2"></param>
+            <param name="prefix3"></param>
+            <param name="seqNoLength"></param>
+            <returns></returns>
+        </member>
+        <member name="F:WFCore.Pub.ConnectionString">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="M:WFCore.Pub.GetDatabaseType">
+            <summary>
+            得到数据库类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Pub.GetDB(System.String,System.String)">
+            <summary>
+            默认是 sql server，如果在 AppSettings 配置了 DatabaseType，就按照 DatabaseType 进行初始化连接
+            </summary>
+            <param name="connectionString">该函数会自动判断是否是连接字符串，如果不是连接字符串，就认为是配置文件中的连接字符串的key值</param>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Pub.Replace(System.String)">
+            <summary>
+            去掉任何非单词字符
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Pub.GetHtmlSql(System.String)">
+            <summary>
+            得到 Html 显示的 SQL 语句
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.Pub.GetOriginalSql(System.String)">
+            <summary>
+            得到原始的 SQL 语句
+            </summary>
+            <param name="htmlSql"></param>
+            <returns></returns>
+        </member>
+        <member name="P:WFCore.Pub.DB">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="M:WFCore.TaskHelper.TaskExists(System.String)">
+            <summary>
+            检查任务是否还存在
+            </summary>
+            <param name="taskId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.TaskHelper.GetTasksList">
+            <summary>
+            得到任务 TaskId 列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.TaskHelper.StartNew(System.String,System.String,System.Action,System.Threading.AutoResetEvent)">
+            <summary>
+            新启动一个任务，如果需要等待 action 执行完成，需要传入 autoResetEvent，然后调用 autoResetEvent.WaitOne() 进行等待
+            </summary>
+            <param name="instanceId"></param>
+            <param name="taskId"></param>
+            <param name="action"></param>
+            <param name="autoResetEvent"></param>
+        </member>
+        <member name="M:WFCore.TaskHelper.AbortTask(System.String)">
+            <summary>
+            取消一个任务
+            </summary>
+            <param name="taskId"></param>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.GetWFBusiness(System.String,System.Int32,System.String)">
+            <summary>
+            得到业务引擎
+            </summary>
+            <param name="instanceId"></param>
+            <param name="scriptType"></param>
+            <param name="script"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.CanEnter(WFCore.IExecutionContext)">
+            <summary>
+            判断是否能够进入节点，默认情况下直接进入
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.Enter(WFCore.IExecutionContext)">
+            <summary>
+            进入节点后需要干的事情在这里实现
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.CanLeave(WFCore.IExecutionContext)">
+            <summary>
+            判断是否能够离开节点，默认情况下直接离开
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.Leave(WFCore.IExecutionContext)">
+            <summary>
+            离开节点时需要干的事情在这里实现
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.CanFlow(WFCore.IExecutionContext)">
+            <summary>
+            判断是否能够进行流转，默认情况下是直接流转
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessBase.Flow(WFCore.IExecutionContext)">
+            <summary>
+            流转时需要干的事情在这里实现
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WFCore.WFBusinessData.CreateInstance``1(``0)">
+            <summary>
+            将实体转化成 Key-Value 键值对
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessData.Merge(System.String,System.String)">
+            <summary>
+            合并业务数据，遍历 source，如果 dest 中有就更新，否则就加入到 dest 中
+            </summary>
+            <param name="source"></param>
+            <param name="dest"></param>
+        </member>
+        <member name="M:WFCore.WFBusinessData.Merge(WFCore.WFBusinessData,WFCore.WFBusinessData)">
+            <summary>
+            合并业务数据，遍历 source，如果 dest 中有就更新，否则就加入到 dest 中
+            </summary>
+            <param name="source"></param>
+            <param name="dest"></param>
+        </member>
+        <member name="P:WFCore.WFBusinessData.Item(System.String)">
+            <summary>
+            索引器，覆盖掉 Dictionary 的索引器，在添加的只是直接赋值，不用进行判断
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFBusinessSQL.CanLeave(WFCore.IExecutionContext)">
+            <summary>
+            实际的业务中，一般的用户可能就会这么认为，一个节点下面的连线能走通一个，那么就算是这个节点的任务已经完成了
+            用户不会把离开和连线流转当成两个事情来干，他们会认为离开了就是连线流转了，只有在工作流概念上，节点的离开和连线的流转是两个事情
+            所以，这里需要对 CanLeave 进行重新定义，CanLeave 需要判断下面的几条连线是否能走通，只要能走通一个，就认为是节点能够离开
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WFCommon.Utility.WFCorePublicCodeHelper">
+            <summary>
+            公用代码操作类，主要是得到一些公用参数
+            </summary>
+        </member>
+        <member name="M:WFCommon.Utility.WFCorePublicCodeHelper.SavePublicCode(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存公用代码
+            </summary>
+            <param name="CodeType"></param>
+            <param name="CodeName"></param>
+            <param name="CodeValue"></param>
+            <param name="connectionStringOrConfigName"></param>
+            <param name="databaseType"></param>
+        </member>
+        <member name="M:WFCommon.Utility.WFCorePublicCodeHelper.QueryPublicCode(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            查询公用代码
+            </summary>
+            <param name="CodeType"></param>
+            <param name="CodeName"></param>
+            <param name="CodeValue"></param>
+            <param name="connectionStringOrConfigName"></param>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCommon.Utility.WFCorePublicCodeHelper.QueryPublicCodeDefault(System.String,System.String,System.String)">
+            <summary>
+            在当前默认的数据库中查询公用代码
+            </summary>
+            <param name="CodeType"></param>
+            <param name="CodeName"></param>
+            <param name="CodeValue"></param>
+            <param name="connectionStringOrConfigName"></param>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCommon.Utility.WFCorePublicCodeHelper.GetPublicCode(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            得到公用代码，如果公用代码不存在，系统自动新建公用代码
+            </summary>
+            <param name="CodeType"></param>
+            <param name="CodeName"></param>
+            <param name="DefaultCodeValue"></param>
+            <param name="connectionStringOrConfigName"></param>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.IsWorkflowAdmin(System.String,System.String)">
+            <summary>
+            是否是流程管理员
+            </summary>
+            <param name="userName"></param>
+            <param name="modelName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WFInstance)">
+            <summary>
+            插入流程实例
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WFInstanceStep)">
+            <summary>
+            插入节点运行时实例
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceStatus(System.String)">
+            <summary>
+            得到流程实例的状态
+            </summary>
+            <param name="instanceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceStatus(System.String,System.String,System.String)">
+            <summary>
+            更新流程实例的状态
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceStatus"></param>
+            <param name="currentUserName"></param>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceExt(System.String,System.String,System.String)">
+            <summary>
+            更新扩展参数，不更新 LastModifyUser 和 LastModifyTime
+            </summary>
+            <param name="instanceId"></param>
+            <param name="extName"></param>
+            <param name="extValue"></param>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceStepStatus(System.String,System.String,System.String)">
+            <summary>
+            更新运行时节点的状态
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceStepId"></param>
+            <param name="instanceStepStatus"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WFInstanceConnector)">
+            <summary>
+            插入连线实例
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceConnectorStatus(System.String,System.String,System.String)">
+            <summary>
+            更新连线实例的状态
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceConnectorId"></param>
+            <param name="instanceConnectorStatus"></param>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceStep(System.String,System.String,System.String)">
+            <summary>
+            根据节点的编号以及运行时节点的状态查找运行时节点
+            </summary>
+            <param name="instanceId"></param>
+            <param name="stepId"></param>
+            <param name="instanceStepStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceSteps(System.String)">
+            <summary>
+            得到步骤实例
+            </summary>
+            <param name="instanceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceSteps(System.String,System.String)">
+            <summary>
+            得到步骤实例
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceStepStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceConnector(System.String,System.String,System.String)">
+            <summary>
+            更新“运行时连线”的“运行时到”节点
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceConnectorId"></param>
+            <param name="instanceStepTo"></param>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceStepCount(System.String)">
+            <summary>
+            得到这个节点的实例步骤数
+            </summary>
+            <param name="instanceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceStep(System.String)">
+            <summary>
+            得到步骤实例
+            </summary>
+            <param name="instanceStepId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceConnectorByTo(System.String,System.String)">
+            <summary>
+            根据运行时结束节点找运行时连线
+            </summary>
+            <param name="InstanceId"></param>
+            <param name="InstanceStepTo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceConnectorByFrom(System.String,System.String)">
+            <summary>
+            根据运行时开始节点找运行时连线
+            </summary>
+            <param name="InstanceId"></param>
+            <param name="InstanceStepFrom"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetInstanceStep(System.String,System.String)">
+            <summary>
+            根据运行时步骤编号得到运行时步骤
+            </summary>
+            <param name="instanceId"></param>
+            <param name="instanceStepId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.Get_WF_T_INSTANCECONNECTOR_ByInstanceStepToId(System.String,System.String)">
+            <summary>
+            查找运行时流转到这个节点所有的连线
+            </summary>
+            <param name="instanceId"></param>
+            <param name="InstanceStepToId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetModel(System.String)">
+            <summary>
+            根据模型编号得到模型
+            </summary>
+            <param name="modelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetStep(System.String)">
+            <summary>
+            根据步骤编号得到步骤
+            </summary>
+            <param name="stepId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetConnector(System.String)">
+            <summary>
+            根据步骤编号得到连线
+            </summary>
+            <param name="ConnectorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetSteps(System.String)">
+            <summary>
+            根据模型编号得到所有的步骤
+            </summary>
+            <param name="modelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetConnectors(System.String)">
+            <summary>
+            根据模型编号得到所有的连线
+            </summary>
+            <param name="modelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.GetStep(System.String,System.String)">
+            <summary>
+            根据模型编号和步骤名称得到步骤
+            </summary>
+            <param name="modelId"></param>
+            <param name="stepName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.UpdateInstanceStepExt(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新运行时步骤的扩展信息
+            </summary>
+            <param name="InstanceStepId"></param>
+            <param name="ExtendName"></param>
+            <param name="ExtendValue"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.WFDA.IsInstanceRunning(System.String)">
+            <summary>
+            判断工作流是否在运行
+            </summary>
+            <param name="InstanceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.IsInstanceStepExecutorRunning(System.String)">
+            <summary>
+            判断步骤签核人是否在运行
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.IsInstanceStepRunning(System.String)">
+            <summary>
+            判断步骤是否在运行
+            </summary>
+            <param name="InstanceStepExecutorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WF_M_CONNECTOR)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WF_M_MODEL)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Insert(WFCore.WF_M_STEP)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Update(WFCore.WF_M_CONNECTOR)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Update(WFCore.WF_M_MODEL)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Update(WFCore.WF_M_STEP)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WFCore.WFDA.DeleteStep(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:WFCore.WFDA.DeleteConnector(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:WFCore.WFDA.DeleteModelInternal(System.String)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="ModelId"></param>
+        </member>
+        <member name="M:WFCore.WFDA.GetStepExecutors(System.String)">
+            <summary>
+            得到步骤定义执行人
+            </summary>
+            <param name="ModelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WFCore.WFDA.DeleteStepExecutor(System.Collections.Generic.List{System.String})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:WFCore.WFDA.Copy(System.String,System.String)">
+            <summary>
+            复制一个工作流模型
+            </summary>
+            <param name="ModelId"></param>
+            <param name="currentUser"></param>
+        </member>
+        <member name="M:WFCore.WFDA.ModelSaveToDB(System.String)">
+            <summary>
+            保存到数据库
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:WFCore.WFDA.ModelSaveToDB(System.String,System.String)">
+            <summary>
+            保存到数据库，用新的 ModelId
+            </summary>
+            <param name="path"></param>
+            <param name="ModelId"></param>
+        </member>
+        <member name="M:WFCore.WFDA.ModelSaveToLocal(System.String,System.String)">
+            <summary>
+            保存一个工作流模型到文件
+            </summary>
+            <param name="ModelId"></param>
+            <param name="path"></param>
+        </member>
+        <member name="T:WFCore.WFExecutor">
+            <summary>
+            自定义签核人的时候用的签核人实体
+            </summary>
+        </member>
+        <member name="P:WFCore.WFExecutor.ExecutorId">
+            <summary>
+            UserId
+            </summary>
+        </member>
+        <member name="P:WFCore.WFExecutor.ExecutorName">
+            <summary>
+            显示名称
+            </summary>
+        </member>
+        <member name="T:WFCore.WFInstance">
+            <summary>
+            运行时工作流实例
+            </summary>
+        </member>
+        <member name="T:WFCore.WFInstanceConnector">
+            <summary>
+            运行时连线实例
+            </summary>
+        </member>
+        <member name="T:WFCore.WFInstanceStep">
+            <summary>
+            运行时步骤实例
+            </summary>
+        </member>
+        <member name="M:WFCore.WFLog.WriteLog(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入日志到数据库中，需要表 WF_T_LOG
+            </summary>
+            <param name="FuncModule"></param>
+            <param name="UserName"></param>
+            <param name="Msg"></param>
+            <param name="LogLevel"></param>
+            <param name="currentUserName"></param>
+            <param name="InstanceId"></param>
+        </member>
+        <member name="M:WFCore.WFLog.InfoFormat(System.String,System.String,System.Object[])">
+            <summary>
+            插入日志到 sqlite 数据库中
+            </summary>
+            <param name="intanceId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:WFCore.WFLog.DebugFormat(System.String,System.String,System.Object[])">
+            <summary>
+            插入日志到 sqlite 数据库中
+            </summary>
+            <param name="intanceId"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:WFCore.WFLog.ErrorFormat(System.String,System.String,System.Exception,System.Object[])">
+            <summary>
+            插入日志到 sqlite 数据库中
+            </summary>
+            <param name="intanceId"></param>
+            <param name="format"></param>
+            <param name="ex"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:WFCore.WFLog.Insert(WFCore.WF_T_LOG)">
+            <summary>
+            插入日志到 sqlite 数据库中，必须要有 InstanceId
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="F:WFCore.WFMsgCache._cache">
+            <summary>
+            这个字典用来缓存某个用户未读消息的数量
+            </summary>
+        </member>
+        <member name="M:WFCore.WFMsgCache.RefreshAll">
+            <summary>
+            刷新所有数据，把缓存的数据清除，这样就能保证过一段时间所有的未读消息数量都是正确的
+            </summary>
+        </member>
+        <member name="M:WFCore.WFMsgCache.Refresh(System.String)">
+            <summary>
+            刷新这个用户，当消息数量有变化的时候，从缓存中移除当前用户，这样下次在客户端请求的时候，重新查询数据库
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="P:WFDesigner.WFStep.StepId">
+            <summary>
+            StepId 存放在 shape 的 Data1 中
+            </summary>
+        </member>
+        <member name="P:WFCore.WFTask.TaskId">
+            <summary>
+            任务编号
+            </summary>
+        </member>
+        <member name="P:WFCore.WFTask.StartTime">
+            <summary>
+            任务开始启动的时间
+            </summary>
+        </member>
+    </members>
+</doc>

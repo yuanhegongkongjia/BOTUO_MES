@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Step_Edit" Name="WFCore_Step_Edit" Desc="流程步骤详细" DAImp="DynamicForm.DA.WFCore_Step_EditDA,DynamicForm">
+  <Panel Id="dfPanel_201408041619580040" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="StepId" Type="hidden" />
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="StepType" Text="步骤类型" Width="span10" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+    <Row>
+      <Control Name="StepName" Text="步骤名称" Width="span10" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AllowActions" Text="允许的动作" Width="span16" Type="checkbox" Options="{ '1': '保存','2':'提交','3':'同意','4':'不同意','5':'回退','6':'转签','7':'加签' }" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="IsSendMessage" Text="是否发送消息" Width="span8" Type="checkbox" Options="{ '1':'发送' }" OptionType="JSON" />
+      <Control Name="StepOrder" Text="排序" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Extend02" Text="附加逻辑" Width="span16" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:300px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{'style':'margin-left:3px;'}">
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

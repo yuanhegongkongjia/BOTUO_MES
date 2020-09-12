@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_YC_Edit" Name="Form_SM_T_PROCESS_YC_Edit" Desc="浴槽信息编辑" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_YC_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TZCStandard" Text="脱脂槽标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="TZCMax" Text="脱脂槽最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="TZCMin" Text="脱脂槽最新" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AQStandard" Text="AQ标准" TextAfterControl="度&#xA;" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQMax" Text="AQ最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQMin" Text="AQ最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="JXStandard" Text="碱洗标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="JXMax" Text="碱洗最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="JXMin" Text="碱洗最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ZSXStandard" Text="主酸洗标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ZSXMax" Text="主酸洗最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ZSXMin" Text="主酸洗最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="JTStandard" Text="焦铜标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="JTMax" Text="焦铜最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="JTMin" Text="焦铜最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="LSXStandard" Text="硫酸锌标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LSXMax" Text="硫酸锌最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LSXMin" Text="硫酸锌最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="RSXStandard" Text="热水洗标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="RSXMax" Text="热水洗最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="RSXMin" Text="热水洗最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="MFLQSStandard" Text="MF冷却水标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="MFLQSMax" Text="MF冷却水最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="MFLQSMin" Text="MF冷却水最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="LQCStandard" Text="冷却槽标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LQCMax" Text="冷却槽最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LQCMin" Text="冷却槽最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="LSStandard" Text="磷酸标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LSMax" Text="磷酸最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="LSMin" Text="磷酸最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ZJStandard" Text="皂浸标准" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ZJMax" Text="皂浸最大" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ZJMin" Text="皂浸最小" TextAfterControl="度" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

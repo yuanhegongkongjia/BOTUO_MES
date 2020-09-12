@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_Edit" Name="Form_SM_T_PROCESS_Edit" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="YCName_DataSource" Type="hidden" />
+    </Row>
+  </Panel>
+  
+  <Panel Id="Panel_CY" Name="Panel_CY" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">A面槽液工艺设定</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="btnSetCYGY" Text="设定槽液工艺" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnSetCYGY_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetCYGY_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_cY_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        //BUI.getControl('grid_product').get('store').load();
+    });
+
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="ADCStandard" Text="镀槽标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMax" Text="镀槽最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ADCMin" Text="镀槽最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="ATJCStandard" Text="调节槽标准值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMax" Text="调节槽最大值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ATJCMin" Text="调节槽最小值" TextAfterControl="%" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AIznStandard" Text="镀锌标准值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMax" Text="镀锌最大值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AIznMin" Text="镀锌最小值" TextAfterControl="A" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF1Standard" Text="MF1标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Max" Text="MF1最大值" TextAfterControl="V&#xA;" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF1Min" Text="MF1最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AMF2Standard" Text="MF2标准值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Min" Text="MF2最小值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AMF2Max" Text="MF2最大值" TextAfterControl="V" Width="span8" Type="text" MustInput="True" />
+    </Row>
+  </Panel>
+  
+ 
+</Form>

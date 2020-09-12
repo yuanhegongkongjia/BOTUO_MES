@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_UserRole_Setting" Name="WF_UserRole_Setting" Desc="设置用户的角色" DAImp="DynamicForm.DA.WF_UserRole_SettingDA, DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="UserId" Type="hidden" />
+      <Control Name="UserName" Text="用户名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="RoleId" Text="角色编号" Width="200" />
+    <Column Name="RoleName" Text="角色名称" Width="100" />
+    <Column Name="Remark" Text="备注" Width="300" />
+  </Panel>
+  <Panel Id="Panel201507251157480033" Name="Panel201507251157480033" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

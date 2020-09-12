@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_UPH_Edit" Name="Form_SM_M_UPH_Edit" Desc="工序管理详细" DAImp="DynamicForm.DA.Form_SM_M_UPH_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="ProductName" Text="产品" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Station" Text="工序" Width="span8" Type="text" />
+      <Control Name="SubStation" Text="子工序" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="UPH" Text="UPH" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

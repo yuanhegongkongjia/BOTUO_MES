@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_QUALITY_Edit" Name="Form_SM_T_PROCESS_QUALITY_Edit" Desc="产品质量标准编辑" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_QUALITY_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber,editing">
+    <!--DF_SCRIPT
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-plus"></i>添加',
+    listeners: {
+        'click': addFunction1
+    }
+});
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-remove"></i>删除',
+    listeners: {
+        'click': delFunction1
+    }
+});
+
+var editing = new Grid.Plugins.CellEditing({
+    triggerSelected: false //触发编辑的时候不选中行
+});
+
+//添加记录
+function addFunction1() {
+    var newData = {
+        PKId: '0'
+    };
+    store.addAt(newData, 0);
+    editing.edit(newData, 'Goods'); //添加记录后，直接编辑
+}
+//删除选中的记录
+function delFunction1() {
+    var selections = grid.getSelection();
+    store.remove(selections);
+}
+-->
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="XJStandard" Visible="false" Sortable="true" />
+    <Column Name="GG" Text="线径" Width="100" Sortable="true" />
+    <Column Name="GGXH" Text="规格" Width="100" Sortable="true" />
+    <Column Name="GH" Text="钢号" Width="100" Sortable="true" />
+    <Column Name="TDStandard" Visible="false" Sortable="true" />
+    <Column Name="TDPreControlRange" Visible="false" Sortable="true" />
+    <Column Name="TDQualifiedRange" Visible="false" Sortable="true" />
+    <Column Name="MaxTD" Visible="false" Sortable="true" />
+    <Column Name="MinTD" Visible="false" Sortable="true" />
+    <Column Name="MaxTYD" Text="椭圆度最大值" Width="100" Sortable="true" />
+    <Column Name="QDStandard" Text="强度标准" Width="100" Sortable="true" />
+    <Column Name="QDRange" Text="QD范围" Width="100" Sortable="true" />
+    <Column Name="MSStandard" Text="面缩标准" Width="100" Sortable="true" />
+    <Column Name="CuStandard" Text="Cu标准" Width="100" Sortable="true" />
+    <Column Name="GKgStandard" Text="克重标准" Width="100" Sortable="true" />
+    <Column Name="MSRange" Text="面缩范围" Width="100" Sortable="true" />
+    <Column Name="CuRange" Text="Cu范围" Width="100" Sortable="true" />
+    <Column Name="GKgRange" Text="克重范围" Width="100" Sortable="true" />
+    <Column Name="MinBCu" Text="最小Cu" Width="100" Sortable="true" />
+    <Column Name="ZJStandard" Visible="false" Sortable="true" />
+    <Column Name="QDPreControlRange" Text="强度预控" Width="100" Sortable="true" />
+    <Column Name="QDQualifiedRange" Text="强度合格" Width="100" Sortable="true" />
+    <Column Name="ZJQualifiedRange" Visible="false" Sortable="true" />
+    <Column Name="MSPreControlRange" Text="面缩预控" Width="100" Sortable="true" />
+    <Column Name="MSQualifiedRange" Text="面缩合格" Width="100" Sortable="true" />
+    <Column Name="CuPreControlRange" Text="Cu预控" Width="100" Sortable="true" />
+    <Column Name="CuQualifiedRange" Text="Cu合格" Width="100" Sortable="true" />
+    <Column Name="GKgPreControlRange" Text="克重预控" Width="100" Sortable="true" />
+    <Column Name="GKgQualifiedRange" Text="克重合格" Width="100" Sortable="true" />
+    <Column Name="BCuPreControlRange" Text="表铜预控" Width="100" Sortable="true" />
+    <Column Name="BCuQualifiedRange" Text="表铜合格" Width="100" Sortable="true" />
+    <Column Name="BCuStandard" Text="表铜标准" Width="100" Sortable="true" />
+    <Column Name="CustomerCode" Text="客户编号" Width="100" Sortable="true" Editor="{xtype :'text',rules:{required:true}}" />
+    <Column Name="Spec" Text="成品规格" Width="100" Sortable="true" Editor="{xtype :'text',rules:{required:true}}" />
+    <Column Name="QDLevel" Text="强度等级" Width="100" Sortable="true" Editor="{xtype :'text',rules:{required:true}}" />
+    <Column Name="AverQD" Text="平均强度" Width="100" Sortable="true" Visible="false"  />
+    <Column Name="MaxQD" Text="最大强度" Width="100" Sortable="true" Visible="false"  />
+    <Column Name="MinQD" Text="最小强度" Width="100" Sortable="true" Visible="false"  />
+  </Panel>
+  <Panel Id="Panel20190715154921429" Name="Panel20190715154921429" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer','onclick':'return btnSave_click();' }" Action="update" />
+      <!--DF_SCRIPT
+function btnSave_click(){
+var grid=BUI.getControl('grid1');
+var list=grid.getItems();
+debugger;
+for(i in list){
+var e=list[i];
+
+if(!e.hasOwnProperty('Spec')){
+dfAlert('请输入成品规格');
+return false;
+}
+
+if(!e.hasOwnProperty('QDLevel')){
+dfAlert('请输入强度等级');
+return false;
+}
+
+if(!e.hasOwnProperty('AverQD')){
+dfAlert('请输入平均强度');
+return false;
+}
+if(!e.hasOwnProperty('MaxQD')){
+dfAlert('请输入最大强度');
+return false;
+}
+
+if(!e.hasOwnProperty('MinQD')){
+dfAlert('请输入最小强度');
+return false;
+}
+
+
+}
+return true;
+}
+-->
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

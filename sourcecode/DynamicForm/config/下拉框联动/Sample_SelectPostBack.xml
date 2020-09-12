@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Sample_SelectPostBack" Name="Sample_SelectPostBack" Desc="Select回传示例" DAImp="DynamicForm.DA.Sample_SelectPostBackDA,DynamicForm">
+  <Panel Id="Panel20160216152133882" Name="Panel20160216152133882" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}" Position="ui-layout-center">
+    <Row>
+      <Control Name="SelectRole" Text="联动测试" Width="span8" Type="select" Options="select roleid as value,rolename as text from wf_m_role" OptionType="SQL" AddEmptyOption="True" AutoPostBack="True" />
+      <Control Name="SelectUser" Text="选择用户" Width="span8" Type="select" Options="{'':''}" OptionType="JSON" />
+      <Control Name="Name" Text="输入框回发测试" Width="span8" Type="text" AutoPostBack="True" />
+      <Control Name="Sex" Text="CheckBox 回发测试" Width="span8" Type="checkbox" Options="{'Y':'是'}" OptionType="JSON" AutoPostBack="True" />
+      <Control Name="WorkDate" Text="日期回发测试" Width="span8" Type="calendar" AutoPostBack="True" />
+    </Row>
+    <Row>
+      <Control Name="DisplayTime" Text="显示时间" Width="span8" Type="display" />
+      <Control Name="btnUpdate" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

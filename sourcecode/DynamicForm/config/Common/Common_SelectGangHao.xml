@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Common_SelectGangHao" Name="Common_SelectGangHao" Desc="钢号查询" DAImp="DynamicForm.DA.Common_SelectGangHaoDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="GangHao" Text="钢号" Width="span8" Type="text" />
+      <Control Name="QDLevel" Text="强度等级" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;100&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="QDLevel" Text="强度等级" Width="100" Sortable="true" />
+    <Column Name="GangHao" Text="钢号" Width="100" Sortable="true" />
+    <Column Name="YaQiang" Text="压强Mpa" Width="100" Sortable="true" />
+  </Panel>
+</Form>

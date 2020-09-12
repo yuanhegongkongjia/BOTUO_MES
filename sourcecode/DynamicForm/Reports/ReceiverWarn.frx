@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/18/2018 15:21:06" ReportInfo.Modified="09/18/2018 15:58:03" ReportInfo.CreatorVersion="2017.1.16.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqTIAT0BD0QLO+9etJEo5rOC23wmCPf73sOhYI/QtTJMQUcN1GQoP1TNnWhJ3E9jH+n78nKVb1yu5gZrQl5MHZZ7bCNHqVlRAXhH+kKO1ssqLdW9uGjaXnTRNwOX1pvlizKCCAaYoqJ4CIhrbvFKD/Y4gsPLdFUNtJOCU5smW3l9kWZdtn7ooKyQzX3/ZgcHIvw2lYat+cD9G8EdTb4z/dDQKciPn2hBl7Vr5R7wJwIyA=">
+      <TableDataSource Name="YZ_T_RECEIVER_WARN" DataType="System.Int32" Enabled="true" TableName="YZ_T_RECEIVER_WARN">
+        <Column Name="PKId" DataType="System.String"/>
+        <Column Name="ReceiverName" DataType="System.String"/>
+        <Column Name="PalletType" DataType="System.String"/>
+        <Column Name="PalletMaxNumber" DataType="System.Int32"/>
+        <Column Name="Remark1" DataType="System.String"/>
+        <Column Name="Remark2" DataType="System.String"/>
+        <Column Name="Remark3" DataType="System.String"/>
+        <Column Name="Remark4" DataType="System.String"/>
+        <Column Name="Remark5" DataType="System.String"/>
+        <Column Name="CreateTime" DataType="System.DateTime"/>
+        <Column Name="CreateUser" DataType="System.String"/>
+        <Column Name="LastModifyTime" DataType="System.DateTime"/>
+        <Column Name="LastModifyUser" DataType="System.String"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="18.9"/>
+    <PageHeaderBand Name="PageHeader1" Top="22.9" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="151.2" Width="236.25" Height="37.8" Text="预警清单" HorzAlign="Center" VertAlign="Center" Font="Arial, 20pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="64.7" Width="718.2" Height="264.6">
+      <MatrixObject Name="Matrix1" Left="9.45" Top="9.45" Width="211.17" Height="39.56" FixedRows="1" FixedColumns="1" DataSource="YZ_T_RECEIVER_WARN">
+        <MatrixColumns>
+          <Header Expression="[YZ_T_RECEIVER_WARN.ReceiverName]" Totals="false"/>
+        </MatrixColumns>
+        <MatrixRows>
+          <Header Expression="[YZ_T_RECEIVER_WARN.PalletType]" Totals="false"/>
+        </MatrixRows>
+        <MatrixCells>
+          <Cell Expression="[YZ_T_RECEIVER_WARN.PalletMaxNumber]"/>
+        </MatrixCells>
+        <TableColumn Name="Column1" Width="84.96" AutoSize="true"/>
+        <TableColumn Name="Column2" Width="126.21" AutoSize="true"/>
+        <TableRow Name="Row1" Height="20" AutoSize="true">
+          <TableCell Name="Cell1" Border.Lines="All" Text="周装箱类型" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="[ReceiverName]" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="19.56" AutoSize="true">
+          <TableCell Name="Cell3" Border.Lines="All" Text="[PalletType]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="[PalletMaxNumber]" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </MatrixObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="333.3" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

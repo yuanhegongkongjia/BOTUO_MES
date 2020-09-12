@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="WF_M_COMPANY" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM WF_M_COMPANY WHERE CompanyCode=@CompanyCode" Insert="INSERT INTO WF_M_COMPANY(CompanyCode,CompanyName,Address,Contact,ContactPhone,ContactMail,BankName,BankAccount,Remark,CreateTime,CreateUser,LastModifyTime,LastModifyUser) VALUES(@CompanyCode,@CompanyName,@Address,@Contact,@ContactPhone,@ContactMail,@BankName,@BankAccount,@Remark,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE WF_M_COMPANY SET CompanyName=@CompanyName,Address=@Address,Contact=@Contact,ContactPhone=@ContactPhone,ContactMail=@ContactMail,BankName=@BankName,BankAccount=@BankAccount,Remark=@Remark,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE CompanyCode=@CompanyCode">
+    <column Name="CompanyCode" Text="CompanyCode" DataType="nvarchar(50)" IsPrimaryKey="Y" />
+    <column Name="CompanyName" Text="CompanyName" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Address" Text="Address" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="Contact" Text="Contact" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ContactPhone" Text="ContactPhone" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ContactMail" Text="ContactMail" DataType="nvarchar(100)" IsNullable="Y" />
+    <column Name="BankName" Text="BankName" DataType="nvarchar(150)" IsNullable="Y" />
+    <column Name="BankAccount" Text="BankAccount" DataType="nvarchar(150)" IsNullable="Y" />
+    <column Name="Remark" Text="Remark" DataType="nvarchar(500)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+  </table>
+</tables>

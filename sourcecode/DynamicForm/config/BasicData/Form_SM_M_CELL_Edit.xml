@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_CELL_Edit" Name="Form_SM_M_CELL_Edit" Desc="车间管理详细" DAImp="DynamicForm.DA.Form_SM_M_CELL_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="CellId" Type="hidden" />
+      <Control Name="CellName" Text="车间名称" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="CellDesc" Text="车间描述" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;}" MustInput="True" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:200px;&quot;}">
+      <Control Name="Remark1" Text="备注" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;height:100px;width:400px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

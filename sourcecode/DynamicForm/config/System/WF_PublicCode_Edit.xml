@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_PublicCode_Edit" Name="WF_PublicCode_Edit" Desc="公用代码详细" DAImp="DynamicForm.DA.WF_PublicCode_EditDA,DynamicForm">
+  <Panel Id="Panel201507251204570036" Name="Panel201507251204570036" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="CodeId" Type="hidden" />
+      <Control Name="CodeType" Text="代码类型" Width="span8" Type="text" />
+      <Control Name="CodeName" Text="代码名称" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CodeValue" Text="代码值" Width="span8" Type="text" />
+    </Row>
+    <Row RowAttributes="{style:'height:130px'}">
+      <Control Name="CodeLongValue" Text="代码值（长字符）" Width="span16" Type="textarea" ControlAttributes="{style:'width:450px;height:120px;'}" />
+    </Row>
+    <Row>
+      <Control Name="CodeOrder" Text="排序" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

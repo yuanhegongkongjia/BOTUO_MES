@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_AllWF" Name="WFCore_AllWF" Desc="所有流程" DAImp="DynamicForm.DA.WFCore_AllWFDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="InstanceStatus" Text="流程状态" Width="span16" Type="multiselect" Options="{'Finished':'已完成','Running':'进行中','Aborted':'已取消'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="InstanceId" Text="流程编号" Width="span8" Type="text" />
+      <Control Name="ModelName" Text="工作流名称" Width="span8" Type="text" />
+      <Control Name="RequestorName" Text="申请人" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="RequestTimeFrom" Text="申请时间从" Width="span8" Type="calendar" />
+      <Control Name="RequestTimeTo" Text="到" Width="span8" Type="calendar" />
+    </Row>
+    <Row>
+      <Control Name="EndDateFrom" Text="签核完成时间从" Width="span8" Type="calendar" />
+      <Control Name="EndDateTo" Text="签核完成时间到" Width="span8" Type="calendar" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{ DF_QUERY_CONDITION_PANEL: 'queryConditionPanel' }" Plugins="BUI.Grid.Plugins.CheckSelection">
+    <!--DF_SCRIPT
+var beforeRender = function(grid, store) {
+    grid.on('itemdblclick', function(ex) {
+        var p = "&InstanceId=" + ex.item.InstanceId;
+        dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+    });
+};
+-->
+    <Column Name="ModelId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Text="流程编号" Width="150" Sortable="true" />
+    <Column Name="ModelName" Text="名称" Width="150" Sortable="true" />
+    <Column Name="InstanceStatus" Text="状态" Width="100" Sortable="true" />
+    <Column Name="RequestorName" Text="申请人" Width="100" Sortable="true" />
+    <Column Name="RequestorProxyName" Visible="false" Sortable="true" />
+    <Column Name="RequestTime" Text="申请时间" Width="150" Sortable="true" />
+    <Column Name="CurrentExecutorName" Text="目前审批人" Width="120" Sortable="true" />
+    <Column Name="EmployeeId" Text="申请人工号" Width="120" />
+    <Column Name="ChineseName" Text="申请人姓名" Width="200" />
+  </Panel>
+  <Panel Id="Panel201512272153400005" Name="Panel201512272153400005" Type="SingleRecord">
+    <Row>
+      <Control Name="btnEdit" Text="详细" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnEdit_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnEdit_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert('请选择一条记录');
+        return;
+    }
+    var p = "&InstanceId=" + selections[0].InstanceId;
+    dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+}
+-->
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'InstanceId': a.InstanceId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WFCore_AllWF&subAction=DeleteWorkflow', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnCancelWorkflow" Text="取消流程" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancelWorkflow_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancelWorkflow_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'InstanceId': a.InstanceId
+        }
+    });
+    if (confirm(getRes('确定要取消选定的流程么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WFCore_AllWF&subAction=CancelWorkflow', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+    </Row>
+  </Panel>
+</Form>

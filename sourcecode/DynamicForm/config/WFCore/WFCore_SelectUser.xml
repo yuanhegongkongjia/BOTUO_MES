@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_SelectUser" Name="WFCore_SelectUser" DAImp="DynamicForm.DA.WFCore_SelectUserDA,DynamicForm">
+  <Panel Id="Panel201512280208170004" Name="Panel201512280208170004" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="InstanceStepExecutorId" Type="hidden" MustInput="True" />
+      <Control Name="actionName" Text="签核动作" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" MustInput="True" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:90px;&quot;}">
+      <Control Name="ExecuteComment" Text="意见" Width="span10" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:250px;height:80px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Value="1" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+      <Control Name="btnAdd" Text="添加用户" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectUser';
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length > 0) {
+                // 返回数据到 grid
+                BUI.getControl('grid1').get('store').add(selections);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(800, 600, '', url, btns);
+}
+-->
+      <Control Name="btnDelete" Text="移除用户" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    if (confirm(getRes('确定要移除选定的记录么？'))) {
+        var selections = grid.getSelection();
+        grid.get('store').remove(selections);
+    }
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;1000&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="UserId" Visible="false" />
+    <Column Name="DeptName" Text="部门名称" Width="150" />
+    <Column Name="UserName" Text="用户名" Width="100" />
+    <Column Name="ChineseName" Text="中文名" Width="100" />
+    <Column Name="EmployeeId" Text="工号" Width="100" />
+  </Panel>
+</Form>

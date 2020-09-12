@@ -1,0 +1,32 @@
+USE [sumin]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[SplitStr]    Script Date: 2019/7/30 9:59:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE function  [dbo].[SplitStr](@str varchar(max),@splitCode varchar(2))   
+returns @t table(SonStr varchar(500))   
+as   
+    begin   
+     while(charindex(@splitCode,@str)<>0)   --charindex:CHARINDEX函数返回一个整数，返回的整数是要找的字符串在被找的字符串中的位置。
+        begin   
+          insert @t(SonStr) 
+		  values (substring(@str,1,charindex(@splitCode,@str)-1))   
+          set @str = stuff(@str,1,charindex(@splitCode,@str),'')   --stuff的功能：删除指定长度的字符串并在指定的起始点插入另一组字符
+   --这里从字符串的第1位开始，取长度为* + 1 (因为我的分隔符是两个，||)。如果用一个分隔符，这里要去掉 + 1 ！！！
+
+        end
+
+  if len(@str) > 1
+  begin 
+        insert @t(SonStr) values (@str)   
+  end
+      return   
+    end
+GO
+
+

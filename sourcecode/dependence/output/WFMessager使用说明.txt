@@ -1,0 +1,25 @@
+﻿需要把 WFMessagerHandler.ashx 复制到网站目录，生成的时候，已经默认复制到输出目录了
+
+<script type="text/javascript" src="<%= ClientScript.GetWebResourceUrl(typeof(WFMessager.WFMessagerHandler), "WFMessager.jquery-poll-message.js") %>"></script>
+
+在需要消息显示的界面上添加
+<a href="javascript:void;" id="msgText"></a>
+
+然后添加对应的脚本
+$('#msgText').pollMessage({
+    'url': 'WFMessagerHandler.ashx?action=queryMessage',
+    'duration': 10,
+    'click': function (msg) {
+        $('#ddz_mainFrame').attr('src', 'DFIndex.aspx?DF_FORMNAME=WF_MyMsg');
+    }
+}).start();
+
+
+WF_MyMsg 这个是我的消息的管理界面
+
+
+// 在其他地方调用 api 对某个用户进行消息刷新
+WFMessagerHandler.ashx?action=refreshusermessage&UserId={UserId}
+
+// 在其他地方调用 api 对所有用户进行消息刷新
+WFMessagerHandler.ashx?action=refreshall

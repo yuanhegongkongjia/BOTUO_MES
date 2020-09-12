@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS" Name="Form_SM_T_PROCESS" Desc="基本信息" DAImp="DynamicForm.DA.Form_SM_T_PROCESSDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="InstanceId" Text="流程编号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="ZDB" Text="振动" Width="span18" Type="multiselect" Options="{'N1':'N1','N2':'N2','N3':'N3','N4':'N4','N5':'N5','N6':'N6','0':'0'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="ProcessName" Text="名称" TextAfterControl="&lt;input id='selectProcess' name='selectAOP' type='button' value=' ... ' onclick='selectProcess_click();return false; '/&gt;" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;}" MustInput="True" />
+      <!--DF_SCRIPT
+function selectProcess_click(){
+var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectProcess&NewInstanceId='+$('#InstanceId').val();
+  var dialog;
+	var btns = [{
+		text: 'OK',
+		elCls: 'button button-primary',
+		handler: function() {
+window.location.reload();
+				dialog.dialog('close');
+			}
+	
+	}, {
+		text: 'Cancel',
+		elCls: 'button',
+		handler: function() {
+			dialog.dialog('close');
+		}
+	}]
+	dialog = dfOverlayDialog(700, 550, '', url, btns);
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="Line" Text="线号" Width="span8" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04'}" OptionType="JSON" MustInput="True" />
+      <Control Name="ProduceDate" Text="生产日期" Width="span8" Type="calendar" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="JXDLStandard" Text="碱洗电流标准" TextAfterControl="(A)" Width="span8" Type="text" />
+      <Control Name="TotalLYStandard" Text="总炉压标准值" TextAfterControl="pa" Width="span8" Type="text" MustInput="True" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190708125012932" Name="Panel20190708125012932" Type="SingleRecord">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">收线工艺</h3>
+      </div>
+-->
+    <Row>
+      <Control Name="SXGY" Text="工字轮类型" Width="span10" Type="select" Options="{'WS550':'WS550','WS800':'WS800','线架':'线架'}" OptionType="JSON" MustInput="True" />
+      <Control Name="FXHD" Text="放线焊接点处理" Width="span10" Type="select" Options="{'剔除':'剔除','不剔除':'不剔除'}" OptionType="JSON" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="PXSpeedStandard" Text="排线速度标准" TextAfterControl="mm/min" Width="span10" Type="text" MustInput="True" />
+      <Control Name="SXZLStandard" Text="收线张力标准" TextAfterControl="Mpa" Width="span10" Type="text" MustInput="True" />
+      <Control Name="PXSpeedMax" TextAfterControl="mm/min" Type="hidden" />
+      <Control Name="PXSpeedMin" TextAfterControl="mm/min" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="SXZLMax" TextAfterControl="Mpa" Type="hidden" />
+      <Control Name="SXZLMin" TextAfterControl="Mpa" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="grid_product" Name="grid_product" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">生产信息</h3>
+      </div>
+-->
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="LinePosition" Text="线位" Width="100" Sortable="true" />
+    <Column Name="GangHao" Text="钢号" Width="100" Sortable="true" />
+    <Column Name="XianJing" Text="线径" Width="100" Sortable="true" />
+    <Column Name="Spec" Text="强度等级" Width="100" Sortable="true" />
+    <Column Name="GenShu" Text="根数" Width="100" Sortable="true" />
+    <Column Name="Speed" Text="速度" Width="100" Sortable="true" />
+    <Column Name="DV" Text="DV" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel1" Name="opPanel1" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete_product" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_product_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_product_click() {
+    var grid = BUI.getControl('grid_product');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'PKId': a.PKId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_PRODUCT',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid_product').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAddProduct" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAddProduct_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAddProduct_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_PRODUCT_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_product').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit_product" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnEdit_product_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnEdit_product_click() {
+    var grid = BUI.getControl('grid_product');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&PKId=' + selections[0].PKId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_PRODUCT_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_product').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_cy" Name="grid_cy" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">收线槽液工艺</h3>
+      </div>
+-->
+    <Column Name="ADC" Text="A面镀铜电流" Width="100" Sortable="true" />
+    <Column Name="ATJC" Text="A面调节电流" Width="100" Sortable="true" />
+    <Column Name="AIzn" Text="A面镀锌电流" Width="100" Sortable="true" />
+    <Column Name="AMF1" Text="A面MF1电压" Width="100" Sortable="true" />
+    <Column Name="AMF2" Text="A面MF2电压" Width="100" Sortable="true" />
+    <Column Name="BDC" Text="B面镀铜电流" Width="100" Sortable="true" />
+    <Column Name="BTJC" Text="B面调节电流" Width="100" Sortable="true" />
+    <Column Name="BIzn" Text="B面镀锌电流" Width="100" Sortable="true" />
+    <Column Name="BMF1" Text="B面MF1电压" Width="100" Sortable="true" />
+    <Column Name="BMF2" Text="B面MF2电压" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel2" Name="opPanel2" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAdd_cy" Text="设定收线槽液工艺" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:200px;&quot;,&quot;onclick&quot;:&quot;btnSetCYGY_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetCYGY_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_CY_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_cy').get('store').load();
+    });
+
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_yc" Name="grid_yc" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;20&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">浴槽温度</h3>
+      </div>
+-->
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="TZC" Text="脱脂槽" Width="100" Sortable="true" />
+    <Column Name="AQ" Text="AQ" Width="100" Sortable="true" />
+    <Column Name="JX" Text="碱洗" Width="100" Sortable="true" />
+    <Column Name="ZSX" Text="主酸洗" Width="100" Sortable="true" />
+    <Column Name="JT" Text="焦铜" Width="100" Sortable="true" />
+    <Column Name="LSX" Text="硫酸锌" Width="100" Sortable="true" />
+    <Column Name="RSX" Text="热水洗" Width="100" Sortable="true" />
+    <Column Name="MFLQS" Text="MF冷却水" Width="100" Sortable="true" />
+    <Column Name="LQC" Text="冷却槽" Width="100" Sortable="true" />
+    <Column Name="LS" Text="磷酸" Width="100" Sortable="true" />
+    <Column Name="ZJ" Text="皂浸" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel3" Name="opPanel3" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAddYC" Text="设定浴槽" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnSetYC_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetYC_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_YC_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_yc').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_quality" Name="grid_quality" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">产品质量标准</h3>
+      </div>
+-->
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="GG" Text="线径" Width="100" Sortable="true" />
+    <Column Name="GGXH" Text="型号" Width="100" Sortable="true" />
+    <Column Name="TYD" Text="椭圆度" Width="100" Sortable="true" />
+    <Column Name="QD" Text="强度" Width="100" Sortable="true" />
+    <Column Name="MS" Text="面缩" Width="100" Sortable="true" />
+    <Column Name="KZ" Text="克重" Width="100" Sortable="true" />
+    <Column Name="Cu" Text="Cu" Width="100" Sortable="true" />
+    <Column Name="BT" Text="表铜" Width="100" Sortable="true" />
+    <Column Name="CustomerCode" Text="客户代码" Width="100" Sortable="true" />
+    <Column Name="Spec" Text="成品规格" Width="100" Sortable="true" />
+    <Column Name="QDLevel" Text="强度等级" Width="100" Sortable="true" />
+    <Column Name="AverQD" Visible="false" Sortable="true" />
+    <Column Name="MaxQD" Visible="false" Sortable="true" />
+    <Column Name="MinQD" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel4" Name="opPanel4" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAdd_quality" Text="设定质量标准" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_quality_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_quality_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_QUALITY_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_quality').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_ly" Name="grid_ly" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">炉压设定</h3>
+      </div>
+-->
+    <Column Name="Z1" Text="Z1" Width="100" Sortable="true" />
+    <Column Name="Z2" Text="Z2" Width="100" Sortable="true" />
+    <Column Name="Z3" Text="Z3" Width="100" Sortable="true" />
+    <Column Name="Z4" Text="Z4" Width="100" Sortable="true" />
+    <Column Name="Z5" Text="Z5" Width="100" Sortable="true" />
+    <Column Name="Z6" Text="Z6" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel5" Name="opPanel5" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAddLY" Text="炉压设定" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:200px;&quot;,&quot;onclick&quot;:&quot;btnSetLY_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetLY_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LY_Edit&InstanceId='+$('#InstanceId').val()+'&Line='+$('#Line').val();
+
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_ly').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_lw" Name="grid_lw" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">炉温设定</h3>
+      </div>
+-->
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="Z1Standard" Text="Z1" Width="100" Sortable="true" />
+    <Column Name="Z1Max" Visible="false" Sortable="true" />
+    <Column Name="Z1Min" Visible="false" Sortable="true" />
+    <Column Name="Z2Standard" Text="Z2" Width="100" Sortable="true" />
+    <Column Name="Z2Max" Visible="false" Sortable="true" />
+    <Column Name="Z2Min" Visible="false" Sortable="true" />
+    <Column Name="Z3Standard" Text="Z3" Width="100" Sortable="true" />
+    <Column Name="Z3Max" Visible="false" Sortable="true" />
+    <Column Name="Z3Min" Visible="false" Sortable="true" />
+    <Column Name="Z4Standard" Text="Z4" Width="100" Sortable="true" />
+    <Column Name="Z4Max" Visible="false" Sortable="true" />
+    <Column Name="Z4Min" Visible="false" Sortable="true" />
+    <Column Name="Z5Standard" Text="Z5" Width="100" Sortable="true" />
+    <Column Name="Z5Max" Visible="false" Sortable="true" />
+    <Column Name="Z5Min" Visible="false" Sortable="true" />
+    <Column Name="Z6Standard" Text="Z6" Width="100" Sortable="true" />
+    <Column Name="Z6Max" Visible="false" Sortable="true" />
+    <Column Name="Z6Min" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel7" Name="opPanel7" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAddLW" Text="炉温设定" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:200px;&quot;,&quot;onclick&quot;:&quot;btnSetLW_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetLW_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LW_Edit&InstanceId='+$('#InstanceId').val()+'&Line='+$('#Line').val();
+
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_lw').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_lqf" Name="grid_lqf" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="Z1Standard" Text="Z1" Width="100" Sortable="true" />
+    <Column Name="Z2Standard" Text="Z2" Width="100" Sortable="true" />
+    <Column Name="Z3Standard" Text="Z3" Width="100" Sortable="true" />
+    <Column Name="Z4Standard" Text="Z4" Width="100" Sortable="true" />
+    <Column Name="Z5Standard" Text="Z5" Width="100" Sortable="true" />
+    <Column Name="Z6Standard" Text="Z6" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel8" Name="opPanel8" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAddLQF" Text="炉气氛设定" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:200px;&quot;,&quot;onclick&quot;:&quot;btnSetLQF_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetLQF_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_LQF_Edit&InstanceId='+$('#InstanceId').val()+'&Line='+$('#Line').val();
+
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_lqf').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid_aq" Name="grid_aq" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Visible="false" Sortable="true" />
+    <Column Name="AQ1" Text="AQ1" Width="100" Sortable="true" />
+    <Column Name="AQ2" Text="AQ2" Width="100" Sortable="true" />
+    <Column Name="AQ3" Text="AQ3" Width="100" Sortable="true" />
+    <Column Name="AQ4" Text="AQ4" Width="100" Sortable="true" />
+    <Column Name="AQ5" Text="AQ5" Width="100" Sortable="true" />
+    <Column Name="AQ6" Text="AQ6" Width="100" Sortable="true" />
+    <Column Name="AQ7" Text="AQ7" Width="100" Sortable="true" />
+    <Column Name="AQ8" Text="AQ8" Width="100" Sortable="true" />
+    <Column Name="AWT1" Text="WT1A" Width="100" Sortable="true" />
+    <Column Name="BWT1" Text="WT1B" Width="100" Sortable="true" />
+    <Column Name="AKK" Text="空开距离A" Width="100" Sortable="true" />
+    <Column Name="BKK" Text="空开距离B" Width="100" Sortable="true" />
+    <Column Name="WT2AQ1" Text="WT2AQ1" Width="100" Sortable="true" />
+    <Column Name="WT2AQ2" Text="WT2AQ2" Width="100" Sortable="true" />
+    <Column Name="WT2AQ3" Text="WT2AQ3" Width="100" Sortable="true" />
+    <Column Name="WT2AQ4" Text="WT2AQ4" Width="100" Sortable="true" />
+    <Column Name="WT2AQ5" Text="WT2AQ5" Width="100" Sortable="true" />
+    <Column Name="WT2AQ6" Text="WT2AQ6" Width="100" Sortable="true" />
+    <Column Name="WT2AQ7" Text="WT2AQ7" Width="100" Sortable="true" />
+    <Column Name="WT2AQ8" Text="WT2AQ8" Width="100" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel6" Name="opPanel6" Type="SingleRecord">
+    <Row>
+      <Control Name="btnAddAQ" Text="AQ设定" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:200px;&quot;,&quot;onclick&quot;:&quot;btnSetAQ_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnSetAQ_click(){
+  var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_AQ_Edit&InstanceId='+$('#InstanceId').val();
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid_aq').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190709111253956" Name="Panel20190709111253956" Type="SingleRecord">
+    <Row>
+      <Control Name="ProcessManager" Text="技术经理" TextAfterControl="&lt;input id='selectUser' name='selectUser' type='button' value=' ... ' onclick='selectUser_click();return false;' /&gt;" Width="span24" Type="select" ControlAttributes="{&quot;class&quot;:&quot;input-large&quot;}" Options="select '' as text,'' as value&#xA;union&#xA;select UserName+','+ChineseName as text, UserId as value from WF_M_USER order by text" OptionType="SQL" MustInput="True" />
+      <!--DF_SCRIPT
+function selectUser_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectUser';
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length == 1) {
+                $('#ProcessManager').val(selections[0].UserId);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(800, 550, '', url, btns);
+}
+-->
+    </Row>
+  </Panel>
+</Form>

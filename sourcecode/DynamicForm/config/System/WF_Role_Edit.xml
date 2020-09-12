@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Role_Edit" Name="WF_Role_Edit" Desc="角色详细" DAImp="DynamicForm.DA.WF_Role_EditDA, DynamicForm">
+  <Panel Id="Panel201507251204570036" Name="Panel201507251204570036" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="RoleId" Text="角色编号" Width="span8" Type="text" />
+      <Control Name="RoleName" Text="角色名称" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark" Text="备注" Width="span16" Type="textarea" ControlAttributes="{style:'width:400px'}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

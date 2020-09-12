@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_LogMgmt" Name="WF_LogMgmt" Desc="日志管理" DAImp="DynamicForm.DA.WF_LogMgmtDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="FuncModule" Text="功能模块" Width="span8" Type="text" ControlAttributes="{style:'width:150px;'}" />
+      <Control Name="UserName" Text="操作用户" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateTimeFrom" Text="日志时间从" Width="span8" Type="calendar" ControlAttributes="{style:'width:150px'}" />
+      <Control Name="CreateTimeTo" Text="日志时间到" Width="span8" Type="calendar" ControlAttributes="{style:'width:150px'}" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="LogId" Visible="false" />
+    <Column Name="LogLevel" Text="日志等级" Width="80" />
+    <Column Name="CreateTime" Text="日志时间" Width="150" />
+    <Column Name="FuncModule" Text="功能模块" Width="100" />
+    <Column Name="UserName" Text="操作用户" Width="80" />
+    <Column Name="Msg" Text="日志消息" Width="1300" />
+  </Panel>
+  <!--DF_SCRIPT
+function Op1(UserId) {
+    var p = "&UserId=" + UserId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=WF_UserRole_Setting' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+}
+-->
+</Form>

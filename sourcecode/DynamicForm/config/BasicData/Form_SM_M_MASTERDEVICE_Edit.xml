@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_M_MASTERDEVICE_Edit" Name="Form_SM_M_MASTERDEVICE_Edit" Desc="主站管理详细" DAImp="DynamicForm.DA.Form_SM_M_MASTERDEVICE_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="MasterDeviceId" Type="hidden" />
+      <Control Name="MasterDeviceName" Text="主站名称" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Address" Text="主站地址" Width="span8" Type="text" />
+      <Control Name="LineId" Text="线别" Width="span8" Type="select" Options="select LineId as value,LineName as text from sm_m_line" OptionType="SQL" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;width:200px;&quot;}">
+      <Control Name="LineName" Type="hidden" />
+      <Control Name="Remark1" Text="备注" Width="span24" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_MyWF" Name="WFCore_MyWF" Desc="我的流程" DAImp="DynamicForm.DA.WFCore_MyWFDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="InstanceStatus" Text="流程状态" Width="span16" Type="multiselect" Options="{'Finished':'已完成','Running':'进行中','Aborted':'已取消'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="InstanceId" Text="流程编号" Width="span8" Type="text" />
+      <Control Name="ModelName" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="RequestTimeFrom" Text="申请时间从" Width="span8" Type="calendar" />
+      <Control Name="RequestTimeTo" Text="到" Width="span8" Type="calendar" />
+      <Control Name="AFENumber" Type="hidden" />
+      <Control Name="ProjectName" Type="hidden" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Type="MultiRecord" Additional="{ DF_QUERY_CONDITION_PANEL: 'queryConditionPanel' }" Plugins="BUI.Grid.Plugins.CheckSelection">
+    <!--DF_SCRIPT
+var beforeRender = function(grid, store) {
+    grid.on('itemdblclick', function(ex) {
+        var p = "&InstanceId=" + ex.item.InstanceId;
+        dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+    });
+};
+-->
+    <Column Name="ModelId" Visible="false" Sortable="true" />
+    <Column Name="InstanceId" Text="流程编号" Width="150" Sortable="true" />
+    <Column Name="ModelName" Text="名称" Width="200" Sortable="true" />
+    <Column Name="InstanceStatus" Text="状态" Width="100" Sortable="true" />
+    <Column Name="RequestorName" Text="申请人" Width="100" Sortable="true" />
+    <Column Name="RequestorProxyName" Visible="false" Sortable="true" />
+    <Column Name="RequestTime" Text="申请时间" Width="150" Sortable="true" />
+    <Column Name="AFENumber" Visible="false" />
+    <Column Name="ProjectName" Visible="false" />
+  </Panel>
+  <Panel Id="Panel201512272153400005" Name="Panel201512272153400005" Type="SingleRecord">
+    <Row>
+      <Control Name="btnEdit" Text="详细" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnEdit_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnEdit_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert('请选择一条记录');
+        return;
+    }
+    var p = "&InstanceId=" + selections[0].InstanceId;
+    dfDialogFullScreen('DFIndex.aspx?DF_FORMNAME=WFCore_TaskProcessing' + p);
+}
+-->
+      <Control Name="btnCancelWorkflow" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancelWorkflow_click();return false;&quot; }" />
+      <!--DF_SCRIPT
+function btnCancelWorkflow_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'InstanceId': a.InstanceId
+        }
+    });
+    if (confirm(getRes('确定要取消选定的流程么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WFCore_AllWF&subAction=CancelWorkflow', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+      <Control Name="btnRestartWF" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;,&quot;style&quot;:&quot;cursor:pointer;width:100px;&quot;,&quot;onclick&quot;:&quot;btnRestartWF_click();return false;&quot;}" />
+      <!--DF_SCRIPT
+function btnRestartWF_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert('请选择一条记录');
+        return;
+    }
+    if (confirm(getRes('确定要重新开始选定的流程么？'))) {
+        var p = "&ModelId=" + selections[0].ModelId;
+        p += "&SourceInstanceId={0}".format(selections[0].InstanceId);
+        $('#btnRestartWF').hide();
+        window.location.href = 'DFIndex.aspx?DF_FORMNAME=WFCore_StartWF' + p;
+    };
+}
+-->
+    </Row>
+  </Panel>
+</Form>

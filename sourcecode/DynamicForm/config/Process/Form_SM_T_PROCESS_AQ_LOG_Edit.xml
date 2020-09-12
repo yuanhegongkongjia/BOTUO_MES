@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_AQ_LOG_Edit" Name="Form_SM_T_PROCESS_AQ_LOG_Edit" Desc="AQ信息调整" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_AQ_LOG_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="LogId" Type="hidden" />
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="AQ1" Text="AQ1" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQ2" Text="AQ2" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AQ3" Text="AQ3" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQ4" Text="AQ4" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AQ5" Text="AQ5" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQ6" Text="AQ6" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AQ7" Text="AQ7" Width="span8" Type="text" MustInput="True" />
+      <Control Name="AQ8" Text="AQ8" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AWT1" Text="WT1A保温块" Width="span8" Type="text" />
+      <Control Name="BWT1" Text="WT1B保温块" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AKK" Text="空开距离A" TextAfterControl="CM" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BKK" Text="空开距离B" TextAfterControl="CM" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="AWT2" Text="WT2A" TextAfterControl="CM" Width="span8" Type="text" MustInput="True" />
+      <Control Name="BWT2" Text="WT2B" TextAfterControl="CM" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="VerifyUser" Text="确认人" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="Remark1" Text="备注" Width="span24" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:400px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

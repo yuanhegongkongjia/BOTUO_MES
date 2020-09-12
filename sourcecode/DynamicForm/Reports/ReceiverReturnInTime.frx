@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/18/2018 16:52:04" ReportInfo.Modified="10/06/2018 16:01:59" ReportInfo.CreatorVersion="2017.1.16.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {
+      DataSourceBase rowData = Report.GetDataSource(&quot;ReturnInTime&quot;);
+      // init the data source. Pass parentData to allow master-detail relation
+      rowData.Init();
+      
+      Table1.PrintRow(0);
+      Table1.PrintColumns();
+      
+      rowData.First();
+      
+      // now enumerate the data source and print the table body
+      while (rowData.HasMoreRows)
+      {
+        // print table body
+        Table1.PrintRow(1);
+        Table1.PrintColumns();
+        
+        // go next data row
+        rowData.Next();
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqTIAT0BD0QLO+9etJEo5rOC23wmCPf73sOhYI/QtTJMQUcN1GQoP1TNnWhJ3E9jH+n78nKVb1yu5gZrQl5MHZZ7bCNHqVlRAXhH+kKO1ssqLdW9uGjaXnTRNwOX1pvlizKCCAaYoqJ4CIhrbvFKD/Y4gsPLdFUNtJOCU5smW3l9kWZdtn7ooKyQzX3/ZgcHIvw2lYat+cD9G8EdTb4z/dDZh5d2a2SkSmwPSCSl1oidY=">
+      <TableDataSource Name="YZ_T_RECEIVER" Alias="ReturnInTime" DataType="System.Int32" Enabled="true" TableName="YZ_T_RECEIVER" SelectCommand="select '' as ReceiverCompany,'' as OrderMonth,'' as 收货批次,'' as 返还批次,'' as ReturnPercent ">
+        <Column Name="ReceiverCompany" DataType="System.String"/>
+        <Column Name="OrderMonth" DataType="System.String"/>
+        <Column Name="收货批次" DataType="System.String"/>
+        <Column Name="返还批次" DataType="System.String"/>
+        <Column Name="ReturnPercent" DataType="System.String"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="18.9"/>
+    <PageHeaderBand Name="PageHeader1" Top="22.13" Width="718.2" Height="47.25">
+      <TextObject Name="Text1" Left="217.35" Top="9.45" Width="255.15" Height="37.8" Text="返回及时率" HorzAlign="Center" VertAlign="Center" Font="Arial, 20pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="72.6" Width="718.2" Height="75.6">
+      <TableObject Name="Table1" Left="9.45" Top="9.45" Width="680.4" Height="56.7" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column1" Width="302.4"/>
+        <TableColumn Name="Column2"/>
+        <TableColumn Name="Column3" Width="94.5"/>
+        <TableColumn Name="Column4" Width="113.4"/>
+        <TableColumn Name="Column5" Width="103.95"/>
+        <TableRow Name="Row1" Height="28.35">
+          <TableCell Name="Cell1" Border.Lines="All" Text="客户名称" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="月份" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="收货批次" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="返回批次" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="返回及时率" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="28.35">
+          <TableCell Name="Cell6" Border.Lines="All" Text="[ReturnInTime.ReceiverCompany]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[ReturnInTime.OrderMonth]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="[ReturnInTime.收货批次]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="[ReturnInTime.返还批次]" HorzAlign="Center" VertAlign="Center"/>
+          <TableCell Name="Cell10" Border.Lines="All" Text="[ReturnInTime.ReturnPercent]" Format="Percent" Format.UseLocale="true" HorzAlign="Center" VertAlign="Center"/>
+        </TableRow>
+      </TableObject>
+      <ChildBand Name="Child1" Top="151.43" Width="718.2" Height="387.45">
+        <MSChartObject Name="MSChart2" Left="9.45" Top="198.45" Width="680.4" Height="189" DataSource="YZ_T_RECEIVER" ChartData="PENoYXJ0IEJvcmRlcmxpbmVDb2xvcj0iRGFya0dyYXkiIEJvcmRlcmxpbmVXaWR0aD0iMiIgQm9yZGVybGluZURhc2hTdHlsZT0iU29saWQiPg0KICA8U2VyaWVzPg0KICAgIDxTZXJpZXMgTmFtZT0i5pS26LSn5om55qyhIiBMZWdlbmQ9IkRlZmF1bHQiIFhWYWx1ZVR5cGU9IlN0cmluZyIgWVZhbHVlVHlwZT0iRG91YmxlIiBDaGFydEFyZWE9IkRlZmF1bHQiPg0KICAgICAgPFBvaW50cz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSIxIiBBeGlzTGFiZWw9IkEiIC8+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iMyIgQXhpc0xhYmVsPSJCIiAvPg0KICAgICAgICA8RGF0YVBvaW50IFlWYWx1ZXM9IjIiIEF4aXNMYWJlbD0iQyIgLz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSI0IiBBeGlzTGFiZWw9IkQiIC8+DQogICAgICA8L1BvaW50cz4NCiAgICA8L1Nlcmllcz4NCiAgICA8U2VyaWVzIE5hbWU9Iui/lOWbnuaJueasoSIgTGVnZW5kPSJEZWZhdWx0IiBYVmFsdWVUeXBlPSJTdHJpbmciIFlWYWx1ZVR5cGU9IkRvdWJsZSIgQ2hhcnRBcmVhPSJEZWZhdWx0Ij4NCiAgICAgIDxQb2ludHM+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iMSIgQXhpc0xhYmVsPSJBIiAvPg0KICAgICAgICA8RGF0YVBvaW50IFlWYWx1ZXM9IjMiIEF4aXNMYWJlbD0iQiIgLz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSIyIiBBeGlzTGFiZWw9IkMiIC8+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iNCIgQXhpc0xhYmVsPSJEIiAvPg0KICAgICAgPC9Qb2ludHM+DQogICAgPC9TZXJpZXM+DQogIDwvU2VyaWVzPg0KICA8TGVnZW5kcz4NCiAgICA8TGVnZW5kIE5hbWU9IkRlZmF1bHQiPg0KICAgIDwvTGVnZW5kPg0KICA8L0xlZ2VuZHM+DQogIDxUaXRsZXM+DQogICAgPFRpdGxlIE5hbWU9IlRpdGxlMSIgVGV4dD0i5oyJ54Wn5a6i5oi357uf6K6h5pS26LSn5om55qyhL+i/lOi/mOaJueasoSI+DQogICAgPC9UaXRsZT4NCiAgPC9UaXRsZXM+DQogIDxDaGFydEFyZWFzPg0KICAgIDxDaGFydEFyZWEgTmFtZT0iRGVmYXVsdCI+DQogICAgICA8QXhpc1k+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1k+DQogICAgICA8QXhpc1g+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1g+DQogICAgICA8QXhpc1gyPg0KICAgICAgICA8TWFqb3JHcmlkIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiIC8+DQogICAgICA8L0F4aXNYMj4NCiAgICAgIDxBeGlzWTI+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1kyPg0KICAgIDwvQ2hhcnRBcmVhPg0KICA8L0NoYXJ0QXJlYXM+DQogIDxCb3JkZXJTa2luIFNraW5TdHlsZT0iRW1ib3NzIiAvPg0KPC9DaGFydD4=">
+          <MSChartSeries Name="Series3" GroupBy="XValue" XValue="[ReturnInTime.ReceiverCompany]" YValue1="[ReturnInTime.收货批次]"/>
+          <MSChartSeries Name="Series4" GroupBy="XValue" XValue="[ReturnInTime.ReceiverCompany]" YValue1="[ReturnInTime.返还批次]"/>
+        </MSChartObject>
+        <MSChartObject Name="MSChart1" Left="9.45" Top="9.45" Width="680.4" Height="189" DataSource="YZ_T_RECEIVER" ChartData="PENoYXJ0IEJvcmRlcmxpbmVDb2xvcj0iRGFya0dyYXkiIEJvcmRlcmxpbmVXaWR0aD0iMiIgQm9yZGVybGluZURhc2hTdHlsZT0iU29saWQiPg0KICA8U2VyaWVzPg0KICAgIDxTZXJpZXMgTmFtZT0i5pS26LSn5om55qyhIiBMZWdlbmQ9IkRlZmF1bHQiIFhWYWx1ZVR5cGU9IlN0cmluZyIgWVZhbHVlVHlwZT0iRG91YmxlIiBDaGFydEFyZWE9IkRlZmF1bHQiPg0KICAgICAgPFBvaW50cz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSIxIiBBeGlzTGFiZWw9IkEiIC8+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iMyIgQXhpc0xhYmVsPSJCIiAvPg0KICAgICAgICA8RGF0YVBvaW50IFlWYWx1ZXM9IjIiIEF4aXNMYWJlbD0iQyIgLz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSI0IiBBeGlzTGFiZWw9IkQiIC8+DQogICAgICA8L1BvaW50cz4NCiAgICA8L1Nlcmllcz4NCiAgICA8U2VyaWVzIE5hbWU9Iui/lOi/mOaJueasoSIgTGVnZW5kPSJEZWZhdWx0IiBYVmFsdWVUeXBlPSJTdHJpbmciIFlWYWx1ZVR5cGU9IkRvdWJsZSIgQ2hhcnRBcmVhPSJEZWZhdWx0Ij4NCiAgICAgIDxQb2ludHM+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iMSIgQXhpc0xhYmVsPSJBIiAvPg0KICAgICAgICA8RGF0YVBvaW50IFlWYWx1ZXM9IjMiIEF4aXNMYWJlbD0iQiIgLz4NCiAgICAgICAgPERhdGFQb2ludCBZVmFsdWVzPSIyIiBBeGlzTGFiZWw9IkMiIC8+DQogICAgICAgIDxEYXRhUG9pbnQgWVZhbHVlcz0iNCIgQXhpc0xhYmVsPSJEIiAvPg0KICAgICAgPC9Qb2ludHM+DQogICAgPC9TZXJpZXM+DQogIDwvU2VyaWVzPg0KICA8TGVnZW5kcz4NCiAgICA8TGVnZW5kIE5hbWU9IkRlZmF1bHQiPg0KICAgIDwvTGVnZW5kPg0KICA8L0xlZ2VuZHM+DQogIDxUaXRsZXM+DQogICAgPFRpdGxlIE5hbWU9IlRpdGxlMSIgVGV4dD0i5oyJ54Wn5pyI5Lu957uf6K6h5pS26LSn5om55qyhL+i/lOi/mOaJueasoSI+DQogICAgPC9UaXRsZT4NCiAgPC9UaXRsZXM+DQogIDxDaGFydEFyZWFzPg0KICAgIDxDaGFydEFyZWEgTmFtZT0iRGVmYXVsdCI+DQogICAgICA8QXhpc1k+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1k+DQogICAgICA8QXhpc1g+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1g+DQogICAgICA8QXhpc1gyPg0KICAgICAgICA8TWFqb3JHcmlkIExpbmVDb2xvcj0iNjQsIDY0LCA2NCwgNjQiIC8+DQogICAgICA8L0F4aXNYMj4NCiAgICAgIDxBeGlzWTI+DQogICAgICAgIDxNYWpvckdyaWQgTGluZUNvbG9yPSI2NCwgNjQsIDY0LCA2NCIgLz4NCiAgICAgIDwvQXhpc1kyPg0KICAgIDwvQ2hhcnRBcmVhPg0KICA8L0NoYXJ0QXJlYXM+DQogIDxCb3JkZXJTa2luIFNraW5TdHlsZT0iRW1ib3NzIiAvPg0KPC9DaGFydD4=">
+          <MSChartSeries Name="Series1" GroupBy="XValue" XValue="[ReturnInTime.OrderMonth]" YValue1="[ReturnInTime.收货批次]"/>
+          <MSChartSeries Name="Series2" GroupBy="XValue" XValue="[ReturnInTime.OrderMonth]" YValue1="[ReturnInTime.返还批次]"/>
+        </MSChartObject>
+      </ChildBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="542.1" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

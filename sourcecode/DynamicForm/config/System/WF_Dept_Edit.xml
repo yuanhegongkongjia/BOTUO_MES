@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WF_Dept_Edit" Name="WF_Dept_Edit" Desc="部门管理详细" DAImp="DynamicForm.DA.WF_Dept_EditDA,DynamicForm">
+  <Panel Id="Panel201507241511340005" Name="Panel201507241511340005" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="DeptId" Type="hidden" />
+      <Control Name="DeptLabel" Type="hidden" />
+      <Control Name="PDeptId" Text="父部门" Width="span8" Type="select" Options="select DeptId as value,DeptName + ' ' + DeptDisplayText as text from WF_M_DEPT order by DeptLabel&#xA;" OptionType="SQL" />
+      <Control Name="DeptName" Text="部门名称" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="DeptDisplayText" Text="部门显示文本" Width="span8" Type="text" />
+      <Control Name="ActiveNumber" Text="在职人数" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="DeptOrder" Text="部门顺序" Width="span8" Type="text" />
+      <Control Name="Status" Text="是否启用" Width="span8" Type="checkbox" Options="{'1':'启用'}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="ManagerId" Text="部门负责人" TextAfterControl="&lt;input id='selectUser' name='selectUser' type='button' value=' ... ' onclick='selectUser_click();return false;' /&gt;" Width="span8" Type="select" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" Options="SELECT '' AS value,'' AS text&#xA;UNION&#xA;SELECT UserId AS 'value', UserName + '|' + ISNULL(ChineseName,'') AS 'text' FROM dbo.WF_M_USER WHERE Status=1 ORDER BY text&#xA;" OptionType="SQL" />
+      <!--DF_SCRIPT
+$('#selectUser').attr("disabled", false);
+
+function selectUser_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SelectUser';
+    url += '&DeptId={0}'.format($('#DeptId').val());
+    var dialog;
+    var btns = [{
+        text: '确定',
+        elCls: 'button button-primary',
+        handler: function() {
+            var selections = $('iframe', $(this))[0].contentWindow.BUI.getControl('grid1').getSelection();
+            if (selections.length == 1) {
+                $('#ManagerId').val(selections[0].UserId);
+                dialog.dialog('close');
+            }
+        }
+    }, {
+        text: '取消',
+        elCls: 'button',
+        handler: function() {
+            dialog.dialog('close');
+        }
+    }]
+    dialog = dfOverlayDialog(800, 550, '', url, btns);
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="Remark" Text="备注" Width="span14" Type="text" ControlAttributes="{style:'width:400px;'}" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{ class:&quot;ddz-button2&quot;,style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_DeviceDownTime" Name="Form_DeviceDownTime" Desc="设备Down机时间报表" DAImp="DynamicForm.DA.Form_DeviceDownTimeDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ProductDateFrom" Text="生产日期从" Width="span8" Type="calendar" />
+      <Control Name="ProductDateTo" Text="到" Width="span8" Type="calendar" />
+      <Control Name="LineName" Text="线别" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

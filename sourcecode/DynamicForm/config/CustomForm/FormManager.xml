@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="FormManager" Name="FormManager" Desc="表单管理" DAImp="DynamicForm.DA.FormManagerDA,DynamicForm">
+  <Panel Id="Panel201507241452280001" Name="Panel201507241452280001" Type="SingleRecord" Additional="{&quot;style&quot;:&quot;float:left;margin-top:10px; margin-right:10px;&quot;}" Position="ui-layout-west">
+    <Row>
+      <Control Name="Tree1" Width="span8" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div id="Tree1">
+    <input type="hidden" id="DF_TREE_VIEWSTATE" />
+</div>
+-->
+      <!--DF_SCRIPT
+BUI.use(['bui/tree', 'bui/data'], function(Tree, Data) {
+    var store = new Data.TreeStore({
+        url: 'DFHandler.ashx?action=DynamicForm.DA.FormManagerDA.GetTree',
+        proxy: {
+            method: 'post'
+        },
+        dataProperty: 'rows',
+        params: {
+            DF_TREE_VIEWSTATE: ''
+        },
+        autoLoad: true
+    });
+
+    var tree = new Tree.TreeList({
+        render: '#Tree1',
+        showLine: true,
+        itemStatusFields: {
+            disabled: 'disabled',
+            selected: 'selected',
+            expanded: 'expanded',
+            checked: 'checked',
+        },
+        checkType: 'none',
+        store: store
+    });
+    tree.render();
+});
+
+$('form').submit(function() {
+    saveState();
+});
+
+function saveState() {
+    var grid = BUI.getControl('tree-list1');
+    var items = grid.getItems();
+
+    var p = $.map(items, function(a) {
+        return {
+            'id': a.id,
+            'selected': a.selected,
+            'expanded': a.expanded
+        }
+    });
+    $('#DF_TREE_VIEWSTATE').val(StringUtil.Base64Encode(BUI.JSON.stringify(p)));
+}
+-->
+    </Row>
+  </Panel>
+  <!--DF_SCRIPT
+$(function(){
+    dfLayout.sizePane('west',300);
+});
+-->
+  <Panel Id="Panel201507241511340005" Name="Panel201507241511340005" Type="SingleRecord" Additional="{style: 'margin-top:10px;margin-left:10px;float:left'}" Position="ui-layout-center">
+    <Row>
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{ class:&quot;ddz-button1&quot;,style:'cursor:pointer',&quot;onclick&quot;:&quot;btnEdit_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnEdit_click() {
+    var tree = BUI.getControl('tree-list1');
+    var selectedNode = tree.getSelected();
+    if (selectedNode) {
+        var url = 'DFIndex.aspx?DF_FORMNAME=FormManager_Edit&EditMode=Edit&FormName=' + selectedNode.id;
+        var dialog = dfDialogFullScreen(url);
+    }
+}
+-->
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{ class:&quot;ddz-button2&quot;,style:'cursor:pointer' }" Action="delete" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var tree = BUI.getControl('tree-list1');
+    var selections = tree.getSelection();
+    if (selections.length == 0) {
+        dfAlert('请先选择要删除的记录');
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'MenuId': a.id
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WF_Menu', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+                BUI.getControl('tree-list1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert(getRes('网络错误或者远程处理发生错误'));
+            });
+    }
+}
+-->
+    </Row>
+  </Panel>
+</Form>

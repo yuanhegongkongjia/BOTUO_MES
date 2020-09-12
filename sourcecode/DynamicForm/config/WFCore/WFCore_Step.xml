@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Step" Name="WFCore_Step" Desc="流程步骤管理" DAImp="DynamicForm.DA.WFCore_StepDA,DynamicForm">
+  <Panel Id="Panel201512270142010004" Name="Panel201512270142010004" Type="SingleRecord" Additional="{class:'ddz-maindiv', style:'margin-bottom:10px;'}">
+    <Row>
+      <Control Name="ModelName" Text="流程名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryConditionPanel&quot;,&quot;style&quot;:&quot;margin-top:10px;&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;1000&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="ModelId" Visible="false" />
+    <Column Name="StepId" Visible="false" />
+    <Column Name="StepName" Text="步骤名称" Width="200" />
+    <Column Name="StepType" Text="步骤名称" Width="100" />
+    <Column Name="IsSendMessage" Text="是否发送消息提醒" Width="150" />
+    <Column Name="AllowActions" Text="允许的动作" Width="300" />
+    <Column Name="StepOrder" Text="排序" Width="60" />
+  </Panel>
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+	return closeSelfDialog();
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&StepId=" + selections[0].StepId;
+    p += "&EditMode=Edit";
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Step_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnStepExecutor" Text="签核人" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnStepExecutor_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnStepExecutor_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&StepId=" + selections[0].StepId;
+    p += "&EditMode=Edit";
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_StepExecutor' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

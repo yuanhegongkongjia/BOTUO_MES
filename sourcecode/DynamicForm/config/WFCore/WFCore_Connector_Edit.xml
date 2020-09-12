@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Connector_Edit" Name="WFCore_Connector_Edit" Desc="连线策略设置" DAImp="DynamicForm.DA.WFCore_Connector_EditDA,DynamicForm">
+  <Panel Id="dfPanel_201408042016390002" Name="dfPanel_201408042016390002" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ModelId" Type="hidden" />
+      <Control Name="ConnectorId" Type="hidden" />
+      <Control Name="ScriptType" Text="自定义类型" Value="100" Type="select" Options="{ '0':'SQL语句', '1':'自定义代码', '2':'自定义插件' }" OptionType="JSON" />
+    </Row>
+    <Row RowAttributes="{'style':'height:100px;'}">
+      <Control Name="Script" Text="详细" Type="textarea" ControlAttributes="{&quot;Class&quot;:&quot;input-large&quot;,&quot;style&quot;:&quot;width: 490px;height:90px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{'style':'height:160px;'}">
+      <Control Name="CustomHtml" Width="span20" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class="row">
+        <div id="__dfList1" style="margin-left:120px">
+        </div>
+    </div>
+-->
+      <!--DF_SCRIPT
+$(function() {
+    BUI.use(['bui/list', 'bui/data'], function(List, Data) {
+        var store = new Data.Store({
+            url: 'DFHandler.ashx?DF_FORMNAME=WF_PublicCode&action=querylist&CodeType=BusinessStrategy',
+            autoLoad: true
+        });
+        var list1 = new List.SimpleList({
+            elCls: 'bui-select-list',
+            render: '#__dfList1',
+            store: store,
+            height: 150,
+            width: 500
+        });
+        list1.render();
+
+        list1.on('itemclick', function(ev) {
+            $('#Script').val(ev.item.value);
+        });
+    });
+});
+-->
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+  <!--DF_SCRIPT
+$(function() {
+    $('form').submit(function() {
+        $('#Script').val($('#Script').val().replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+    });
+});
+-->
+</Form>

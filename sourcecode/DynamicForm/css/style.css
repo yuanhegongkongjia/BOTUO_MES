@@ -1,0 +1,122 @@
+*{ padding:0px; margin:0px; font-family:'微软雅黑'}
+li{ list-style-type:none}
+img{ border:0}
+a{ text-decoration:none; color:#333}
+a:hover{ text-decoration:underline; color:#2c9ed5} 
+
+body{ font-size:12px; background:#f4f6f7}
+.bigtupdiv{ height:60px; background:#2c9ed5; border-bottom:#20749c solid 2px}
+.topdivL{ float:left; width:350px; line-height:60px; padding-left:20px; color:#fff; font-size:26px;}
+.topdivR{ float:right; height:60px;}
+
+.topdivR_one{ float:right; padding:0px 15px; height:60px; background:#43a6d5; border-left:#96cfea solid 1px;}
+.topdivR_oneI{ float:left; width:40px; height:40px; padding:10px 0px; background:url(../images/imgbg.png) no-repeat center}
+.topdivR_oneN{ float:left; padding:10px 20px; height:60px; color:#fff; line-height:20px;font-size:18px;}
+.topdivR_oneE{ float:left; padding-top:21px}
+
+.topdivR_two{ float:right; padding:0px 15px; background:#23b8a2; border-left:#96cfea solid 1px; height:60px; line-height:60px}
+.topdivR_two a{ color:#fff}
+.topdivR_two a:hover{ color:#fff; text-decoration:none}
+
+.topdivR_three{ float:right; padding:0px 15px; background:#ffb250; border-left:#96cfea solid 1px; height:60px; line-height:60px}
+.topdivR_three a{ color:#fff}
+.topdivR_three a:hover{ color:#fff; text-decoration:none}
+
+.topdivR_four{ float:right; padding:0px 15px; background:#ff3232; border-left:#96cfea solid 1px; height:60px; line-height:60px}
+.topdivR_four a{ color:#fff}
+.topdivR_four a:hover{ color:#fff; text-decoration:none}
+
+.ddz-index-topdivR_five{ float:right; padding:0px 15px; background:#43a6d5; border-left:#96cfea solid 1px; height:60px; line-height:60px; width:70px; position:relative; color:#fff;}
+.ddz-index-topdivR_five-a {
+    color: #fff;
+    text-decoration: none;
+}
+.xialaM{ position:absolute; width:10px; height:8px; left:70px; top:27px;}
+.ddz-selectM{ width:100px; top:60px; border:#43a6d5 solid 1px; background:#fff}
+.ddz-selectM ul{ padding-top:10px;}
+.ddz-selectM ul li{ height:24px; line-height:24px;; text-indent:12px;}
+ 
+.bigmainL{ float:left; width:180px; border-right:#2c9ed5 solid 2px; background:#fff}
+.bigmainR{ float:left; width:1500px}
+
+.menudiv ul li{ height:36px; border-bottom:#c7e5f4 solid 1px; line-height:36px; background:url(../images/iconJia.png) no-repeat 160px 13px}
+.ddz-icon{ float:left; width:16px; height:18px; padding-right:15px; padding-top:9px; padding-left:20px} 
+.menudiv ul li ul{ padding-top:10px}
+.menudiv ul li ul li{ border-bottom:none; margin-bottom:10px; background:none; height:27px}
+a.menuaa{ display:block; padding-left:46px; height:27px; line-height:27px; background:url(../images/menua.png) no-repeat; color:#20749c; text-decoration:none}
+a.menuaa:hover{ display:block; padding-left:46px; height:27px; line-height:27px; background:url(../images/menua.png) no-repeat; color:#20749c; text-decoration:none}
+a.menua{ display:block; padding-left:46px; height:27px; line-height:27px; color:#333; text-decoration:none}
+a.menua:hover{ display:block; padding-left:46px; height:27px; line-height:27px; background:url(../images/menua.png) no-repeat; color:#20749c; text-decoration:none}
+
+.sanmenu{ position:absolute; left:182px; top:0px; background:#bbe2f5; border:#66b8e0 solid 2px; border-left:none; width:100px}
+.menudiv ul li ul li .sanmenu ul li{ margin-bottom:5px}
+
+/*
+a.sanmenuaa{ display:block; width:90px; height:24px; line-height:24px; border-left:#5fb5df solid 3px; padding-left:10px; color:#20749c}
+a.sanmenuaa:hover{ display:block; width:90px; height:24px; line-height:24px; border-left:#5fb5df solid 3px; padding-left:10px; color:#20749c; text-decoration:none}
+a.sanmenua{ display:block; width:90px; height:24px; line-height:24px; border-left:#bbe2f5 solid 3px; padding-left:10px; color:#20749c}
+a.sanmenua:hover{ display:block; width:90px; height:24px; line-height:24px; border-left:#5fb5df solid 3px; padding-left:10px; color:#20749c; text-decoration:none}
+
+*/
+
+ 
+.bigmainR_tree{ float:left; width:180px; border-right:#2c9ed5 solid 2px; background:#c7e5f4}
+.bigmainR_tree ul li{ height:36px; line-height:36px;}
+.bigmainR_tree ul li div{ float:left; width:16px; height:18px; padding-top:9px; padding-right:5px; padding-left:20px}
+.bigmainR_tree ul li ul{ background:#e4f6ff; padding-top:15px; padding-bottom:10px}
+.bigmainR_tree ul li ul li{  height:26px; line-height:26px; margin-bottom:5px; background:url(../images/icon7.png) no-repeat left center; margin-left:40px; padding-left:20px; border-bottom:#c7e5f4 solid 1px} 
+.bigmainR_tree ul li ul li ul{ background:#e4f6ff; padding-top:15px; padding-bottom:10px}
+.bigmainR_tree ul li ul li ul li{  height:26px; line-height:26px; margin-bottom:5px; background:url(../images/icon7.png) no-repeat left center; margin-left:3px; padding-left:20px; border-bottom:#c7e5f4 solid 1px}
+
+
+.bigmainR_main{ margin-left:182px; }
+.bigmainR_Title{ margin-top:15px; height:33px; background:#fff; border:#eeeeee solid 1px; line-height:33px; padding-left:10px; color:#2c9ed5}
+
+.bigmainR_Table{ margin-top:10px; background:#fff; border:#eeeeee solid 1px; padding:20px;}
+.tablediv td{ padding:10px}
+.textone{ border:#ebebeb solid 1px; width:110px; height:23px; text-indent:12px; line-height:23px;}
+.selectdiv{ border:#ebebeb solid 1px; width:110px; height:23px; text-indent:12px; position:relative; line-height:23px}
+.xiala{ width:10px; height:7px; position:absolute; left:90px; top:10px; padding:0px}
+.selectul{ border:#ebebeb solid 1px; width:110px; text-indent:12px; position:absolute; left:-1px; top:23px; z-index:100; padding-top:10px; padding-bottom:10px; background:#fff}
+
+.selectdiv1{ border:#c7e5f4 solid 1px; width:148px; height:23px; text-indent:12px; position:relative; line-height:23px}
+.xiala1{ width:10px; height:7px; position:absolute; left:128px; top:10px; padding:0px}
+.selectul1{ border:#ebebeb solid 1px; width:148px; text-indent:12px; position:absolute; left:-1px; top:23px; z-index:100; padding-top:10px; padding-bottom:10px; background:#fff}
+
+a.selectaa{ display:block; background:#2c9ed5; color:#fff}
+a.selectaa:hover{ display:block; background:#2c9ed5; color:#fff; text-decoration:none}
+a.selecta{ display:block; color:#333 }
+a.selecta:hover{ display:block; background:#c7e5f4; color:#333; text-decoration:none}
+.buttone{ width:77px; height:26px; background:url(../images/button.png) no-repeat; border:none; line-height:26px; text-align:center; color:#fff}
+
+.bigtablediv{ margin-top:20px}
+.tablediv2{ background:#eaeaea}
+.tablediv2 thead td{ background:#2c9ed5; color:#fff}
+.tablediv2 td{ padding:8px 10px; text-align:center; color:#666}
+.tablediv1c td{ background:#fff}
+.tablediv2c td{ background:#f5f5f5}
+.tablediv2 tfoot td{ background:#2c9ed5; padding:15px 10px; text-align:right; height:13px; line-height:13px; color:#fff}
+.tablediv2 tfoot td img{ padding:0px 10px}
+
+.buttondiv{ padding-top:10px;height:26px;}
+.buttontwo{ width:78px; height:26px; background:url(../images/button1.png) no-repeat; border:none; line-height:26px; text-align:center; color:#fff; float:right}
+.buttonthree{ width:79px; height:26px; background:url(../images/button2.png) no-repeat; border:none; line-height:26px; text-align:center; color:#333; float:right}
+.buttonfour{ width:76px; height:26px; background:url(../images/button3.png) no-repeat; border:none; line-height:26px; text-align:center; color:#333; float:right}
+
+.messageB1{ margin-top:10px; background:#fff; border:#eeeeee solid 1px}
+.message_Title{ height:28px; line-height:28px; padding-left:10px; color:#333; font-size:12px; font-weight:lighter; border-bottom:#eeeeee solid 1px; background:#f6fcff}
+.messageB1M{ padding:20px}
+.messageB1M_left{ float:left; width:80%}
+.messageB1M_right{ float:right; width:20%}
+
+.tabledivM td{ padding:4px 10px; color:#666}
+.tabledivM td span{ color:#F00}
+.message_Name{ text-align:right}
+.label{ vertical-align:middle;}
+.textwo{ border:#c7e5f4 solid 1px; width:148px; height:23px; text-indent:12px; line-height:23px;}
+.texthree{ border:#c7e5f4 solid 1px; width:198px; height:23px; text-indent:12px; line-height:23px;}
+.textfour{ border:#c7e5f4 solid 1px; width:480px; height:23px; text-indent:12px; line-height:23px;}
+
+.nameImg{ border:#c7e5f4 solid 1px;; width:150px; height:190px}
+.liulanbt{ width:88px; height:23px; background:#2c9ed5; border:#2f8fbd solid 1px; line-height:23px; text-align:center; color:#fff}
+

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="SM_T_PROCESS_PRODUCT" CheckExist="SELECT * FROM SM_T_PROCESS_PRODUCT WHERE" Insert="INSERT INTO SM_T_PROCESS_PRODUCT(DV,Remark1,CreateUser,LastModifyTime,LastModifyUser) VALUES(@DV,@Remark1,@CreateUser,@LastModifyTime,@LastModifyUser)" Update="UPDATE SM_T_PROCESS_PRODUCT SET DV=@DV,Remark1=@Remark1,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser WHERE">
+    <column Name="PKId" Text="PKId" DataType="nvarchar(50)" IsPrimaryKey="Y" DefaultValue="DF_NEWGUID" />
+    <column Name="InstanceId" Text="InstanceId" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="LinePosition" Text="LinePosition" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="GangHao" Text="GangHao" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="XianJing" Text="XianJing" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="Spec" Text="Spec" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Speed" Text="Speed" DataType="decimal(10,2)" IsNullable="Y" />
+    <column Name="DV" Text="DV" DataType="decimal(10,2)" IsNullable="Y" GetValue="select @XianJing*@Speed as DV" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="GenShu" Text="GenShu" DataType="int" IsNullable="Y" />
+  </table>
+</tables>

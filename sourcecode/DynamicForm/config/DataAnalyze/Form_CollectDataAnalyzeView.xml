@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_CollectDataAnalyzeView" Name="Form_CollectDataAnalyzeView" Desc="采集数据详情" DAImp="DynamicForm.DA.Form_CollectDataAnalyzeViewDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="LineName" Type="hidden" />
+      <Control Name="MasterDeviceName" Type="hidden" />
+      <Control Name="SlaveDeviceName" Type="hidden" />
+      <Control Name="ProductDate" Type="hidden" />
+      <Control Name="Category" Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="Period" Text="时间段" Width="100" Sortable="true" />
+    <Column Name="MoreMax10" Text="超过上限10%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax30" Text="超过上限30%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax50" Text="超过上限50%时间" Width="150" Sortable="true" />
+    <Column Name="MoreMax100" Text="超过上限100%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin10" Text="低于下限10%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin30" Text="低于下限30%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin50" Text="低于下限50%时间" Width="150" Sortable="true" />
+    <Column Name="LessMin100" Text="低于下限100%时间" Width="150" Sortable="true" />
+  </Panel>
+</Form>

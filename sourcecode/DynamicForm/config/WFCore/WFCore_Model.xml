@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="WFCore_Model" Name="WFCore_Model" Desc="流程模型管理" DAImp="DynamicForm.DA.WFCore_ModelDA,DynamicForm">
+  <Panel Id="queryConditionPanel" Name="queryConditionPanel " Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ModelName" Text="工作流名称" Width="span8" Type="text" />
+      <Control Name="DFFormName" Text="申请表单名称" Width="span8" Type="text" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Type="MultiRecord" Additional="{ DF_QUERY_CONDITION_PANEL: 'queryConditionPanel' }" Plugins="BUI.Grid.Plugins.CheckSelection">
+    <Column Name="ModelId" Visible="false" />
+    <Column Name="ModelName" Text="工作流名称" Width="250" />
+    <!--DF_SCRIPT
+function(value, obj) {
+	if (obj.ModelId != null) {
+		return "<a href='#' onclick=\"Op1('" + obj.ModelId + "');return false;\">" + getRes(obj.ModelName) + "</a>";
+	} else {
+		return obj.ModelId;
+	}
+}
+-->
+    <Column Name="DFFormName" Text="申请表单名称" Width="300" />
+  </Panel>
+  <!--DF_SCRIPT
+function Op1(Id) {
+    dfDialog(200,200,'','DFFileDownload.aspx?ModelId={0}'.format(Id));
+}
+-->
+  <Panel Id="Panel201512270208250005" Name="Panel201512270208250005" Type="SingleRecord">
+    <Row>
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&ModelId=" + selections[0].ModelId;
+    p += "&EditMode=Edit";
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Model_Edit' + p;
+    var dialog = dfOverlayFullDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnStep" Text="步骤管理" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnStep_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnStep_click() {
+	var grid = BUI.getControl('grid1');
+	var selections = grid.getSelection();
+	if (selections.length != 1) {
+		dfAlert(getRes('请选择一条记录进行步骤管理'));
+		return;
+	}
+	var p = "&ModelId=" + selections[0].ModelId;
+	var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Step' + p;
+	var dialog = dfOverlayTopFullDialog(800, 600, '', url);
+	// 关闭时自动刷新 grid
+	dialog.on('closing', function() {
+		BUI.getControl('grid1').get('store').load();
+	});
+}
+-->
+      <Control Name="btnConnector" Text="连线管理" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnConnector_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnConnector_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行连线管理'));
+        return;
+    }
+    var p = "&ModelId=" + selections[0].ModelId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Connector' + p;
+	var dialog = dfOverlayTopFullDialog(800, 600, '', url);
+	// 关闭时自动刷新 grid
+	dialog.on('closing', function() {
+		BUI.getControl('grid1').get('store').load();
+	});
+}
+-->
+    </Row>
+    <Row>
+      <Control Name="btnTest" Text="测试" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnTest_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnTest_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行测试'));
+        return;
+    }
+    var p = "&ModelId=" + selections[0].ModelId;
+    window.location.href = 'DFIndex.aspx?DF_FORMNAME=WFCore_StartWFTest' + p;
+}
+-->
+      <Control Name="btnDesigner" Text="设计器" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDesigner_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDesigner_click() {
+	var grid = BUI.getControl('grid1');
+	var selections = grid.getSelection();
+	if (selections.length != 1) {
+		dfAlert(getRes('请选择一条记录'));
+		return;
+	}
+	var p = "&ModelId=" + selections[0].ModelId;
+	p += "&ModelName=" + encodeURIComponent(selections[0].ModelName);
+	var url = 'DFDesigner.aspx?v=1' + p;
+	var dialog = dfOverlayTopFullDialog(800, 600, '', url);
+	// 关闭时自动刷新 grid
+	dialog.on('closing', function() {
+		BUI.getControl('grid1').get('store').load();
+	});
+}
+-->
+      <Control Name="btnCopy" Text="复制" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer' }" Action="add" />
+      <!--DF_SCRIPT
+$(function() {
+	$('#btnCopy').on('click', function() {
+		var grid = BUI.getControl('grid1');
+		var selections = grid.getSelection();
+		if (selections.length == 0) {
+			dfAlert(getRes('请选择一条记录'));
+			return false;
+		}
+		if (!confirm('确实要复制选中的流程么？')) {
+			return false;
+		}
+	});
+});
+-->
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="delete" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert('请先选择记录');
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'ModelId': a.ModelId
+        }
+    });
+    if (confirm('确定要删除选定的记录么？')) {
+        var jqxhr = $.post('DFHandler.ashx?action=deleteform&DF_FORMNAME=WFCore_Model', {
+                data: BUI.JSON.stringify(p)
+            })
+            .done(function(data) {
+                var ret = data;
+                if (typeof(data) == "string")
+                    ret = BUI.JSON.parse(data);
+                if (ret && ret.error) {
+                    dfAlert(ret.error);
+                }
+
+                BUI.getControl('grid1').get('store').load();
+            })
+            .fail(function() {
+                dfAlert('网络错误或者远程处理发生错误');
+            });
+    }
+}
+-->
+      <Control Name="btnUpload" Text="上传" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpload_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpload_click() {
+	var url = 'DFIndex.aspx?DF_FORMNAME=WFCore_Model_Upload';
+	var dialog = dfOverlayDialog(800, 300, '', url);
+	// 关闭时自动刷新 grid
+	dialog.on('closing', function() {
+		BUI.getControl('grid1').get('store').load();
+	});
+}
+-->
+    </Row>
+  </Panel>
+</Form>

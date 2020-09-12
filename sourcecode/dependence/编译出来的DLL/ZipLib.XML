@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZipLib</name>
+    </assembly>
+    <members>
+        <member name="T:ZipLib.ProcessHelper">
+            <summary>
+            运行外部程序
+            </summary>
+        </member>
+        <member name="M:ZipLib.ProcessHelper.Run(System.String,System.String,System.String,System.Boolean,System.Diagnostics.ProcessWindowStyle)">
+            <summary>
+            运行外部程序
+            </summary>
+            <param name="filename"></param>
+            <param name="workingDirectory"></param>
+            <param name="arguments"></param>
+            <param name="waitForExit"></param>
+            <param name="windowStyle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZipLib.ProcessHelper.Run(System.String)">
+            <summary>
+            打开某个文件
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="T:ZipLib.ZipHelper">
+            <summary>
+            压缩解压缩类库
+            </summary>
+        </member>
+        <member name="M:ZipLib.ZipHelper.GetEmbededResource(System.Reflection.Assembly,System.String)">
+            <summary>
+            从 assembly 解压出资源文件
+            </summary>
+            <param name="assembly"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:ZipLib.ZipHelper.ExtractEmbededResource(System.Reflection.Assembly,System.String)">
+            <summary>
+            从 assembly 解压出资源文件
+            </summary>
+            <param name="assembly"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:ZipLib.ZipHelper.Compress(System.String,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            压缩文件到指定的压缩包中
+            </summary>
+            <param name="zipFile"></param>
+            <param name="filesToCompress"></param>
+            <param name="deleteFilesAfterCompressed"></param>
+        </member>
+        <member name="M:ZipLib.ZipHelper.Uncompress(System.String)">
+            <summary>
+            从压缩文件中解压出文件
+            </summary>
+            <param name="zipFile"></param>
+        </member>
+        <member name="M:ZipLib.ZipHelper.Uncompress(System.String,System.String)">
+            <summary>
+            解压缩文件到指定的目录
+            </summary>
+            <param name="zipFile"></param>
+            <param name="destFolder"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF64B377-374C-47DB-8916-B635AF7D3803}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DynamicForm</RootNamespace>
+    <AssemblyName>DynamicForm</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1211, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Common.Logging.Log4Net1211.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicForm.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\output\DynamicForm.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Web, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\FastReport.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\mje\dependencies\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=2.2.3.400, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dependence\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\dependence\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WFCommon.Utility">
+      <HintPath>..\dependence\output\WFCommon.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="WFCore">
+      <HintPath>..\dependence\output\WFCore.dll</HintPath>
+    </Reference>
+    <Reference Include="WFSignalR">
+      <HintPath>..\dependence\output\WFSignalR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstraptable\bootstrap-table-zh-CN.min.js" />
+    <Content Include="bootstraptable\bootstrap-table.css" />
+    <Content Include="bootstraptable\bootstrap-table.js" />
+    <Content Include="bootstraptable\bootstrap.min.js" />
+    <Content Include="bootstraptable\jquery.min.js" />
+    <Content Include="bui\adapter-min.js" />
+    <Content Include="bui\adapter.js" />
+    <Content Include="bui\assets\build.xml" />
+    <Content Include="bui\assets\css\bs3\bui-min.css" />
+    <Content Include="bui\assets\css\bs3\bui.css" />
+    <Content Include="bui\assets\css\bs3\dpl-min.css" />
+    <Content Include="bui\assets\css\bs3\dpl.css" />
+    <Content Include="bui\assets\css\bui-min.css" />
+    <Content Include="bui\assets\css\build.xml" />
+    <Content Include="bui\assets\css\dpl-min.css" />
+    <Content Include="bui\assets\css\main-min.css" />
+    <Content Include="bui\assets\css\main.css" />
+    <Content Include="bui\assets\css\page-min.css" />
+    <Content Include="bui\assets\css\page.css" />
+    <Content Include="bui\assets\css\prettify.css" />
+    <Content Include="bui\assets\img\calendar-200-300.gif" />
+    <Content Include="bui\assets\img\chart.png" />
+    <Content Include="bui\assets\img\checkbox.gif" />
+    <Content Include="bui\assets\img\check_icon-100-100.gif" />
+    <Content Include="bui\assets\img\hide_list.png" />
+    <Content Include="bui\assets\img\icon-806-614.png" />
+    <Content Include="bui\assets\img\left-slib.gif" />
+    <Content Include="bui\assets\img\load-16-16.gif" />
+    <Content Include="bui\assets\img\main-nav-bg.png" />
+    <Content Include="bui\assets\img\main-nav-bg1.png" />
+    <Content Include="bui\assets\img\menu-500-188.png" />
+    <Content Include="bui\assets\img\menu.jpg" />
+    <Content Include="bui\assets\img\nav.jpg" />
+    <Content Include="bui\assets\img\nav_selected.png" />
+    <Content Include="bui\assets\img\radio_icon-64-40.gif" />
+    <Content Include="bui\assets\img\resource.jpg" />
+    <Content Include="bui\assets\img\separator-2-340.gif" />
+    <Content Include="bui\assets\img\sprite-469-300.png" />
+    <Content Include="bui\assets\img\tab-140-120.gif" />
+    <Content Include="bui\assets\img\table-191-450.gif" />
+    <Content Include="bui\assets\img\tool-sprites.png" />
+    <Content Include="bui\assets\img\tree.gif" />
+    <Content Include="bui\assets\img\tree_icon-80-100.gif" />
+    <Content Include="bui\assets\img\ui-img-view-height.jpg" />
+    <Content Include="bui\assets\img\ui-img-view-height.png" />
+    <Content Include="bui\assets\img\ui-img-view-width.jpg" />
+    <Content Include="bui\assets\img\ui-img-view-width.png" />
+    <Content Include="bui\assets\img\white_sprite-469-300.png" />
+    <Content Include="bui\assets\js\bui-min.js" />
+    <Content Include="bui\assets\js\bui.js" />
+    <Content Include="bui\assets\js\chart-min.js" />
+    <Content Include="bui\assets\js\common\build.xml" />
+    <Content Include="bui\assets\js\common\main-min.js" />
+    <Content Include="bui\assets\js\common\main.js" />
+    <Content Include="bui\assets\js\common\page-min.js" />
+    <Content Include="bui\assets\js\common\page.js" />
+    <Content Include="bui\assets\js\common\search-min.js" />
+    <Content Include="bui\assets\js\common\search.js" />
+    <Content Include="bui\assets\js\config-min.js" />
+    <Content Include="bui\assets\js\config.js" />
+    <Content Include="bui\assets\js\extensions\treegrid-min.js" />
+    <Content Include="bui\assets\js\extensions\treepicker-min.js" />
+    <Content Include="bui\assets\js\graphic-min.js" />
+    <Content Include="bui\assets\js\jquery-1.8.1.min.js" />
+    <Content Include="bui\assets\js\module\build.xml" />
+    <Content Include="bui\assets\js\prettify.js" />
+    <Content Include="bui\assets\js\slider-min.js" />
+    <Content Include="bui\bui-min.js" />
+    <Content Include="bui\bui.js" />
+    <Content Include="bui\calendar-min.js" />
+    <Content Include="bui\calendar.js" />
+    <Content Include="bui\chart-min.js" />
+    <Content Include="bui\chart.js" />
+    <Content Include="bui\common-min.js" />
+    <Content Include="bui\common.js" />
+    <Content Include="bui\common\build.xml" />
+    <Content Include="bui\common\main-min.js" />
+    <Content Include="bui\common\main.js" />
+    <Content Include="bui\common\page-min.js" />
+    <Content Include="bui\common\page.js" />
+    <Content Include="bui\common\search-min.js" />
+    <Content Include="bui\common\search.js" />
+    <Content Include="bui\config.js" />
+    <Content Include="bui\cookie-min.js" />
+    <Content Include="bui\cookie.js" />
+    <Content Include="bui\css\bs3\bui-min.css" />
+    <Content Include="bui\css\bs3\bui.css" />
+    <Content Include="bui\css\bs3\css\bui-min.css" />
+    <Content Include="bui\css\bs3\css\bui.css" />
+    <Content Include="bui\css\bs3\css\dpl-min.css" />
+    <Content Include="bui\css\bs3\css\dpl.css" />
+    <Content Include="bui\css\bs3\dpl-min.css" />
+    <Content Include="bui\css\bs3\dpl.css" />
+    <Content Include="bui\css\bs3\img\calendar-200-300.gif" />
+    <Content Include="bui\css\bs3\img\check_icon-100-100.gif" />
+    <Content Include="bui\css\bs3\img\load-16-16.gif" />
+    <Content Include="bui\css\bs3\img\menu-500-188.png" />
+    <Content Include="bui\css\bs3\img\radio_icon-64-40.gif" />
+    <Content Include="bui\css\bs3\img\separator-2-340.gif" />
+    <Content Include="bui\css\bs3\img\sprite-469-300.png" />
+    <Content Include="bui\css\bs3\img\tab-140-120.gif" />
+    <Content Include="bui\css\bs3\img\table-191-450.gif" />
+    <Content Include="bui\css\bs3\img\tool-sprites.png" />
+    <Content Include="bui\css\bs3\img\tree.gif" />
+    <Content Include="bui\css\bs3\img\tree_icon-80-100.gif" />
+    <Content Include="bui\css\bs3\img\white_sprite-469-300.png" />
+    <Content Include="bui\css\bui-min.css" />
+    <Content Include="bui\css\bui.css" />
+    <Content Include="bui\css\build.xml" />
+    <Content Include="bui\css\calendar-min.css" />
+    <Content Include="bui\css\calendar.css" />
+    <Content Include="bui\css\dpl-min.css" />
+    <Content Include="bui\css\dpl.css" />
+    <Content Include="bui\css\extend-min.css" />
+    <Content Include="bui\css\extend.css" />
+    <Content Include="bui\css\grid-min.css" />
+    <Content Include="bui\css\grid.css" />
+    <Content Include="bui\css\imgview-min.css" />
+    <Content Include="bui\css\imgview.css" />
+    <Content Include="bui\css\layout-min.css" />
+    <Content Include="bui\css\layout.css" />
+    <Content Include="bui\css\main-min.css" />
+    <Content Include="bui\css\main.css" />
+    <Content Include="bui\css\menu-min.css" />
+    <Content Include="bui\css\menu.css" />
+    <Content Include="bui\css\overlay-min.css" />
+    <Content Include="bui\css\overlay.css" />
+    <Content Include="bui\css\select-min.css" />
+    <Content Include="bui\css\select.css" />
+    <Content Include="bui\css\slider-min.css" />
+    <Content Include="bui\css\slider.css" />
+    <Content Include="bui\css\tab-min.css" />
+    <Content Include="bui\css\tab.css" />
+    <Content Include="bui\data-min.js" />
+    <Content Include="bui\data.js" />
+    <Content Include="bui\editor-min.js" />
+    <Content Include="bui\editor.js" />
+    <Content Include="bui\extensions\multiselect-min.js" />
+    <Content Include="bui\extensions\multiselect.js" />
+    <Content Include="bui\extensions\multiselect\base-min.js" />
+    <Content Include="bui\extensions\multiselect\base.js" />
+    <Content Include="bui\extensions\multiselect\multilist-min.js" />
+    <Content Include="bui\extensions\multiselect\multilist.js" />
+    <Content Include="bui\extensions\multiselect\multilistpicker-min.js" />
+    <Content Include="bui\extensions\multiselect\multilistpicker.js" />
+    <Content Include="bui\extensions\multiselect\multiselect-min.js" />
+    <Content Include="bui\extensions\multiselect\multiselect.js" />
+    <Content Include="bui\extensions\search-min.js" />
+    <Content Include="bui\extensions\search.js" />
+    <Content Include="bui\extensions\treegrid-min.js" />
+    <Content Include="bui\extensions\treegrid.js" />
+    <Content Include="bui\extensions\treepicker-min.js" />
+    <Content Include="bui\extensions\treepicker.js" />
+    <Content Include="bui\form-min.js" />
+    <Content Include="bui\form.js" />
+    <Content Include="bui\graphic-min.js" />
+    <Content Include="bui\graphic.js" />
+    <Content Include="bui\grid-min.js" />
+    <Content Include="bui\grid.js" />
+    <Content Include="bui\imgview-min.js" />
+    <Content Include="bui\imgview.js" />
+    <Content Include="bui\img\calendar-200-300.gif" />
+    <Content Include="bui\img\checkbox.gif" />
+    <Content Include="bui\img\check_icon-100-100.gif" />
+    <Content Include="bui\img\hide_list.png" />
+    <Content Include="bui\img\icon-806-614.png" />
+    <Content Include="bui\img\iconfont\iconfont.svg" />
+    <Content Include="bui\img\left-slib.gif" />
+    <Content Include="bui\img\load-16-16.gif" />
+    <Content Include="bui\img\login.jpg" />
+    <Content Include="bui\img\main-nav-bg.png" />
+    <Content Include="bui\img\main-nav-bg1.png" />
+    <Content Include="bui\img\menu-500-188.png" />
+    <Content Include="bui\img\menu.jpg" />
+    <Content Include="bui\img\nav.jpg" />
+    <Content Include="bui\img\nav_selected.png" />
+    <Content Include="bui\img\radio_icon-64-40.gif" />
+    <Content Include="bui\img\resource.jpg" />
+    <Content Include="bui\img\separator-2-340.gif" />
+    <Content Include="bui\img\sprite-469-300.png" />
+    <Content Include="bui\img\tab-140-120.gif" />
+    <Content Include="bui\img\table-191-450.gif" />
+    <Content Include="bui\img\tool-sprites.png" />
+    <Content Include="bui\img\tree.gif" />
+    <Content Include="bui\img\tree_icon-80-100.gif" />
+    <Content Include="bui\img\ui-img-view-height.jpg" />
+    <Content Include="bui\img\ui-img-view-height.png" />
+    <Content Include="bui\img\ui-img-view-width.jpg" />
+    <Content Include="bui\img\ui-img-view-width.png" />
+    <Content Include="bui\img\white_sprite-469-300.png" />
+    <Content Include="bui\layout-min.js" />
+    <Content Include="bui\layout.js" />
+    <Content Include="bui\list-min.js" />
+    <Content Include="bui\list.js" />
+    <Content Include="bui\loader-min.js" />
+    <Content Include="bui\loader.js" />
+    <Content Include="bui\mask-min.js" />
+    <Content Include="bui\mask.js" />
+    <Content Include="bui\menu-min.js" />
+    <Content Include="bui\menu.js" />
+    <Content Include="bui\module-min.js" />
+    <Content Include="bui\module.js" />
+    <Content Include="bui\overlay-min.js" />
+    <Content Include="bui\overlay.js" />
+    <Content Include="bui\picker-min.js" />
+    <Content Include="bui\picker.js" />
+    <Content Include="bui\progressbar-min.js" />
+    <Content Include="bui\progressbar.js" />
+    <Content Include="bui\seed-min.js" />
+    <Content Include="bui\seed.js" />
+    <Content Include="bui\select-min.js" />
+    <Content Include="bui\select.js" />
+    <Content Include="bui\slider-min.js" />
+    <Content Include="bui\slider.js" />
+    <Content Include="bui\swf-min.js" />
+    <Content Include="bui\swf.js" />
+    <Content Include="bui\tab-min.js" />
+    <Content Include="bui\tab.js" />
+    <Content Include="bui\toolbar-min.js" />
+    <Content Include="bui\toolbar.js" />
+    <Content Include="bui\tooltip-min.js" />
+    <Content Include="bui\tooltip.js" />
+    <Content Include="bui\tree-min.js" />
+    <Content Include="bui\tree.js" />
+    <Content Include="bui\uploader-min.js" />
+    <Content Include="bui\uploader.js" />
+    <Content Include="bui\uploader\uploader.swf" />
+    <Content Include="config\BasicData\Form_SM_M_BASICVALUE.xml" />
+    <Content Include="config\BasicData\Form_SM_M_BASICVALUE_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_CELL.xml" />
+    <Content Include="config\BasicData\Form_SM_M_CELL_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_DEFECT.xml" />
+    <Content Include="config\BasicData\Form_SM_M_DEFECT_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_LINE.xml" />
+    <Content Include="config\BasicData\Form_SM_M_LINE_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_MASTERDEVICE.xml" />
+    <Content Include="config\BasicData\Form_SM_M_MASTERDEVICE_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_PLC.xml" />
+    <Content Include="config\BasicData\Form_SM_M_PLC_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_QD.xml" />
+    <Content Include="config\BasicData\Form_SM_M_QD_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_SLAVEDEVICE.xml" />
+    <Content Include="config\BasicData\Form_SM_M_SLAVEDEVICE_Edit.xml" />
+    <Content Include="config\BasicData\Form_SM_M_UPH.xml" />
+    <Content Include="config\BasicData\Form_SM_M_UPH_Edit.xml" />
+    <Content Include="config\Common\Common_SelectUser.xml" />
+    <Content Include="config\Common\Common_SelectGangHao.xml" />
+    <Content Include="config\Common_SelectProcess.xml" />
+    <Content Include="config\CustomForm\ColumnCheck.xml" />
+    <Content Include="config\CustomForm\ColumnManager.xml" />
+    <Content Include="config\CustomForm\FormImportConfig.xml" />
+    <Content Include="config\CustomForm\FormManager.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit_Column.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit_Control.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit_Form.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit_Panel.xml" />
+    <Content Include="config\CustomForm\FormManager_Edit_Row.xml" />
+    <Content Include="config\DataAnalyze\Form_DeviceOEE.xml" />
+    <Content Include="config\DataAnalyze\Form_DeviceDownTime.xml" />
+    <Content Include="config\DataAnalyze\Form_CollectDataAnalyze.xml" />
+    <Content Include="config\DataAnalyze\Form_CollectDataAnalyzeView.xml" />
+    <Content Include="config\DataAnalyze\Form_SM_T_DAYENERGY.xml" />
+    <Content Include="config\DataAnalyze\Form_SM_T_DAYENERGY_Edit.xml" />
+    <Content Include="config\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG.xml" />
+    <Content Include="config\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG_Edit.xml" />
+    <Content Include="config\Form_Electric.xml" />
+    <Content Include="config\DataAnalyze\Form_EnergyAnalyze.xml" />
+    <Content Include="config\Form_EnergyDataAnalyze_Month.xml" />
+    <Content Include="config\Form_EnergyDataAnalyze_Year.xml" />
+    <Content Include="config\Form_EnergyPerT.xml" />
+    <Content Include="config\Form_EnergyQuery.xml" />
+    <Content Include="config\Form_EnergyQueryOnly4.xml" />
+    <Content Include="config\Form_EnergyQuery_Current.xml" />
+    <Content Include="config\Form_MFPower.xml" />
+    <Content Include="config\Form_Potential.xml" />
+    <Content Include="config\DataAnalyze\Form_ProcessData.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Day.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Month.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Summary_Day.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Summary_Month.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Summary_Year.xml" />
+    <Content Include="config\Form_PowerDataAnalyze_Year.xml" />
+    <Content Include="config\Form_PowerQuery_Current.xml" />
+    <Content Include="config\Form_Production.xml" />
+    <Content Include="config\Form_SM_T_PROCESS_FX_Print.xml" />
+    <Content Include="config\Form_SM_T_PROCESS_LOG_Edit.xml" />
+    <Content Include="config\Form_SM_T_PROCESS_Print.xml" />
+    <Content Include="config\Form_SM_T_SOP_View.xml" />
+    <Content Include="config\Machine\Form_BT_MachineAnalyse.xml" />
+    <Content Include="config\Machine\Form_BT_MachineAnalyse_Edit.xml" />
+    <Content Include="config\Machine\Form_BT_MachineManage.xml" />
+    <Content Include="config\Machine\Form_BT_MachineManage_Edit.xml" />
+    <Content Include="config\PaiGongDan\Form_BT_PaiGongDan.xml" />
+    <Content Include="config\PaiGongDan\Form_BT_PaiGongDan_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LQF.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LQF_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LW.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LW_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_OP.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_AQ_LOG.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_AQ_LOG_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LOG.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_CY_LOG.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_CY_LOG_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LY_LOG.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LY_LOG_Edit.xml" />
+    <Content Include="config\SOP\Form_SM_T_SOP_Query.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_AQ_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_FX.xml" />
+    <Content Include="config\Process\Form_StationTemp.xml" />
+    <Content Include="config\Form_WFDataReport.xml" />
+    <Content Include="config\Form_WF_M_MSG_TEMPLATE.xml" />
+    <Content Include="config\Form_WF_M_MSG_TEMPLATE_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_CY.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_CY_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_PRODUCT.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_PRODUCT_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_YC.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_YC_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_QUALITY_Edit.xml" />
+    <Content Include="config\Process\Form_SM_T_PROCESS_LY_Edit.xml" />
+    <Content Include="config\SOP\Form_SM_T_SOP.xml" />
+    <Content Include="config\SOP\Form_SM_T_SOP_Edit.xml" />
+    <Content Include="config\System\Form_WF_M_ROLE_MODEL.xml" />
+    <Content Include="config\System\Form_WF_M_ROLE_MODEL_Edit.xml" />
+    <Content Include="config\System\Form_WF_M_USERDEPT.xml" />
+    <Content Include="config\System\Form_WF_M_USERDEPT_Edit.xml" />
+    <Content Include="config\WFCore\WFCore_AllTask.xml" />
+    <Content Include="config\WFCore\WFCore_AllWF.xml" />
+    <Content Include="config\WFCore\WFCore_AllWFDEPT.xml" />
+    <Content Include="config\WFCore\WFCore_Connector.xml" />
+    <Content Include="config\WFCore\WFCore_Connector_Edit.xml" />
+    <Content Include="config\WFCore\WFCore_Model.xml" />
+    <Content Include="config\WFCore\WFCore_Model_Edit.xml" />
+    <Content Include="config\WFCore\WFCore_Model_Upload.xml" />
+    <Content Include="config\WFCore\WFCore_MyTask.xml" />
+    <Content Include="config\WFCore\WFCore_MyWF.xml" />
+    <Content Include="config\WFCore\WFCore_Panel_Approve.xml" />
+    <Content Include="config\WFCore\WFCore_Panel_ApproveHistory.xml" />
+    <Content Include="config\WFCore\WFCore_Panel_RequestorInfo.xml" />
+    <Content Include="config\WFCore\WFCore_Request.xml" />
+    <Content Include="config\WFCore\WFCore_SelectStep.xml" />
+    <Content Include="config\WFCore\WFCore_SelectUser.xml" />
+    <Content Include="config\WFCore\WFCore_StartWF.xml" />
+    <Content Include="config\WFCore\WFCore_StartWFTest.xml" />
+    <Content Include="config\WFCore\WFCore_Step.xml" />
+    <Content Include="config\WFCore\WFCore_StepExecutor.xml" />
+    <Content Include="config\WFCore\WFCore_StepExecutor_Edit.xml" />
+    <Content Include="config\WFCore\WFCore_StepExecutor_Edit_Custom.xml" />
+    <Content Include="config\WFCore\WFCore_StepExecutor_Edit_Role.xml" />
+    <Content Include="config\WFCore\WFCore_StepExecutor_Edit_User.xml" />
+    <Content Include="config\WFCore\WFCore_Step_Edit.xml" />
+    <Content Include="config\WFCore\WFCore_TaskProcessing.xml" />
+    <Content Include="config\WFCore\XDSW_LabData_DataInput.xml" />
+    <Content Include="config\实时交互\RealtimeInteraction.xml" />
+    <Content Include="config\下拉框联动\Sample_SelectPostBack.xml" />
+    <Content Include="config\System\WF_ChangePassword.xml" />
+    <Content Include="config\System\WF_Dept.xml" />
+    <Content Include="config\System\WF_Dept_Edit.xml" />
+    <Content Include="config\System\WF_LogMgmt.xml" />
+    <Content Include="config\System\WF_Menu.xml" />
+    <Content Include="config\System\WF_Menu_Edit.xml" />
+    <Content Include="config\System\WF_Module.xml" />
+    <Content Include="config\System\WF_Module_Edit.xml" />
+    <Content Include="config\System\WF_MultiLanguage.xml" />
+    <Content Include="config\System\WF_MultiLanguage_Edit.xml" />
+    <Content Include="config\System\WF_MyMsg.xml" />
+    <Content Include="config\System\WF_PublicCode.xml" />
+    <Content Include="config\System\WF_PublicCode_Edit.xml" />
+    <Content Include="config\System\WF_Role.xml" />
+    <Content Include="config\System\WF_Role_Edit.xml" />
+    <Content Include="config\System\WF_Role_SetAccess.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\System\WF_Role_SetUsers.xml" />
+    <Content Include="config\System\WF_Role_SetUsers_Edit.xml" />
+    <Content Include="config\System\WF_User.xml" />
+    <Content Include="config\System\WF_UserRole_Setting.xml" />
+    <Content Include="config\System\WF_User_Edit.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\通用导入\Form_BatchInput.xml" />
+    <Content Include="Cron\cron.js" />
+    <Content Include="Cron\icon.css" />
+    <Content Include="Cron\index.htm" />
+    <Content Include="Cron\jquery-1.6.2.min.js" />
+    <Content Include="Cron\jquery.easyui.min.js" />
+    <Content Include="Cron\themes\bootstrap\easyui.css" />
+    <Content Include="Cron\themes\bootstrap\easyui.min.css" />
+    <Content Include="Cron\themes\bootstrap\images\panel_tools.png" />
+    <Content Include="Cron\themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="Cron\themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="Cron\themes\icon.css" />
+    <Content Include="css\css.css" />
+    <Content Include="css\ddz_bui.css" />
+    <Content Include="css\dfcss.css" />
+    <Content Include="css\style.css" />
+    <Content Include="DFDesigner.aspx" />
+    <Content Include="DFFileDownload.aspx" />
+    <Content Include="DFIndex.aspx" />
+    <Content Include="DFIndexReport.aspx" />
+    <Content Include="DFIndexWF.aspx" />
+    <Content Include="distpicker\distpicker.data.js" />
+    <Content Include="distpicker\distpicker.js" />
+    <Content Include="echarts\echarts.js" />
+    <Content Include="Global.asax" />
+    <Content Include="gooflow0.8\default.css" />
+    <Content Include="gooflow0.8\GooFlow\bullet_blue.png" />
+    <Content Include="gooflow0.8\GooFlow\child.js" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFlow.css" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFlow.js" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFlow2.css" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFlow_color.js" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFlow_public.js" />
+    <Content Include="gooflow0.8\GooFlow\codebase\GooFunc.js" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_bg.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_blank.gif" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_blank2.gif" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_blank2.htm" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_btn_bg.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_bullet.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_icon.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_icon2.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\GooFlow_line_oper.png" />
+    <Content Include="gooflow0.8\GooFlow\codebase\img\gooflow_tip.png" />
+    <Content Include="gooflow0.8\GooFlow\data.js" />
+    <Content Include="gooflow0.8\GooFlow\demo.html" />
+    <Content Include="gooflow0.8\GooFlow\demo2.html" />
+    <Content Include="gooflow0.8\GooFlow\demo_child.html" />
+    <Content Include="gooflow0.8\GooFlow\GooFlow_line_oper.png" />
+    <Content Include="gooflow0.8\GooFlow\ui-icons_222222_256x240.png" />
+    <Content Include="gooflow0.8\GooFlow\未命名-3 - 副本.png" />
+    <Content Include="gooflow0.8\GooFlow\未命名-3.png" />
+    <Content Include="gooflow0.8\GooFunc.js" />
+    <Content Include="gooflow0.8\jquery.min.js" />
+    <Content Include="gooflow0.8\json2.js" />
+    <Content Include="grid-2.1.0\angular\ng.pqgrid.dev.js" />
+    <Content Include="grid-2.1.0\angular\ng.pqgrid.min.js" />
+    <Content Include="grid-2.1.0\array.htm" />
+    <Content Include="grid-2.1.0\ChangeLog.txt" />
+    <Content Include="grid-2.1.0\GPL-LICENSE.txt" />
+    <Content Include="grid-2.1.0\images\horiz-bg.png" />
+    <Content Include="grid-2.1.0\images\horiz-slider-bg.png" />
+    <Content Include="grid-2.1.0\images\loading.gif" />
+    <Content Include="grid-2.1.0\images\sprite.png" />
+    <Content Include="grid-2.1.0\images\square_dirty.gif" />
+    <Content Include="grid-2.1.0\images\vert-bg.png" />
+    <Content Include="grid-2.1.0\images\vert-slider-bg.png" />
+    <Content Include="grid-2.1.0\index.htm" />
+    <Content Include="grid-2.1.0\json.htm" />
+    <Content Include="grid-2.1.0\localize\pq-localize-de.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-en.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-es.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-fr.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-hu.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-it.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-ja.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-nl.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-pl.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-pt-br.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-pt.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-ru.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-tr.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-zh.js" />
+    <Content Include="grid-2.1.0\localize\pq-localize-zh_TW.js" />
+    <Content Include="grid-2.1.0\php\Content\css\images\cross.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\horiz-bg.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\horiz-slider-bg.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\loading.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\page-first-gray.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\page-last-gray.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\page-next-gray.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\page-prev-gray.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\Refresh.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\sort_asc.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\sort_desc.gif" />
+    <Content Include="grid-2.1.0\php\Content\css\images\sprite.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\tick.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\vert-bg.png" />
+    <Content Include="grid-2.1.0\php\Content\css\images\vert-slider-bg.png" />
+    <Content Include="grid-2.1.0\php\Content\css\pqgrid.min.css" />
+    <Content Include="grid-2.1.0\php\Content\js\pqgrid.min.js" />
+    <Content Include="grid-2.1.0\pqgrid.dev.css" />
+    <Content Include="grid-2.1.0\pqgrid.dev.js" />
+    <Content Include="grid-2.1.0\pqgrid.min.css" />
+    <Content Include="grid-2.1.0\pqgrid.min.js" />
+    <Content Include="grid-2.1.0\themes\Office\images\header-hover.gif" />
+    <Content Include="grid-2.1.0\themes\Office\pqgrid.css" />
+    <Content Include="images\ad.jpg" />
+    <Content Include="images\ad.png" />
+    <Content Include="images\ad1.jpg" />
+    <Content Include="images\ad11.png" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg1.jpg" />
+    <Content Include="images\button.png" />
+    <Content Include="images\button1.png" />
+    <Content Include="images\button11.png" />
+    <Content Include="images\button2.png" />
+    <Content Include="images\button3.png" />
+    <Content Include="images\chaxun.jpg" />
+    <Content Include="images\company1.png" />
+    <Content Include="images\Crying.png" />
+    <Content Include="images\end_meitu_2.png" />
+    <Content Include="images\end_meitu_4.png" />
+    <Content Include="images\exit.png" />
+    <Content Include="images\icon1.png" />
+    <Content Include="images\icon2.png" />
+    <Content Include="images\icon3.png" />
+    <Content Include="images\icon4.png" />
+    <Content Include="images\icon5.png" />
+    <Content Include="images\icon6.png" />
+    <Content Include="images\icon7.png" />
+    <Content Include="images\icon8.png" />
+    <Content Include="images\iconJia.png" />
+    <Content Include="images\imgbg.png" />
+    <Content Include="images\index3.png" />
+    <Content Include="images\index_10.png" />
+    <Content Include="images\jiboshi.jpg" />
+    <Content Include="images\kuang.jpg" />
+    <Content Include="images\left.png" />
+    <Content Include="images\lefta.png" />
+    <Content Include="images\login.jpg" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\ma.jpg" />
+    <Content Include="images\mak.jpg" />
+    <Content Include="images\menu1.png" />
+    <Content Include="images\menu2.png" />
+    <Content Include="images\menu3.png" />
+    <Content Include="images\menu4.png" />
+    <Content Include="images\menu5.png" />
+    <Content Include="images\menu6.png" />
+    <Content Include="images\menu7.png" />
+    <Content Include="images\menu8.png" />
+    <Content Include="images\menu9.png" />
+    <Content Include="images\menua.png" />
+    <Content Include="images\password.png" />
+    <Content Include="images\right.png" />
+    <Content Include="images\righta.png" />
+    <Content Include="images\start.png" />
+    <Content Include="images\start_meitu_1.png" />
+    <Content Include="images\start_meitu_3.png" />
+    <Content Include="images\treeba.png" />
+    <Content Include="images\user.jpg" />
+    <Content Include="images\xiala.png" />
+    <Content Include="images\xialaM.png" />
+    <Content Include="images\yanzheng.jpg" />
+    <Content Include="images\yuezhan.jpg" />
+    <Content Include="images\yuezhan1.jpg" />
+    <Content Include="ImportConfig\SM_M_BASICVALUE.xml" />
+    <Content Include="ImportConfig\SM_M_CELL.xml" />
+    <Content Include="ImportConfig\SM_M_LINE.xml" />
+    <Content Include="ImportConfig\SM_M_MASTERDEVICE.xml" />
+    <Content Include="ImportConfig\SM_M_PLC.xml" />
+    <Content Include="ImportConfig\SM_M_QD.xml" />
+    <Content Include="ImportConfig\SM_M_SLAVEDEVICE.xml" />
+    <Content Include="ImportConfig\SM_M_UPH.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_AQ.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_AQ_LOG.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_CY.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_CY_LOG.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_LQF.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_LW.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_LY.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_LY_LOG.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_PRODUCT.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_QUALITY.xml" />
+    <Content Include="ImportConfig\SM_T_PROCESS_YC.xml" />
+    <Content Include="ImportConfig\SM_T_SOP.xml" />
+    <Content Include="ImportConfig\WF_M_COMPANY.xml" />
+    <Content Include="ImportConfig\WF_M_DEPT.xml" />
+    <Content Include="ImportConfig\WF_M_MSG_TEMPLATE.xml" />
+    <Content Include="ImportConfig\WF_M_RES.xml" />
+    <Content Include="Index.aspx" />
+    <Content Include="jquery-file-upload\cors\postmessage.html" />
+    <Content Include="jquery-file-upload\cors\result.html" />
+    <Content Include="jquery-file-upload\css\demo-ie8.css" />
+    <Content Include="jquery-file-upload\css\demo.css" />
+    <Content Include="jquery-file-upload\css\jquery.fileupload-noscript.css" />
+    <Content Include="jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="jquery-file-upload\css\jquery.fileupload.css" />
+    <Content Include="jquery-file-upload\css\style.css" />
+    <Content Include="jquery-file-upload\img\loading.gif" />
+    <Content Include="jquery-file-upload\img\progressbar.gif" />
+    <Content Include="jquery-file-upload\js\app.js" />
+    <Content Include="jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-angular.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-audio.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-image.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-process.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-validate.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload-video.js" />
+    <Content Include="jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="jquery-file-upload\js\main.js" />
+    <Content Include="jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="jquery-ui-1.12.1\AUTHORS.txt" />
+    <Content Include="jquery-ui-1.12.1\external\jquery\jquery.js" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery-ui-1.12.1\index.html" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.css" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.js" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.min.css" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.min.js" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.structure.css" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.structure.min.css" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.theme.css" />
+    <Content Include="jquery-ui-1.12.1\jquery-ui.theme.min.css" />
+    <Content Include="jquery-ui-1.12.1\jquery.dialogextend.js" />
+    <Content Include="jquery-ui-1.12.1\jquery.ui.iframedialog.js" />
+    <Content Include="jquery-ui-1.12.1\LICENSE.txt" />
+    <Content Include="Kanban1.aspx" />
+    <Content Include="Kanban\ElectricKanban.aspx" />
+    <Content Include="Kanban\PotentialKanban.aspx" />
+    <Content Include="kindeditor\asp.net\demo.aspx" />
+    <Content Include="kindeditor\asp.net\README.txt" />
+    <Content Include="kindeditor\attached\这个目录一定要存在.txt" />
+    <Content Include="kindeditor\kindeditor-all-min.js" />
+    <Content Include="kindeditor\kindeditor-all.js" />
+    <Content Include="kindeditor\kindeditor-min.js" />
+    <Content Include="kindeditor\kindeditor.js" />
+    <Content Include="kindeditor\lang\ar.js" />
+    <Content Include="kindeditor\lang\en.js" />
+    <Content Include="kindeditor\lang\ko.js" />
+    <Content Include="kindeditor\lang\zh_CN.js" />
+    <Content Include="kindeditor\lang\zh_TW.js" />
+    <Content Include="kindeditor\license.txt" />
+    <Content Include="kindeditor\plugins\anchor\anchor.js" />
+    <Content Include="kindeditor\plugins\autoheight\autoheight.js" />
+    <Content Include="kindeditor\plugins\baidumap\baidumap.js" />
+    <Content Include="kindeditor\plugins\baidumap\index.html" />
+    <Content Include="kindeditor\plugins\baidumap\map.html" />
+    <Content Include="kindeditor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="kindeditor\plugins\code\code.js" />
+    <Content Include="kindeditor\plugins\code\prettify.css" />
+    <Content Include="kindeditor\plugins\code\prettify.js" />
+    <Content Include="kindeditor\plugins\emoticons\emoticons.js" />
+    <Content Include="kindeditor\plugins\emoticons\images\0.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\1.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\10.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\100.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\101.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\102.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\103.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\104.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\105.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\106.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\107.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\108.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\109.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\11.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\110.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\111.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\112.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\113.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\114.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\115.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\116.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\117.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\118.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\119.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\12.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\120.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\121.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\122.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\123.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\124.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\125.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\126.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\127.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\128.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\129.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\13.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\130.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\131.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\132.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\133.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\134.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\14.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\15.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\16.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\17.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\18.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\19.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\2.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\20.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\21.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\22.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\23.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\24.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\25.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\26.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\27.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\28.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\29.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\3.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\30.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\31.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\32.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\33.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\34.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\35.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\36.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\37.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\38.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\39.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\4.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\40.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\41.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\42.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\43.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\44.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\45.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\46.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\47.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\48.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\49.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\5.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\50.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\51.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\52.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\53.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\54.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\55.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\56.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\57.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\58.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\59.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\6.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\60.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\61.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\62.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\63.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\64.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\65.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\66.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\67.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\68.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\69.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\7.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\70.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\71.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\72.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\73.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\74.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\75.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\76.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\77.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\78.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\79.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\8.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\80.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\81.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\82.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\83.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\84.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\85.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\86.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\87.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\88.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\89.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\9.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\90.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\91.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\92.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\93.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\94.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\95.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\96.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\97.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\98.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\99.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\static.gif" />
+    <Content Include="kindeditor\plugins\filemanager\filemanager.js" />
+    <Content Include="kindeditor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="kindeditor\plugins\flash\flash.js" />
+    <Content Include="kindeditor\plugins\image\image.js" />
+    <Content Include="kindeditor\plugins\image\images\align_left.gif" />
+    <Content Include="kindeditor\plugins\image\images\align_right.gif" />
+    <Content Include="kindeditor\plugins\image\images\align_top.gif" />
+    <Content Include="kindeditor\plugins\image\images\refresh.png" />
+    <Content Include="kindeditor\plugins\insertfile\insertfile.js" />
+    <Content Include="kindeditor\plugins\lineheight\lineheight.js" />
+    <Content Include="kindeditor\plugins\link\link.js" />
+    <Content Include="kindeditor\plugins\map\map.html" />
+    <Content Include="kindeditor\plugins\map\map.js" />
+    <Content Include="kindeditor\plugins\media\media.js" />
+    <Content Include="kindeditor\plugins\multiimage\images\image.png" />
+    <Content Include="kindeditor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="kindeditor\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="kindeditor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="kindeditor\plugins\multiimage\multiimage.js" />
+    <Content Include="kindeditor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="kindeditor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="kindeditor\plugins\preview\preview.js" />
+    <Content Include="kindeditor\plugins\quickformat\quickformat.js" />
+    <Content Include="kindeditor\plugins\table\table.js" />
+    <Content Include="kindeditor\plugins\template\html\1.html" />
+    <Content Include="kindeditor\plugins\template\html\2.html" />
+    <Content Include="kindeditor\plugins\template\html\3.html" />
+    <Content Include="kindeditor\plugins\template\template.js" />
+    <Content Include="kindeditor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="kindeditor\themes\common\anchor.gif" />
+    <Content Include="kindeditor\themes\common\blank.gif" />
+    <Content Include="kindeditor\themes\common\flash.gif" />
+    <Content Include="kindeditor\themes\common\loading.gif" />
+    <Content Include="kindeditor\themes\common\media.gif" />
+    <Content Include="kindeditor\themes\common\rm.gif" />
+    <Content Include="kindeditor\themes\default\background.png" />
+    <Content Include="kindeditor\themes\default\default.css" />
+    <Content Include="kindeditor\themes\default\default.png" />
+    <Content Include="kindeditor\themes\qq\editor.gif" />
+    <Content Include="kindeditor\themes\qq\qq.css" />
+    <Content Include="kindeditor\themes\simple\simple.css" />
+    <Content Include="Login.aspx" />
+    <Content Include="Kanban\ProductionKanban.aspx" />
+    <Content Include="pdf\browser.min.js" />
+    <Content Include="pdf\build\pdf.js" />
+    <Content Include="pdf\build\pdf.worker.js" />
+    <Content Include="pdf\pdfobject.js" />
+    <Content Include="pdf\web\debugger.js" />
+    <Content Include="pdf\web\images\annotation-check.svg" />
+    <Content Include="pdf\web\images\annotation-comment.svg" />
+    <Content Include="pdf\web\images\annotation-help.svg" />
+    <Content Include="pdf\web\images\annotation-insert.svg" />
+    <Content Include="pdf\web\images\annotation-key.svg" />
+    <Content Include="pdf\web\images\annotation-newparagraph.svg" />
+    <Content Include="pdf\web\images\annotation-noicon.svg" />
+    <Content Include="pdf\web\images\annotation-note.svg" />
+    <Content Include="pdf\web\images\annotation-paragraph.svg" />
+    <Content Include="pdf\web\images\findbarButton-next%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-next-rtl%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-next-rtl.png" />
+    <Content Include="pdf\web\images\findbarButton-next.png" />
+    <Content Include="pdf\web\images\findbarButton-previous%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-previous-rtl%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-previous-rtl.png" />
+    <Content Include="pdf\web\images\findbarButton-previous.png" />
+    <Content Include="pdf\web\images\grab.cur" />
+    <Content Include="pdf\web\images\grabbing.cur" />
+    <Content Include="pdf\web\images\loading-icon.gif" />
+    <Content Include="pdf\web\images\loading-small%402x.png" />
+    <Content Include="pdf\web\images\loading-small.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-documentProperties%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-documentProperties.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-firstPage%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-firstPage.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-handTool%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-handTool.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-lastPage%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-lastPage.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCcw%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCcw.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCw%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCw.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollHorizontal%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollHorizontal.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollVertical%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollVertical.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollWrapped%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-scrollWrapped.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-selectTool%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-selectTool.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadEven%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadEven.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadNone%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadNone.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadOdd%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-spreadOdd.png" />
+    <Content Include="pdf\web\images\shadow.png" />
+    <Content Include="pdf\web\images\texture.png" />
+    <Content Include="pdf\web\images\toolbarButton-bookmark%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-bookmark.png" />
+    <Content Include="pdf\web\images\toolbarButton-download%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-download.png" />
+    <Content Include="pdf\web\images\toolbarButton-menuArrows%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-menuArrows.png" />
+    <Content Include="pdf\web\images\toolbarButton-openFile%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-openFile.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp.png" />
+    <Content Include="pdf\web\images\toolbarButton-presentationMode%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-presentationMode.png" />
+    <Content Include="pdf\web\images\toolbarButton-print%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-print.png" />
+    <Content Include="pdf\web\images\toolbarButton-search%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-search.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewAttachments%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewAttachments.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewThumbnail%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewThumbnail.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomIn%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomIn.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomOut%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomOut.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed%402x.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed-rtl%402x.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed-rtl.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed.png" />
+    <Content Include="pdf\web\images\treeitem-expanded%402x.png" />
+    <Content Include="pdf\web\images\treeitem-expanded.png" />
+    <Content Include="pdf\web\viewer.css" />
+    <Content Include="pdf\web\viewer.html" />
+    <Content Include="pdf\web\viewer.js" />
+    <Content Include="scripts\base64.js" />
+    <Content Include="scripts\dfDialog.js" />
+    <Content Include="scripts\echarts.min.js" />
+    <Content Include="scripts\geo.js" />
+    <Content Include="jquery-ui-1.12.1\package.json" />
+    <Content Include="scripts\jquery-1.8.1.min.js" />
+    <Content Include="scripts\jquery.easytabs.min.js" />
+    <Content Include="scripts\jquery.hashchange.min.js" />
+    <Content Include="scripts\jquery.layout-latest.js" />
+    <Content Include="scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="ShowExPwd.aspx" />
+    <Content Include="Kanban\StationTempKanban.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="config\CustomForm\ColumnCheckDA.cs" />
+    <Compile Include="config\CustomForm\FormImportConfigDA.cs" />
+    <Compile Include="config\CustomForm\ColumnManagerDA.cs" />
+    <Compile Include="config\通用导入\Form_BatchInputDA.cs" />
+    <Compile Include="Cron\CalcRunTime.ashx.cs">
+      <DependentUpon>CalcRunTime.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="config\实时交互\RealtimeInteractionDA.cs" />
+    <Compile Include="config\下拉框联动\Sample_SelectPostBackDA.cs" />
+    <Compile Include="config\CustomForm\FormManagerDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_EditDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_Edit_FormDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_Edit_RowDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_Edit_PanelDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_Edit_ColumnDA.cs" />
+    <Compile Include="config\CustomForm\FormManager_Edit_ControlDA.cs" />
+    <Compile Include="DataAnalyzeHandler.ashx.cs">
+      <DependentUpon>DataAnalyzeHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DA\BasicData\Form_SM_M_BASICVALUEDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_BASICVALUE_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_CELLDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_CELL_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_DEFECTDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_DEFECT_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_LINEDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_LINE_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_MASTERDEVICEDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_MASTERDEVICE_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_PLCDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_PLC_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_QDDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_QD_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_SLAVEDEVICEDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_SLAVEDEVICE_EditDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_UPHDA.cs" />
+    <Compile Include="DA\BasicData\Form_SM_M_UPH_EditDA.cs" />
+    <Compile Include="DA\Common\Common_SelectDeptDA.cs" />
+    <Compile Include="DA\Common\Common_SelectGangHaoDA.cs" />
+    <Compile Include="DA\Common\Common_SelectProcessDA.cs" />
+    <Compile Include="DA\Common\Common_SelectUserDA.cs" />
+    <Compile Include="DA\Common\Form_SelectUserDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_CollectDataAnalyzeDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_CollectDataAnalyzeViewDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_DeviceDownTimeDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_DeviceOEEDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_EnergyAnalyzeDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_EnergyQueryDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_EnergyQueryOnly4DA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_PowerDataAnalyze_Summary_DayDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_PowerDataAnalyze_Summary_MonthDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_PowerDataAnalyze_Summary_YearDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_ProcessDataDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_SM_T_DAYENERGYDA.cs" />
+    <Compile Include="DA\DataAnalyze\Form_SM_T_DAYENERGY_EditDA.cs" />
+    <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANGDA.cs" />
+    <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG_EditDA.cs" />
+    <Compile Include="DA\Form_ElectricDA.cs" />
+    <Compile Include="DA\Form_EnergyDataAnalyze_MonthDA.cs" />
+    <Compile Include="DA\Form_EnergyDataAnalyze_YearDA.cs" />
+    <Compile Include="DA\Form_EnergyPerTDA.cs" />
+    <Compile Include="DA\Form_EnergyQuery_CurrentDA.cs" />
+    <Compile Include="DA\Form_MFPowerDA.cs" />
+    <Compile Include="DA\Form_PotentialDA.cs" />
+    <Compile Include="DA\Form_PowerDataAnalyze_DayDA.cs" />
+    <Compile Include="DA\Form_PowerDataAnalyze_MonthDA.cs" />
+    <Compile Include="DA\Form_PowerDataAnalyze_YearDA.cs" />
+    <Compile Include="DA\Form_PowerQuery_CurrentDA.cs" />
+    <Compile Include="DA\Form_ProductionDA.cs" />
+    <Compile Include="DA\Form_SM_T_PROCESS_FX_PrintDA.cs" />
+    <Compile Include="DA\Form_SM_T_SOP_ViewDA.cs" />
+    <Compile Include="DA\Form_StationTempDA.cs" />
+    <Compile Include="DA\Form_WFDataReportDA.cs" />
+    <Compile Include="DA\Form_WF_M_MSG_TEMPLATEDA.cs" />
+    <Compile Include="DA\Form_WF_M_MSG_TEMPLATE_EditDA.cs" />
+    <Compile Include="DA\Form_WF_M_ROLE_MODELDA.cs" />
+    <Compile Include="DA\Form_WF_M_ROLE_MODEL_EditDA.cs" />
+    <Compile Include="DA\Form_WF_M_USERDEPT_EditDA.cs" />
+    <Compile Include="DA\Machine\Form_BT_MachineAnalyseDA.cs" />
+    <Compile Include="DA\Machine\Form_BT_MachineAnalyse_EditDA.cs" />
+    <Compile Include="DA\Machine\Form_BT_MachineManageDA.cs" />
+    <Compile Include="DA\Machine\Form_BT_MachineManage_EditDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_DYDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_CXDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDanDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESSDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_LOGDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_LOG_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_CYDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_CY_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_CY_LOGDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_CY_LOG_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_FXDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LOGDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LOG_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LQFDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LQF_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LWDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LW_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LY_LOGDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LY_LOG_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_OPDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_PrintDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_PRODUCTDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_PRODUCT_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_YCDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_YC_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_QUALITY_EditDA.cs" />
+    <Compile Include="DA\Process\Form_SM_T_PROCESS_LY_EditDA.cs" />
+    <Compile Include="DA\Report\Form_SM_T_PRODUCTQTYDA.cs" />
+    <Compile Include="DA\SOP\Form_SM_T_SOPDA.cs" />
+    <Compile Include="DA\SOP\Form_SM_T_SOP_EditDA.cs" />
+    <Compile Include="DA\SOP\Form_SM_T_SOP_QueryDA.cs" />
+    <Compile Include="DA\System\WF_ChangePasswordDA.cs" />
+    <Compile Include="DA\System\WF_DeptDA.cs" />
+    <Compile Include="DA\System\WF_Dept_EditDA.cs" />
+    <Compile Include="DA\System\WF_LogMgmtDA.cs" />
+    <Compile Include="DA\System\WF_MenuDA.cs" />
+    <Compile Include="DA\System\WF_Menu_EditDA.cs" />
+    <Compile Include="DA\System\WF_ModuleDA.cs" />
+    <Compile Include="DA\System\WF_Module_EditDA.cs" />
+    <Compile Include="DA\System\WF_MultiLanguageDA.cs" />
+    <Compile Include="DA\System\WF_MultiLanguage_EditDA.cs" />
+    <Compile Include="DA\System\WF_MyMsgDA.cs" />
+    <Compile Include="DA\System\WF_PublicCodeDA.cs" />
+    <Compile Include="DA\System\WF_PublicCode_EditDA.cs" />
+    <Compile Include="DA\System\WF_RoleDA.cs" />
+    <Compile Include="DA\System\WF_Role_EditDA.cs" />
+    <Compile Include="DA\System\WF_Role_SetAccessDA.cs" />
+    <Compile Include="DA\System\WF_Role_SetUsersDA.cs" />
+    <Compile Include="DA\System\WF_Role_SetUsers_EditDA.cs" />
+    <Compile Include="DA\System\WF_UserDA.cs" />
+    <Compile Include="DA\System\WF_UserRole_SettingDA.cs" />
+    <Compile Include="DA\System\WF_User_EditDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_AllTaskDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_AllWFDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_AllWFDEPTDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_ConnectorDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Connector_EditDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_ModelDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Model_EditDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Model_UploadDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_MyTaskDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_MyWFDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Panel_ApproveDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Panel_ApproveHistoryDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Panel_RequestorInfoDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_RequestDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_SelectStepDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_SelectUserDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StartWFDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StartWFTestDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepExecutorDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepExecutor_EditDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepExecutor_Edit_CustomDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepExecutor_Edit_RoleDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_StepExecutor_Edit_UserDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_Step_EditDA.cs" />
+    <Compile Include="DA\WFCore\WFCore_TaskProcessingDA.cs" />
+    <Compile Include="DA\WFCore\WF_UserDeptDA.cs" />
+    <Compile Include="DA\WFCore\WF_UserDept_EditDA.cs" />
+    <Compile Include="DFDesigner.aspx.cs">
+      <DependentUpon>DFDesigner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFDesigner.aspx.designer.cs">
+      <DependentUpon>DFDesigner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DFFileDownload.aspx.cs">
+      <DependentUpon>DFFileDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFFileDownload.aspx.designer.cs">
+      <DependentUpon>DFFileDownload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DFIndexWF.aspx.cs">
+      <DependentUpon>DFIndexWF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFIndexWF.aspx.designer.cs">
+      <DependentUpon>DFIndexWF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DFSite.Master.cs">
+      <DependentUpon>DFSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFSite.Master.designer.cs">
+      <DependentUpon>DFSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Kanban1.aspx.cs">
+      <DependentUpon>Kanban1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kanban1.aspx.designer.cs">
+      <DependentUpon>Kanban1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kanban\ElectricKanban.aspx.cs">
+      <DependentUpon>ElectricKanban.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kanban\ElectricKanban.aspx.designer.cs">
+      <DependentUpon>ElectricKanban.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kanban\PotentialKanban.aspx.cs">
+      <DependentUpon>PotentialKanban.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kanban\PotentialKanban.aspx.designer.cs">
+      <DependentUpon>PotentialKanban.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="kindeditor\DFFileUploadHandler.ashx.cs">
+      <DependentUpon>DFFileUploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Kanban\ProductionKanban.aspx.cs">
+      <DependentUpon>ProductionKanban.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kanban\ProductionKanban.aspx.designer.cs">
+      <DependentUpon>ProductionKanban.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kanban\StationTempKanban.aspx.cs">
+      <DependentUpon>StationTempKanban.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kanban\StationTempKanban.aspx.designer.cs">
+      <DependentUpon>StationTempKanban.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CommonBaseDA.cs" />
+    <Compile Include="Utilities\PUBLICCODELoader.cs" />
+    <Compile Include="DFHandler.ashx.cs">
+      <DependentUpon>DFHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DFIndex.aspx.cs">
+      <DependentUpon>DFIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFIndex.aspx.designer.cs">
+      <DependentUpon>DFIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DFIndexReport.aspx.cs">
+      <DependentUpon>DFIndexReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DFIndexReport.aspx.designer.cs">
+      <DependentUpon>DFIndexReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\InitializeHelper.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowExPwd.aspx.cs">
+      <DependentUpon>ShowExPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowExPwd.aspx.designer.cs">
+      <DependentUpon>ShowExPwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\StateEngineHelper.cs" />
+    <Compile Include="Utilities\Util.cs" />
+    <Compile Include="Utilities\WFBaseDA.cs" />
+    <Compile Include="WFPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bui\assets\build.bat" />
+    <None Include="bui\css\build.bat" />
+    <Content Include="kindeditor\asp.net\file_manager_json.ashx" />
+    <Content Include="kindeditor\asp.net\upload_json.ashx" />
+    <Content Include="DFHandler.ashx" />
+    <Content Include="DFSite.Master" />
+    <Content Include="gooflow0.8\GooFlow\codebase\0" />
+    <Content Include="gooflow0.8\GooFlow\设计器API说明书.doc" />
+    <Content Include="Handlers\WFMessagerHandler.ashx" />
+    <Content Include="Cron\CalcRunTime.ashx" />
+    <Content Include="kindeditor\DFFileUploadHandler.ashx" />
+    <Content Include="grid-2.1.0\bower.json" />
+    <Content Include="grid-2.1.0\php\array\index.php" />
+    <Content Include="grid-2.1.0\php\array\remote.php" />
+    <Content Include="grid-2.1.0\php\conf.php" />
+    <Content Include="grid-2.1.0\php\database\index.php" />
+    <Content Include="grid-2.1.0\php\database\remote.php" />
+    <Content Include="grid-2.1.0\php\error_handling\index.php" />
+    <Content Include="grid-2.1.0\php\error_handling\remote.php" />
+    <Content Include="grid-2.1.0\php\filtering\index.php" />
+    <Content Include="grid-2.1.0\php\filtering\remote.php" />
+    <Content Include="grid-2.1.0\php\filter_paging\index.php" />
+    <Content Include="grid-2.1.0\php\filter_paging\remote.php" />
+    <Content Include="grid-2.1.0\php\filter_sort_paging\index.php" />
+    <Content Include="grid-2.1.0\php\filter_sort_paging\remote.php" />
+    <Content Include="grid-2.1.0\php\include.php" />
+    <Content Include="grid-2.1.0\php\paging\index.php" />
+    <Content Include="grid-2.1.0\php\paging\remote.php" />
+    <Content Include="grid-2.1.0\php\sorting\index.php" />
+    <Content Include="grid-2.1.0\php\sorting\remote.php" />
+    <Content Include="grid-2.1.0\php\sort_filtering\index.php" />
+    <Content Include="grid-2.1.0\php\sort_filtering\remote.php" />
+    <Content Include="grid-2.1.0\php\sort_paging\index.php" />
+    <Content Include="grid-2.1.0\php\sort_paging\remote.php" />
+    <Content Include="grid-2.1.0\pqgrid.jquery.json" />
+    <Content Include="grid-2.1.0\README.md" />
+    <Content Include="bui\img\iconfont\iconfont.eot" />
+    <Content Include="bui\img\iconfont\iconfont.ttf" />
+    <Content Include="bui\img\iconfont\iconfont.woff" />
+    <Content Include="kindeditor\asp.net\upload_json_pdf.ashx" />
+    <Content Include="kindeditor\upload_json_pdf1.ashx" />
+    <Content Include="DataAnalyzeHandler.ashx" />
+    <Content Include="pdf\build\pdf.js.map" />
+    <Content Include="pdf\build\pdf.worker.js.map" />
+    <Content Include="pdf\web\cmaps\78-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\78-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\78-H.bcmap" />
+    <Content Include="pdf\web\cmaps\78-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\78-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\78-V.bcmap" />
+    <Content Include="pdf\web\cmaps\78ms-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\78ms-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\83pv-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\90ms-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\90ms-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\90msp-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\90msp-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\90pv-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\90pv-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Add-H.bcmap" />
+    <Content Include="pdf\web\cmaps\Add-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\Add-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Add-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-0.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-1.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-3.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-4.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-5.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-6.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-CNS1-UCS2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-0.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-1.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-3.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-4.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-5.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-GB1-UCS2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-0.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-1.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-3.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-4.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-5.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-6.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Japan1-UCS2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Korea1-0.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Korea1-1.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Korea1-2.bcmap" />
+    <Content Include="pdf\web\cmaps\Adobe-Korea1-UCS2.bcmap" />
+    <Content Include="pdf\web\cmaps\B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\B5pc-H.bcmap" />
+    <Content Include="pdf\web\cmaps\B5pc-V.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS1-H.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS1-V.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS2-H.bcmap" />
+    <Content Include="pdf\web\cmaps\CNS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\ETen-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\ETen-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\ETenms-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\ETenms-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\ETHK-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\ETHK-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Ext-H.bcmap" />
+    <Content Include="pdf\web\cmaps\Ext-RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\Ext-RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Ext-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GB-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GB-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GB-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GB-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBK-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBK-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBK2K-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBK2K-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBKp-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBKp-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBpc-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBpc-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBT-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBT-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBT-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBT-V.bcmap" />
+    <Content Include="pdf\web\cmaps\GBTpc-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\GBTpc-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\H.bcmap" />
+    <Content Include="pdf\web\cmaps\Hankaku.bcmap" />
+    <Content Include="pdf\web\cmaps\Hiragana.bcmap" />
+    <Content Include="pdf\web\cmaps\HKdla-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKdla-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\HKdlb-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKdlb-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\HKgccs-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKgccs-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\HKm314-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKm314-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\HKm471-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKm471-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\HKscs-B5-H.bcmap" />
+    <Content Include="pdf\web\cmaps\HKscs-B5-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Katakana.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-Johab-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-Johab-V.bcmap" />
+    <Content Include="pdf\web\cmaps\KSC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCms-UHC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCms-UHC-HW-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCms-UHC-HW-V.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCms-UHC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCpc-EUC-H.bcmap" />
+    <Content Include="pdf\web\cmaps\KSCpc-EUC-V.bcmap" />
+    <Content Include="pdf\web\cmaps\LICENSE" />
+    <Content Include="pdf\web\cmaps\NWP-H.bcmap" />
+    <Content Include="pdf\web\cmaps\NWP-V.bcmap" />
+    <Content Include="pdf\web\cmaps\RKSJ-H.bcmap" />
+    <Content Include="pdf\web\cmaps\RKSJ-V.bcmap" />
+    <Content Include="pdf\web\cmaps\Roman.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UCS2-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UCS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF16-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF16-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF8-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniCNS-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UCS2-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UCS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF16-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF16-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF8-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniGB-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UCS2-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UCS2-HW-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UCS2-HW-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UCS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF16-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF16-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF8-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF16-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF16-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF8-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJIS2004-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISPro-UCS2-HW-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISPro-UCS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISPro-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISX0213-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISX0213-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISX02132004-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniJISX02132004-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UCS2-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UCS2-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF16-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF16-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF32-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF32-V.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF8-H.bcmap" />
+    <Content Include="pdf\web\cmaps\UniKS-UTF8-V.bcmap" />
+    <Content Include="pdf\web\cmaps\V.bcmap" />
+    <Content Include="pdf\web\cmaps\WP-Symbol.bcmap" />
+    <Content Include="pdf\web\compressed.tracemonkey-pldi-09.pdf" />
+    <Content Include="pdf\web\locale\ach\viewer.properties" />
+    <Content Include="pdf\web\locale\af\viewer.properties" />
+    <Content Include="pdf\web\locale\ak\viewer.properties" />
+    <Content Include="pdf\web\locale\an\viewer.properties" />
+    <Content Include="pdf\web\locale\ar\viewer.properties" />
+    <Content Include="pdf\web\locale\ast\viewer.properties" />
+    <Content Include="pdf\web\locale\as\viewer.properties" />
+    <Content Include="pdf\web\locale\az\viewer.properties" />
+    <Content Include="pdf\web\locale\be\viewer.properties" />
+    <Content Include="pdf\web\locale\bg\viewer.properties" />
+    <Content Include="pdf\web\locale\bn-BD\viewer.properties" />
+    <Content Include="pdf\web\locale\bn-IN\viewer.properties" />
+    <Content Include="pdf\web\locale\brx\viewer.properties" />
+    <Content Include="pdf\web\locale\br\viewer.properties" />
+    <Content Include="pdf\web\locale\bs\viewer.properties" />
+    <Content Include="pdf\web\locale\cak\viewer.properties" />
+    <Content Include="pdf\web\locale\ca\viewer.properties" />
+    <Content Include="pdf\web\locale\crh\viewer.properties" />
+    <Content Include="pdf\web\locale\csb\viewer.properties" />
+    <Content Include="pdf\web\locale\cs\viewer.properties" />
+    <Content Include="pdf\web\locale\cy\viewer.properties" />
+    <Content Include="pdf\web\locale\da\viewer.properties" />
+    <Content Include="pdf\web\locale\de\viewer.properties" />
+    <Content Include="pdf\web\locale\el\viewer.properties" />
+    <Content Include="pdf\web\locale\en-CA\viewer.properties" />
+    <Content Include="pdf\web\locale\en-GB\viewer.properties" />
+    <Content Include="pdf\web\locale\en-US\viewer.properties" />
+    <Content Include="pdf\web\locale\en-ZA\viewer.properties" />
+    <Content Include="pdf\web\locale\eo\viewer.properties" />
+    <Content Include="pdf\web\locale\es-AR\viewer.properties" />
+    <Content Include="pdf\web\locale\es-CL\viewer.properties" />
+    <Content Include="pdf\web\locale\es-ES\viewer.properties" />
+    <Content Include="pdf\web\locale\es-MX\viewer.properties" />
+    <Content Include="pdf\web\locale\et\viewer.properties" />
+    <Content Include="pdf\web\locale\eu\viewer.properties" />
+    <Content Include="pdf\web\locale\fa\viewer.properties" />
+    <Content Include="pdf\web\locale\ff\viewer.properties" />
+    <Content Include="pdf\web\locale\fi\viewer.properties" />
+    <Content Include="pdf\web\locale\fr\viewer.properties" />
+    <Content Include="pdf\web\locale\fy-NL\viewer.properties" />
+    <Content Include="pdf\web\locale\ga-IE\viewer.properties" />
+    <Content Include="pdf\web\locale\gd\viewer.properties" />
+    <Content Include="pdf\web\locale\gl\viewer.properties" />
+    <Content Include="pdf\web\locale\gn\viewer.properties" />
+    <Content Include="pdf\web\locale\gu-IN\viewer.properties" />
+    <Content Include="pdf\web\locale\he\viewer.properties" />
+    <Content Include="pdf\web\locale\hi-IN\viewer.properties" />
+    <Content Include="pdf\web\locale\hr\viewer.properties" />
+    <Content Include="pdf\web\locale\hsb\viewer.properties" />
+    <Content Include="pdf\web\locale\hto\viewer.properties" />
+    <Content Include="pdf\web\locale\hu\viewer.properties" />
+    <Content Include="pdf\web\locale\hy-AM\viewer.properties" />
+    <Content Include="pdf\web\locale\ia\viewer.properties" />
+    <Content Include="pdf\web\locale\id\viewer.properties" />
+    <Content Include="pdf\web\locale\is\viewer.properties" />
+    <Content Include="pdf\web\locale\it\viewer.properties" />
+    <Content Include="pdf\web\locale\ja\viewer.properties" />
+    <Content Include="pdf\web\locale\kab\viewer.properties" />
+    <Content Include="pdf\web\locale\ka\viewer.properties" />
+    <Content Include="pdf\web\locale\kk\viewer.properties" />
+    <Content Include="pdf\web\locale\km\viewer.properties" />
+    <Content Include="pdf\web\locale\kn\viewer.properties" />
+    <Content Include="pdf\web\locale\kok\viewer.properties" />
+    <Content Include="pdf\web\locale\ko\viewer.properties" />
+    <Content Include="pdf\web\locale\ks\viewer.properties" />
+    <Content Include="pdf\web\locale\ku\viewer.properties" />
+    <Content Include="pdf\web\locale\lg\viewer.properties" />
+    <Content Include="pdf\web\locale\lij\viewer.properties" />
+    <Content Include="pdf\web\locale\locale.properties" />
+    <Content Include="pdf\web\locale\lo\viewer.properties" />
+    <Content Include="pdf\web\locale\ltg\viewer.properties" />
+    <Content Include="pdf\web\locale\lt\viewer.properties" />
+    <Content Include="pdf\web\locale\lv\viewer.properties" />
+    <Content Include="pdf\web\locale\mai\viewer.properties" />
+    <Content Include="pdf\web\locale\meh\viewer.properties" />
+    <Content Include="pdf\web\locale\mk\viewer.properties" />
+    <Content Include="pdf\web\locale\ml\viewer.properties" />
+    <Content Include="pdf\web\locale\mn\viewer.properties" />
+    <Content Include="pdf\web\locale\mr\viewer.properties" />
+    <Content Include="pdf\web\locale\ms\viewer.properties" />
+    <Content Include="pdf\web\locale\my\viewer.properties" />
+    <Content Include="pdf\web\locale\nb-NO\viewer.properties" />
+    <Content Include="pdf\web\locale\ne-NP\viewer.properties" />
+    <Content Include="pdf\web\locale\nl\viewer.properties" />
+    <Content Include="pdf\web\locale\nn-NO\viewer.properties" />
+    <Content Include="pdf\web\locale\nso\viewer.properties" />
+    <Content Include="pdf\web\locale\oc\viewer.properties" />
+    <Content Include="pdf\web\locale\or\viewer.properties" />
+    <Content Include="pdf\web\locale\pa-IN\viewer.properties" />
+    <Content Include="pdf\web\locale\pl\viewer.properties" />
+    <Content Include="pdf\web\locale\pt-BR\viewer.properties" />
+    <Content Include="pdf\web\locale\pt-PT\viewer.properties" />
+    <Content Include="pdf\web\locale\rm\viewer.properties" />
+    <Content Include="pdf\web\locale\ro\viewer.properties" />
+    <Content Include="pdf\web\locale\ru\viewer.properties" />
+    <Content Include="pdf\web\locale\rw\viewer.properties" />
+    <Content Include="pdf\web\locale\sah\viewer.properties" />
+    <Content Include="pdf\web\locale\sat\viewer.properties" />
+    <Content Include="pdf\web\locale\si\viewer.properties" />
+    <Content Include="pdf\web\locale\sk\viewer.properties" />
+    <Content Include="pdf\web\locale\sl\viewer.properties" />
+    <Content Include="pdf\web\locale\son\viewer.properties" />
+    <Content Include="pdf\web\locale\sq\viewer.properties" />
+    <Content Include="pdf\web\locale\sr\viewer.properties" />
+    <Content Include="pdf\web\locale\sv-SE\viewer.properties" />
+    <Content Include="pdf\web\locale\sw\viewer.properties" />
+    <Content Include="pdf\web\locale\ta-LK\viewer.properties" />
+    <Content Include="pdf\web\locale\ta\viewer.properties" />
+    <Content Include="pdf\web\locale\te\viewer.properties" />
+    <Content Include="pdf\web\locale\th\viewer.properties" />
+    <Content Include="pdf\web\locale\tl\viewer.properties" />
+    <Content Include="pdf\web\locale\tn\viewer.properties" />
+    <Content Include="pdf\web\locale\tr\viewer.properties" />
+    <Content Include="pdf\web\locale\tsz\viewer.properties" />
+    <Content Include="pdf\web\locale\uk\viewer.properties" />
+    <Content Include="pdf\web\locale\ur\viewer.properties" />
+    <Content Include="pdf\web\locale\uz\viewer.properties" />
+    <Content Include="pdf\web\locale\vi\viewer.properties" />
+    <Content Include="pdf\web\locale\wo\viewer.properties" />
+    <Content Include="pdf\web\locale\xh\viewer.properties" />
+    <Content Include="pdf\web\locale\zam\viewer.properties" />
+    <Content Include="pdf\web\locale\zh-CN\viewer.properties" />
+    <Content Include="pdf\web\locale\zh-TW\viewer.properties" />
+    <Content Include="pdf\web\locale\zu\viewer.properties" />
+    <Content Include="pdf\web\viewer.js.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\mje.pubxml" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <None Include="Properties\PublishProfiles\publish1.pubxml" />
+    <None Include="Properties\PublishProfiles\xdsw.pubxml" />
+    <None Include="Properties\PublishProfiles\发布到金卡.pubxml" />
+    <Content Include="数据库初始化.txt" />
+    <Content Include="Reports\WFDataReport.frx" />
+    <Content Include="Template\ORDER.xlsx" />
+    <Content Include="Template\TEMP.xlsx" />
+    <Content Include="Reports\Order.frx" />
+    <Content Include="Template\ORDER1.xls" />
+    <Content Include="Reports\ReceiverInventory.frx" />
+    <Content Include="Reports\SenderInventory.frx" />
+    <Content Include="Reports\ReceiverWarn.frx" />
+    <Content Include="Reports\ReceiverReturnInTime.frx" />
+    <Content Include="Reports\ReceiverRecycle.frx" />
+    <Content Include="Reports\Recycle.frx" />
+    <Content Include="Reports\GoodsDetail.frx" />
+    <Content Include="Reports\Process.frx" />
+    <Content Include="Reports\Process_FX.frx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WFCommon\WFCommon.csproj">
+      <Project>{371e4943-6bbd-4601-b20c-d938fb91124d}</Project>
+      <Name>WFCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WFDataAccess\WFDataAccess.csproj">
+      <Project>{6728579e-3aa8-4ab2-8b0d-3e78074fc872}</Project>
+      <Name>WFDataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="config\Admin\" />
+    <Folder Include="config\Report\" />
+    <Folder Include="DA\Admin\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52754</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52755/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

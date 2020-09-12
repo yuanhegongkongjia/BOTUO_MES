@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="DEVICE_TAIZHANG" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM DEVICE_TAIZHANG WHERE DEVICE_ID=@DEVICE_ID" Insert="INSERT INTO DEVICE_TAIZHANG(DEVICE_ID,DEVICE_NAME,DEVICE_COMPANY,BUY_TIME,DEVICE_TYPE,FOR_DEPARTMENT,PICTURE,Create_TIME,CREAT_UESER,MODIFY_TIME,MODIFY_USER,REMARK1,REMARK2,REMARK3,REMARK4,REMARK5) VALUES(@DEVICE_ID,@DEVICE_NAME,@DEVICE_COMPANY,@BUY_TIME,@DEVICE_TYPE,@FOR_DEPARTMENT,@PICTURE,@Create_TIME,@CREAT_UESER,@MODIFY_TIME,@MODIFY_USER,@REMARK1,@REMARK2,@REMARK3,@REMARK4,@REMARK5)" Update="UPDATE DEVICE_TAIZHANG SET DEVICE_NAME=@DEVICE_NAME,DEVICE_COMPANY=@DEVICE_COMPANY,BUY_TIME=@BUY_TIME,DEVICE_TYPE=@DEVICE_TYPE,FOR_DEPARTMENT=@FOR_DEPARTMENT,PICTURE=@PICTURE,Create_TIME=@Create_TIME,CREAT_UESER=@CREAT_UESER,MODIFY_TIME=@MODIFY_TIME,MODIFY_USER=@MODIFY_USER,REMARK1=@REMARK1,REMARK2=@REMARK2,REMARK3=@REMARK3,REMARK4=@REMARK4,REMARK5=@REMARK5 WHERE DEVICE_ID=@DEVICE_ID">
+    <column Name="DEVICE_ID" Text="DEVICE_ID" DataType="nvarchar(50)" IsPrimaryKey="Y" />
+    <column Name="DEVICE_NAME" Text="DEVICE_NAME" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="DEVICE_COMPANY" Text="DEVICE_COMPANY" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="BUY_TIME" Text="BUY_TIME" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="DEVICE_TYPE" Text="DEVICE_TYPE" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="FOR_DEPARTMENT" Text="FOR_DEPARTMENT" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="PICTURE" Text="PICTURE" DataType="image" IsNullable="Y" />
+    <column Name="Create_TIME" Text="Create_TIME" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CREAT_UESER" Text="CREAT_UESER" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="MODIFY_TIME" Text="MODIFY_TIME" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="MODIFY_USER" Text="MODIFY_USER" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="REMARK1" Text="REMARK1" DataType="nchar(10)" IsNullable="Y" />
+    <column Name="REMARK2" Text="REMARK2" DataType="nchar(10)" IsNullable="Y" />
+    <column Name="REMARK3" Text="REMARK3" DataType="nchar(10)" />
+    <column Name="REMARK4" Text="REMARK4" DataType="nchar(10)" IsNullable="Y" />
+    <column Name="REMARK5" Text="REMARK5" DataType="nchar(10)" IsNullable="Y" />
+  </table>
+</tables>

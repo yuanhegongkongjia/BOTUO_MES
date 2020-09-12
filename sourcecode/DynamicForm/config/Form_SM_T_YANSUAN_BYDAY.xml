@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_YANSUAN_BYDAY" Name="Form_SM_T_YANSUAN_BYDAY" Desc="盐酸消耗量" DAImp="DynamicForm.DA.Form_SM_T_YANSUAN_BYDAYDA,DynamicForm">
+  <Panel Id="Panel20190924135445263" Name="Panel20190924135445263" Type="SingleRecord">
+    <Row>
+      <Control Name="CollectDateFrom" Text="采集日期从" Width="span8" Type="calendar" />
+      <Control Name="CollectDateTo" Text="到" Width="span8" Type="calendar" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;100&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber" />
+</Form>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_SOP_Query" Name="Form_SM_T_SOP_Query" Desc="SOP查询" DAImp="DynamicForm.DA.Form_SM_T_SOP_QueryDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="SOPName" Text="SOP名称" Width="span8" Type="text" />
+      <Control Name="SOPCode" Text="SOP编号" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="SOPUser" Text="SOP创建人" Width="span8" Type="text" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20190710161146773" Name="Panel20190710161146773" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Visible="false" Sortable="true" />
+    <Column Name="SOPName" Text="SOP名称" Width="100" Sortable="true" />
+    <Column Name="SOPCode" Text="SOP编号" Width="100" Sortable="true" />
+    <Column Name="SOPUser" Text="SOP创建人" Width="100" Sortable="true" />
+    <Column Name="FileId" Text="下载SOP" Width="100" Sortable="true" />
+    <!--DF_SCRIPT
+function(value, obj) {
+	if (obj.FileId != null&&obj.FileId !="") {
+return "<a href='DFFileDownload.aspx?FileId="+obj.FileId +"'>" + "下载SOP</a>";
+	} else {
+		return obj.FileId ;
+	}
+}
+-->
+  </Panel>
+</Form>

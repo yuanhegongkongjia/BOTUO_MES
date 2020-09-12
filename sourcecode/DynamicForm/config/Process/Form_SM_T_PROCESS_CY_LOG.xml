@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_SM_T_PROCESS_CY_LOG" Name="Form_SM_T_PROCESS_CY_LOG" Desc="" DAImp="DynamicForm.DA.Form_SM_T_PROCESS_CY_LOGDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="LogId" Text="LogId" Width="span8" Type="text" />
+      <Control Name="InstanceId" Text="InstanceId" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ADCStandard" Text="ADCStandard" Width="span8" Type="text" />
+      <Control Name="ADCMax" Text="ADCMax" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ADCMin" Text="ADCMin" Width="span8" Type="text" />
+      <Control Name="ATJCStandard" Text="ATJCStandard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="ATJCMax" Text="ATJCMax" Width="span8" Type="text" />
+      <Control Name="ATJCMin" Text="ATJCMin" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AIznStandard" Text="AIznStandard" Width="span8" Type="text" />
+      <Control Name="AIznMax" Text="AIznMax" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AIznMin" Text="AIznMin" Width="span8" Type="text" />
+      <Control Name="AMF1Standard" Text="AMF1Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AMF1Max" Text="AMF1Max" Width="span8" Type="text" />
+      <Control Name="AMF1Min" Text="AMF1Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AMF2Standard" Text="AMF2Standard" Width="span8" Type="text" />
+      <Control Name="AMF2Max" Text="AMF2Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="AMF2Min" Text="AMF2Min" Width="span8" Type="text" />
+      <Control Name="BDCStandard" Text="BDCStandard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BDCMax" Text="BDCMax" Width="span8" Type="text" />
+      <Control Name="BDCMin" Text="BDCMin" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BTJCStandard" Text="BTJCStandard" Width="span8" Type="text" />
+      <Control Name="BTJCMax" Text="BTJCMax" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BTJCMin" Text="BTJCMin" Width="span8" Type="text" />
+      <Control Name="BIznStandard" Text="BIznStandard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BIznMax" Text="BIznMax" Width="span8" Type="text" />
+      <Control Name="BIznMin" Text="BIznMin" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BMF1Standard" Text="BMF1Standard" Width="span8" Type="text" />
+      <Control Name="BMF1Max" Text="BMF1Max" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BMF1Min" Text="BMF1Min" Width="span8" Type="text" />
+      <Control Name="BMF2Standard" Text="BMF2Standard" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="BMF2Max" Text="BMF2Max" Width="span8" Type="text" />
+      <Control Name="BMF2Min" Text="BMF2Min" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LogDate" Text="LogDate" Width="span8" Type="text" />
+      <Control Name="LogUser" Text="LogUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="VerifyUser" Text="VerifyUser" Width="span8" Type="text" />
+      <Control Name="Remark1" Text="Remark1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark2" Text="Remark2" Width="span8" Type="text" />
+      <Control Name="Remark3" Text="Remark3" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="Remark4" Text="Remark4" Width="span8" Type="text" />
+      <Control Name="Remark5" Text="Remark5" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Text="CreateTime" Width="span8" Type="text" />
+      <Control Name="CreateUser" Text="CreateUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Text="LastModifyTime" Width="span8" Type="text" />
+      <Control Name="LastModifyUser" Text="LastModifyUser" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="LogId" Text="LogId" Width="100" Sortable="true" />
+    <Column Name="InstanceId" Text="InstanceId" Width="100" Sortable="true" />
+    <Column Name="ADCStandard" Text="ADCStandard" Width="100" Sortable="true" />
+    <Column Name="ADCMax" Text="ADCMax" Width="100" Sortable="true" />
+    <Column Name="ADCMin" Text="ADCMin" Width="100" Sortable="true" />
+    <Column Name="ATJCStandard" Text="ATJCStandard" Width="100" Sortable="true" />
+    <Column Name="ATJCMax" Text="ATJCMax" Width="100" Sortable="true" />
+    <Column Name="ATJCMin" Text="ATJCMin" Width="100" Sortable="true" />
+    <Column Name="AIznStandard" Text="AIznStandard" Width="100" Sortable="true" />
+    <Column Name="AIznMax" Text="AIznMax" Width="100" Sortable="true" />
+    <Column Name="AIznMin" Text="AIznMin" Width="100" Sortable="true" />
+    <Column Name="AMF1Standard" Text="AMF1Standard" Width="100" Sortable="true" />
+    <Column Name="AMF1Max" Text="AMF1Max" Width="100" Sortable="true" />
+    <Column Name="AMF1Min" Text="AMF1Min" Width="100" Sortable="true" />
+    <Column Name="AMF2Standard" Text="AMF2Standard" Width="100" Sortable="true" />
+    <Column Name="AMF2Max" Text="AMF2Max" Width="100" Sortable="true" />
+    <Column Name="AMF2Min" Text="AMF2Min" Width="100" Sortable="true" />
+    <Column Name="BDCStandard" Text="BDCStandard" Width="100" Sortable="true" />
+    <Column Name="BDCMax" Text="BDCMax" Width="100" Sortable="true" />
+    <Column Name="BDCMin" Text="BDCMin" Width="100" Sortable="true" />
+    <Column Name="BTJCStandard" Text="BTJCStandard" Width="100" Sortable="true" />
+    <Column Name="BTJCMax" Text="BTJCMax" Width="100" Sortable="true" />
+    <Column Name="BTJCMin" Text="BTJCMin" Width="100" Sortable="true" />
+    <Column Name="BIznStandard" Text="BIznStandard" Width="100" Sortable="true" />
+    <Column Name="BIznMax" Text="BIznMax" Width="100" Sortable="true" />
+    <Column Name="BIznMin" Text="BIznMin" Width="100" Sortable="true" />
+    <Column Name="BMF1Standard" Text="BMF1Standard" Width="100" Sortable="true" />
+    <Column Name="BMF1Max" Text="BMF1Max" Width="100" Sortable="true" />
+    <Column Name="BMF1Min" Text="BMF1Min" Width="100" Sortable="true" />
+    <Column Name="BMF2Standard" Text="BMF2Standard" Width="100" Sortable="true" />
+    <Column Name="BMF2Max" Text="BMF2Max" Width="100" Sortable="true" />
+    <Column Name="BMF2Min" Text="BMF2Min" Width="100" Sortable="true" />
+    <Column Name="LogDate" Text="LogDate" Width="100" Sortable="true" />
+    <Column Name="LogUser" Text="LogUser" Width="100" Sortable="true" />
+    <Column Name="VerifyUser" Text="VerifyUser" Width="100" Sortable="true" />
+    <Column Name="Remark1" Text="Remark1" Width="100" Sortable="true" />
+    <Column Name="Remark2" Text="Remark2" Width="100" Sortable="true" />
+    <Column Name="Remark3" Text="Remark3" Width="100" Sortable="true" />
+    <Column Name="Remark4" Text="Remark4" Width="100" Sortable="true" />
+    <Column Name="Remark5" Text="Remark5" Width="100" Sortable="true" />
+    <Column Name="CreateTime" Text="CreateTime" Width="100" Sortable="true" />
+    <Column Name="CreateUser" Text="CreateUser" Width="100" Sortable="true" />
+    <Column Name="LastModifyTime" Text="LastModifyTime" Width="100" Sortable="true" />
+    <Column Name="LastModifyUser" Text="LastModifyUser" Width="100" Sortable="true" />
+  </Panel>
+
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'LogId': a.LogId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_SM_T_PROCESS_CY_LOG',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_CY_LOG_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&LogId=' + selections[0].LogId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_SM_T_PROCESS_CY_LOG_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

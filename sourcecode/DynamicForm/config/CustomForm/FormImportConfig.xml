@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="FormImportConfig" Name="FormImportConfig" Desc="ImportConfig 配置" DAImp="DynamicForm.DA.FormImportConfigDA,DynamicForm">
+  <Panel Id="Panel20170730234820613" Name="Panel20170730234820613" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ConfigFile" Text="配置文件" Width="span8" Type="select" ControlAttributes="{&quot;style&quot;:&quot;width:200px;&quot;}" OptionType="JSON" AddEmptyOption="True" />
+      <Control Name="btnUpdate" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var ConfigFile = $('#ConfigFile').val();
+    if(!ConfigFile)
+    {
+    	dfAlert('请选择配置文件');
+    	return;
+    }
+    var p = "&ConfigFile={0}&EditMode=Edit".format(ConfigFile);
+    var url = 'DFIndex.aspx?DF_FORMNAME=ColumnManager' + p;
+    dfDialogFullScreen(url);
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="SearchTableName" Text="表名" Width="span8" Type="select" ControlAttributes="{&quot;style&quot;:&quot;width:200px;&quot;}" OptionType="JSON" AddEmptyOption="True" />
+      <!--DF_SCRIPT
+$(function() {
+    $('#SearchTableName').on('change', function() {
+        var selectedValue = $('#SearchTableName').val();
+        if (selectedValue) {
+            $('#TableName').val(selectedValue);
+            $('#XmlFileName').val(selectedValue);
+        }
+    });
+});
+-->
+      <Control Name="TableName" Text="表名" Width="span8" Type="text" />
+      <Control Name="XmlFileName" Text="文件名" Width="span8" Type="text" />
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+      <Control Name="btnSave" Text="保存到XML" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;,&quot;DF_DATAGRID_PAGESIZE&quot;:&quot;5000&quot;}" Plugins="editing,BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.CellEditing">
+    <!--DF_SCRIPT
+var height = 400;
+var enumObj = {
+    "Y": "是",
+    "": "否"
+};
+/*
+var enumObj2 = {
+    "nvarchar(50)": "nvarchar(50)",
+    "nvarchar(100)": "nvarchar(100)",
+    "nvarchar(200)": "nvarchar(200)",
+    "nvarchar(500)": "nvarchar(500)",
+    "nvarchar(1000)": "nvarchar(1000)",
+    "int": "int",
+    "datetime": "datetime",
+    "decimal(10,2)": "decimal(10,2)",
+    "decimal(18,2)": "decimal(18,2)",
+    "decimal(18,4)": "decimal(18,4)"
+};
+*/
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-plus"></i>添加',
+    listeners: {
+        'click': addFunction
+    }
+});
+
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-remove"></i>删除',
+    listeners: {
+        'click': delFunction
+    }
+});
+
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-plus"></i>添加常用列',
+    listeners: {
+        'click': addFunction2
+    }
+});
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-plus"></i>上移',
+    listeners: {
+        'click': moveUp
+    }
+});
+tbarItems.push({
+    btnCls: 'button button-small',
+    text: '<i class="icon-remove"></i>下移',
+    listeners: {
+        'click': moveDown
+    }
+});
+
+
+function moveUp() {
+    var selections = grid.getSelection();
+    if (selections.length > 0) {
+        for (var i = 0; i < selections.length; i++) {
+            var index = grid.getItems().indexOf(selections[i]) - 1;
+            store.remove(selections[i]);
+            if (index < 0) {
+                store.addAt(selections[i], 0);
+            } else {
+                store.addAt(selections[i], index);
+            }
+        };
+    }
+}
+
+function moveDown() {
+    var selections = grid.getSelection();
+    if (selections.length > 0) {
+        for (var i = selections.length - 1; i >= 0; i = i - 1) {
+            var index = grid.getItems().indexOf(selections[i]) + 1;
+            store.remove(selections[i]);
+            if (index > grid.getItems().length - 1) {
+                store.add(selections[i]);
+            } else {
+                store.addAt(selections[i], index);
+            }
+        };
+    }
+}
+
+
+var editing = new Grid.Plugins.CellEditing({
+    triggerSelected: false //触发编辑的时候不选中行
+});
+
+//添加记录
+function addFunction2() {
+    var newData = {
+        TableName: $('#TableName').val(),
+        ColumnName: 'CreateUser',
+        ColumnText: '创建人',
+        IsNullable: 'Y',
+        DataType: 'nvarchar(50)'
+    };
+    store.add(newData);
+    newData = {
+        TableName: $('#TableName').val(),
+        ColumnName: 'CreateTime',
+        ColumnText: '创建时间',
+        IsNullable: 'Y',
+        DataType: 'datetime'
+    };
+    store.add(newData);
+    newData = {
+        TableName: $('#TableName').val(),
+        ColumnName: 'LastModifyUser',
+        ColumnText: '最后修改人',
+        IsNullable: 'Y',
+        DataType: 'nvarchar(50)'
+    };
+    store.add(newData);
+    newData = {
+        TableName: $('#TableName').val(),
+        ColumnName: 'LastModifyTime',
+        ColumnText: '创建时间',
+        IsNullable: 'Y',
+        DataType: 'datetime'
+    };
+    store.add(newData);
+}
+//添加记录
+function addFunction() {
+    var newData = {
+        TableName: $('#TableName').val(),
+        IsNullable: 'Y',
+        DataType: 'nvarchar(50)'
+    };
+    store.add(newData);
+}
+//删除选中的记录
+function delFunction() {
+    var selections = grid.getSelection();
+    store.remove(selections);
+}
+-->
+    <Column Name="PK_GUID" Visible="false" />
+    <Column Name="TableName" Text="表名" Width="200" />
+    <Column Name="ColumnName" Text="字段名" Width="150" Editor="{xtype:'text'}" />
+    <Column Name="ColumnText" Text="中文名" Width="150" Editor="{xtype:'text'}" />
+    <Column Name="DataType" Text="数据类型" Width="100" Editor="{xtype:'text'}" />
+    <Column Name="IsPrimaryKey" Text="是否是主键" Width="80" Editor="{xtype:'select',items:enumObj,renderer:Grid.Format.enumRenderer(enumObj)}" />
+    <Column Name="IsNullable" Text="是否允许为空" Width="80" Editor="{xtype:'select',items:enumObj,renderer:Grid.Format.enumRenderer(enumObj)}" />
+    <Column Name="IsIdentity" Text="是否标识" Width="80" Editor="{xtype:'select',items:enumObj,renderer:Grid.Format.enumRenderer(enumObj)}" />
+    <Column Name="ColumnCheck" Text="数据检查" Width="400" />
+    <!--DF_SCRIPT
+function(value, obj) {
+    var str = "{0}<button style='width:30px;float:left;' onclick=\"Op1('{1}','{2}');return false;\">...</button>";
+    return str.format(value, obj.ColumnName, obj.TableName);
+}
+-->
+    <!--DF_COLUMN_SCRIPT
+function Op1(ColumnName,TableName) {  
+    var p = "&ColumnName=" + ColumnName;  
+    p += "&TableName=" + TableName;  
+    p += "&EditMode=Edit";  
+    var url = 'DFIndex.aspx?DF_FORMNAME=ColumnCheck' + p;  
+    var dialog = dfOverlayFullDialog(800, 600, '数据检查', url, [{
+        text: '确定',
+        click: function() {
+            var child = $('iframe', $(this))[0].contentWindow;
+
+/*
+这里的 this 表示
+<div id="iframeDialog" class="ui-dialog-content ui-widget-content ui-dialog-normal" style="width: auto; min-height: 0px; max-height: none; height: 502px;"><iframe frameborder="0" width="100%" height="100%" marginwidth="0" hspace="0" vspace="0" scrolling="auto" allowtransparency="true" src="DFIndex.aspx?DF_FORMNAME=ColumnCheck&amp;ColumnName=PMenuId&amp;EditMode=Edit"></iframe></div>
+*/
+            
+            var data = BUI.FormHelper.serializeToObject(child.$('form'));
+            delete data.__VIEWSTATEGENERATOR;
+            delete data.__VIEWSTATE;
+            delete data.ColumnName;
+            delete data.TableName;
+
+            var grid = BUI.getControl('grid1');
+            // 得到当前页面的grid的行
+            var item = grid.findItemByField('ColumnName', ColumnName);
+            if (item) {
+                item.ColumnCheck = JSON.stringify(data);
+                grid.updateItem(item);
+            }
+            $(this).dialog('close');
+        }
+    }, {
+        text: '取消',
+        click: function() {
+            $(this).dialog('close');
+        }
+    }]);
+}
+-->
+  </Panel>
+</Form>

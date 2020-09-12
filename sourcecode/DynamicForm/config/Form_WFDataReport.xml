@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_WFDataReport" Name="Form_WFDataReport" Desc="工作流数据报表" DAImp="DynamicForm.DA.Form_WFDataReportDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="RequestTime_From" Text="申请时间从" Width="span8" Type="calendar" />
+      <Control Name="RequestTime_To" Text="申请时间到" Width="span8" Type="calendar" />
+      <Control Name="TableName" Text="流程" Width="span8" Type="select" Options="{'':'','v_ad_AFE申请':'AFE申请','v_ad_LargeAFE申请':'大项目AFE申请','v_ad_contract':'合同申请','v_ad_bankpayment':'银行付款申请书'}" OptionType="JSON" />
+      <Control Name="btnSearch" Text="查询" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="update" />
+    </Row>
+  </Panel>
+</Form>

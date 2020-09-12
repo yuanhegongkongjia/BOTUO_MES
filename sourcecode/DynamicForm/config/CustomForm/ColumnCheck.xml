@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="ColumnCheck" Name="ColumnCheck" Desc="数据检查" DAImp="DynamicForm.DA.ColumnCheckDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv'}">
+    <Row>
+      <Control Name="ColumnName" Text="字段名" Width="span8" Type="text" ControlAttributes="{readonly:'readonly'}" />
+    </Row>
+    <Row>
+      <Control Name="CheckMustInput" Text="必须输入" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查必须输入&quot;}" OptionType="JSON" />
+      <Control Name="CheckNumber" Text="数字检查" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查是否是数字&quot;}" OptionType="JSON" />
+      <Control Name="CheckMaxLength" Text="最大长度" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查最大长度&quot;}" OptionType="JSON" />
+      <Control Name="IgnoreGetValueError" Text="联动查询" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;忽略联动查询错误&quot;}" OptionType="JSON" />
+    </Row>
+    <Row>
+      <Control Name="CheckDate" Text="日期检查" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查是否是日期格式&quot;}" OptionType="JSON" />
+      <Control Name="CheckTime" Text="时间检查" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查是否是时间格式&quot;}" OptionType="JSON" />
+      <Control Name="CheckDateTime" Text="时间日期检查" Width="span8" Type="checkbox" Options="{&quot;true&quot;:&quot;检查是否是时间日期格式&quot;}" OptionType="JSON" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:110px;&quot;}">
+      <Control Name="DefaultValue" Text="默认值" Width="span16" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:100px;&quot;}" />
+      <Control Name="DefalutValueList" Width="span6" Type="list" ControlAttributes="{&quot;style&quot;:&quot;height:100px;width:200px;&quot;}" Options="{&#xA;    'DF_NEWGUID': 'DF_NEWGUID',&#xA;    'DF_CURRENT_USERNAME': 'DF_CURRENT_USERNAME',&#xA;    'DF_CURRENT_DATETIME': 'DF_CURRENT_DATETIME',&#xA;    'DF_CURRENT_USERID': 'DF_CURRENT_USERID',&#xA;    'DF_CURRENT_USER_EMPLOYEEID': 'DF_CURRENT_USER_EMPLOYEEID',&#xA;    'DF_CURRENT_USER_DEPTID': 'DF_CURRENT_USER_DEPTID',&#xA;    'DF_CURRENT_USER_DEPTCODE': 'DF_CURRENT_USER_DEPTCODE',&#xA;    'DF_CURRENT_USER_COSTCENTER': 'DF_CURRENT_USER_COSTCENTER',&#xA;    'DF_CURRENT_USER_DEPTNAME': 'DF_CURRENT_USER_DEPTNAME',&#xA;    'DF_CURRENT_USER_CHINESENAME': 'DF_CURRENT_USER_CHINESENAME',&#xA;    'DF_CURRENT_TIME': 'DF_CURRENT_TIME',&#xA;    'DF_CURRENT_TIME2': 'DF_CURRENT_TIME2',&#xA;    'DF_CURRENT_DATE': 'DF_CURRENT_DATE',&#xA;    'DF_CURRENT_MONTH': 'DF_CURRENT_MONTH',&#xA;    'DF_CURRENT_YEAR': 'DF_CURRENT_YEAR'&#xA;}" OptionType="JSON" />
+      <!--DF_SCRIPT
+BUI.List_DefalutValueList = function(list) {
+    list.on('itemdblclick', function(ev) {
+        insertText(document.getElementById('DefaultValue'), ev.item.value);
+    });
+};
+-->
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:110px;&quot;}">
+      <Control Name="GetValue" Text="联动查询" Width="span16" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:100px;&quot;}" />
+      <Control Name="GetValueList" Width="span6" Type="list" ControlAttributes="{&quot;style&quot;:&quot;height:100px;width:200px;&quot;}" OptionType="JSON" />
+      <!--DF_SCRIPT
+BUI.List_GetValueList = function(list) {
+    list.on('itemdblclick', function(ev) {
+        insertText(document.getElementById('GetValue'), ev.item.value);
+    });
+};
+-->
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:70px;&quot;}">
+      <Control Name="ExecuteSql" Text="执行SQL语句" Width="span16" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:60px;&quot;}" />
+    </Row>
+    <Row RowAttributes="{&quot;style&quot;:&quot;height:70px;&quot;}">
+      <Control Name="ExecuteDataTable" Text="查询数据" Width="span16" Type="textarea" ControlAttributes="{&quot;style&quot;:&quot;width:500px;height:60px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="DefaultSort" Text="查询默认排序" Width="span16" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:500px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="ConnectionString" Text="数据库连接" Width="span16" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:500px;&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="DatabaseType" Text="数据库类型" Width="span16" Type="text" ControlAttributes="{&quot;style&quot;:&quot;width:500px;&quot;}" />
+    </Row>
+  </Panel>
+  <!--DF_SCRIPT
+$(function() {
+    var ColumnName = $('#ColumnName').val();
+    var parent = window.parent;
+    var item = parent.BUI.getControl('grid1').findItemByField('ColumnName', ColumnName);
+    if (item) {
+        var data = item.ColumnCheck;
+        BUI.FormHelper.setFields($('form')[0], JSON.parse(data));
+    }
+});
+-->
+</Form>
