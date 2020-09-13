@@ -7,7 +7,7 @@
     <Row>
       <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" />
       <Control Name="PRODUCT_NAME" Text="产品名称" Width="span8" Type="text" />
-      <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="calendar" />
+      <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" />
     </Row>
     <Row>
       <Control Name="HE_MO" Type="hidden" />
