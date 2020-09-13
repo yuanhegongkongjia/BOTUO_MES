@@ -11,7 +11,7 @@
     </Row>
     <Row>
       <Control Name="HE_MO" Text="是否和模" Width="span8" Type="select" Options="{'和模':'和模','未和模':'未和模'}" OptionType="JSON" MustInput="True" />
-      <Control Name="JINFUHAO" Text="进釜号" Width="span8" Type="select" Options="{'1号釜':'1号釜','2号釜':'2号釜'}" OptionType="JSON" MustInput="True" />
+      <Control Name="JINFUHAO" Text="进釜号" Width="span8" Type="select" Options="{'1号釜':'1号釜','2号釜':'2号釜','3号釜':'3号釜','4号釜':'4号釜'}" OptionType="JSON" MustInput="True" />
     </Row>
     <Row>
       <Control Name="CHANG" Text="长" Width="span8" Type="text" MustInput="True" />
