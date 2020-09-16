@@ -50,5 +50,9 @@ namespace WFCommon
 		public string REMARK4 { get; set; }
 		public string REMARK5 { get; set; }
 		public string REMARK6 { get; set; }
+		public DateTime? CreateTime { get; set; }
+		public string CreateUser { get; set; }
+		public DateTime? LastModifyTime { get; set; }
+		public string LastModifyUser { get; set; }
 	}
 }

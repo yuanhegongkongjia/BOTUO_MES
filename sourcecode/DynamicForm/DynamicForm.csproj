@@ -1206,9 +1206,11 @@
     <Compile Include="DA\Machine\Form_BT_MachineAnalyse_EditDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManageDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManage_EditDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_OPDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_DYDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_CXDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDanDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_OP_EditDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_EditDA.cs" />
     <Compile Include="DA\Process\Form_SM_T_PROCESSDA.cs" />
     <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_EditDA.cs" />
@@ -1289,6 +1291,7 @@
     <Compile Include="DA\WFCore\WFCore_TaskProcessingDA.cs" />
     <Compile Include="DA\WFCore\WF_UserDeptDA.cs" />
     <Compile Include="DA\WFCore\WF_UserDept_EditDA.cs" />
+    <Compile Include="DA\WF_T_SEQNOLoader.cs" />
     <Compile Include="DFDesigner.aspx.cs">
       <DependentUpon>DFDesigner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
