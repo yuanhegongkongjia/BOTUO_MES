@@ -3,8 +3,8 @@
   <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
-      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" />
-      <Control Name="JINFUHAO" Text="进釜号" Width="span8" Type="select" Options="{&quot;1号釜&quot;:&quot;1号釜&quot;,&quot;2号釜&quot;:&quot;2号釜&quot;,&quot;3号釜&quot;:&quot;3号釜&quot;,&quot;4号釜&quot;:&quot;4号釜&quot;,&quot;5号釜&quot;:&quot;6号釜&quot;,&quot;7号釜&quot;:&quot;7号釜&quot;}" OptionType="JSON" />
+      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" MustInput="True" />
+      <Control Name="JINFUHAO" Text="进釜号" Width="span8" Type="select" Options="{&quot;1号釜&quot;:&quot;1号釜&quot;,&quot;2号釜&quot;:&quot;2号釜&quot;,&quot;3号釜&quot;:&quot;3号釜&quot;,&quot;4号釜&quot;:&quot;4号釜&quot;,&quot;5号釜&quot;:&quot;6号釜&quot;,&quot;7号釜&quot;:&quot;7号釜&quot;}" OptionType="JSON" AutoPostBack="True" />
     </Row>
     <Row>
       <Control Name="PRODUCT_NAME" Type="hidden" />
@@ -86,7 +86,7 @@ function btnDelete_click() {
       <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
       <!--DF_SCRIPT
 function btnAdd_click() {
-    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_OP_Edit&ORDER_NUMBER='+$('#ORDER_NUMBER').val()+'&PROJECT_NAME='+$('#PROJECT_NAME').val()+'&#JINFUHAO='+$('#JINFUHAO').val();
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_OP_Edit&ORDER_NUMBER='+$('#ORDER_NUMBER').val()+'&PROJECT_NAME='+$('#PROJECT_NAME').val()+'&JINFUHAO='+$('#JINFUHAO').val();
     var dialog = dfOverlayDialog(800, 600, '', url);
     // 关闭时自动刷新 grid
     dialog.on('closing', function() {
