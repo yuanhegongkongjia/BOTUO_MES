@@ -224,7 +224,7 @@
                               series: series1
                           });
                       }
-                      setTimeout(requestData, 3610000);
+                      setTimeout(requestData, 3600000);
                   }
               });
       }
