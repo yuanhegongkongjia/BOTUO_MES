@@ -24,7 +24,7 @@
                 展示车间的生产进度以及完成率情况.
             </p>
             <p>
-                <a class="btn btn-default" href="L02Kanban.aspx">打开看板</a>
+                <a class="btn btn-default" href="BT_ProductionKANBAN.aspx">打开看板</a>
             </p>
         </div>
         <div class="col-md-3">
@@ -42,7 +42,7 @@
                 展示流水线车间主要能源的使用情况.
             </p>
             <p>
-                <a class="btn btn-default" href="L04Kanban.aspx">打开看板</a>
+                <a class="btn btn-default" href="BT-POWERKANBAN.aspx">打开看板</a>
             </p>
         </div>
     </div>

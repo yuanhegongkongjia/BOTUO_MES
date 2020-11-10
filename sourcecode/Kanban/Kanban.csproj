@@ -913,15 +913,10 @@
     <Content Include="L01ENERGY2.aspx" />
     <Content Include="KanbanSite1.Master" />
     <Content Include="KanbanSite2.Master" />
-<<<<<<< .mine
     <Content Include="HJLookBand.aspx" />
-
-
-=======
     <Content Include="WebForm1.aspx" />
-    <Content Include="BT-POWERKANBAN .aspx" />
+    <Content Include="BT-POWERKANBAN.aspx" />
     <Content Include="BT_ProductionKANBAN.aspx" />
->>>>>>> .theirs
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="img\sumin_log.JPG" />
     <Content Include="L01Kanban.aspx" />
@@ -1304,12 +1299,12 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BT-POWERKANBAN .aspx.cs">
-      <DependentUpon>BT-POWERKANBAN .aspx</DependentUpon>
+    <Compile Include="BT-POWERKANBAN.aspx.cs">
+      <DependentUpon>BT-POWERKANBAN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BT-POWERKANBAN .aspx.designer.cs">
-      <DependentUpon>BT-POWERKANBAN .aspx</DependentUpon>
+    <Compile Include="BT-POWERKANBAN.aspx.designer.cs">
+      <DependentUpon>BT-POWERKANBAN.aspx</DependentUpon>
     </Compile>
     <Compile Include="BT_ProductionKANBAN.aspx.cs">
       <DependentUpon>BT_ProductionKANBAN.aspx</DependentUpon>
