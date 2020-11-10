@@ -684,6 +684,348 @@ group by Line,CollectYear order by collectYear ";
             }
         }
 
+        public static List<VM_SM_T_ENERGY_COLLECT> MaterialQueryCurrent(string Position, string CollectDateFrom, string CollectDateTo)
+        {
+            using (var db = Pub.DB)
+            {
+
+                var sql = "";
+                if (Position=="全部选择")
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select Collect_Value, SUBSTRING(convert(nvarchar(50), Remark1, 110), 0, 6) as CTime,ENERGY_TYPE from BT_Material
+                          where   
+                         Remark1>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by Remark1,ENERGY_TYPE";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,ENERGY_TYPE from BT_Material 
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " Remark1>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and Remark1<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select Collect_Value, SUBSTRING(convert(nvarchar(50), Remark1, 110), 0, 6) as CTime,ENERGY_TYPE from BT_Material
+                          where ENERGY_TYPE=@Position and
+                         Remark1>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by Remark1,ENERGY_TYPE ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,ENERGY_TYPE from BT_Material 
+                       where ENERGY_TYPE=@Position ";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " and Remark1>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and Remark1<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position, CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+                // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+        public static List<VM_SM_T_ENERGY_COLLECT> POWERDAYQueryCurrent(string Position, string CollectDateFrom, string CollectDateTo)
+        {
+            using (var db = Pub.DB)
+            {
+
+                var sql = "";
+                if (Position == "全部电表")
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select COLLECT_VALUE as Collect_Value , REMARK2 as CTime,POSITION from BT_POWER_DAY
+                          where   
+                         REMARK2>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by REMARK2,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select COLLECT_VALUE as Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_DAY
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " REMARK2>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by CreateTime ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select COLLECT_VALUE as Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_DAY
+                          where POSITION=@Position and
+                         REMARK2>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by CreateTime,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select COLLECT_VALUE as Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_DAY 
+                       where POSITION=@Position ";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " and REMARK2>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by REMARK2 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position, CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+                // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+        public static List<VM_SM_T_ENERGY_COLLECT> POWERMonthQueryCurrent(string Position, string CollectMonthFrom, string CollectMonthTo)
+        {
+            using (var db = Pub.DB)
+            {
+
+                var sql = "";
+                if (Position == "全部电表")
+                {
+                    if (string.IsNullOrWhiteSpace(CollectMonthFrom) && string.IsNullOrWhiteSpace(CollectMonthTo))
+                    {
+                        sql = @"select Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_MONTH
+                          where   
+                         REMARK2>=SUBSTRING(convert(nvarchar(50), dateadd(month,-6,GETDATE()), 120),0,8)
+                order by REMARK2,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_MONTH
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectMonthFrom))
+                        {
+                            sql = sql + " REMARK2>=@CollectMonthFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectMonthTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectMonthTo ";
+                        }
+
+                        sql = sql + "order by REMARK2 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectMonthFrom = CollectMonthFrom, CollectMonthTo = CollectMonthTo }).ToList();
+                        return list;
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(CollectMonthFrom) && string.IsNullOrWhiteSpace(CollectMonthTo))
+                    {
+                        sql = @"select Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_MONTH
+                          where POSITION=@Position and
+                        REMARK2>=SUBSTRING(convert(nvarchar(50), dateadd(month,-6,GETDATE()), 120),0,8)
+                order by REMARK2,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_MONTH
+                          where POSITION=@Position  ";
+                        if (!string.IsNullOrWhiteSpace(CollectMonthFrom))
+                        {
+                            sql = sql + " and REMARK2>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectMonthTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by REMARK2 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position, CollectDateFrom = CollectMonthFrom, CollectDateTo = CollectMonthTo }).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+                // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+        public static List<VM_SM_T_ENERGY_COLLECT> POWERYearQueryCurrent(string Position, string CollectYearFrom, string CollectYearTo)
+        {
+            using (var db = Pub.DB)
+            {
+
+                var sql = "";
+                if (Position == "全部电表")
+                {
+                    if (string.IsNullOrWhiteSpace(CollectYearFrom) && string.IsNullOrWhiteSpace(CollectYearTo))
+                    {
+                        sql = @"select Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_YEAR
+                          where   
+                         REMARK2>=SUBSTRING(convert(nvarchar(50), dateadd(year,-3,GETDATE()), 120),0,5)
+                order by REMARK2,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_YEAR
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectYearFrom))
+                        {
+                            sql = sql + " REMARK2>=@CollectYearFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectYearTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectYearTo ";
+                        }
+
+                        sql = sql + "order by REMARK2 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectYearFrom = CollectYearFrom, CollectYearTo = CollectYearTo }).ToList();
+                        return list;
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(CollectYearFrom) && string.IsNullOrWhiteSpace(CollectYearTo))
+                    {
+                        sql = @"select Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_YEAR
+                          where Position=@Position and
+                         REMARK2>=SUBSTRING(convert(nvarchar(50), dateadd(year,-3,GETDATE()), 120),0,5)
+                order by REMARK2,POSITION";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select Collect_Value,REMARK2 as CTime,POSITION from BT_POWER_YEAR
+                          where Position=@Position and";
+                        if (!string.IsNullOrWhiteSpace(CollectYearFrom))
+                        {
+                            sql = sql + "  REMARK2>=@CollectYearFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectYearTo))
+                        {
+                            sql = sql + " and REMARK2<=@CollectYearTo ";
+                        }
+
+                        sql = sql + "order by REMARK2 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position, CollectYearFrom = CollectYearFrom, CollectYearTo = CollectYearTo }).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+                // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+
+
         public static List<VM_SM_T_ENERGY_COLLECT> PowerQueryCurrentLine(string Line)
         {
             using (var db = Pub.DB)

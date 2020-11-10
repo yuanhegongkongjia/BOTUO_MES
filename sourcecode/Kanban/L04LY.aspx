@@ -319,87 +319,20 @@
                     //initFirstLine();
                     d = JSON.parse(data.data);
                     var names = [];
-                    var series1 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
-                    var series2 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
-                    var series3 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
-                    var series4 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
-                    var series5 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
-                    var series6 = [{ name: '设定值', data: [] }, { name: '实际值', data: [] }];
+                    var series1 = [{ name: '', data: [] }];
+                    
                     cs1 = [];
                     cs2 = [];
                     cs3 = [];
                     cs4 = [];
                     for (m in d) {
                         var name = d[m].SeriesName;
-                        if (name == "1区炉压") {
-                            if (d[m].ParamType == "设定值") {
+                        if (name == "1楼1#电表") {
+                           
                                 series1[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series1[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        if (name == "2区炉压") {
-                            if (d[m].ParamType == "设定值") {
-                                series2[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series2[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        if (name == "3区炉压") {
-                            if (d[m].ParamType == "设定值") {
-                                series3[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series3[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        if (name == "4区炉压") {
-                            if (d[m].ParamType == "设定值") {
-                                series4[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series4[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        if (name == "5区炉压") {
-                            if (d[m].ParamType == "设定值") {
-                                series5[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series5[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        if (name == "6区炉压") {
-                            if (d[m].ParamType == "设定值") {
-                                series6[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                            if (d[m].ParamType == "实际值") {
-                                series6[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            }
-                        }
-                        //var index = $.inArray(name, names);
-                        //if (index == -1) {
-                        //    names.push(name);
-                        //    var s = {};
-                        //    s.name = name;
-                        //    s.data = [];
-                        //    s.data.push([new Date(d[m].time).getTime(), d[m].value]);
-                        //    series.push(s);
-                        //}
-                        //else {
-                        //    series[index].data.push([new Date(d[m].time).getTime(), d[m].value]);
-                        //}
-
+                            } 
                     }
-
                     initChart1();
-                    initChart2();
-                    initChart3();
-                    initChart4();
-                    initChart5();
-                    initChart6();
                     if (chart1.series.length == 0) {
                         for (i in series1) {
                             chart1.addSeries({
@@ -410,72 +343,6 @@
                     } else {
                         chart1.update({
                             series: series1
-                        });
-                    }
-
-                    if (chart2.series.length == 0) {
-                        for (i in series2) {
-                            chart2.addSeries({
-                                name: series2[i].name,
-                                data: series2[i].data
-                            });
-                        }
-                    } else {
-                        chart2.update({
-                            series: series2
-                        });
-                    }
-
-                    if (chart3.series.length == 0) {
-                        for (i in series3) {
-                            chart3.addSeries({
-                                name: series3[i].name,
-                                data: series3[i].data
-                            });
-                        }
-                    } else {
-                        chart3.update({
-                            series: series3
-                        });
-                    }
-
-                    if (chart4.series.length == 0) {
-                        for (i in series4) {
-                            chart4.addSeries({
-                                name: series4[i].name,
-                                data: series4[i].data
-                            });
-                        }
-                    } else {
-                        chart4.update({
-                            series: series4
-                        });
-                    }
-
-
-                    if (chart5.series.length == 0) {
-                        for (i in series5) {
-                            chart5.addSeries({
-                                name: series5[i].name,
-                                data: series5[i].data
-                            });
-                        }
-                    } else {
-                        chart5.update({
-                            series: series5
-                        });
-                    }
-
-                    if (chart6.series.length == 0) {
-                        for (i in series6) {
-                            chart6.addSeries({
-                                name: series6[i].name,
-                                data: series6[i].data
-                            });
-                        }
-                    } else {
-                        chart6.update({
-                            series: series6
                         });
                     }
                 }

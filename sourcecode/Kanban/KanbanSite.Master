@@ -12,6 +12,7 @@
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="bui/css/dpl.css" rel="stylesheet" type="text/css" />
     <link href="bui/css/bui.css" rel="stylesheet" type="text/css" />
+    <link href="bui/css/LookBand.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="chart/highcharts.js?time=1"></script>
     <style>
        

@@ -90,6 +90,18 @@ namespace DynamicForm
                 case "powerquerycurrentline":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(PowerQueryCurrentLine(context)));
                     break;
+                case "materialquery":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(MaterialQueryCurrentLine(context)));
+                    break;
+                case "powerdayquery":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(PowerDayquery(context)));
+                    break;
+                case "powermonthquery":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(PowerMonthquery(context)));
+                    break;
+                case "poweryearquery":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(PowerYearquery(context)));
+                    break;
                 default:
                     break;
             }
@@ -782,6 +794,207 @@ namespace DynamicForm
                 l1.name = Line;
                 l1.data_vm = list.Select(b => new { b.CTime, b.CollectValue }).ToArray();
                 liste.Add(l1);
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+        public IndexVM MaterialQueryCurrentLine(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var Position = context.Request.Params["Position"];
+                //var Position = "222";
+                var CollectDateFrom = context.Request.Params["CollectDateFrom"];
+                var CollectDateTo = context.Request.Params["CollectDateTo"];
+                var list = DataAnalyLoader.MaterialQueryCurrent(Position, CollectDateFrom, CollectDateTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (Position =="全部选择")
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.ENERGY_TYPE).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.ENERGY_TYPE == l1.name).Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else
+                {
+                    var l1 = new VM_ENERGY();
+                    l1.name = Position;
+                    l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                    liste.Add(l1);
+                }
+
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+        public IndexVM PowerDayquery(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var Position = context.Request.Params["Position"];
+                var CollectDateFrom = context.Request.Params["CollectDateFrom"];
+                var CollectDateTo = context.Request.Params["CollectDateTo"];
+                var list = DataAnalyLoader.POWERDAYQueryCurrent(Position, CollectDateFrom, CollectDateTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (Position == "全部电表")
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.POSITION).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.POSITION == l1.name).Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else
+                {
+                    var l1 = new VM_ENERGY();
+                    l1.name = Position;
+                    l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                    liste.Add(l1);
+                }
+
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+        public IndexVM PowerMonthquery(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var Position = context.Request.Params["Position"];
+                var CollectMonthFrom = context.Request.Params["CollectMonthFrom"];
+                var CollectMonthTo = context.Request.Params["CollectMonthTo"];
+                var list = DataAnalyLoader.POWERMonthQueryCurrent(Position, CollectMonthFrom, CollectMonthTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (Position == "全部电表")
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.POSITION).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.POSITION == l1.name).Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else
+                {
+                    var l1 = new VM_ENERGY();
+                    l1.name = Position;
+                    l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                    liste.Add(l1);
+                }
+
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+        public IndexVM PowerYearquery(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var Position = context.Request.Params["Position"];
+                var CollectYearFrom = context.Request.Params["CollectYearFrom"];
+                var CollectYearTo = context.Request.Params["CollectYearTo"];
+                var list = DataAnalyLoader.POWERYearQueryCurrent(Position, CollectYearFrom, CollectYearTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (Position == "全部电表")
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.POSITION).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.POSITION == l1.name).Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else
+                {
+                    var l1 = new VM_ENERGY();
+                    l1.name = Position;
+                    l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                    liste.Add(l1);
+                }
+
                 vm.data = JsonSerializeHelper.SerializeObject(liste);
             }
             catch (Exception ex)

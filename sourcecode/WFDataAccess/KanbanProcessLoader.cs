@@ -141,6 +141,42 @@ order by ParamName,CollectTime asc";
 
             }
         }
+        public static List<VM_PROCESS> GetL01dianneng()
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CreateTime as time,cast(FENSHI_VALUE as decimal) as value,POSITION as SeriesName from BT_POWER_DayHour 
+                    where CreateTime>=@CurrentTime order by FENSHI_VALUE,CreateTime asc";
+
+                return db.Query<VM_PROCESS>(sql, new {  CurrentTime = DateTime.Now.AddHours(-800) }).ToList();
+
+
+            }
+        }
+        public static List<VM_PROCESS> GetL01diannengday()
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select dateadd(day,-1,CreateTime) as time,cast(COLLECT_VALUE as decimal) as value,POSITION as SeriesName from BT_POWER_DAY 
+                    where CreateTime>=@CurrentTime order by COLLECT_VALUE,CreateTime asc";
+
+                return db.Query<VM_PROCESS>(sql, new { CurrentTime = DateTime.Now.AddDays(-7) }).ToList();
+
+
+            }
+        }
+        public static List<VM_PROCESS> GetPRODUCTION()
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CreateTime as time,cast(COLLECT_VALUE as decimal(18,4)) as value,COLLECT_TYPE as SeriesName from BT_ZUTAIWANG_COLLECT 
+                    where CreateTime>=@CurrentTime order by COLLECT_VALUE,CreateTime asc";
+
+                return db.Query<VM_PROCESS>(sql, new { CurrentTime = DateTime.Now.AddHours(-8) }).ToList();
+
+
+            }
+        }
 
         public static List<VM_XIAPAN> GetProductQty()
         {

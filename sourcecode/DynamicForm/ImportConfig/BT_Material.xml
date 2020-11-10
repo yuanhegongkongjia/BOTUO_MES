@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="BT_Material" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM BT_Material WHERE" Insert="INSERT INTO BT_Material(PKID,ENERGY_TYPE,Collect_Value,COLLECTIME,CreateTime,CreateUser,LastModifyTime,LastModifyUser,REMARK1,REMARK2,REMARK3,REMARK4,REMARK5,REMARK6) VALUES(@PKID,@ENERGY_TYPE,@Collect_Value,@COLLECTIME,@CreateTime,@CreateUser,@LastModifyTime,@LastModifyUser,@REMARK1,@REMARK2,@REMARK3,@REMARK4,@REMARK5,@REMARK6)" Update="UPDATE BT_Material SET PKID=@PKID,ENERGY_TYPE=@ENERGY_TYPE,Collect_Value=@Collect_Value,COLLECTIME=@COLLECTIME,LastModifyTime=@LastModifyTime,LastModifyUser=@LastModifyUser,REMARK1=@REMARK1,REMARK2=@REMARK2,REMARK3=@REMARK3,REMARK4=@REMARK4,REMARK5=@REMARK5,REMARK6=@REMARK6 WHERE">
+    <column Name="PKID" Text="PKID" DataType="nvarchar(50)" />
+    <column Name="ENERGY_TYPE" Text="ENERGY_TYPE" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Collect_Value" Text="Collect_Value" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="COLLECTIME" Text="COLLECTIME" DataType="datetime" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="LastModifyTime" Text="LastModifyTime" DataType="datetime" IsNullable="Y" DefaultValue="DF_CURRENT_DATETIME" />
+    <column Name="LastModifyUser" Text="LastModifyUser" DataType="nvarchar(50)" IsNullable="Y" DefaultValue="DF_CURRENT_USERNAME" />
+    <column Name="REMARK1" Text="REMARK1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="REMARK2" Text="REMARK2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="REMARK3" Text="REMARK3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="REMARK4" Text="REMARK4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="REMARK5" Text="REMARK5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="REMARK6" Text="REMARK6" DataType="nvarchar(50)" IsNullable="Y" />
+  </table>
+</tables>
