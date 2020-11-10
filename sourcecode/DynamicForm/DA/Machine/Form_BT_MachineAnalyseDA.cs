@@ -31,7 +31,12 @@ namespace DynamicForm.DA
             var sql = @"select * from BT_MachineAnalyse where 1=1";
             var param = new
             {
-                PKId = QueryBuilder.Like(ref sql, entity, "PKId", "PKId")
+                PKId = QueryBuilder.Like(ref sql, entity, "PKId", "PKId"),
+                MachineName = QueryBuilder.Like(ref sql, entity, "MachineName", "MachineName"),
+
+                TimeFrom = QueryBuilder.DateFrom(ref sql, entity, "Remark1", "TimeFrom"),
+                TimeTo = QueryBuilder.DateTo(ref sql, entity, "Remark1", "TimeTo"),
+
             };
             var list = GetList(entity, ref count, start, limit, sql, "order by PKId", param);
             vm.results = count;

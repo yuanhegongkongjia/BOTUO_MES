@@ -108,10 +108,174 @@ namespace Kanban.Handler
                 case "gettotal":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetTotal(context)));
                     break;
+
+
+                case "getdevicestaus":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetDeviceStatus(context)));
+                    break;
+
+                case "getdeviceoeestaus":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetDeviceOeeStatus(context)));
+                    break;
+
+                case "gettemstaus":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetTemStatus(context)));
+                    break;
+
+
+
+                case "1002wd":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetTem1(context)));
+                    break;
+
+                case "1033zz":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetProductStatus(context)));
+                    break;
+
+                case "1013sd":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetTeme(context)));
+                    break;
+                case "getcusstaus":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetCusStaus(context)));
+                    break;
+
+                case "getenergystaus":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetEnergyStaus(context)));
+                    break;
+
+
                 default:
                     break;
             }
         }
+
+        public ResultVM GetEnergyStaus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetEnergySTATUS("低压车间");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+        public ResultVM GetDeviceStatus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetDESTATUS("车间西南角");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+        public ResultVM GetCusStaus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetCUSTATUS();
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+
+        public ResultVM GetProductStatus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetPDSTATUS();
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+
+
+        public ResultVM GetDeviceOeeStatus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetDEOEESTATUS("传送机");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+        public ResultVM GetTemStatus(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetTEMSTATUS("");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+        public ResultVM GetTem1(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetTEM1("西南角");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+        public ResultVM GetTeme(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetTEM2("西南角");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
+
+
+
+
+
+
+
 
         public ResultVM GetTotal(HttpContext context)
         {

@@ -74,8 +74,8 @@
         </div>
     </div>
     
-    <script type="text/javascript" src="Scripts/L01MFUA.js?time=6"></script>
-    <script type="text/javascript" src="Scripts/L01Energy1.js?time=7"></script>
+    <%--<script type="text/javascript" src="Scripts/L01MFUA.js?time=6"></script>
+    <script type="text/javascript" src="Scripts/L01Energy1.js?time=7"></script>--%>
     <script>
         Highcharts.setOptions({
             chart: {

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_PaiGongDan_QROP" Name="Form_BT_PaiGongDan_QROP" Desc="派工单信息确认" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_QROPDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" MustInput="True" />
+      <Control Name="JINFUHAO" Type="hidden" AutoPostBack="True" />
+    </Row>
+    <Row>
+      <Control Name="PRODUCT_NAME" Type="hidden" />
+      <Control Name="HE_MO" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CHANG" Type="hidden" />
+      <Control Name="KUAN" Value="600" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="GAO" Type="hidden" />
+      <Control Name="UNIT" Value="块" Type="hidden" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="ORDER_AMUONT" Type="hidden" />
+      <Control Name="FANG_LIANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TABLE_MAKER" Type="hidden" />
+      <Control Name="WANG_PIAN_MAKE" Type="hidden" />
+      <Control Name="WANG_PIAN_ZUZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="FU_QIAN_QIE_GE" Type="hidden" />
+      <Control Name="CHENG_PIN_BAO_ZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_ZHIBIAO" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_WANGPIANZHIZAUO" Type="hidden" />
+      <Control Name="TIME_WANGPIANZUZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_FUQIANQIEGE" Type="hidden" />
+      <Control Name="TIME_CHENGPINBAOZHUANG" Type="hidden" />
+    </Row>
+    <Row />
+  </Panel>
+  <Panel Id="grid2" Name="grid2" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">工单详细内容</h3>
+      </div>
+-->
+    <Column Name="ID" Text="序号" Width="100" Sortable="true" />
+    <Column Name="PROJECT_NAME" Text="项目工程名称" Width="100" Sortable="true" />
+    <Column Name="PRODUCT_NAME" Text="产品名称" Width="100" Sortable="true" />
+    <Column Name="ORDER_NUMBER" Text="订单号" Width="100" Sortable="true" />
+    <Column Name="HE_MO" Text="是否和模" Width="100" Sortable="true" />
+    <Column Name="ORDER_AMUONT" Text="下单数量" Width="100" Sortable="true" />
+  </Panel>
+  <!--DF_SCRIPT
+// $(document).ready(function(){ 
+//    $("#ID").val(new Date().toString("yyyyMMdd"));
+//    });
+-->
+  <Panel Id="Panel20200914110951994" Name="Panel20200914110951994" Type="SingleRecord">
+    <Row>
+      <Control Name="selectJob" Text="单条提交" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;selectBooking_click();return false;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function selectBooking_click() {
+    var grid = BUI.getControl('grid2');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&ID=' + selections[0].ID;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Common_SelectBooking1' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid2').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="Panel20200914115405773" Name="Panel20200914115405773" Type="SingleRecord">
+    <Row>
+      <Control Name="123  " Type="hidden" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20200914110102503" Name="Panel20200914110102503" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSubmit" Text="提交" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;,&quot;style&quot;:&quot;cursor:pointer;&quot;}" LabelAttributes="{&quot;style&quot;:&quot;height:200px;margin-top:100px;&quot;}" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" LabelAttributes="{&quot;style&quot;:&quot;margin-top:100px;&quot;}" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" />
+</Form>

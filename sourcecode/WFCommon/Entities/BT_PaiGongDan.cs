@@ -14,13 +14,13 @@ namespace WFCommon
 	{
 		public BT_PaiGongDan_CLASSMAPPER()
 		{
-			Map(f => f.ID).Key(KeyType.Assigned);
+			Map(f => f.ID).Key(KeyType.Identity);
 			AutoMap();
 		}
 	}
 	public class BT_PaiGongDan
 	{
-		public string ID { get; set; }
+		public int ID { get; set; }
 		public string PROJECT_NAME { get; set; }
 		public string PRODUCT_NAME { get; set; }
 		public string ORDER_NUMBER { get; set; }

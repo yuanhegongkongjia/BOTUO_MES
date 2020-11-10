@@ -55,17 +55,17 @@
   </Panel>
   <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
     <Column Name="ID" Visible="false" Sortable="true" />
-    <Column Name="PROJECT_NAME" Text="工程项目名称" Width="100" Sortable="true" />
-    <Column Name="PRODUCT_NAME" Text="产品名称" Width="100" Sortable="true" />
-    <Column Name="ORDER_NUMBER" Text="订单号" Width="100" Sortable="true" />
-    <Column Name="HE_MO" Text="是否和模" Width="60" Sortable="true" />
-    <Column Name="JINFUHAO" Text="进釜号" Width="60" Sortable="true" />
-    <Column Name="CHANG" Text="长" Width="60" Sortable="true" />
-    <Column Name="KUAN" Text="宽" Width="60" Sortable="true" />
-    <Column Name="GAO" Text="高" Width="60" Sortable="true" />
-    <Column Name="UNIT" Text="单位" Width="60" Sortable="true" />
-    <Column Name="ORDER_AMUONT" Text="下单数量" Width="80" Sortable="true" />
-    <Column Name="FANG_LIANG" Text="方量" Width="80" Sortable="true" />
+    <Column Name="ORDER_NUMBER" Text="订单号" Width="150" Sortable="true" />
+    <Column Name="PROJECT_NAME" Text="工程项目名称" Width="150" Sortable="true" />
+    <Column Name="PRODUCT_NAME" Visible="false" Sortable="true" />
+    <Column Name="HE_MO" Visible="false" Sortable="true" />
+    <Column Name="JINFUHAO" Text="进釜号" Width="100" Sortable="true" />
+    <Column Name="CHANG" Visible="false" Sortable="true" />
+    <Column Name="KUAN" Visible="false" Sortable="true" />
+    <Column Name="GAO" Visible="false" Sortable="true" />
+    <Column Name="UNIT" Visible="false" Sortable="true" />
+    <Column Name="ORDER_AMUONT" Visible="false" Sortable="true" />
+    <Column Name="FANG_LIANG" Visible="false" Sortable="true" />
     <Column Name="BAD_NUMBER" Visible="false" Sortable="true" />
     <Column Name="ZHUAN_NUMBER" Visible="false" Sortable="true" />
     <Column Name="TABLE_MAKER" Visible="false" Sortable="true" />
@@ -78,7 +78,7 @@
     <Column Name="TIME_WANGPIANZUZHUANG" Visible="false" Sortable="true" />
     <Column Name="TIME_FUQIANQIEGE" Visible="false" Sortable="true" />
     <Column Name="TIME_CHENGPINBAOZHUANG" Visible="false" Sortable="true" />
-    <Column Name="REMARK1" Visible="false" Sortable="true" />
+    <Column Name="CreateTime" Text="工单创建时间" Width="150" Sortable="true" />
     <Column Name="REMARK2" Visible="false" Sortable="true" />
     <Column Name="REMARK3" Visible="false" Sortable="true" />
     <Column Name="REMARK4" Visible="false" Sortable="true" />
@@ -87,60 +87,6 @@
   </Panel>
   <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
     <Row>
-      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
-      <!--DF_SCRIPT
-function btnDelete_click() {
-    var grid = BUI.getControl('grid1');
-    var selections = grid.getSelection();
-    if (selections.length == 0) {
-        dfAlert(getRes('请先选择记录'));
-        return;
-    }
-    var p = $.map(selections, function(a) {
-        return {
-            'ID': a.ID
-        }
-    });
-    if (confirm(getRes('确定要删除选定的记录么？'))) {
-        dfGetData('deleteform', {
-            DF_FORMNAME: 'Form_BT_PaiGongDan',
-            data: BUI.JSON.stringify(p)
-        }, function(data) {
-            BUI.getControl('grid1').get('store').load();
-        });
-    }
-}
--->
-      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
-      <!--DF_SCRIPT
-function btnAdd_click() {
-    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_Edit';
-    var dialog = dfOverlayDialog(800, 600, '', url);
-    // 关闭时自动刷新 grid
-    dialog.on('closing', function() {
-        BUI.getControl('grid1').get('store').load();
-    });
-}
--->
-      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
-      <!--DF_SCRIPT
-function btnUpdate_click() {
-    var grid = BUI.getControl('grid1');
-    var selections = grid.getSelection();
-    if (selections.length != 1) {
-        dfAlert(getRes('请选择一条记录进行编辑'));
-        return;
-    }
-    var p = "&EditMode=Edit";
-    p += '&ID=' + selections[0].ID;
-    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_Edit' + p;
-    var dialog = dfOverlayDialog(800, 600, '', url);
-    // 关闭时自动刷新 grid
-    dialog.on('closing', function() {
-        BUI.getControl('grid1').get('store').load();
-    });
-}
--->
       <Control Name="btnPrint" Text="打印工单" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnPrint_click();return false;&quot; }" Action="link" />
       <!--DF_SCRIPT
 function btnPrint_click() {
@@ -151,8 +97,8 @@ function btnPrint_click() {
         return;
     }
 
-    var p= '&InstanceId=' + selections[0].InstanceId;
-    var url = 'DFIndexReport.aspx?DF_FORMNAME=Form_SM_T_PROCESS_Print' + p;
+    var p= '&ORDER_NUMBER=' + selections[0].ORDER_NUMBER;
+    var url = 'DFIndexReport.aspx?DF_FORMNAME=Form_BT_PaiGongDan_Print' + p;
     var dialog = dfOverlayFullDialog(800, 600, '', url);
     // 关闭时自动刷新 grid
     dialog.on('closing', function() {

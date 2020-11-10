@@ -9,7 +9,13 @@ namespace WFCommon.VM
     {
         public decimal value { get; set; }
         public string time { get; set; }
+
+        public string yuechu { get; set; }
+
+        public string yuemo { get; set; }
         public string SeriesName { get; set; }
-        public string ParamType{get;set;}
+        public string ParamType { get; set; }
+
+        public string Position{ get; set; }
     }
 }

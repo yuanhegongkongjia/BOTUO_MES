@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Form Id="Form_BT_PaiGongDan_Edit" Name="Form_BT_PaiGongDan_Edit" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_EditDA,DynamicForm">
+<Form Id="Form_BT_PaiGongDan_Edit" Name="Form_BT_PaiGongDan_Edit" Desc="派工单基本信息录入" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_EditDA,DynamicForm">
   <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
@@ -45,6 +45,11 @@
     <Row />
   </Panel>
   <Panel Id="grid2" Name="grid2" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;panelDetails&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <!--DF_BEFORE_HTML
+<div class="panel-header panel-primary">
+        <h3 style="margin-bottom:0px;">工单详细内容</h3>
+      </div>
+-->
     <Column Name="ID" Text="序号" Width="100" Sortable="true" />
     <Column Name="PROJECT_NAME" Text="项目工程名称" Width="100" Sortable="true" />
     <Column Name="PRODUCT_NAME" Text="产品名称" Width="100" Sortable="true" />
@@ -86,7 +91,7 @@ function btnDelete_click() {
       <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
       <!--DF_SCRIPT
 function btnAdd_click() {
-    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_OP_Edit&ORDER_NUMBER='+$('#ORDER_NUMBER').val()+'&PROJECT_NAME='+$('#PROJECT_NAME').val()+'&JINFUHAO='+$('#JINFUHAO').val();
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_PaiGongDan_OP_Edit&ORDER_NUMBER='+$('#ORDER_NUMBER').val()+'&PROJECT_NAME='+$('#PROJECT_NAME').val()+'&JINFUHAO='+$('#JINFUHAO').val()+'&ID=001';
     var dialog = dfOverlayDialog(800, 600, '', url);
     // 关闭时自动刷新 grid
     dialog.on('closing', function() {

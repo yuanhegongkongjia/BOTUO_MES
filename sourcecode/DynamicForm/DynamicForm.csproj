@@ -455,6 +455,7 @@
     <Content Include="config\Machine\Form_BT_MachineManage_Edit.xml" />
     <Content Include="config\PaiGongDan\Form_BT_PaiGongDan.xml" />
     <Content Include="config\PaiGongDan\Form_BT_PaiGongDan_Edit.xml" />
+    <Content Include="config\PaiGongDan\Form_BT_PaiGongDan_Print.xml" />
     <Content Include="config\Process\Form_SM_T_PROCESS_LQF.xml" />
     <Content Include="config\Process\Form_SM_T_PROCESS_LQF_Edit.xml" />
     <Content Include="config\Process\Form_SM_T_PROCESS_LW.xml" />
@@ -711,6 +712,7 @@
     <Content Include="images\yanzheng.jpg" />
     <Content Include="images\yuezhan.jpg" />
     <Content Include="images\yuezhan1.jpg" />
+    <Content Include="ImportConfig\BT_PaiGongDan.xml" />
     <Content Include="ImportConfig\SM_M_BASICVALUE.xml" />
     <Content Include="ImportConfig\SM_M_CELL.xml" />
     <Content Include="ImportConfig\SM_M_LINE.xml" />
@@ -1181,6 +1183,8 @@
     <Compile Include="DA\DataAnalyze\Form_SM_T_DAYENERGY_EditDA.cs" />
     <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANGDA.cs" />
     <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG_EditDA.cs" />
+    <Compile Include="DA\Form_EnvironmentDA.cs" />
+    <Compile Include="DA\Form_EnergyDA.cs" />
     <Compile Include="DA\Form_ElectricDA.cs" />
     <Compile Include="DA\Form_EnergyDataAnalyze_MonthDA.cs" />
     <Compile Include="DA\Form_EnergyDataAnalyze_YearDA.cs" />
@@ -1192,6 +1196,7 @@
     <Compile Include="DA\Form_PowerDataAnalyze_MonthDA.cs" />
     <Compile Include="DA\Form_PowerDataAnalyze_YearDA.cs" />
     <Compile Include="DA\Form_PowerQuery_CurrentDA.cs" />
+    <Compile Include="DA\Form_AllDA.cs" />
     <Compile Include="DA\Form_ProductionDA.cs" />
     <Compile Include="DA\Form_SM_T_PROCESS_FX_PrintDA.cs" />
     <Compile Include="DA\Form_SM_T_SOP_ViewDA.cs" />
@@ -1206,12 +1211,17 @@
     <Compile Include="DA\Machine\Form_BT_MachineAnalyse_EditDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManageDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManage_EditDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_COMFIRMDA.cs" />
+    <Compile Include="DA\PaiGongDan\Common_SelectBooking1DA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_QROPDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_QRDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_OPDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_DYDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_CXDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDanDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_OP_EditDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_EditDA.cs" />
+    <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_PrintDA.cs" />
     <Compile Include="DA\Process\Form_SM_T_PROCESSDA.cs" />
     <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_EditDA.cs" />
     <Compile Include="DA\Process\Form_SM_T_PROCESS_AQ_LOGDA.cs" />

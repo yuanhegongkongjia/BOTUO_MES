@@ -124,6 +124,52 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\bg.png" />
+    <Content Include="assets\css\LookBand.css" />
+    <Content Include="assets\js\common\bootstrap.min.js" />
+    <Content Include="assets\js\common\jquery-1.9.1.min.js" />
+    <Content Include="assets\js\echarts.min.js" />
+    <Content Include="assets\js\echarts\echarts.min.js" />
+    <Content Include="assets\js\index.js" />
+    <Content Include="assets\js\Control.js" />
+    <Content Include="assets\js\jquery.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\js01\jquery.js" />
+    <Content Include="assets\js\js01\jquery.min.js" />
+    <Content Include="assets\js\map\anhui.js" />
+    <Content Include="assets\js\map\aomen.js" />
+    <Content Include="assets\js\map\beijing.js" />
+    <Content Include="assets\js\map\chongqing.js" />
+    <Content Include="assets\js\map\fujian.js" />
+    <Content Include="assets\js\map\gansu.js" />
+    <Content Include="assets\js\map\guangdong.js" />
+    <Content Include="assets\js\map\guangxi.js" />
+    <Content Include="assets\js\map\guizhou.js" />
+    <Content Include="assets\js\map\hainan.js" />
+    <Content Include="assets\js\map\hebei.js" />
+    <Content Include="assets\js\map\heilongjiang.js" />
+    <Content Include="assets\js\map\henan.js" />
+    <Content Include="assets\js\map\hubei.js" />
+    <Content Include="assets\js\map\hunan.js" />
+    <Content Include="assets\js\map\jiangsu.js" />
+    <Content Include="assets\js\map\jiangxi.js" />
+    <Content Include="assets\js\map\jilin.js" />
+    <Content Include="assets\js\map\liaoning.js" />
+    <Content Include="assets\js\map\neimenggu.js" />
+    <Content Include="assets\js\map\ningxia.js" />
+    <Content Include="assets\js\map\qinghai.js" />
+    <Content Include="assets\js\map\shandong.js" />
+    <Content Include="assets\js\map\shanghai.js" />
+    <Content Include="assets\js\map\shanxi.js" />
+    <Content Include="assets\js\map\shanxi1.js" />
+    <Content Include="assets\js\map\sichuan.js" />
+    <Content Include="assets\js\map\taiwan.js" />
+    <Content Include="assets\js\map\tianjin.js" />
+    <Content Include="assets\js\map\xianggang.js" />
+    <Content Include="assets\js\map\xinjiang.js" />
+    <Content Include="assets\js\map\xizang.js" />
+    <Content Include="assets\js\map\yunnan.js" />
+    <Content Include="assets\js\map\zhejiang.js" />
     <Content Include="bui\adapter-min.js" />
     <Content Include="bui\adapter.js" />
     <Content Include="bui\assets\build.xml" />
@@ -814,6 +860,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="assets\css\Common\animate.min.css" />
+    <Content Include="assets\css\index.css" />
     <Content Include="Default.aspx" />
     <Content Include="EnergyKanban.aspx" />
     <Content Include="favicon.ico" />
@@ -840,6 +888,8 @@
     <Content Include="chart\css\themes\sand-signika.scss" />
     <Content Include="Handler\ProcessHandler.ashx" />
     <Content Include="Handler\EnergyHandler.ashx" />
+    <Content Include="img\BTLOG.png" />
+    <Content Include="index.aspx" />
     <Content Include="Index1.aspx" />
     <Content Include="Index2.aspx" />
     <Content Include="KanbanSite.Master" />
@@ -852,6 +902,7 @@
     <Content Include="Kanban_L04.aspx" />
     <Content Include="L01LW1.aspx" />
     <Content Include="L01LW2.aspx" />
+    <Content Include="L01_WSD.aspx" />
     <Content Include="L02ENERGY1.aspx" />
     <Content Include="L02LW.aspx" />
     <Content Include="L01LY.aspx" />
@@ -859,6 +910,7 @@
     <Content Include="L01ENERGY2.aspx" />
     <Content Include="KanbanSite1.Master" />
     <Content Include="KanbanSite2.Master" />
+    <Content Include="HJLookBand.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="img\sumin_log.JPG" />
     <Content Include="L01Kanban.aspx" />
@@ -1065,6 +1117,13 @@
     <Compile Include="L01MFUA.aspx.designer.cs">
       <DependentUpon>L01MFUA.aspx</DependentUpon>
     </Compile>
+    <Compile Include="L01_WSD.aspx.cs">
+      <DependentUpon>L01_WSD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="L01_WSD.aspx.designer.cs">
+      <DependentUpon>L01_WSD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="L01_LW.aspx.cs">
       <DependentUpon>L01_LW.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1227,8 +1286,16 @@
     <Compile Include="L01ENERGY2.aspx.designer.cs">
       <DependentUpon>L01ENERGY2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HJLookBand.aspx.cs">
+      <DependentUpon>HJLookBand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HJLookBand.aspx.designer.cs">
+      <DependentUpon>HJLookBand.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -90,6 +90,13 @@ namespace DynamicForm
                 case "powerquerycurrentline":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(PowerQueryCurrentLine(context)));
                     break;
+                case "oeequerycurrent":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(OeeQueryCurrent(context)));
+                    break;
+                case "devicequerycurrent":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(DeviceQueryCurrent(context)));
+                    break;
+
                 default:
                     break;
             }
@@ -791,6 +798,131 @@ namespace DynamicForm
             }
             return vm;
         }
+
+
+        public IndexVM OeeQueryCurrent(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var Position = context.Request.Params["Position"];
+                //var Position = "222";
+                var CollectDateFrom = context.Request.Params["CollectDateFrom"];
+                var CollectDateTo = context.Request.Params["CollectDateTo"];
+                
+                var list = DataAnalyLoader.OeeQueryCurrent(Position, CollectDateFrom, CollectDateTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (string.IsNullOrWhiteSpace(Position))
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.MachineName).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.MachineName == l1.name).Select(b => new { b.CTime, b.MachineOEE }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else {
+                    var l1 = new VM_ENERGY();
+                    l1.name = Position;
+                    l1.data_vm = list.Select(b => new { b.CTime, b.MachineOEE }).ToArray();
+                    liste.Add(l1);
+                }
+                
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+
+
+        public IndexVM DeviceQueryCurrent(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var MachineName = context.Request.Params["MachineName"];
+                //var Position = "222";
+                var CollectDateFrom = context.Request.Params["CollectDateFrom"];
+                //var CollectDateTo = context.Request.Params["CollectDateTo"];
+                //var CollectDateFrom = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                var list = DataAnalyLoader.DeviceQueryCurrent(MachineName, CollectDateFrom);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+                if (string.IsNullOrWhiteSpace(MachineName))
+                {
+                    //l1.name2 = list.Select(c => c.MachineName).ToArray();
+                    //var l1 = new VM_ENERGY();
+                    var name = list.Select(c => c.MachineName).Distinct().ToList();
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.MachineName == l1.name).Select(b => new { b.CTime, b.MachineParam }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+
+                }
+                else
+                {
+                    //var l1 = new VM_ENERGY();
+                    //l1.name = MachineName;
+                    var name = list.Select(c => c.MachineParamTyple).Distinct().ToList();
+                    //l1.name = name1[i];
+                   // l1.data_vm = list.Select(b => new { b.CTime, b.MachineParam }).ToArray();
+                    //liste.Add(l1);
+
+                    for (int i = 0; i < name.Count; i++)
+                    {
+                        var l1 = new VM_ENERGY();
+                        l1.name = name[i];
+                        //l1.data = new decimal[cats.Count];
+                        //l1.data = list.Where(a => a.Position == l1.name).Select(b => Convert.ToDecimal(b.CollectValue)).ToArray();
+                        l1.data_vm = list.Where(a => a.MachineParamTyple == l1.name).Select(b => new { b.CTime, b.MachineParam }).ToArray();
+                        liste.Add(l1);
+                    }
+
+
+                }
+
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+
+
+
+
 
         public bool IsReusable
         {

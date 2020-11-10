@@ -31,9 +31,12 @@ namespace DynamicForm.DA
             var sql = @"select * from BT_PaiGongDan where 1=1";
             var param = new
             {
-                ID = QueryBuilder.Like(ref sql, entity, "ID", "ID")
+                ORDER_NUMBER = QueryBuilder.Like(ref sql, entity, "ORDER_NUMBER", "ORDER_NUMBER"),
+                //ORDER_NUMBER = QueryBuilder.Like(ref sql, entity, "ORDER_NUMBER", "ORDER_NUMBER"),
+                PRODUCT_NAME = QueryBuilder.Like(ref sql, entity, "PRODUCT_NAME", "PRODUCT_NAME"),
+                PROJECT_NAME = QueryBuilder.Like(ref sql, entity, "PROJECT_NAME", "PROJECT_NAME"),
             };
-            var list = GetList(entity, ref count, start, limit, sql, "order by ID", param);
+            var list = GetList(entity, ref count, start, limit, sql, "order by ORDER_NUMBER", param);
             vm.results = count;
             vm.rows = list;
             return DFPub.EXECUTE_SUCCESS;

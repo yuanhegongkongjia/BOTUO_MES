@@ -15,6 +15,200 @@ namespace WFDataAccess
 {
     public class KanbanProcessLoader
     {
+
+        public static List<VM_PROCESS> GetDESTATUS( string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,ParamTyple as ParamType, CollectValue as value from BT_MachineCollect 
+                           where Position=@Position and CollectTime>=@CurrentTime order by time
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new {Position = Position, CurrentTime = DateTime.Now.AddMinutes(-10) }).ToList();
+
+
+            }
+        }
+
+        public static List<VM_PROCESS> GetEnergySTATUS(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CreateTime as time, FENSHI_VALUE as value from BT_POWER_DayHour 
+                           where POSITION=@Position and CreateTime>=@CurrentTime order by time
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddHours(-240) }).ToList();
+
+
+            }
+        }
+
+
+        public static List<VM_PROCESS> GetCUSTATUS()
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"SELECT ENERGY_TYPE as SeriesName ,COLLECT_VALUE AS value,REMARK1 as time FROM BT_Material 
+where CONVERT(nvarchar(50),REMARK1,105) =CONVERT(nvarchar(50),GETDATE()-1,105)
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new {  }).ToList();
+
+
+            }
+        }
+
+
+        public static List<VM_PROCESS> GetDEOEESTATUS(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select Remark1 as time,1 as ParamType, MachineOEE as value,CONVERT(datetime,CONVERT(char(8),Remark1,111)+'1') as yuechu ,DATEADD(Day,-1,CONVERT(char(8),DATEADD(Month,1,Remark1),111)+'1') as yuemo from BT_MachineAnalyse 
+                           where MachineName=@Position and Remark1>=@CurrentTime order by time 
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddDays(-31) }).ToList();
+
+
+            }
+        }
+
+
+        public static List<VM_PROCESS> GetTEMSTATUS(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,ParamName as ParamType,Position as Position, CollectValue as value from BT_Temp 
+                           where  CollectTime>=@CurrentTime order by time
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-10) }).ToList();
+
+
+            }
+        }
+
+
+        public static List<VM_PROCESS> GetPDSTATUS()
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE(),105) order by  CreateTime desc,collect_type )
+
+A
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-1,105) order by  CreateTime desc,collect_type )
+B
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-2,105) order by  CreateTime desc,collect_type )
+
+C
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-3,105) order by  CreateTime desc,collect_type )
+
+D
+
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-4,105) order by  CreateTime desc,collect_type )
+
+E
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-5,105) order by  CreateTime desc,collect_type )
+
+F
+UNION ALL
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-6,105) order by  CreateTime desc,collect_type )
+
+G
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-7,105) order by  CreateTime desc,collect_type )
+
+H
+
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-8,105) order by  CreateTime desc,collect_type )
+
+I
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-9,105) order by  CreateTime desc,collect_type )
+
+J
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-10,105) order by  CreateTime desc,collect_type )
+
+K
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-11,105) order by  CreateTime desc,collect_type )
+
+L
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-12,105) order by  CreateTime desc,collect_type )
+
+M
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-13,105) order by  CreateTime desc,collect_type )
+
+N
+
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new {  }).ToList();
+
+
+            }
+        }
+
+
+
+        public static List<VM_PROCESS> GetTEM1(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,ParamName as ParamType, CollectValue as value from BT_Temp 
+                           where Position=@Position and CollectTime>=@CurrentTime order by time
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-260) }).ToList();
+
+
+            }
+        }
+
+
+        public static List<VM_PROCESS> GetTEM2(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,ParamName as ParamType, CollectValue as value from BT_Temp 
+                           where Position=@Position and CollectTime>=@CurrentTime order by time
+    ";
+
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-260) }).ToList();
+
+
+            }
+        }
+
+
+
+
+
+
         public static List<VM_PROCESS> GetProcssData(string Line, string Position, String ParamName)
         {
             using (var db = Pub.DB)
@@ -29,21 +223,26 @@ namespace WFDataAccess
             }
         }
 
+
+
+
+
+
         public static List<VM_PROCESS> GetMFGL(string Line, string Position)
         {
             using (var db = Pub.DB)
             {
-                var sql = @"select CollectTime as time,cast(CollectValue as decimal)/1000.0 as value,ParamName as SeriesName from SM_T_PROCESS_COLLECT 
+                var sql = @"select top 8  CollectTime as time,cast(CollectValue as decimal)/1000.0 as value,ParamName as SeriesName from SM_T_PROCESS_COLLECT 
                     where Line=@Line and Position=@Position and ParamName like @ParamName
-                   -- and CollectTime>=@CurrentTime 
+                   
 order by ParamName,CollectTime asc";
 
-                return db.Query<VM_PROCESS>(sql, new { Line = Line, Position = Position, ParamName = "%功率%", CurrentTime = DateTime.Now.AddHours(-1) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new { Line = Line, Position = Position, ParamName = "%电压%", CurrentTime = DateTime.Now.AddHours(-1) }).ToList();
 
 
             }
         }
-
+        //-- and CollectTime>=@CurrentTime 
         public static List<VM_PROCESS> GetLW(string Line, string Position)
         {
             using (var db = Pub.DB)
@@ -109,6 +308,12 @@ order by ParamName,CollectTime asc";
 
             }
         }
+
+        public static List<VM_PROCESS> GetDESTATUS(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<VM_PROCESS> GetLW(string Line, string Position, string ParamName)
         {
             using (var db = Pub.DB)
