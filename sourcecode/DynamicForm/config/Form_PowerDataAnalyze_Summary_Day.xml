@@ -2,8 +2,8 @@
 <Form Id="Form_PowerDataAnalyze_Summary_Day" Name="Form_PowerDataAnalyze_Summary_Day" Desc="按天查询总电量" DAImp="DynamicForm.DA.Form_PowerDataAnalyze_Summary_DayDA,DynamicForm">
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
-      <Control Name="Line" Text="线别" Width="span16" Type="multiselect" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04','ALL':'其他'}" OptionType="JSON" />
-      <Control Name="Position" Text="电表" Width="span16" Type="multiselect" Options="select ParamName as text,ParamName  as value from sm_m_plc where PlcAddress like N'%电量%' order by Line,ParamName" OptionType="SQL" />
+      <Control Name="Line" Text="线别" Width="span8" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04','ALL':'其他'}" OptionType="JSON" />
+      <Control Name="Position" Text="电表" Width="span16" Type="select" Options="{'全部电表':'全部电表','高压球磨机':'高压球磨机','低压车间':'低压车间'}" OptionType="JSON" />
     </Row>
     <Row>
       <Control Name="CollectDateFrom" Text="采集日期从" Width="span8" Type="calendar" />
@@ -19,176 +19,51 @@
 <div class='span24'><div id='container1' style='height:400px;'></div></div>
 -->
       <!--DF_SCRIPT
+var Position=$('#Position').val();
+
+if(Position=='全部选择'){
+
 var myChart = echarts.init(document.getElementById('container1'));
+//var myChart1 = echarts.init(document.getElementById('container1'));
 initChart();
 
+//initChart1();
 function initChart(){
- var option = {
-color: ['#333366', '#669999', '#996600'],
-            title: {
-                text: ''
+
+const colorList = ["#9E87FF", '#73DDFF', '#fe9a8b', '#F56948', '#9E87FF']	
+var option =  {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value',
+        splitLine:{
+        	show:false}
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            label: {
+                show: true,
+                backgroundColor: '#fff',
+                color: '#556677',
+                borderColor: 'rgba(0,0,0,0)',
+                shadowColor: 'rgba(0,0,0,0)',
+                shadowOffsetY: 0
             },
-            tooltip: {},
-            legend: {
-              
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: []
-            }]
-        };
+            lineStyle: {
+                width: 0
+            }
+        },
+        backgroundColor: '#fff',
+        textStyle: {
+            color: '#5c6c7c'
+        },
+        padding: [10, 10],
+        extraCssText: 'box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)'
+    },
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-if($('#QueryType').val()=="Signle"){
-        initChartDay();
-}
-else{
-initChartDayLine();
-}
-
-}
-function initChartDay(){
-
-var labelOption = {
-    normal: {
-        show: true,
-        align: 'left',
-        verticalAlign: 'middle',
-        fontSize: 16,
-        formater:function(a,b,c){return c;}
-
-    }
-};
-
-var Position=$('#Position').val()
-
-
-$.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzedaysummary',
-      {Position:Position,
-      CollectDateFrom:$('#CollectDateFrom').val(),
-      CollectDateTo:$('#CollectDateTo').val()
-        }, function (data) {
-                if (data.hasError == true) {
-                    alert(data.error);
-                    return;
-                }
-                else {
-                   var d1=JSON.parse(data.data1);
-var d2=JSON.parse(data.data2);
-                    var d=JSON.parse(data.data);
-                    var categories=[];
-                    var s=[];
-                    for(m in d2){
-                      categories[m]=d2[m];
-                    }
-                    for(m in d){
- dm=[];
-                          for(n in d[m].data_vm){
-                                                dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
-                                             }
-
-                          s.push({name:d[m].name,data:dm,type: 'line',label:labelOption});
-                    }
-                     myChart.setOption({
-                      legend: {
-                        data:d1,
-right:'10%',
-x:'50%',
-y:'25'
-                      },
-title:[{
-text:$('#Position').val()+'日用电量分析',
-left:'center'
-}],
-                      xAxis: {
-                       type: 'category',
-                       axisTick: {show: false},
-                        data: categories
-                      },
-                      yAxis: [{
-                        type: 'value',
-                         name:'度'
-                      }],
-                    series: s
-                  });
-                }
-
-     });
-}
-
-function initChartDayLine(){
-var labelOption = {
-    normal: {
-        show: true,
-        align: 'left',
-        verticalAlign: 'middle',
-        fontSize: 16,
-        formater:function(a,b,c){return c;}
-
-    }
-};
-
-var Line=$('#Line').val()
-$.getJSON('../DataAnalyzeHandler.ashx?action=poweranalyzedaylinesummary',
-      {Line:Line,
-      CollectDateFrom:$('#CollectDateFrom').val(),
-      CollectDateTo:$('#CollectDateTo').val()
-        }, function (data) {
-                if (data.hasError == true) {
-                    alert(data.error);
-                    return;
-                }
-                else {
-                   var d1=JSON.parse(data.data1);
-var d2=JSON.parse(data.data2);
-                    var d=JSON.parse(data.data);
-
-
-                    var categories=[];
-                    var s=[];
-                    for(m in d2){
-                      categories[m]=d2[m];
-                    }
-                    for(m in d){
-dm=[];
-                          for(n in d[m].data_vm){
-                                                dm.push([d[m].data_vm[n].CollectDate,d[m].data_vm[n].CollectValue]);
-                                             }
-
-                          s.push({name:d[m].name,data:dm,type: 'line',label:labelOption});
-                    }
-                     myChart.setOption({
-                      legend: {
-                        data:d1,
-right:'10%',
-x:'50%',
-y:'25'
-                      },
-title:[{
-text:Line+'日用电量分析',
-left:'center'
-}],
-                      xAxis: {
-                       type: 'category',
-                       axisTick: {show: false},
-                        data: categories
-                      },
-                      yAxis: [{
-                        type: 'value',
-                         name:'度'
-                      }],
-                    series: s
-                  });
-                }
-
-     });
-}
 -->
     </Row>
   </Panel>

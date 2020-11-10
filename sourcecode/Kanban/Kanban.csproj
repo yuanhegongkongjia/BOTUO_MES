@@ -285,6 +285,7 @@
     <Content Include="bui\css\imgview.css" />
     <Content Include="bui\css\layout-min.css" />
     <Content Include="bui\css\layout.css" />
+    <Content Include="bui\css\LookBand.css" />
     <Content Include="bui\css\main-min.css" />
     <Content Include="bui\css\main.css" />
     <Content Include="bui\css\menu-min.css" />
@@ -391,6 +392,7 @@
     <Content Include="bui\uploader-min.js" />
     <Content Include="bui\uploader.js" />
     <Content Include="bui\uploader\uploader.swf" />
+    <Content Include="bui\bg.png" />
     <Content Include="chart\css\annotations\popup.css" />
     <Content Include="chart\css\highcharts.css" />
     <Content Include="chart\css\stocktools\gui.css" />
@@ -888,6 +890,7 @@
     <Content Include="chart\css\themes\sand-signika.scss" />
     <Content Include="Handler\ProcessHandler.ashx" />
     <Content Include="Handler\EnergyHandler.ashx" />
+    <Content Include="img\zhongding.png" />
     <Content Include="img\BTLOG.png" />
     <Content Include="index.aspx" />
     <Content Include="Index1.aspx" />
@@ -910,7 +913,15 @@
     <Content Include="L01ENERGY2.aspx" />
     <Content Include="KanbanSite1.Master" />
     <Content Include="KanbanSite2.Master" />
+<<<<<<< .mine
     <Content Include="HJLookBand.aspx" />
+
+
+=======
+    <Content Include="WebForm1.aspx" />
+    <Content Include="BT-POWERKANBAN .aspx" />
+    <Content Include="BT_ProductionKANBAN.aspx" />
+>>>>>>> .theirs
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="img\sumin_log.JPG" />
     <Content Include="L01Kanban.aspx" />
@@ -1285,6 +1296,27 @@
     </Compile>
     <Compile Include="L01ENERGY2.aspx.designer.cs">
       <DependentUpon>L01ENERGY2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BT-POWERKANBAN .aspx.cs">
+      <DependentUpon>BT-POWERKANBAN .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BT-POWERKANBAN .aspx.designer.cs">
+      <DependentUpon>BT-POWERKANBAN .aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BT_ProductionKANBAN.aspx.cs">
+      <DependentUpon>BT_ProductionKANBAN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BT_ProductionKANBAN.aspx.designer.cs">
+      <DependentUpon>BT_ProductionKANBAN.aspx</DependentUpon>
     </Compile>
     <Compile Include="HJLookBand.aspx.cs">
       <DependentUpon>HJLookBand.aspx</DependentUpon>

@@ -53,7 +53,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\BT_MachineAnalyse.cs" />
     <Compile Include="Entities\BT_MachineManage.cs" />
+    <Compile Include="Entities\BT_Material.cs" />
     <Compile Include="Entities\BT_PaiGongDan.cs" />
+    <Compile Include="Entities\BT_POWER_DAY.cs" />
+    <Compile Include="Entities\BT_POWER_DayHour.cs" />
+    <Compile Include="Entities\BT_POWER_MONTH.cs" />
+    <Compile Include="Entities\BT_POWER_YEAR.cs" />
     <Compile Include="Entities\DEVICE_TAIZHANG.cs" />
     <Compile Include="Entities\SM_M_BASICVALUE.cs" />
     <Compile Include="Entities\SM_M_CELL.cs" />
@@ -111,7 +116,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VM\VM_BT_MachineAnalyse.cs" />
     <Compile Include="VM\VM_BT_MachineManage.cs" />
+    <Compile Include="VM\VM_BT_Material.cs" />
     <Compile Include="VM\VM_BT_PaiGongDan.cs" />
+    <Compile Include="VM\VM_BT_POWER_DAY.cs" />
+    <Compile Include="VM\VM_BT_POWER_DayHour.cs" />
+    <Compile Include="VM\VM_BT_POWER_MONTH.cs" />
+    <Compile Include="VM\VM_BT_POWER_YEAR.cs" />
     <Compile Include="VM\VM_DEVICE_TAIZHANG.cs" />
     <Compile Include="VM\VM_ENERGY.cs" />
     <Compile Include="VM\VM_GPS.cs" />

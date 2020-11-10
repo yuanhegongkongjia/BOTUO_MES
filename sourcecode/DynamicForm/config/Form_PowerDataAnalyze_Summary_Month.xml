@@ -2,7 +2,7 @@
 <Form Id="Form_PowerDataAnalyze_Summary_Month" Name="Form_PowerDataAnalyze_Summary_Month" Desc="按月总电能分析" DAImp="DynamicForm.DA.Form_PowerDataAnalyze_Summary_MonthDA,DynamicForm">
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
-      <Control Name="Line" Text="线别" Width="span16" Type="multiselect" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04','ALL':'其他'}" OptionType="JSON" />
+      <Control Name="Line" Text="线别" Width="span16" Type="select" Options="{'L01':'L01','L02':'L02','L03':'L03','L04':'L04','ALL':'其他'}" OptionType="JSON" />
       <Control Name="Position" Text="电表" Width="span16" Type="multiselect" Options="select ParamName as text,ParamName  as value from sm_m_plc where PlcAddress like N'%电量%' order by Line,ParamName" OptionType="SQL" />
     </Row>
     <Row>

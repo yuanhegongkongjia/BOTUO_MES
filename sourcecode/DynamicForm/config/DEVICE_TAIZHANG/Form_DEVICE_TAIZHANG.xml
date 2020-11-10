@@ -3,13 +3,15 @@
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="DEVICE_ID" Text="设备编号" Width="span8" Type="text" />
+      <Control Name="DEVICE_COMPANY" Text="设备供应商" Width="span8" Type="text" />
       <Control Name="DEVICE_NAME" Text="设备名称" Type="text" />
     </Row>
     <Row>
-      <Control Name="DEVICE_COMPANY" Text="设备供应商" Width="span8" Type="text" />
-      <Control Name="BUY_TIME" Text="购买时间" Width="span8" Type="calendar" />
+      <Control Name="BUY_TIME" Type="hidden" />
     </Row>
     <Row>
+      <Control Name="BUYTIME_FROM" Text="购买时间从" Width="span8" Type="calendar" />
+      <Control Name="BUYTIME_TO" Text="到" Width="span8" Type="calendar" />
       <Control Name="DEVICE_TYPE" Type="hidden" />
       <Control Name="FOR_DEPARTMENT" Type="hidden" />
     </Row>

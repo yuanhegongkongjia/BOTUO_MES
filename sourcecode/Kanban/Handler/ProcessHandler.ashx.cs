@@ -108,6 +108,16 @@ namespace Kanban.Handler
                 case "gettotal":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetTotal(context)));
                     break;
+                case "l01dianneng"://分时用量
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(Getdianneng(context)));
+                    break;
+                case "l01diannengday"://每日用量
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(Getdiannengday(context)));
+                    break;
+                case "l01shengchan"://生产模数数据
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetPRODUCTION(context)));
+                    break;
+
 
 
                 case "getdevicestaus":
@@ -640,6 +650,46 @@ namespace Kanban.Handler
 
             return vm;
         }
+        public ResultVM Getdianneng(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetL01dianneng();
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+        public ResultVM Getdiannengday(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetL01diannengday();
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+        public ResultVM GetPRODUCTION(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
+
+            list = KanbanProcessLoader.GetPRODUCTION();
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
+
 
 
         public bool IsReusable

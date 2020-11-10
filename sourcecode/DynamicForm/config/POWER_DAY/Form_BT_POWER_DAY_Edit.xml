@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_POWER_DAY_Edit" Name="Form_BT_POWER_DAY_Edit" Desc="" DAImp="DynamicForm.DA.Form_BT_POWER_DAY_EditDA,DynamicForm">
+  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKID" Text="PKID" Width="span8" Type="text" />
+      <Control Name="POSITION" Text="POSITION" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="COLLECT_VALUE" Text="COLLECT_VALUE" Width="span8" Type="text" />
+      <Control Name="CreateTime" Text="CreateTime" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="CreateUser" Text="CreateUser" Width="span8" Type="text" />
+      <Control Name="LastModifyTime" Text="LastModifyTime" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyUser" Text="LastModifyUser" Width="span8" Type="text" />
+      <Control Name="REMARK1" Text="REMARK1" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="REMARK2" Text="REMARK2" Width="span8" Type="text" />
+      <Control Name="REMARK3" Text="REMARK3" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="REMARK4" Text="REMARK4" Width="span8" Type="text" />
+      <Control Name="REMARK5" Text="REMARK5" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

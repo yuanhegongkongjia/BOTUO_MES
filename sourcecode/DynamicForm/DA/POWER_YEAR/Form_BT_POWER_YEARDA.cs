@@ -11,7 +11,7 @@ using WFDataAccess;
 
 namespace DynamicForm.DA
 {
-    public class Form_DEVICE_TAIZHANGDA : BaseDA
+    public class Form_BT_POWER_YEARDA : BaseDA
     {
         public override int Delete(FormM form, DFDictionary entity, ref string message)
         {
@@ -20,7 +20,7 @@ namespace DynamicForm.DA
             {
                 throw new WFException("无效的参数data".GetRes());
             }
-            Delete("delete from DEVICE_TAIZHANG where DEVICE_ID=@DEVICE_ID", data.Select(a => new { DEVICE_ID = a["DEVICE_ID"] }).ToList());
+            Delete("delete from BT_POWER_YEAR where PKID=@PKID", data.Select(a => new { PKID = a["PKID"] }).ToList());
             message = "删除成功".GetRes();
             return DFPub.EXECUTE_SUCCESS;
         }
@@ -28,16 +28,12 @@ namespace DynamicForm.DA
         public override int Query(FormM form, DFDictionary entity, DataGridVM vm, int start, int limit, ref string message)
         {
             var count = 0;
-            var sql = @"select * from DEVICE_TAIZHANG where 1=1";
+            var sql = @"select * from BT_POWER_YEAR where 1=1";
             var param = new
             {
-                DEVICE_ID = QueryBuilder.Like(ref sql, entity, "DEVICE_ID", "DEVICE_ID"),
-                DEVICE_COMPANY = QueryBuilder.Like(ref sql, entity, "DEVICE_COMPANY", "DEVICE_COMPANY"),
-                DEVICE_NAME = QueryBuilder.Like(ref sql, entity, "DEVICE_NAME", "DEVICE_NAME"),
-                BUYTIME_FROM = QueryBuilder.DateFrom(ref sql, entity, "BUY_TIME", "BUYTIME_FROM"),
-                BUYTIME_TO = QueryBuilder.DateTo(ref sql, entity, "BUY_TIME", "BUYTIME_TO"),
+                PKID = QueryBuilder.Like(ref sql, entity, "PKID", "PKID")
             };
-            var list = GetList(entity, ref count, start, limit, sql, "order by DEVICE_ID", param);
+            var list = GetList(entity, ref count, start, limit, sql, "order by PKID", param);
             vm.results = count;
             vm.rows = list;
             return DFPub.EXECUTE_SUCCESS;
