@@ -251,8 +251,8 @@ left:'center'
     <Column Name="KPId" Visible="false" Sortable="true" />
     <Column Name="MachineName" Text="设备名称" Width="100" Sortable="true" />
     <Column Name="MachineNum" Text="设备编号" Width="100" Sortable="true" />
-    <Column Name="MachineStatus" Text="设备状态" Width="100" Sortable="true" />
-    <Column Name="MachineParam" Text="参数" Width="100" Sortable="true" />
+    <Column Name="MachineStatus" Visible="false" Sortable="true" />
+    <Column Name="MachineParam" Text="温度参数" Width="100" Sortable="true" />
     <Column Name="MachineParam1" Visible="false" Sortable="true" />
     <Column Name="MachineParam2" Visible="false" Sortable="true" />
     <Column Name="MachineParam3" Visible="false" Sortable="true" />

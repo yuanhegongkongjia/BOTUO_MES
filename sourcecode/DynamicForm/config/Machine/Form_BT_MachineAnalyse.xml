@@ -91,7 +91,7 @@ var option =  {
 
 
     series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [],
         type: 'line',
         smooth: true,
         showSymbol: false,
@@ -119,7 +119,7 @@ var option =  {
         },
       
         {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [],
         type: 'line',
         smooth: true,
         showSymbol: false,
@@ -146,7 +146,7 @@ var option =  {
             }
         },
           {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [],
         type: 'line',
         smooth: true,
         showSymbol: false,
@@ -340,7 +340,7 @@ var option =  {
     },
 
     series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [],
         type: 'line',
         smooth: true,
         showSymbol: false,
@@ -490,9 +490,9 @@ $.getJSON('../DataAnalyzeHandler.ashx?action=oeequerycurrent',
     <Column Name="PKId" Visible="false" Sortable="true" />
     <Column Name="MachineName" Text="设备名称" Width="100" Sortable="true" />
     <Column Name="MachineNum" Text="设备编号" Width="100" Sortable="true" />
-    <Column Name="MachineOEE" Text="设备OEE" Width="100" Sortable="true" />
-    <Column Name="MachineAverageTime" Text="设备平均故障时间" Width="100" Sortable="true" />
-    <Column Name="Remark1" Visible="false" Sortable="true" />
+    <Column Name="MachineOEE" Text="设备稼动率" Width="100" Sortable="true" />
+    <Column Name="MachineAverageTime" Visible="false" Sortable="true" />
+    <Column Name="Remark1" Text="采集时间" Width="150" Sortable="true" />
     <Column Name="Remark2" Visible="false" Sortable="true" />
     <Column Name="Remark3" Visible="false" Sortable="true" />
     <Column Name="Remark4" Visible="false" Sortable="true" />

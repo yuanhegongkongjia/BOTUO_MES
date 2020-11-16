@@ -26,7 +26,7 @@
     <div class="main clearfix">
         <div class="main-left">
             <div class="border-container">
-                <div class="name-title">停机时间</div>
+                <div class="name-title">设备分析</div>
                 <div id="radar"></div>
                 <span class="top-left border-span"></span>
                 <span class="top-right border-span"></span>
@@ -34,7 +34,7 @@
                 <span class="bottom-right border-span"></span>
             </div>
             <div class="border-container">
-                <div class="name-title">设备分析</div>
+                <div class="name-title">工单进度</div>
                 <div id="graduateyear"></div>
                 <!--  <ul class="three-pie clearfix">
                       <li>
@@ -90,8 +90,9 @@
                         <div id="courserate"></div>
                     </li>
                     <li>
-                        <div class="name-title">生产成本</div>
-                        <div id="professionrate"></div>
+                        <div class="name-title">电能分析</div>
+                        <div id="juniorservice"></div>
+                        
                     </li>
                 </ul>
 
@@ -223,8 +224,8 @@
                 <span class="bottom-right border-span"></span>
             </div>
             <div class="border-container">
-                <div class="name-title">电能分析</div>
-                <div id="juniorservice"></div>
+                <div class="name-title">生产成本</div>
+                <div id="professionrate"></div>
                 <span class="top-left border-span"></span>
                 <span class="top-right border-span"></span>
                 <span class="bottom-left border-span"></span>

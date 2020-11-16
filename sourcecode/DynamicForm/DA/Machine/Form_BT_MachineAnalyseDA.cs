@@ -38,7 +38,7 @@ namespace DynamicForm.DA
                 TimeTo = QueryBuilder.DateTo(ref sql, entity, "Remark1", "TimeTo"),
 
             };
-            var list = GetList(entity, ref count, start, limit, sql, "order by PKId", param);
+            var list = GetList(entity, ref count, start, limit, sql, "order by Remark1 desc", param);
             vm.results = count;
             vm.rows = list;
             return DFPub.EXECUTE_SUCCESS;

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Form Id="Form_BT_PaiGongDan_CX" Name="Form_BT_PaiGongDan_CX" Desc="派工单查询" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_CXDA,DynamicForm">
+<Form Id="Form_BT_PaiGongDan_CX" Name="Form_BT_PaiGongDan_CX" Desc="工单查询" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_CXDA,DynamicForm">
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="ID" Type="hidden" />
     </Row>
     <Row>
-      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" />
-      <Control Name="PRODUCT_NAME" Text="产品名称" Width="span8" Type="text" />
+      <Control Name="PROJECT_NAME" Type="hidden" />
+      <Control Name="PRODUCT_NAME" Type="hidden" />
       <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" />
     </Row>
     <Row>
@@ -78,7 +78,7 @@
     <Column Name="TIME_WANGPIANZUZHUANG" Visible="false" Sortable="true" />
     <Column Name="TIME_FUQIANQIEGE" Visible="false" Sortable="true" />
     <Column Name="TIME_CHENGPINBAOZHUANG" Visible="false" Sortable="true" />
-    <Column Name="REMARK1" Visible="false" Sortable="true" />
+    <Column Name="REMARK1" Text="实际完成量" Width="100" Sortable="true" />
     <Column Name="REMARK2" Visible="false" Sortable="true" />
     <Column Name="REMARK3" Visible="false" Sortable="true" />
     <Column Name="REMARK4" Visible="false" Sortable="true" />

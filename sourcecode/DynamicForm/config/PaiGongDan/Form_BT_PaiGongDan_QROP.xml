@@ -92,8 +92,8 @@ function selectBooking_click() {
   </Panel>
   <Panel Id="Panel20200914110102503" Name="Panel20200914110102503" Type="SingleRecord">
     <Row>
-      <Control Name="btnSubmit" Text="提交" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;,&quot;style&quot;:&quot;cursor:pointer;&quot;}" LabelAttributes="{&quot;style&quot;:&quot;height:200px;margin-top:100px;&quot;}" Action="update" />
-      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" LabelAttributes="{&quot;style&quot;:&quot;margin-top:100px;&quot;}" Action="link" />
+      <Control Name="btnSubmit" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;,&quot;style&quot;:&quot;cursor:pointer;&quot;}" LabelAttributes="{&quot;style&quot;:&quot;height:200px;margin-top:100px;&quot;}" />
+      <Control Name="btnCancel" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" LabelAttributes="{&quot;style&quot;:&quot;margin-top:100px;&quot;}" />
       <!--DF_SCRIPT
 function btnCancel_click() {
     return closeSelfDialog();

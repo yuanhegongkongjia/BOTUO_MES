@@ -29,11 +29,11 @@ function initdlechart() {
         color: ['#f845f1', '#ad46f3', '#5045f6', '#4777f5', '#44aff0', "#45dbf7", "#f6d54a", "#f69846", "#ff4343",],
 
         legend: {
-            data: [],
+            //data: ['11:00'],
             show: true,
             type: 'scroll',
             //right: '15%',
-            bottom: '0%',
+            bottom: '2%',
             //y: "0",
             textStyle: {
                 color: "#999",
@@ -1604,8 +1604,8 @@ function initechartrandar() {
         },
         legend: {
             top: '250',
-            left: '100',
-            data: ['产线OEE', '重点关注'],
+            left: '20',
+            data: ['产线稼动率(>0.3)', '重点关注（<0.3）'],
             textStyle: {
                 color: '#fff'
             }
@@ -1657,7 +1657,7 @@ function initechartrandar() {
         }],
         series: [
             {
-                name: '产线OEE',
+                name: '产线稼动率(>0.3)',
                 type: 'effectScatter',
                 coordinateSystem: 'calendar',
                 data: [],
@@ -1672,7 +1672,7 @@ function initechartrandar() {
             },
 
             {
-                name: '重点关注',
+                name: '重点关注（<0.3）',
                 type: 'effectScatter',
                 coordinateSystem: 'calendar',
                 data: [],

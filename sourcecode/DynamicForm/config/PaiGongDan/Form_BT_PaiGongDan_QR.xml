@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Form Id="Form_BT_PaiGongDan_QR" Name="Form_BT_PaiGongDan_QR" Desc="派工单确认" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_QRDA,DynamicForm">
+<Form Id="Form_BT_PaiGongDan_QR" Name="Form_BT_PaiGongDan_QR" Desc="工单确认" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_QRDA,DynamicForm">
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="ID" Type="hidden" />
     </Row>
     <Row>
-      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" />
-      <Control Name="PRODUCT_NAME" Text="产品名称" Width="span8" Type="text" />
+      <Control Name="PROJECT_NAME" Type="hidden" />
+      <Control Name="PRODUCT_NAME" Type="hidden" />
       <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" />
     </Row>
     <Row>
@@ -112,7 +112,7 @@ function selectUser_click() {
     dialog = dfOverlayDialog(800, 550, '', url, btns);
 }
 -->
-      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <Control Name="btnDelete" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" />
       <!--DF_SCRIPT
 function btnDelete_click() {
     var grid = BUI.getControl('grid1');
@@ -136,7 +136,7 @@ function btnDelete_click() {
     }
 }
 -->
-      <Control Name="btnEdit" Text="工单确认" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <Control Name="btnEdit" Text="工单确认" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
       <!--DF_SCRIPT
 function btnUpdate_click() {
     var grid = BUI.getControl('grid1');

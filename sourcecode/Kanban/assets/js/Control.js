@@ -49,7 +49,7 @@ function requestDeviceOeeData() {
         
             d = JSON.parse(data.data);
             
-            juniorservice_option.series = [{ name: '产线OEE', data: [] }, { name: '重点关注', data: [] }];
+            juniorservice_option.series = [{ name: '产线稼动率(>0.3)', data: [] }, { name: '重点关注（<0.3）', data: [] }];
           
             /* 关于输入参数一定要对应的指定位置选好才能对应的输入 */
             juniorservice_option.calendar[0].range = [new Date(d[0].yuechu).Format('yyyy-MM-dd'), new Date(d[0].yuemo).Format('yyyy-MM-dd') ];
@@ -100,11 +100,11 @@ function requestEnergyData() {
             d = JSON.parse(data.data);
 
             //juniorservice_option.series = [{ name: '停机时长', data: [] }, { name: '重点关注', data: [] }];
-            radar_option.series[0].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
+            radar_option.series[0].data = [{ value: [],name: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
             radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
            
             //radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }];
-            radar_option.legend.data = [];
+            //radar_option.legend.data = [];
             //var labelData = [{ name: [], value: [] }]
            /* 关于输入参数一定要对应的指定位置选好才能对应的输入 */
             for (m in d) {
@@ -117,7 +117,7 @@ function requestEnergyData() {
                 radar_option.series[1].data[m].name.push (new Date(d[m].time).Format("HH") + ":00");
                 radar_option.series[1].data[m].value.push(1);
 
-                radar_option.legend.data.push(new Date(d[m].time).Format("HH") + ":00")
+                //radar_option.legend.data.push(new Date(d[m].time).Format("HH") + ":00")
 
             }
 

@@ -35,7 +35,7 @@ namespace DynamicForm.DA
                 MachineName = QueryBuilder.Like(ref sql, entity, "MachineName", "MachineName"),
                 TimeFrom = QueryBuilder.Like(ref sql, entity, "Remark1", "TimeFrom"),
             };
-            var list = GetList(entity, ref count, start, limit, sql, "order by KPId", param);
+            var list = GetList(entity, ref count, start, limit, sql, "order by Remark1 desc", param);
             vm.results = count;
             vm.rows = list;
             return DFPub.EXECUTE_SUCCESS;

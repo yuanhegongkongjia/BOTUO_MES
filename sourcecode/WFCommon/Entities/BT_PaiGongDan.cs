@@ -44,7 +44,7 @@ namespace WFCommon
 		public string TIME_WANGPIANZUZHUANG { get; set; }
 		public string TIME_FUQIANQIEGE { get; set; }
 		public string TIME_CHENGPINBAOZHUANG { get; set; }
-		public DateTime? REMARK1 { get; set; }
+		public string REMARK1 { get; set; }
 		public string REMARK2 { get; set; }
 		public string REMARK3 { get; set; }
 		public string REMARK4 { get; set; }

@@ -295,14 +295,6 @@
 
                 series: [
                     {
-                        name: '温度',
-
-                        tooltip: {
-                            valueSuffix: ' \xB0C'
-                        },
-                        yAxis: 0
-                    },
-                    {
                         name: '湿度',
 
                         tooltip: {
@@ -310,6 +302,16 @@
                         },
                         yAxis: 1
                     },
+
+                    {
+                        name: '温度',
+
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
+                    },
+                   
                    
                     {
                     name: 'PM2.5',
@@ -1509,14 +1511,6 @@
 
                 series: [
                     {
-                        name: '温度',
-
-                        tooltip: {
-                            valueSuffix: ' \xB0C'
-                        },
-                        yAxis: 0
-                    },
-                    {
                         name: '湿度',
 
                         tooltip: {
@@ -1524,6 +1518,17 @@
                         },
                         yAxis: 1
                     },
+
+
+                    {
+                        name: '温度',
+
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
+                    },
+                  
                     {
                         name: 'PM2.5',
                         type: 'column',
