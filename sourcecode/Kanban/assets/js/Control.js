@@ -49,7 +49,7 @@ function requestDeviceOeeData() {
         
             d = JSON.parse(data.data);
             
-            juniorservice_option.series = [{ name: '停机时长', data: [] }, { name: '重点关注', data: [] }];
+            juniorservice_option.series = [{ name: '产线OEE', data: [] }, { name: '重点关注', data: [] }];
           
             /* 关于输入参数一定要对应的指定位置选好才能对应的输入 */
             juniorservice_option.calendar[0].range = [new Date(d[0].yuechu).Format('yyyy-MM-dd'), new Date(d[0].yuemo).Format('yyyy-MM-dd') ];
@@ -68,7 +68,7 @@ function requestDeviceOeeData() {
                     //juniorservice_option.xAxis[0].data.push(new Date(d[m].time).Format("yyyy-MM-dd"));
                     //series[1].data.push([d[m].TSNumber, d[m].FinishQty]);
                 }
-                if (d[m].value>=0.7) {
+                if (d[m].value<=0.3) {
                     //var date = new Date(d[m].WorkDate);
                     //var dd = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
                     juniorservice_option.series[1].data.push([new Date(d[m].time).Format("yyyy-MM-dd"), d[m].value]);
@@ -100,8 +100,11 @@ function requestEnergyData() {
             d = JSON.parse(data.data);
 
             //juniorservice_option.series = [{ name: '停机时长', data: [] }, { name: '重点关注', data: [] }];
-            radar_option.series[0].data = [{ name: [], value: [] }, { name: [], value: [] }];
-            radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }];
+            radar_option.series[0].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
+            radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
+           
+            //radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }];
+            radar_option.legend.data = [];
             //var labelData = [{ name: [], value: [] }]
            /* 关于输入参数一定要对应的指定位置选好才能对应的输入 */
             for (m in d) {
@@ -113,6 +116,9 @@ function requestEnergyData() {
                 //radar_option.series[1].data.push = 1;
                 radar_option.series[1].data[m].name.push (new Date(d[m].time).Format("HH") + ":00");
                 radar_option.series[1].data[m].value.push(1);
+
+                radar_option.legend.data.push(new Date(d[m].time).Format("HH") + ":00")
+
             }
 
 
@@ -163,33 +169,33 @@ function requestTemData() {
             d = JSON.parse(data.data);
             var hjDatas = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
             for (m in d) {
-                var name = d[m].ParamType;
+                //var name = d[m].ParamType;
                 var position = d[m].Position;
-                if (name == "PM2.5" && position == "西南角") {
+                if (position == "南区上PM2.5") {
                     hjDatas[0].name.push('PM2.5-①');
                     hjDatas[0].value.push(d[m].value);
                 }
-                if (name == "温度" && position == "西南角") {
+                if (position == "南区上温度") {
                     hjDatas[1].name.push('温度-①');
                     hjDatas[1].value.push(d[m].value);
                     //hjDatas[1].push('温度-①', d[m].value);
                 }
-                if (name == "湿度" && position == "西南角") {
+                if (position == "南区上湿度") {
                     hjDatas[2].name.push('湿度-①');
                     hjDatas[2].value.push(d[m].value);
                    // hjDatas[2].push('湿度-①', d[m].value);
                 }
-                if (name == "PM2.5" && position == "东北角") {
+                if (position == "北区下PM2.5") {
                     hjDatas[3].name.push('PM2.5-②');
                     hjDatas[3].value.push(d[m].value);
                     //hjDatas[3].push('PM2.5-②', d[m].value);
                 }
-                if (name == "温度" && position == "东北角") {
+                if (position == "北区下温度") {
                     hjDatas[4].name.push('温度-②');
                     hjDatas[4].value.push(d[m].value);
                     //hjDatas[4].push('PM2.5-②', d[m].value);
                 }
-                if (name == "湿度" && position == "东北角") {
+                if ( position == "北区下湿度") {
                     hjDatas[5].name.push('湿度-②');
                     hjDatas[5].value.push(d[m].value);
                     //hjDatas[5].push('PM2.5-②', d[m].value);
@@ -263,9 +269,9 @@ function requestTemData() {
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: { //涟漪特效
-                period: 4, //动画时间，值越小速度越快
+                period: 8, //动画时间，值越小速度越快
                 brushType: 'stroke', //波纹绘制方式 stroke, fill
-                scale: 8 //波纹圆环最大限制，值越大波纹越大
+                scale: 4 //波纹圆环最大限制，值越大波纹越大
             },
             label: {
                 normal: {
@@ -284,7 +290,7 @@ function requestTemData() {
             },
             symbol: 'circle',
             symbolSize: function (val) {
-                return 2 + val[2] * 1; //圆环大小
+                return 1 + val[2] * 0.2; //圆环大小
             },
             itemStyle: {
                 normal: {
@@ -307,9 +313,9 @@ function requestTemData() {
                 coordinateSystem: 'geo',
                 zlevel: 2,
                 rippleEffect: {
-                    period: 4,
+                    period: 5,
                     brushType: 'stroke',
-                    scale: 8
+                    scale: 4
                 },
                 label: {
                     normal: {
@@ -328,7 +334,7 @@ function requestTemData() {
                 },
                 symbol: 'circle',
                 symbolSize: function (val) {
-                    return 1 + val[2] * 1; //圆环大小
+                    return 2 + val[2] * 2; //圆环大小
                 },
                 itemStyle: {
                     normal: {
@@ -371,20 +377,20 @@ function requestDeviceData() {
                
                 d = JSON.parse(data.data);
               
-                graduateyear_option.series = [{ name: '压力', data: [] }, { name: '电流', data: [] }];
+                graduateyear_option.series = [{ name: '当日订单完成率', data: [] }, { name: '配料温度实际值', data: [] }];
                 graduateyear_option.xAxis = [{  data: [] }, { data: [] }];
                
 
                 for (m in d) {
                     var name = d[m].ParamType;
-                    if (name == "压力") {
+                    if (name == "当日订单完成率") {
                         //var date = new Date(d[m].WorkDate);
                         //var dd = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-                        graduateyear_option.series[0].data.push(d[m].value);
+                        graduateyear_option.series[0].data.push((d[m].value * 100).toFixed(2));
                         graduateyear_option.xAxis[0].data.push(new Date(d[m].time).Format("HH:mm"));
                         //series[1].data.push([d[m].TSNumber, d[m].FinishQty]);
                     }
-                    if (name == "电流") {
+                    if (name == "配料温度实际值") {
                         //var date = new Date(d[m].WorkDate);
                         //var dd = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
                         graduateyear_option.series[1].data.push(d[m].value);
@@ -510,7 +516,7 @@ function requestProductData() {
                 
                     if (time == new Date(myDate.getTime() - 0 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                         if (name == '当日订单完成率') {
-                            $("tr:eq(1) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                            $("tr:eq(1) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                         }
                         if (name == '配料设定浇注模数') {
                             $("tr:eq(1) td:eq(2)").eq(0).text(d[m].value);
@@ -525,7 +531,7 @@ function requestProductData() {
                 
                 if (time == new Date(myDate.getTime() - 1 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(2) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(2) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(2) td:eq(2)").eq(0).text(d[m].value);
@@ -539,7 +545,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 2 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(3) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(3) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(3) td:eq(2)").eq(0).text(d[m].value);
@@ -553,7 +559,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 3 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(4) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(4) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(4) td:eq(2)").eq(0).text(d[m].value);
@@ -567,7 +573,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 4 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(5) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(5) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(5) td:eq(2)").eq(0).text(d[m].value);
@@ -581,7 +587,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 5 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(6) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(6) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(6) td:eq(2)").eq(0).text(d[m].value);
@@ -595,7 +601,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 6 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(7) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(7) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(7) td:eq(2)").eq(0).text(d[m].value);
@@ -609,7 +615,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 7 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(8) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(8) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(8) td:eq(2)").eq(0).text(d[m].value);
@@ -623,7 +629,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 8 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(9) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(9) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(9) td:eq(2)").eq(0).text(d[m].value);
@@ -637,7 +643,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 9 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(10) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(10) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(10) td:eq(2)").eq(0).text(d[m].value);
@@ -651,7 +657,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 10 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(11) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(11) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(11) td:eq(2)").eq(0).text(d[m].value);
@@ -665,7 +671,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 11 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(12) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(12) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(12) td:eq(2)").eq(0).text(d[m].value);
@@ -679,7 +685,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 12 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(13) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(13) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(13) td:eq(2)").eq(0).text(d[m].value);
@@ -693,7 +699,7 @@ function requestProductData() {
                 }
                 if (time == new Date(myDate.getTime() - 13 * 24 * 60 * 60 * 1000).Format("yyyy.MM.dd")) {
                     if (name == '当日订单完成率') {
-                        $("tr:eq(14) td:eq(4)").eq(0).text(d[m].value.toFixed(2) * 100 + "%");
+                        $("tr:eq(14) td:eq(4)").eq(0).text(Math.floor(d[m].value * 10000) / 100 + "%");
                     }
                     if (name == '配料设定浇注模数') {
                         $("tr:eq(14) td:eq(2)").eq(0).text(d[m].value);

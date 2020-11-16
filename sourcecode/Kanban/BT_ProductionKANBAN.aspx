@@ -245,10 +245,12 @@
                             series1[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
                         }
                         if (name == "当日订单完成率") {
-                          
+                            var value1 = Math.floor(d[m].value * 10000) / 100;
                         /*const formated = Number(d[m].value * 100).toFixed(2);*/
                          
                             var value1 = Math.floor(d[m].value * 10000) / 100
+                            
+                            /*const formated = Number(d[m].value * 100).toFixed(2);*/
                             series1[2].data.push([new Date(d[m].time).getTime(), value1]);
                         }
                         if (name == "配料浇注总模数") {

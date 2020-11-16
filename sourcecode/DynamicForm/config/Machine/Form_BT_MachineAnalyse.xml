@@ -42,7 +42,6 @@
 <style> span{display:inline-block;width:100%;text-align:center;} </style><div><span><div id='container1' style='height:300px;align:center;'></span></div></div>
 -->
       <!--DF_SCRIPT
-
 var Position=$('#MachineName').val();
 
 if(Position.length==0){
@@ -505,7 +504,7 @@ $.getJSON('../DataAnalyzeHandler.ashx?action=oeequerycurrent',
   </Panel>
   <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
     <Row>
-      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <Control Name="btnDelete" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" />
       <!--DF_SCRIPT
 function btnDelete_click() {
     var grid = BUI.getControl('grid1');
@@ -529,7 +528,7 @@ function btnDelete_click() {
     }
 }
 -->
-      <Control Name="btnAdd" Text="新增" Type="button" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" Action="link" />
+      <Control Name="btnAdd" Type="hidden" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" />
       <!--DF_SCRIPT
 function btnAdd_click() {
     var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_MachineAnalyse_Edit';
@@ -540,7 +539,7 @@ function btnAdd_click() {
     });
 }
 -->
-      <Control Name="btnEdit" Text="编辑" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" Action="link" />
+      <Control Name="btnEdit" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" />
       <!--DF_SCRIPT
 function btnUpdate_click() {
     var grid = BUI.getControl('grid1');

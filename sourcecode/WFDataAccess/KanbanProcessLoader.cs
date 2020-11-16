@@ -24,7 +24,7 @@ namespace WFDataAccess
                            where Position=@Position and CollectTime>=@CurrentTime order by time
     ";
 
-                return db.Query<VM_PROCESS>(sql, new {Position = Position, CurrentTime = DateTime.Now.AddMinutes(-10) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new {Position = Position, CurrentTime = DateTime.Now.AddMinutes(-600) }).ToList();
 
 
             }
@@ -38,7 +38,7 @@ namespace WFDataAccess
                            where POSITION=@Position and CreateTime>=@CurrentTime order by time
     ";
 
-                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddHours(-240) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddHours(-24) }).ToList();
 
 
             }
@@ -65,7 +65,7 @@ where CONVERT(nvarchar(50),REMARK1,105) =CONVERT(nvarchar(50),GETDATE()-1,105)
             using (var db = Pub.DB)
             {
                 var sql = @"select Remark1 as time,1 as ParamType, MachineOEE as value,CONVERT(datetime,CONVERT(char(8),Remark1,111)+'1') as yuechu ,DATEADD(Day,-1,CONVERT(char(8),DATEADD(Month,1,Remark1),111)+'1') as yuemo from BT_MachineAnalyse 
-                           where MachineName=@Position and Remark1>=@CurrentTime order by time 
+                           where MachineName=@Position and Remark1>=@CurrentTime order by time desc
     ";
 
                 return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddDays(-31) }).ToList();
@@ -79,11 +79,11 @@ where CONVERT(nvarchar(50),REMARK1,105) =CONVERT(nvarchar(50),GETDATE()-1,105)
         {
             using (var db = Pub.DB)
             {
-                var sql = @"select CollectTime as time,ParamName as ParamType,Position as Position, CollectValue as value from BT_Temp 
+                var sql = @"select CollectTime as time,ParamName as ParamType,Position as Position, ParamValue as value from BT_Temp 
                            where  CollectTime>=@CurrentTime order by time
     ";
 
-                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-10) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-60) }).ToList();
 
 
             }
@@ -94,73 +94,73 @@ where CONVERT(nvarchar(50),REMARK1,105) =CONVERT(nvarchar(50),GETDATE()-1,105)
         {
             using (var db = Pub.DB)
             {
-                var sql = @"SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+                var sql = @"SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE(),105) order by  CreateTime desc,collect_type )
 
 A
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-1,105) order by  CreateTime desc,collect_type )
 B
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-2,105) order by  CreateTime desc,collect_type )
 
 C
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-3,105) order by  CreateTime desc,collect_type )
 
 D
 
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-4,105) order by  CreateTime desc,collect_type )
 
 E
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-5,105) order by  CreateTime desc,collect_type )
 
 F
 UNION ALL
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-6,105) order by  CreateTime desc,collect_type )
 
 G
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-7,105) order by  CreateTime desc,collect_type )
 
 H
 
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-8,105) order by  CreateTime desc,collect_type )
 
 I
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-9,105) order by  CreateTime desc,collect_type )
 
 J
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-10,105) order by  CreateTime desc,collect_type )
 
 K
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-11,105) order by  CreateTime desc,collect_type )
 
 L
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-12,105) order by  CreateTime desc,collect_type )
 
 M
-SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,COLLECT_VALUE AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
+SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-13,105) order by  CreateTime desc,collect_type )
 
 N
@@ -179,31 +179,55 @@ N
         {
             using (var db = Pub.DB)
             {
-                var sql = @"select CollectTime as time,ParamName as ParamType, CollectValue as value from BT_Temp 
-                           where Position=@Position and CollectTime>=@CurrentTime order by time
+                var sql = @"select CollectTime as time,Position as ParamType, ParamValue as value from BT_Temp 
+                           where Position like '南区上%' and CollectTime>=@CurrentTime order by time,Position
     ";
 
-                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-260) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-720) }).ToList();
 
 
             }
         }
 
+        public static List<VM_PROCESS> GetTEM11(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,Position as ParamType, ParamValue as value from BT_Temp 
+                           where Position like '南区下%' and CollectTime>=@CurrentTime order by time,Position
+    ";
 
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-720) }).ToList();
+
+
+            }
+        }
         public static List<VM_PROCESS> GetTEM2(string Position)
         {
             using (var db = Pub.DB)
             {
-                var sql = @"select CollectTime as time,ParamName as ParamType, CollectValue as value from BT_Temp 
-                           where Position=@Position and CollectTime>=@CurrentTime order by time
+                var sql = @"select CollectTime as time,Position as ParamType, ParamValue as value from BT_Temp 
+                           where Position like '北区上%' and CollectTime>=@CurrentTime order by time,Position
     ";
 
-                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-260) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-720) }).ToList();
 
 
             }
         }
+        public static List<VM_PROCESS> GetTEM22(string Position)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = @"select CollectTime as time,Position as ParamType, ParamValue as value from BT_Temp 
+                           where Position like '北区下%' and CollectTime>=@CurrentTime order by time,Position
+    ";
 
+                return db.Query<VM_PROCESS>(sql, new { Position = Position, CurrentTime = DateTime.Now.AddMinutes(-720) }).ToList();
+
+
+            }
+        }
 
 
 

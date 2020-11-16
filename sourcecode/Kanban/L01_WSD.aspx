@@ -293,7 +293,25 @@
 
 
 
-                series: [{
+                series: [
+                    {
+                        name: '温度',
+
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
+                    },
+                    {
+                        name: '湿度',
+
+                        tooltip: {
+                            valueSuffix: ' %RH'
+                        },
+                        yAxis: 1
+                    },
+                   
+                    {
                     name: 'PM2.5',
                     type: 'column',
                     tooltip: {
@@ -301,22 +319,7 @@
                     },
                     yAxis: 2
                 },
-                {
-                    name: '湿度',
-
-                    tooltip: {
-                        valueSuffix: ' %RH'
-                    },
-                    yAxis: 1
-                },
-                {
-                    name: '温度',
-
-                    tooltip: {
-                        valueSuffix: ' \xB0C'
-                    },
-                    yAxis: 0
-                },
+                
 
 
                 ],
@@ -339,8 +342,8 @@
                     var names = [];
                     var series = [];
                     for (m in d) {
-                        var name = d[m].ParamType;
-
+                        var name = d[m].ParamType.slice(3);
+                        //var a = name;
                         var index = $.inArray(name, names);
                         if (index == -1) {
                             //不存在
@@ -611,7 +614,7 @@
 
 
         function requestWSDData() {
-            $.getJSON('../Handler/ProcessHandler.ashx?action=l013sd', function (data) {
+            $.getJSON('../Handler/ProcessHandler.ashx?action=1002wde', function (data) {
 
                 if (data.hasError == true) {
                     alert(data.error);
@@ -623,7 +626,7 @@
                     var names = [];
                     var series = [];
                     for (m in d) {
-                        var name = d[m].SeriesName;
+                        var name = d[m].ParamType.slice(3);
 
                         var index = $.inArray(name, names);
                         if (index == -1) {
@@ -884,30 +887,33 @@
 
 
 
-                series: [{
-                    name: 'PM2.5',
-                    type: 'column',
-                    tooltip: {
-                        valueSuffix: ' ug/M3'
-                    },
-                    yAxis: 2
-                },
-                {
-                    name: '湿度',
+                series: [
+                    {
+                        name: '湿度',
 
-                    tooltip: {
-                        valueSuffix: ' %RH'
+                        tooltip: {
+                            valueSuffix: ' %RH'
+                        },
+                        yAxis: 1
                     },
-                    yAxis: 1
-                },
-                {
-                    name: '温度',
+                    {
+                        name: '温度',
 
-                    tooltip: {
-                        valueSuffix: ' \xB0C'
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
                     },
-                    yAxis: 0
-                },
+                  
+                    
+                    {
+                        name: 'PM2.5',
+                        type: 'column',
+                        tooltip: {
+                            valueSuffix: ' ug/M3'
+                        },
+                        yAxis: 2
+                    },
 
 
                 ],
@@ -918,7 +924,7 @@
 
 
         function requestDeviceData02() {
-            $.getJSON('../Handler/ProcessHandler.ashx?action=1013sd', function (data) {
+            $.getJSON('../Handler/ProcessHandler.ashx?action=1013sde', function (data) {
 
                 if (data.hasError == true) {
                     alert(data.error);
@@ -930,7 +936,7 @@
                     var names = [];
                     var series = [];
                     for (m in d) {
-                        var name = d[m].ParamType;
+                        var name = d[m].ParamType.slice(3);
 
                         var index = $.inArray(name, names);
                         if (index == -1) {
@@ -1192,15 +1198,9 @@
 
 
 
-                series: [{
-                    name: 'PM2.5',
-                    type: 'column',
-                    tooltip: {
-                        valueSuffix: ' ug/M3'
-                    },
-                    yAxis: 2
-                },
-                {
+                series: [
+                    
+                    {
                     name: '湿度',
 
                     tooltip: {
@@ -1208,15 +1208,22 @@
                     },
                     yAxis: 1
                 },
-                {
-                    name: '温度',
+                    {
+                        name: '温度',
 
-                    tooltip: {
-                        valueSuffix: ' \xB0C'
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
                     },
-                    yAxis: 0
-                },
-
+                    {
+                        name: 'PM2.5',
+                        type: 'column',
+                        tooltip: {
+                            valueSuffix: ' ug/M3'
+                        },
+                        yAxis: 2
+                    },
 
                 ],
             });
@@ -1226,7 +1233,7 @@
 
 
         function requestDeviceData05() {
-            $.getJSON('../Handler/ProcessHandler.ashx?action=1013sd', function (data) {
+            $.getJSON('../Handler/ProcessHandler.ashx?action=1002wde', function (data) {
 
                 if (data.hasError == true) {
                     alert(data.error);
@@ -1238,7 +1245,7 @@
                     var names = [];
                     var series = [];
                     for (m in d) {
-                        var name = d[m].ParamType;
+                        var name = d[m].ParamType.slice(3);
 
                         var index = $.inArray(name, names);
                         if (index == -1) {
@@ -1500,30 +1507,31 @@
 
 
 
-                series: [{
-                    name: 'PM2.5',
-                    type: 'column',
-                    tooltip: {
-                        valueSuffix: ' ug/M3'
-                    },
-                    yAxis: 2
-                },
-                {
-                    name: '湿度',
+                series: [
+                    {
+                        name: '温度',
 
-                    tooltip: {
-                        valueSuffix: ' %RH'
+                        tooltip: {
+                            valueSuffix: ' \xB0C'
+                        },
+                        yAxis: 0
                     },
-                    yAxis: 1
-                },
-                {
-                    name: '温度',
+                    {
+                        name: '湿度',
 
-                    tooltip: {
-                        valueSuffix: ' \xB0C'
+                        tooltip: {
+                            valueSuffix: ' %RH'
+                        },
+                        yAxis: 1
                     },
-                    yAxis: 0
-                },
+                    {
+                        name: 'PM2.5',
+                        type: 'column',
+                        tooltip: {
+                            valueSuffix: ' ug/M3'
+                        },
+                        yAxis: 2
+                    },
 
 
                 ],
@@ -1546,7 +1554,7 @@
                     var names = [];
                     var series = [];
                     for (m in d) {
-                        var name = d[m].ParamType;
+                        var name = d[m].ParamType.slice(3);
 
                         var index = $.inArray(name, names);
                         if (index == -1) {

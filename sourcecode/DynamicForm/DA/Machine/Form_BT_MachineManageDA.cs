@@ -32,7 +32,8 @@ namespace DynamicForm.DA
             var param = new
             {
                 KPId = QueryBuilder.Like(ref sql, entity, "KPId", "KPId"),
-                MachineName = QueryBuilder.Like(ref sql, entity, "MachineName", "MachineName")
+                MachineName = QueryBuilder.Like(ref sql, entity, "MachineName", "MachineName"),
+                TimeFrom = QueryBuilder.Like(ref sql, entity, "Remark1", "TimeFrom"),
             };
             var list = GetList(entity, ref count, start, limit, sql, "order by KPId", param);
             vm.results = count;
