@@ -247,8 +247,8 @@
                         if (name == "当日订单完成率") {
                           
                         /*const formated = Number(d[m].value * 100).toFixed(2);*/
-                            var value = d[m].value * 100;
-                            var value1 = Math.floor(value * 100) / 100
+                         
+                            var value1 = Math.floor(d[m].value * 10000) / 100
                             series1[2].data.push([new Date(d[m].time).getTime(), value1]);
                         }
                         if (name == "配料浇注总模数") {
