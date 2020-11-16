@@ -24,7 +24,8 @@ namespace DynamicForm.DA
         }
         public override object GetParam(DFDictionary entity)
         {
-            return new { ID = entity["ID"] };
+            //return new {ID = entity["ID"] };
+            return new { CreateTime = entity["CreateTime"] };
         }
 
         //public override void SetAccess(FormM form, DFDictionary entity)

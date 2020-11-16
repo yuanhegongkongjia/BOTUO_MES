@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Form Id="Form_BT_PaiGongDan_OP_Edit" Name="Form_BT_PaiGongDan_OP_Edit" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_OP_EditDA,DynamicForm">
-  <Panel Id="panelDetails" Name="panelDetails" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+<Form Id="Form_BT_PaiGongDan_OP_Edit" Name="Form_BT_PaiGongDan_OP_Edit" Desc="工单单条信息录入" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_OP_EditDA,DynamicForm">
+  <Panel Id="panelDetails1" Name="panelDetails1" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
-      <Control Name="ID" Text="序号" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ID" Type="hidden" />
       <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
     </Row>
     <Row>

@@ -31,7 +31,8 @@ namespace DynamicForm.DA
             var sql = @"select * from BT_MachineManage where 1=1";
             var param = new
             {
-                KPId = QueryBuilder.Like(ref sql, entity, "KPId", "KPId")
+                KPId = QueryBuilder.Like(ref sql, entity, "KPId", "KPId"),
+                MachineName = QueryBuilder.Like(ref sql, entity, "MachineName", "MachineName")
             };
             var list = GetList(entity, ref count, start, limit, sql, "order by KPId", param);
             vm.results = count;

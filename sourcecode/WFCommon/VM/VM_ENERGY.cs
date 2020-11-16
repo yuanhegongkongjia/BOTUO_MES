@@ -8,6 +8,7 @@ namespace WFCommon.VM
     public class VM_ENERGY
     {
         public string name { get; set; }
+        public object name2 { get; set; }
         public decimal[] data { get; set; }
 
         public object data_vm { get; set; }

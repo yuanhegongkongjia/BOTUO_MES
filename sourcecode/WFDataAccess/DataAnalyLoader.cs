@@ -1025,6 +1025,218 @@ group by Line,CollectYear order by collectYear ";
             }
         }
 
+        public static List<VM_SM_T_ENERGY_COLLECT> OeeQueryCurrent(string Position,string CollectDateFrom, string CollectDateTo)
+        {
+            using (var db = Pub.DB)
+            {
+                //var sql = @"select MachineOEE,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,MachineName from BT_MachineAnalyse 
+                //        where MachineName=@Position  
+                //        ";
+
+                var sql = "";
+                if (string.IsNullOrWhiteSpace(Position))
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select MachineOEE, SUBSTRING(convert(nvarchar(50), Remark1, 110), 0, 6) as CTime,MachineName from BT_MachineAnalyse
+                          where   
+                         Remark1>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by MachineName,Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select MachineOEE,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,MachineName from BT_MachineAnalyse 
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " Remark1>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and Remark1<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new {  CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+
+
+                }
+                else {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select MachineOEE, SUBSTRING(convert(nvarchar(50), Remark1, 110), 0, 6) as CTime,MachineName from BT_MachineAnalyse
+                             where MachineName = @Position
+                        and Remark1>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
+                order by MachineName,Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select MachineOEE,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,MachineName from BT_MachineAnalyse 
+                       where MachineName=@Position ";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " and Remark1>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and Remark1<=@CollectDateTo ";
+                        }
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position, CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+               // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+
+
+
+
+
+        public static List<VM_SM_T_ENERGY_COLLECT> DeviceQueryCurrent(string MachineName, string CollectDateFrom)
+        {
+            using (var db = Pub.DB)
+            {
+                //var sql = @"select MachineOEE,SUBSTRING(convert(nvarchar(50),Remark1,110),0,6) as CTime,MachineName from BT_MachineAnalyse 
+                //        where MachineName=@Position  
+                //        ";
+
+                var sql = "";
+                if (string.IsNullOrWhiteSpace(MachineName))
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom))
+                    {
+                        sql = @"select MachineParam,MachineParamTyple, SUBSTRING(convert(nvarchar(50),CollectTime,120),12,5) as CTime,MachineName from BT_MachineManage
+                          where   
+                         Remark1>=@CollectTime
+                 ";
+
+                        var CollectTime = "";
+                        if (DateTime.Now.Hour > 8)
+                        {
+                            //取当天数据
+                            CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                        }
+                        else
+                        {
+                            //取前一天八点开始的数据
+                            CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                        }
+
+                        sql += " order by MachineName,Remark1";
+
+
+
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql,new { CollectTime = CollectTime }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select MachineParam,MachineParamTyple, SUBSTRING(convert(nvarchar(50),CollectTime,120),12,5) as CTime,MachineName from BT_MachineManage
+                       where";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + " Remark1>=@CollectDateFrom ";
+                        }
+                      
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectDateFrom = CollectDateFrom}).ToList();
+                        return list;
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom))
+                    {
+                        sql = @"select MachineParam,MachineParamTyple, SUBSTRING(convert(nvarchar(50),Remark1,120),12,5) as CTime,MachineName from BT_MachineManage
+                             where MachineName = @MachineName
+                      and   Remark1>=@CollectTime
+                        
+                 ";
+                        var CollectTime = "";
+                        if (DateTime.Now.Hour > 8)
+                        {
+                            //取当天数据
+                            CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                        }
+                        else
+                        {
+                            //取前一天八点开始的数据
+                            CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                        }
+
+                        sql += " order by MachineName,Remark1";
+
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { MachineName = MachineName, CollectTime = CollectTime }).ToList();
+                        return list;
+                    }
+
+                    else
+                    {
+                        sql = @"select MachineParam,MachineParamTyple, SUBSTRING(convert(nvarchar(50),Remark1,120),12,5) as CTime,MachineName from BT_MachineManage 
+                       where MachineName=@MachineName 
+                       and   SUBSTRING(convert(nvarchar(50),Remark1,120),0,11)=SUBSTRING(convert(nvarchar(50),@CollectDateFrom,120),0,11)
+                              ";
+
+                       
+
+                        sql = sql + "order by Remark1 ";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { MachineName = MachineName, CollectDateFrom = CollectDateFrom}).ToList();
+                        return list;
+                    }
+                }
+                //var CollectTime = "";
+                //if (DateTime.Now.Hour >= 8)
+                //{
+                //    //取当天数据
+                //    CollectTime = DateTime.Now.ToString("yyyy-MM-dd 08:00:00");
+                //}
+                //else
+                //{
+                //    //取前一天八点开始的数据
+                //    CollectTime = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 08:00:00");
+                //}
+
+                // sql += " order by Remark1";
+
+                //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
+            }
+        }
+
+
+
+
+
+
+
 
         public static List<VM_SM_T_ENERGY_COLLECT> PowerQueryCurrentLine(string Line)
         {

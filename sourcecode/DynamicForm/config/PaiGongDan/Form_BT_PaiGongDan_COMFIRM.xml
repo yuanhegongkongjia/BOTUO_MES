@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_PaiGongDan_COMFIRM" Name="Form_BT_PaiGongDan_COMFIRM" Desc="工单单个信息确认" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_COMFIRMDA,DynamicForm">
+  <Panel Id="panelDetails1" Name="panelDetails1" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="ID" Type="hidden" />
+      <Control Name="PROJECT_NAME" Text="工程项目名称" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="PRODUCT_NAME" Text="产品名称" Width="span8" Type="text" MustInput="True" />
+      <Control Name="ORDER_NUMBER" Text="订单号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="HE_MO" Text="和模" Width="span8" Type="select" Options="{&quot;和模&quot;:&quot;和模&quot;,&quot;未和模&quot;:&quot;未和模&quot;}" OptionType="JSON" MustInput="True" />
+      <Control Name="JINFUHAO" Text="进釜号" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="CHANG" Text="长" Width="span8" Type="text" MustInput="True" />
+      <Control Name="KUAN" Text="宽" Value="600" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="GAO" Text="高" Width="span8" Type="text" MustInput="True" />
+      <Control Name="UNIT" Text="单位" Value="块" Width="span8" Type="text" ControlAttributes="{&quot;readonly&quot;:&quot;readonly&quot;}" />
+    </Row>
+    <Row>
+      <Control Name="ORDER_AMUONT" Text="下单数量" Width="span8" Type="text" MustInput="True" />
+      <Control Name="FANG_LIANG" Text="方量" Width="span8" Type="text" MustInput="True" />
+    </Row>
+    <Row>
+      <Control Name="TABLE_MAKER" Type="hidden" />
+      <Control Name="WANG_PIAN_MAKE" Type="hidden" />
+      <Control Name="WANG_PIAN_ZUZHUANG" Type="hidden" />
+      <Control Name="REMARK1" Text="实际完成量" Width="span8" Type="text" />
+      <Control Name="BAD_NUMBER" Text="报废数量" Width="span8" Type="text" />
+      <Control Name="ZHUAN_NUMBER" Text="砖数量" Width="span8" Type="text" />
+    </Row>
+    <Row>
+      <Control Name="FU_QIAN_QIE_GE" Type="hidden" />
+      <Control Name="CHENG_PIN_BAO_ZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_ZHIBIAO" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_WANGPIANZHIZAUO" Type="hidden" />
+      <Control Name="TIME_WANGPIANZUZHUANG" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="TIME_FUQIANQIEGE" Type="hidden" />
+      <Control Name="TIME_CHENGPINBAOZHUANG" Type="hidden" />
+    </Row>
+    <Row />
+  </Panel>
+  <Panel Id="Panel20200914110102503" Name="Panel20200914110102503" Type="SingleRecord">
+    <Row>
+      <Control Name="btnSave" Text="保存" Width="span8" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer' }" Action="update" />
+      <Control Name="btnCancel" Text="取消" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnCancel_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnCancel_click() {
+    return closeSelfDialog();
+}
+-->
+    </Row>
+  </Panel>
+</Form>

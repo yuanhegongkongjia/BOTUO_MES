@@ -25,7 +25,7 @@ namespace WFCommon
 		public string MachineNum { get; set; }
 		public string MachineOEE { get; set; }
 		public string MachineAverageTime { get; set; }
-		public string Remark1 { get; set; }
+		public DateTime? Remark1 { get; set; }
 		public string Remark2 { get; set; }
 		public string Remark3 { get; set; }
 		public string Remark4 { get; set; }

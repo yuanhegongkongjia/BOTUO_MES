@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Form Id="Form_Production" Name="Form_Production" Desc="生产情况看板" DAImp="DynamicForm.DA.Form_ProductionDA,DynamicForm">
-  <Panel Id="Panel20190508103431611" Name="Panel20190508103431611" Type="SingleRecord" >
+  <Panel Id="Panel20190508103431611" Name="Panel20190508103431611" Type="SingleRecord">
     <Row>
       <Control Name="btnLink" Text="打开看板" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer','onclick':'btnLink_click()'}" Action="link" />
       <!--DF_SCRIPT
 function btnLink_click(){
-window.open("Kanban/ProductionKanban.aspx");
+window.open("http://localhost:8010/BT_ProductionKANBAN.aspx");
 }
 -->
     </Row>

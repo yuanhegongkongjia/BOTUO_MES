@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_PaiGongDan_Printt" Name="Form_BT_PaiGongDan_Print" Desc="打印工单" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_PrintDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="InstanceId" Type="hidden" />
+    </Row>
+  </Panel>
+</Form>
