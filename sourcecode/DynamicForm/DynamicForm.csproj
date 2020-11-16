@@ -453,6 +453,8 @@
     <Content Include="config\Machine\Form_BT_MachineAnalyse_Edit.xml" />
     <Content Include="config\Machine\Form_BT_MachineManage.xml" />
     <Content Include="config\Machine\Form_BT_MachineManage_Edit.xml" />
+    <Content Include="config\Material\BAD_PRODUCT\Form_BT_BAD_PRODUCT.xml" />
+    <Content Include="config\Material\BAD_PRODUCT\Form_BT_BAD_PRODUCT_Edit.xml" />
     <Content Include="config\Material\Form_BT_Material.xml" />
     <Content Include="config\Material\Form_BT_Material_Edit.xml" />
     <Content Include="config\PaiGongDan\Form_BT_PaiGongDan.xml" />
@@ -1219,6 +1221,8 @@
     <Compile Include="DA\Machine\Form_BT_MachineAnalyse_EditDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManageDA.cs" />
     <Compile Include="DA\Machine\Form_BT_MachineManage_EditDA.cs" />
+    <Compile Include="DA\Material\BAD_PRODUCT\Form_BT_BAD_PRODUCTDA.cs" />
+    <Compile Include="DA\Material\BAD_PRODUCT\Form_BT_BAD_PRODUCT_EditDA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_COMFIRMDA.cs" />
     <Compile Include="DA\PaiGongDan\Common_SelectBooking1DA.cs" />
     <Compile Include="DA\PaiGongDan\Form_BT_PaiGongDan_QROPDA.cs" />

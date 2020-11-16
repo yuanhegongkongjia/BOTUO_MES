@@ -814,7 +814,7 @@ group by Line,CollectYear order by collectYear ";
                         sql = @"select COLLECT_VALUE as Collect_Value, REMARK2 as CTime,POSITION from BT_POWER_DAY
                           where POSITION=@Position and
                          REMARK2>=convert(nvarchar(50),dateadd(day,-7,getdate()),120)
-                order by CreateTime,POSITION";
+                order by CreateTime";
                         var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
                         return list;
                     }
@@ -1024,7 +1024,38 @@ group by Line,CollectYear order by collectYear ";
                 //return db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { Position = Position }).ToList();
             }
         }
+        public static List<VM_SM_T_ENERGY_COLLECT> BadproductQueryCurrent(string CollectDateFrom, string CollectDateTo)
+        {
+            using (var db = Pub.DB)
+            {
+                var sql = "";   
+                    if (string.IsNullOrWhiteSpace(CollectDateFrom) && string.IsNullOrWhiteSpace(CollectDateTo))
+                    {
+                        sql = @"select BAD_NUMBER as Collect_Value, REMARK1 as CTime from BT_BAD_PRODUCT
+                          where 
+                REMARK1>=substring(convert(nvarchar(50),dateadd(day,-7,getdate()),120),0,11)
+                order by CreateTime";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql).ToList();
+                        return list;
+                    }
 
+                    else
+                    {
+                        sql = @"select BAD_NUMBER as Collect_Value,REMARK1 as CTime from BT_BAD_PRODUCT where ";
+                        if (!string.IsNullOrWhiteSpace(CollectDateFrom))
+                        {
+                            sql = sql + "  REMARK1>=@CollectDateFrom ";
+                        }
+                        if (!string.IsNullOrWhiteSpace(CollectDateTo))
+                        {
+                            sql = sql + " and REMARK1<=@CollectDateTo ";
+                        }
+                        sql = sql + "order by REMARK1";
+                        var list = db.Query<VM_SM_T_ENERGY_COLLECT>(sql, new { CollectDateFrom = CollectDateFrom, CollectDateTo = CollectDateTo }).ToList();
+                        return list;
+                    }
+            }
+        }
         public static List<VM_SM_T_ENERGY_COLLECT> OeeQueryCurrent(string Position,string CollectDateFrom, string CollectDateTo)
         {
             using (var db = Pub.DB)
