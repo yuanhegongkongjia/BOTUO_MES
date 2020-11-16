@@ -31,7 +31,7 @@ namespace DynamicForm.DA
             var sql = @"select * from BT_Material where 1=1";
             var param = new
             {
-                ENERGY_TYPE = QueryBuilder.Like(ref sql, entity, "ENERGY_TYPE", "ENERGY_TYPE"),
+                //ENERGY_TYPE = QueryBuilder.Like(ref sql, entity, "ENERGY_TYPE", "ENERGY_TYPE"),
                 CollectTimeFrom = QueryBuilder.DateFrom(ref sql, entity, "CreateTime", "CollectTimeFrom"),
                 CollectTimeTo = QueryBuilder.DateTo(ref sql, entity, "CreateTime", "CollectTimeTo"),
             };

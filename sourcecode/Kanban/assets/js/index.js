@@ -29,7 +29,7 @@ function initdlechart() {
         color: ['#f845f1', '#ad46f3', '#5045f6', '#4777f5', '#44aff0', "#45dbf7", "#f6d54a", "#f69846", "#ff4343",],
 
         legend: {
-            //data: ['设备电压', '设备电流'],
+            data: [],
             show: true,
             type: 'scroll',
             //right: '15%',
@@ -141,7 +141,7 @@ function initdlechart() {
         },
         color: ["#72b332", '#35a9e0'],
         legend: {
-            data: ['压力', '电流'],
+            data: ['当日订单完成率', '配料温度实际值'],
             //data: [],
             show: true,
 
@@ -149,7 +149,7 @@ function initdlechart() {
             y: "0",
             textStyle: {
                 color: "#999",
-                fontSize: '13'
+                fontSize: '10'
             },
         },
         toolbox: {
@@ -213,7 +213,7 @@ function initdlechart() {
         ],
         series: [
             {
-                name: '压力',
+                name: '当日订单完成率',
                 type: 'line',
                 smooth: true,
                 symbol: 'roundRect',
@@ -221,7 +221,7 @@ function initdlechart() {
                 data: []
             },
             {
-                name: '电流',
+                name: '配料温度实际值',
                 type: 'line',
                 smooth: true,
                 symbol: 'roundRect',
@@ -1166,8 +1166,8 @@ function inittemechart() {
         },
         backgroundColor: "",
         visualMap: { //图例值控制
-            min: 0,
-            max: 10,
+            min: 10,
+            max: 85,
             calculable: false,
             show: false,
             color: ['#f44336', '#fc9700', '#ffde00', '#ffde00', '#00eaff'],
@@ -1605,7 +1605,7 @@ function initechartrandar() {
         legend: {
             top: '250',
             left: '100',
-            data: ['停机时长', '重点关注'],
+            data: ['产线OEE', '重点关注'],
             textStyle: {
                 color: '#fff'
             }
@@ -1657,7 +1657,7 @@ function initechartrandar() {
         }],
         series: [
             {
-                name: '停机时长',
+                name: '产线OEE',
                 type: 'effectScatter',
                 coordinateSystem: 'calendar',
                 data: [],

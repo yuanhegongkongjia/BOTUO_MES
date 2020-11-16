@@ -137,6 +137,9 @@ namespace Kanban.Handler
                 case "1002wd":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetTem1(context)));
                     break;
+                case "1002wde":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetTem11(context)));
+                    break;
 
                 case "1033zz":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetProductStatus(context)));
@@ -144,6 +147,9 @@ namespace Kanban.Handler
 
                 case "1013sd":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetTeme(context)));
+                    break;
+                case "1013sde":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(GetTeme2(context)));
                     break;
                 case "getcusstaus":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(GetCusStaus(context)));
@@ -227,7 +233,7 @@ namespace Kanban.Handler
             vm.hasError = false;
             var list = new List<VM_PROCESS>();
 
-            list = KanbanProcessLoader.GetDEOEESTATUS("传送机");
+            list = KanbanProcessLoader.GetDEOEESTATUS("产线");
 
 
             vm.data = JsonSerializeHelper.SerializeObject(list);
@@ -256,14 +262,26 @@ namespace Kanban.Handler
             vm.hasError = false;
             var list = new List<VM_PROCESS>();
 
-            list = KanbanProcessLoader.GetTEM1("西南角");
+            list = KanbanProcessLoader.GetTEM1("南区上");
 
 
             vm.data = JsonSerializeHelper.SerializeObject(list);
 
             return vm;
         }
+        public ResultVM GetTem11(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
 
+            list = KanbanProcessLoader.GetTEM11("南区下");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
 
         public ResultVM GetTeme(HttpContext context)
         {
@@ -271,7 +289,7 @@ namespace Kanban.Handler
             vm.hasError = false;
             var list = new List<VM_PROCESS>();
 
-            list = KanbanProcessLoader.GetTEM2("西南角");
+            list = KanbanProcessLoader.GetTEM2("北区上");
 
 
             vm.data = JsonSerializeHelper.SerializeObject(list);
@@ -279,7 +297,19 @@ namespace Kanban.Handler
             return vm;
         }
 
+        public ResultVM GetTeme2(HttpContext context)
+        {
+            var vm = new ResultVM();
+            vm.hasError = false;
+            var list = new List<VM_PROCESS>();
 
+            list = KanbanProcessLoader.GetTEM22("北区下");
+
+
+            vm.data = JsonSerializeHelper.SerializeObject(list);
+
+            return vm;
+        }
 
 
 

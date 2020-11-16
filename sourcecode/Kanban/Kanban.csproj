@@ -890,6 +890,7 @@
     <Content Include="chart\css\themes\sand-signika.scss" />
     <Content Include="Handler\ProcessHandler.ashx" />
     <Content Include="Handler\EnergyHandler.ashx" />
+    <Content Include="img\sanwei.png" />
     <Content Include="img\zhongding.png" />
     <Content Include="img\BTLOG.png" />
     <Content Include="index.aspx" />
