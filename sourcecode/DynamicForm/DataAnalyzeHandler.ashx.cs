@@ -109,6 +109,9 @@ namespace DynamicForm
                 case "poweryearquery":
                     context.Response.Write(JsonSerializeHelper.SerializeObject(PowerYearquery(context)));
                     break;
+                case "badproductquery":
+                    context.Response.Write(JsonSerializeHelper.SerializeObject(Badproductquery(context)));
+                    break;
                 default:
                     break;
             }
@@ -1129,6 +1132,35 @@ namespace DynamicForm
                     l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
                     liste.Add(l1);
                 }
+
+                vm.data = JsonSerializeHelper.SerializeObject(liste);
+            }
+            catch (Exception ex)
+            {
+                vm.hasError = true;
+                vm.error = string.Format("获取图表数据遇到异常{0}", ex.Message);
+            }
+            return vm;
+        }
+        public IndexVM Badproductquery(HttpContext context)
+        {
+            var vm = new IndexVM();
+            vm.hasError = false;
+            try
+            {
+                var CollectDateFrom = context.Request.Params["CollectDateFrom"];
+                var CollectDateTo = context.Request.Params["CollectDateTo"];
+                var list = DataAnalyLoader.BadproductQueryCurrent( CollectDateFrom, CollectDateTo);
+                var cats = list.Select(a => a.CTime).Distinct().ToList();
+                vm.data1 = JsonSerializeHelper.SerializeObject(cats);
+                var liste = new List<VM_ENERGY>();
+
+                //var l1 = new VM_ENERGY();
+               
+               
+                    var l1 = new VM_ENERGY();
+                    l1.data_vm = list.Select(b => new { b.CTime, b.Collect_Value }).ToArray();
+                    liste.Add(l1);
 
                 vm.data = JsonSerializeHelper.SerializeObject(liste);
             }

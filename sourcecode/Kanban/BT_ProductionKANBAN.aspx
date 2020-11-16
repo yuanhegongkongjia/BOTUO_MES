@@ -114,6 +114,7 @@
                     type: 'datetime',
                     dateTimeLabelFormats: { hour: '%H:%M', }
                 },
+
                 yAxis: [{
                     title: {
                         text: '模(个)',
@@ -153,7 +154,10 @@
                    line: {
                         dataLabels: {
                            enabled: true,
-                            format: ' {y} %',
+                           format: '{y} %',
+                           allowOverlap: true,
+                           //format: '{point.y:.1f}%',
+
                         }
 
                     }
@@ -188,7 +192,7 @@
 
                 xAxis: {
                     type: 'datetime',
-                    dateTimeLabelFormats: { minute: '%H:%M' }//,
+                    dateTimeLabelFormats: { hour: '%H:%M' }//,
                 },
                 yAxis: {
                     title: {
@@ -242,6 +246,10 @@
                         }
                         if (name == "当日订单完成率") {
                             var value1 = Math.floor(d[m].value * 10000) / 100;
+                        /*const formated = Number(d[m].value * 100).toFixed(2);*/
+                         
+                            var value1 = Math.floor(d[m].value * 10000) / 100
+                            
                             /*const formated = Number(d[m].value * 100).toFixed(2);*/
                             series1[2].data.push([new Date(d[m].time).getTime(), value1]);
                         }
@@ -301,7 +309,8 @@
                             series: series2
                         });
                     }
-                    setTimeout(requestData, 3610000);
+                    //setTimeout(requestData, 6000);
+                    setTimeout(requestData, 3600000);
                 }
             });
         }

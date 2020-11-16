@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_BAD_PRODUCT" Name="Form_BT_BAD_PRODUCT" DAImp="DynamicForm.DA.Form_BT_BAD_PRODUCTDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKID" Type="hidden" />
+      <Control Name="BAD_NUMBER" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CreateTime" Type="hidden" />
+      <Control Name="CreateUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="LastModifyTime" Type="hidden" />
+      <Control Name="LastModifyUser" Type="hidden" />
+      <Control Name="CollectDateFrom" Text="采集时间从" Width="span8" Type="calendar" />
+      <Control Name="CollectDateTo" Text="到" Width="span8" Type="calendar" />
+    </Row>
+    <Row>
+      <Control Name="Remark1" Type="hidden" />
+      <Control Name="Remark2" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark3" Type="hidden" />
+      <Control Name="Remark4" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark5" Type="hidden" />
+      <Control Name="Remark6" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="Panel20201116114151819" Name="Panel20201116114151819" Type="SingleRecord">
+    <Row>
+      <Control Name="Control20201116114157975" Text="Control20201116114157975" Width="span24" Type="custom" />
+      <!--DF_CUSTOM_HTML
+<div class='span24'><div id='container1' style='height:300px;'></div></div>
+-->
+      <!--DF_SCRIPT
+
+
+var myChart = echarts.init(document.getElementById('container1'));
+//var myChart1 = echarts.init(document.getElementById('container1'));
+initChart();
+
+//initChart1();
+function initChart(){
+
+const colorList = ["#9E87FF", '#73DDFF', '#fe9a8b', '#F56948', '#9E87FF']	
+var option =  {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value',
+        splitLine:{
+        	show:false}
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            label: {
+                show: true,
+                backgroundColor: '#fff',
+                color: '#556677',
+                borderColor: 'rgba(0,0,0,0)',
+                shadowColor: 'rgba(0,0,0,0)',
+                shadowOffsetY: 0
+            },
+            lineStyle: {
+                width: 0
+            }
+        },
+        backgroundColor: '#fff',
+        textStyle: {
+            color: '#5c6c7c'
+        },
+        padding: [10, 10],
+        extraCssText: 'box-shadow: 1px 0 2px 0 rgba(163,163,163,0.5)'
+    },
+
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true,
+        showSymbol: false,
+        lineStyle: {
+                width: 5,
+                color: new echarts.graphic.LinearGradient(1, 1, 0, 0, [{
+                        offset: 0,
+                        color: '#73DD39'
+                    },
+                    {
+                        offset: 1,
+                        color: '#73DDFF'
+                    }
+                ]),
+                shadowColor: 'rgba(115,221,255, 0.3)',
+                shadowBlur: 10,
+                shadowOffsetY: 20
+            },
+            itemStyle: {
+                normal: {
+                    color: colorList[1],
+                    borderColor: colorList[1]
+                }
+            }
+        }
+        
+    ]};
+ myChart.setOption(option);
+
+ initChartBadproduct();
+
+}
+
+function initChartBadproduct(){
+var labelOption = {
+    normal: {
+        show: true,
+        align: 'left',
+        verticalAlign: 'middle',
+        formater:function(a,b,c){ return c;},
+        fontSize: 16
+
+    }
+};
+
+var yName="个";
+var xName="日期";
+
+$.getJSON('../DataAnalyzeHandler.ashx?action=badproductquery',
+      {
+      CollectDateFrom:$('#CollectDateFrom').val(),
+      CollectDateTo:$('#CollectDateTo').val()
+             }, function (data) {
+                if (data.hasError == true) {
+                    alert(data.error);
+                    return;
+                }
+                else {
+                   var d1=JSON.parse(data.data1);
+                    var d=JSON.parse(data.data);
+                    var categories=[];
+                    var s=[];
+                    //var s = [{ name: '订单计划量', data: [] }, { name: '订单完成量', data: [] }];
+                    for(m in d1){
+                      categories[m]=d1[m];
+                    }
+
+                    
+                  
+                    for(m in d){
+						dm=[];
+                        for(n in d[m].data_vm){
+ 							dm.push([d[m].data_vm[n].CTime,d[m].data_vm[n].Collect_Value]);
+                        }
+                        s.push({name:d[m].name,data:dm,type: 'line',label:labelOption});
+                      }
+
+                   myChart.setOption({
+                      
+					title:[{
+						text:'报废品日分析',
+						left:'center'
+					}],
+                      xAxis: {
+                       type: 'category',
+                       axisTick: {show: false},
+                        data: categories,
+                        name:xName
+                      },
+                      yAxis: [{
+                        type: 'value',
+                        name:yName
+                      }],
+                    series: 
+                       s
+                  });
+
+                }
+     });
+}
+
+
+-->
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKID" Text="序号" Width="100" Sortable="true" />
+    <Column Name="BAD_NUMBER" Text="报废数量" Width="100" Sortable="true" />
+    <Column Name="CreateTime" Text="采集时间" Width="100" Sortable="true" />
+    <Column Name="CreateUser" Visible="false" Sortable="true" />
+    <Column Name="LastModifyTime" Visible="false" Sortable="true" />
+    <Column Name="LastModifyUser" Visible="false" Sortable="true" />
+    <Column Name="Remark1" Visible="false" Sortable="true" />
+    <Column Name="Remark2" Visible="false" Sortable="true" />
+    <Column Name="Remark3" Visible="false" Sortable="true" />
+    <Column Name="Remark4" Visible="false" Sortable="true" />
+    <Column Name="Remark5" Visible="false" Sortable="true" />
+    <Column Name="Remark6" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Text="删除" Type="button" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" Action="link" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'PKID': a.PKID
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_BT_BAD_PRODUCT',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Type="hidden" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_BAD_PRODUCT_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&PKID=' + selections[0].PKID;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_BAD_PRODUCT_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>

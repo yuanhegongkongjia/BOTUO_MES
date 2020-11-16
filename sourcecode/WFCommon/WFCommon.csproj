@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Entities\BT_BAD_PRODUCT.cs" />
     <Compile Include="Entities\BT_MachineAnalyse.cs" />
     <Compile Include="Entities\BT_MachineManage.cs" />
     <Compile Include="Entities\BT_Material.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Menu1VM.cs" />
     <Compile Include="Menu2VM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VM\VM_BT_BAD_PRODUCT.cs" />
     <Compile Include="VM\VM_BT_MachineAnalyse.cs" />
     <Compile Include="VM\VM_BT_MachineManage.cs" />
     <Compile Include="VM\VM_BT_Material.cs" />
