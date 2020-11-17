@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table Name="BT_DayProductAmount" ImportType="InsertAndUpdate" CheckExist="SELECT * FROM BT_DayProductAmount WHERE PKId=@PKId" Insert="INSERT INTO BT_DayProductAmount(PKId,ProductAmount,BadAmount,ZuanAmount,DayTime,YouPercent,Remark1,Remark2,Remark3,Remark4,Remark5,CreateTime,CreateUser) VALUES(@PKId,@ProductAmount,@BadAmount,@ZuanAmount,@DayTime,@YouPercent,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@CreateTime,@CreateUser)" Update="UPDATE BT_DayProductAmount SET ProductAmount=@ProductAmount,BadAmount=@BadAmount,ZuanAmount=@ZuanAmount,DayTime=@DayTime,YouPercent=@YouPercent,Remark1=@Remark1,Remark2=@Remark2,Remark3=@Remark3,Remark4=@Remark4,Remark5=@Remark5 WHERE PKId=@PKId">
+    <column Name="PKId" Text="PKId" DataType="int" IsPrimaryKey="Y" IsIdentity="Y" />
+    <column Name="ProductAmount" Text="ProductAmount" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="BadAmount" Text="BadAmount" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="ZuanAmount" Text="ZuanAmount" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="DayTime" Text="DayTime" DataType="datetime" IsNullable="Y" />
+    <column Name="YouPercent" Text="YouPercent" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark1" Text="Remark1" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark2" Text="Remark2" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark3" Text="Remark3" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark4" Text="Remark4" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="Remark5" Text="Remark5" DataType="nvarchar(50)" IsNullable="Y" />
+    <column Name="CreateTime" Text="CreateTime" DataType="datetime" IsNullable="Y" />
+    <column Name="CreateUser" Text="CreateUser" DataType="nvarchar(50)" IsNullable="Y" />
+  </table>
+</tables>

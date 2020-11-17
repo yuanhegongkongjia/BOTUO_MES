@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Form Id="Form_BT_DayProductAmount" Name="Form_BT_DayProductAmount" Desc="日产量分析查询" DAImp="DynamicForm.DA.Form_BT_DayProductAmountDA,DynamicForm">
+  <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
+    <Row>
+      <Control Name="PKId" Type="hidden" />
+      <Control Name="ProductAmount" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="BadAmount" Type="hidden" />
+      <Control Name="ZuanAmount" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="DayTime" Type="hidden" />
+      <Control Name="YouPercent" Type="hidden" />
+      <Control Name="TimeFrom" Text="时间从" Width="span8" Type="calendar" />
+      <Control Name="TimeTo" Text="时间到" Width="span8" Type="calendar" />
+    </Row>
+    <Row>
+      <Control Name="Remark1" Type="hidden" />
+      <Control Name="Remark2" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark3" Type="hidden" />
+      <Control Name="Remark4" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="Remark5" Type="hidden" />
+      <Control Name="CreateTime" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="CreateUser" Type="hidden" />
+    </Row>
+    <Row>
+      <Control Name="btnQuery" Text="查询" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer'}" Action="query" />
+    </Row>
+  </Panel>
+  <Panel Id="grid1" Name="grid1" Type="MultiRecord" Additional="{&quot;DF_QUERY_CONDITION_PANEL&quot;:&quot;queryPanel&quot;}" Plugins="BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.RowNumber">
+    <Column Name="PKId" Text="序号" Width="100" Sortable="true" />
+    <Column Name="ProductAmount" Text="日生产量" Width="100" Sortable="true" />
+    <Column Name="BadAmount" Text="日报废量" Width="100" Sortable="true" />
+    <Column Name="ZuanAmount" Text="日砖数量" Width="100" Sortable="true" />
+    <Column Name="DayTime" Text="日期" Width="150" Sortable="true" />
+    <Column Name="YouPercent" Text="每日良率" Width="100" Sortable="true" />
+    <Column Name="Remark1" Visible="false" Sortable="true" />
+    <Column Name="Remark2" Visible="false" Sortable="true" />
+    <Column Name="Remark3" Visible="false" Sortable="true" />
+    <Column Name="Remark4" Visible="false" Sortable="true" />
+    <Column Name="Remark5" Visible="false" Sortable="true" />
+    <Column Name="CreateTime" Visible="false" Sortable="true" />
+    <Column Name="CreateUser" Visible="false" Sortable="true" />
+  </Panel>
+  <Panel Id="opPanel" Name="opPanel" Type="SingleRecord">
+    <Row>
+      <Control Name="btnDelete" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnDelete_click();return false;&quot; }" />
+      <!--DF_SCRIPT
+function btnDelete_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length == 0) {
+        dfAlert(getRes('请先选择记录'));
+        return;
+    }
+    var p = $.map(selections, function(a) {
+        return {
+            'PKId': a.PKId
+        }
+    });
+    if (confirm(getRes('确定要删除选定的记录么？'))) {
+        dfGetData('deleteform', {
+            DF_FORMNAME: 'Form_BT_DayProductAmount',
+            data: BUI.JSON.stringify(p)
+        }, function(data) {
+            BUI.getControl('grid1').get('store').load();
+        });
+    }
+}
+-->
+      <Control Name="btnAdd" Type="hidden" ControlAttributes=" {&quot;class&quot;:&quot;ddz-button1&quot;, style:'cursor:pointer',&quot;onclick&quot;:&quot;btnAdd_click();return false;&quot;}" />
+      <!--DF_SCRIPT
+function btnAdd_click() {
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_DayProductAmount_Edit';
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+      <Control Name="btnEdit" Type="hidden" ControlAttributes="{&quot;class&quot;:&quot;ddz-button2&quot;, style:'cursor:pointer', &quot;onclick&quot;:&quot;btnUpdate_click();return false;&quot; }" />
+      <!--DF_SCRIPT
+function btnUpdate_click() {
+    var grid = BUI.getControl('grid1');
+    var selections = grid.getSelection();
+    if (selections.length != 1) {
+        dfAlert(getRes('请选择一条记录进行编辑'));
+        return;
+    }
+    var p = "&EditMode=Edit";
+    p += '&PKId=' + selections[0].PKId;
+    var url = 'DFIndex.aspx?DF_FORMNAME=Form_BT_DayProductAmount_Edit' + p;
+    var dialog = dfOverlayDialog(800, 600, '', url);
+    // 关闭时自动刷新 grid
+    dialog.on('closing', function() {
+        BUI.getControl('grid1').get('store').load();
+    });
+}
+-->
+    </Row>
+  </Panel>
+</Form>
