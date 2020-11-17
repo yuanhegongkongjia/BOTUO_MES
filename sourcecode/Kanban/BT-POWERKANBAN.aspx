@@ -70,6 +70,7 @@
           str += d.getSeconds() + '';
           return str;
       }
+      Highcharts.setOptions({ global: { useUTC: false } });
       setInterval(function () {
           $("#timeDiv").html(current());
       }, 1000);
@@ -106,7 +107,7 @@
 
               xAxis: {
                   type: 'datetime',
-                  dateTimeLabelFormats: { minute: '%H:%M' }//,
+                  dateTimeLabelFormats: { hour: "%H:%M" }//,
               },
               yAxis: {
                   title: {
@@ -159,7 +160,7 @@
 
               xAxis: {
                   type: 'datetime',
-                  dateTimeLabelFormats: { day: '%m-%d' }//需要修改成几号
+                  dateTimeLabelFormats: { day: "%m-%e" }//需要修改成几号
               },
               yAxis: {
                   title: {
