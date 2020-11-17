@@ -62,19 +62,19 @@
                             <span class="span-name">第一标准</span>
                         </li>
                         <li>
-                            <span class="span-number-show">653</span>
+                            <span class="span-number-show">自动化</span>
                         </li>
                         <li>
                             <span class="span-name">第二标准</span>
                         </li>
                         <li>
-                            <span class="span-number-show">836252</span>
+                            <span class="span-number-show">信息化</span>
                         </li>
                         <li>
                             <span class="span-name">第三标准</span>
                         </li>
                         <li>
-                            <span class="span-number-show">32162</span>
+                            <span class="span-number-show">智能化</span>
                         </li>
                     </ul>
                 </div>

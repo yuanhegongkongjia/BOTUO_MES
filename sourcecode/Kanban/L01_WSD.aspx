@@ -351,13 +351,34 @@
                             //不存在
                             names.push(name);
                             var s = {};
-                            s.name = name;
-                            s.data = [];
-                            s.data.push([new Date(d[m].time).getTime(), d[m].value]);
-                            series.push(s);
+                            if (name == '湿度') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                                series.push(s);
+
                         }
                         else {
-                            series[index].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            if (name == '湿度') {
+                                series[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                series[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                series[2].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
                         }
                     }
 
@@ -951,7 +972,15 @@
                             series.push(s);
                         }
                         else {
-                            series[index].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            if (name == '湿度') {
+                                series[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                series[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                series[2].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
                         }
                     }
 
@@ -1260,7 +1289,15 @@
                             series.push(s);
                         }
                         else {
-                            series[index].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            if (name == '湿度') {
+                                series[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                series[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                series[2].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
                         }
                     }
 
@@ -1510,6 +1547,7 @@
 
 
                 series: [
+                  
                     {
                         name: '湿度',
 
@@ -1518,7 +1556,6 @@
                         },
                         yAxis: 1
                     },
-
 
                     {
                         name: '温度',
@@ -1566,13 +1603,33 @@
                             //不存在
                             names.push(name);
                             var s = {};
-                            s.name = name;
-                            s.data = [];
-                            s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            if (name == '湿度') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                s.name = name;
+                                s.data = [];
+                                s.data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
                             series.push(s);
                         }
                         else {
-                            series[index].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            if (name == '湿度') {
+                                series[0].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == '温度') {
+                                series[1].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
+                            if (name == 'PM2.5') {
+                                series[2].data.push([new Date(d[m].time).getTime(), d[m].value]);
+                            }
                         }
                     }
 

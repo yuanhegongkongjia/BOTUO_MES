@@ -134,32 +134,37 @@ SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as de
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-6,105) order by  CreateTime desc,collect_type )
 
 G
-
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-7,105) order by  CreateTime desc,collect_type )
 
 H
-
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-8,105) order by  CreateTime desc,collect_type )
 
 I
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-9,105) order by  CreateTime desc,collect_type )
 
 J
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-10,105) order by  CreateTime desc,collect_type )
 
 K
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-11,105) order by  CreateTime desc,collect_type )
 
 L
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-12,105) order by  CreateTime desc,collect_type )
 
 M
+UNION ALL
 SELECT * from (SELECT TOP 7  COLLECT_TYPE AS SeriesName,cast(COLLECT_VALUE as decimal(18,3)) AS value,ParamTYPE AS ParamType,CreateTime AS time FROM BT_TotalCollect 
 where CONVERT(nvarchar(50),CreateTime,105) =CONVERT(nvarchar(50),GETDATE()-13,105) order by  CreateTime desc,collect_type )
 
