@@ -162,7 +162,7 @@
 
               xAxis: {
                   type: 'datetime',
-                  dateTimeLabelFormats: { day: "%m-%e" }//需要修改成几号
+                  dateTimeLabelFormats: { day: "%m-%d" }//需要修改成几号
               },
               yAxis: {
                   title: {
