@@ -382,7 +382,7 @@ order by ParamName,CollectTime asc";
                 var sql = @"select CreateTime as time,cast(FENSHI_VALUE as decimal) as value,POSITION as SeriesName from BT_POWER_DayHour 
                     where CreateTime>=@CurrentTime order by CreateTime asc";
 
-                return db.Query<VM_PROCESS>(sql, new {  CurrentTime = DateTime.Now.AddHours(-800) }).ToList();
+                return db.Query<VM_PROCESS>(sql, new {  CurrentTime = DateTime.Now.AddHours(-8) }).ToList();
 
 
             }
