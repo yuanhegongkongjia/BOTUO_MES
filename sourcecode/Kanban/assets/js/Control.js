@@ -100,9 +100,10 @@ function requestEnergyData() {
             d = JSON.parse(data.data);
 
             //juniorservice_option.series = [{ name: '停机时长', data: [] }, { name: '重点关注', data: [] }];
-            radar_option.series[0].data = [{ value: [],name: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
-            radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
-           
+            //radar_option.series[0].data = [{ value: [],name: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
+            //radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }, { name: [], value: [] }];
+            radar_option.series[1].data = [];
+            radar_option.series[0].data = [];
             //radar_option.series[1].data = [{ name: [], value: [] }, { name: [], value: [] }];
             //radar_option.legend.data = [];
             //var labelData = [{ name: [], value: [] }]
@@ -110,13 +111,14 @@ function requestEnergyData() {
             for (m in d) {
                 time = d[m].time;
                 
-                radar_option.series[0].data[m].name.push(new Date(d[m].time).Format("HH") + ":00");
-                radar_option.series[0].data[m].value.push (d[m].value);
+                //radar_option.series[0].data[m].name.push(new Date(d[m].time).Format("HH") + ":00");
+                //radar_option.series[0].data[m].value.push(d[m].value);
+                radar_option.series[0].data.push({ value: d[m].value, name: new Date(d[m].time).Format("HH") + ":00"})
                 //radar_option.series[0].data.value.push = (d[m].value)    ;
                 //radar_option.series[1].data.push = 1;
-                radar_option.series[1].data[m].name.push (new Date(d[m].time).Format("HH") + ":00");
-                radar_option.series[1].data[m].value.push(1);
-
+                //radar_option.series[1].data[m].name.push (new Date(d[m].time).Format("HH") + ":00");
+                //radar_option.series[1].data[m].value.push(1);
+                radar_option.series[1].data.push({ value: 1, name: new Date(d[m].time).Format("HH") + ":00"})
                 //radar_option.legend.data.push(new Date(d[m].time).Format("HH") + ":00")
 
             }
