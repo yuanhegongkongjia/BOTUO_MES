@@ -424,6 +424,8 @@
     <Content Include="config\DataAnalyze\Form_CollectDataAnalyzeView.xml" />
     <Content Include="config\DataAnalyze\Form_SM_T_DAYENERGY.xml" />
     <Content Include="config\DataAnalyze\Form_SM_T_DAYENERGY_Edit.xml" />
+    <Content Include="config\DayProductAmount\Form_BT_DayProductAmount.xml" />
+    <Content Include="config\DayProductAmount\Form_BT_DayProductAmount_Edit.xml" />
     <Content Include="config\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG.xml" />
     <Content Include="config\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG_Edit.xml" />
     <Content Include="config\Form_Electric.xml" />
@@ -1191,6 +1193,8 @@
     <Compile Include="DA\DataAnalyze\Form_ProcessDataDA.cs" />
     <Compile Include="DA\DataAnalyze\Form_SM_T_DAYENERGYDA.cs" />
     <Compile Include="DA\DataAnalyze\Form_SM_T_DAYENERGY_EditDA.cs" />
+    <Compile Include="DA\DayProductAmount\Form_BT_DayProductAmountDA.cs" />
+    <Compile Include="DA\DayProductAmount\Form_BT_DayProductAmount_EditDA.cs" />
     <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANGDA.cs" />
     <Compile Include="DA\DEVICE_TAIZHANG\Form_DEVICE_TAIZHANG_EditDA.cs" />
     <Compile Include="DA\Form_EnvironmentDA.cs" />

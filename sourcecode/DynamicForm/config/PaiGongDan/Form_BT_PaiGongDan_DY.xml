@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Form Id="Form_BT_PaiGongDan_DY" Name="Form_BT_PaiGongDan_DY" Desc="派工单打印" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_DYDA,DynamicForm">
+<Form Id="Form_BT_PaiGongDan_DY" Name="Form_BT_PaiGongDan_DY" Desc="工单打印" DAImp="DynamicForm.DA.Form_BT_PaiGongDan_DYDA,DynamicForm">
   <Panel Id="queryPanel" Name="queryPanel" Type="SingleRecord" Additional="{class:'ddz-maindiv',style:'margin-bottom: 20px;'}">
     <Row>
       <Control Name="ID" Type="hidden" />

@@ -5,7 +5,7 @@
       <Control Name="btnLink" Text="打开看板" Type="button" ControlAttributes="{class:&quot;ddz-button3&quot;, style:'cursor:pointer','onclick':'btnLink_click()'}" Action="link" />
       <!--DF_SCRIPT
 function btnLink_click(){
-window.open("http://localhost:8010/L01_WSD.aspx");
+window.open("http://36.156.153.15:8010/L01_WSD.aspx");
 }
 -->
     </Row>
