@@ -108,7 +108,7 @@
               xAxis: {
                   type: 'datetime',
                   
-                  dateTimeLabelFormats: { hour: "%m-%e %H:%M" }//,
+                  dateTimeLabelFormats: { hour: "%H:%M" }//,
                  
               },
               yAxis: {
