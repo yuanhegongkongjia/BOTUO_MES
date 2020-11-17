@@ -78,7 +78,7 @@ function initdlechart() {
         }, {
             type: 'pie',
             data: [],
-            radius: ['58%', '80%'],
+            radius: ['60%', '85%'],
             zlevel: -2,
             center: ['50%', '45%'],
             itemStyle: {
@@ -99,7 +99,7 @@ function initdlechart() {
                 normal: {
                     position: 'inside',
                     color: '#45dbf7',
-                    fontSize: 8,
+                    fontSize: 7,
                 }
             }
         }]
