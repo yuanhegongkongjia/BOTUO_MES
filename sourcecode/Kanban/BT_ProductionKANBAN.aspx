@@ -281,7 +281,7 @@
                         chart1.addSeries({
                             name: series1[2].name,
                             type: 'line',
-                            yAxis: 0,
+                            yAxis: 1,
                             data: series1[2].data
                         });
                         }
