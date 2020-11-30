@@ -131,7 +131,7 @@
 
               ],
               plotOptions: {
-                  column: {
+                  line: {
                       dataLabels: {
                           enabled: true
                       }
@@ -147,6 +147,8 @@
                   backgroundColor:
                       'rgba(0,0,0,0)'
               },
+              colors: [
+                  'rgba(255,69,0,0.99)', 'rgba(173,255,47,0.99)', '#FFF263', '#6AF9C4'],
               title: {
                   text: '车间每日电量监控',              // 标题
                   style: {
@@ -166,7 +168,10 @@
               },
               yAxis: {
                   title: {
-                      text: '度(Kwh)'                // y 轴标题
+                      text: '度(Kwh)',
+                      style: {
+                          color: 'rgba(173,255,47,0.99)'
+                      }// y 轴标题
                   }
               },
               legend: {
@@ -181,7 +186,7 @@
 
               ],
               plotOptions: {
-                  column: {
+                  line: {
                       dataLabels: {
                           enabled: true
                       }
